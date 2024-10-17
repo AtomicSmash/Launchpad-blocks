@@ -1,0 +1,122 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/manual-post-select",
+  "title": "Manual post select",
+  "category": "theme",
+  "description": "A block to manually select and display a group of posts.",
+  "textdomain": "launchpad",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.b3e96eba8a0761cdae31.js"
+  ],
+  "editorStyle": [
+    "file:./editor-style.fd8f66484ec7d6017750.css"
+  ],
+  "style": [
+    "file:./style.9e4280ac02dbbbccdeb5.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "namespace": {
+      "type": "string"
+    },
+    "selectedPosts": {
+      "type": "array",
+      "default": []
+    },
+    "selectedPostTypesManualSelectSearch": {
+      "type": "array",
+      "default": [
+        "any"
+      ]
+    },
+    "searchInputManualSelectSearch": {
+      "type": "string",
+      "default": ""
+    },
+    "taxonomyAndTermInfoManualSelectSearch": {
+      "type": "object",
+      "default": {
+        "relationship": "AND",
+        "terms": []
+      }
+    },
+    "orderManualSelectSearch": {
+      "type": "object",
+      "default": {
+        "by": "date",
+        "direction": "desc"
+      }
+    },
+    "selectedPostTypesAutoPostsQuery": {
+      "type": "array",
+      "default": [
+        "any"
+      ]
+    },
+    "searchInputAutoPostsQuery": {
+      "type": "string",
+      "default": ""
+    },
+    "taxonomyAndTermInfoAutoPostsQuery": {
+      "type": "object",
+      "default": {
+        "relationship": "AND",
+        "terms": []
+      }
+    },
+    "orderAutoPostsQuery": {
+      "type": "object",
+      "default": {
+        "by": "date",
+        "direction": "desc"
+      }
+    },
+    "shouldFillRemainingSpots": {
+      "type": "boolean",
+      "default": false
+    },
+    "shouldInheritFromAutoPostsQuery": {
+      "type": "boolean",
+      "default": true
+    },
+    "postsToShow": {
+      "type": "integer",
+      "default": 1
+    },
+    "shouldExcludeCurrentPost": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "postId"
+  ],
+  "supports": {
+    "align": true,
+    "layout": {
+      "default": {
+        "type": "default"
+      },
+      "allowSwitching": true,
+      "allowEditing": true,
+      "allowInheriting": true,
+      "allowSizingOnChildren": true,
+      "allowVerticalAlignment": true,
+      "allowJustification": true,
+      "allowOrientation": true,
+      "allowCustomContentAndWideSize": true
+    },
+    "color": true,
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "blockGap": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true
+    }
+  }
+}

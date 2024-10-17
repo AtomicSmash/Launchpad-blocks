@@ -1,0 +1,101 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/accordion-group",
+  "title": "Accordion group",
+  "category": "theme",
+  "description": "A group of accordions.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [
+    "accordion"
+  ],
+  "editorScript": [
+    "file:./index.1b28ee049d8f32fff469.js"
+  ],
+  "viewScript": [
+    "file:./view.0cb6cb928794d19b2a8e.js"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9df6f4b23e02fc94b51f.css"
+  ],
+  "attributes": {
+    "isMultiple": {
+      "type": "boolean",
+      "default": false
+    },
+    "accordionGroupId": {
+      "type": "string"
+    }
+  },
+  "example": {
+    "attributes": {
+      "isMultiple": true,
+      "accordionGroupId": "group-123"
+    },
+    "innerBlocks": [
+      {
+        "name": "launchpad-blocks/accordion",
+        "attributes": {
+          "isInitiallyOpen": true,
+          "accordionId": "single-123",
+          "headerContent": "Joke 1",
+          "headerElement": "h3"
+        },
+        "innerBlocks": [
+          {
+            "name": "core/paragraph",
+            "attributes": {
+              "content": "I was going to sail around the globe in the world’s smallest ship but I bottled it."
+            }
+          }
+        ]
+      },
+      {
+        "name": "launchpad-blocks/accordion",
+        "attributes": {
+          "isInitiallyOpen": true,
+          "accordionId": "single-456",
+          "headerContent": "Joke 2",
+          "headerElement": "h3"
+        },
+        "innerBlocks": [
+          {
+            "name": "core/paragraph",
+            "attributes": {
+              "content": "I sailed through my driving test. That’s why I failed it."
+            }
+          }
+        ]
+      },
+      {
+        "name": "launchpad-blocks/accordion",
+        "attributes": {
+          "isInitiallyOpen": true,
+          "accordionId": "single-789",
+          "headerContent": "Joke 3",
+          "headerElement": "h3"
+        },
+        "innerBlocks": [
+          {
+            "name": "core/paragraph",
+            "attributes": {
+              "content": "I love the Olympics. My friend and I invented a new type of relay baton: well, he came up with the idea, I ran with it."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "supports": {
+    "color": true,
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "shadow": true,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  }
+}

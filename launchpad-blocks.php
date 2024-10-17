@@ -2,9 +2,9 @@
 /**
  * Plugin Name:       Launchpad blocks
  * Description:       This is a block library created by Atomic Smash.
- * Requires at least: 5.9
- * Requires PHP:      8.0
- * Version:           1.0.0-beta.0
+ * Requires at least: 6.6
+ * Requires PHP:      8.2
+ * Version:           1.0.0-beta.4
  * Author:            Atomic Smash
  * Author URI:        https://www.atomicsmash.co.uk/
  * License:           GPL-2.0-or-later
@@ -12,9 +12,14 @@
  * Text Domain:       launchpad-blocks
  */
 
-define( 'LAUNCHPAD_BLOCKS_VERSION', '1.0.0-beta.0' );
+namespace Launchpad\Blocks;
 
-define( 'LAUNCHPAD_BLOCKS_DIR', plugin_dir_path( __FILE__ ) . 'build/' );
+define( 'LAUNCHPAD_BLOCKS_VERSION', '1.0.0-beta.4' );
+
+// Require autoloader.
+require __DIR__ . '/vendor/autoload.php';
+
+define( 'LAUNCHPAD_BLOCKS_DIR', plugin_dir_path( __FILE__ ) . 'build/blocks/' );
 
 if ( ! is_dir( LAUNCHPAD_BLOCKS_DIR ) ) {
 	if ( is_admin() ) {
@@ -40,72 +45,74 @@ $blocks_folders = array_filter(
 
 define( 'LAUNCHPAD_BLOCKS', $blocks_folders );
 
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function launchpad_blocks_init() {
-	launchpad_register_block_assets_by_block_name();
-	foreach ( LAUNCHPAD_BLOCKS as $block ) {
-		register_block_type( __DIR__ . '/build/' . $block . '/block.json' );
-	}
+foreach ( LAUNCHPAD_BLOCKS as $block ) {
+	include_once LAUNCHPAD_BLOCKS_DIR . $block . '/index.php';
 }
-add_action( 'init', 'launchpad_blocks_init' );
+
+require_once plugin_dir_path( __FILE__ ) . 'functions/fix-block-defaults.php';
+require_once plugin_dir_path( __FILE__ ) . 'functions/helpers.php';
 
 /**
- * Here we register all our JS and CSS files ready to be enqueued.
- * The block names are then referenced in and enqueued from the block.json files of the block.
+ * Get all root file scripts and map them with data.
  */
-function launchpad_register_block_assets_by_block_name() {
-	$assets = include plugin_dir_path( __FILE__ ) . 'build/assets.php';
-	$registered_block_styles = array();
-
-	foreach ( $assets as $block_path => $asset ) {
-		$block_name = false;
-		foreach ( LAUNCHPAD_BLOCKS as $temp_block_name ) {
-			if ( str_starts_with( $block_path, $temp_block_name . '/' ) ) {
-				$block_name = $temp_block_name;
-				break;
+function get_mapped_scripts() {
+	$root_asset_files = array_filter(
+		array_diff( scandir( LAUNCHPAD_BLOCKS_DIR ), array( '..', '.' ) ),
+		function ( $file_or_directory ) {
+			return ! is_dir( LAUNCHPAD_BLOCKS_DIR . $file_or_directory ) && pathinfo( $file_or_directory, PATHINFO_EXTENSION ) === 'php';
+		}
+	);
+	
+	$scripts = array();
+	foreach ( $root_asset_files as $root_asset_file ) {
+		$asset = require LAUNCHPAD_BLOCKS_DIR . $root_asset_file;
+		$script_name = explode( '.', pathinfo( $root_asset_file, PATHINFO_FILENAME ) )[0];
+		$scripts[] = array(
+			'name' => $script_name,
+			'source' => plugin_dir_url( __FILE__ ) . 'build/blocks/' . str_replace( '.asset.php', '', $root_asset_file ) . '.js',
+			'dependencies' => $asset['dependencies'],
+			'version' => $asset['version'],
+			'args' => array( 'strategy' => 'defer' ),
+			'type' => 'frontend',
+		);
+	}
+	
+	$mapped_scripts = array_map(
+		function ( $script ) {
+			// Make any adjustments needed to wp_enqueue_script parameters here.
+			if ( 'registerCustomIcons' === $script['name'] ) {
+				$script['name'] = 'register-custom-icons';
+				unset( $script['args']['strategy'] );
+				$script['args']['in_footer'] = true;
+				$script['type'] = 'admin';
 			}
-		}
-		if ( false === $block_name ) {
-			continue;
-		}
-		$filename = str_replace( $block_name . '/', '', $block_path );
-		list($script_name) = explode( '.', $filename );
-		if ( 'index' === $script_name ) {
-			$script_handle = $block_name . '-script';
-		} elseif ( 'editor' === $script_name ) {
-			$script_handle = $block_name . '-editor-script';
-		} elseif ( 'view' === $script_name ) {
-			$script_handle = $block_name . '-view-script';
-		} else {
-			$script_handle = $script_name;
-		}
-		wp_register_script( $script_handle, plugins_url( 'build/' . $block_path, __FILE__ ), $asset['dependencies'], $asset['version'], false );
-		if ( ! in_array( $block_name, $registered_block_styles, true ) ) {
+			return $script;
+		},
+		$scripts
+	);
+	return $mapped_scripts;
+}
 
-			$directory_files = array_diff( scandir( LAUNCHPAD_BLOCKS_DIR . $block_name ), array( '..', '.', $filename ) );
-			foreach ( $directory_files as $file ) {
-				if ( ! str_ends_with( $file, '.css' ) ) {
-					continue;
-				}
-				$stylesheet_name = explode( '.', $file )[0];
-				if ( 'style' === $stylesheet_name ) {
-					$stylesheet_handle = $block_name . '-styles';
-				} elseif ( 'editor-styles' === $stylesheet_name ) {
-					$stylesheet_handle = $block_name . '-editor-styles';
-				} else {
-					$stylesheet_handle = $stylesheet_name;
-				}
-				// Our file names are cache fingerprinted, so we don't need to add a version the traditional WP way.
-				// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-				wp_register_style( $stylesheet_handle, plugins_url( 'build/' . $block_name . '/' . $file, __FILE__ ), array(), null, false );
-			}
-			$registered_block_styles[] = $block_name;
+/**
+ * Enqueue all frontend root files from the blocks folder.
+ */
+function enqueue_frontend_root_file_scripts() {
+	foreach ( get_mapped_scripts() as $script ) {
+		if ( 'frontend' === $script['type'] ) {
+			wp_enqueue_script( $script['name'], $script['source'], $script['dependencies'], $script['version'], $script['args'] );
 		}
 	}
 }
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_root_file_scripts' );
+
+/**
+ * Enqueue all admin root files from the blocks folder.
+ */
+function enqueue_admin_root_file_scripts() {
+	foreach ( get_mapped_scripts() as $script ) {
+		if ( 'admin' === $script['type'] ) {
+			wp_enqueue_script( $script['name'], $script['source'], $script['dependencies'], $script['version'], $script['args'] );
+		}
+	}
+}
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_admin_root_file_scripts' );

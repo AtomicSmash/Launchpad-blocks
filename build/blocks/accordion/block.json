@@ -1,0 +1,60 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/accordion",
+  "parent": [
+    "launchpad-blocks/accordion-group"
+  ],
+  "title": "Accordion",
+  "category": "theme",
+  "description": "A block which has a header and collapsible content.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [
+    "accordion"
+  ],
+  "editorScript": [
+    "file:./index.5dcbcf56f0dc8638eda0.js"
+  ],
+  "style": [
+    "file:./style.b252bcab2fed7b80a34c.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.3847f4f13917d03d9740.css"
+  ],
+  "attributes": {
+    "isInitiallyOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "accordionId": {
+      "type": "string"
+    },
+    "headerContent": {
+      "type": "string"
+    },
+    "headerElement": {
+      "type": "string",
+      "enum": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
+      "default": "h2"
+    }
+  },
+  "supports": {
+    "color": true,
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "shadow": true,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  }
+}

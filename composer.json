@@ -1,5 +1,10 @@
 {
 	"name": "atomicsmash/launchpad-blocks",
 	"description": "A plugin for WordPress made by Atomic Smash.",
-	"type": "wordpress-plugin"
+	"type": "wordpress-plugin",
+	"autoload": {
+		"psr-4": {
+			"LaunchpadBlocks\\": "classes/"
+		}
+	}
 }

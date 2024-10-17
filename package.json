@@ -1,0 +1,11 @@
+{
+	"name": "@atomicsmash/launchpad-blocks",
+	"type": "module",
+	"private": true,
+	"description": "Add dependencies to be distributed with the plugin here.",
+	"version": "1.0.0-beta.4",
+	"dependencies": {
+		"@atomicsmash/date-php": "^2.1.0",
+		"@radix-ui/react-tooltip": "^1.1.2"
+	}
+}

@@ -1,0 +1,17 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/global-banner-output",
+  "title": "Global banner output",
+  "category": "theme",
+  "description": "An output block for the selected global banners.",
+  "textdomain": "launchpad",
+  "editorScript": [
+    "file:./index.5ff02d525aa6e9f4d53a.js"
+  ],
+  "editorStyle": [
+    "file:./editor-style.30b30d7e8796d2542a66.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {},
+  "supports": {}
+}

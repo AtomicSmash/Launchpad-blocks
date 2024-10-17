@@ -1,0 +1,49 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/global-banner",
+  "title": "Global banner",
+  "category": "theme",
+  "textdomain": "launchpad",
+  "editorScript": [
+    "file:./index.8425fcf231845e6b800f.js"
+  ],
+  "viewScript": [
+    "file:./view.8312640a0ebd720ca092.js"
+  ],
+  "style": [
+    "file:./style.a75e55cbd49d0fc39bc2.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "text": {
+      "type": "string"
+    },
+    "isDismissible": {
+      "type": "boolean",
+      "default": true
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "bright-grey"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "black"
+    }
+  },
+  "supports": {
+    "align": [
+      "full"
+    ],
+    "color": true,
+    "layout": {
+      "default": {
+        "type": "constrained"
+      }
+    }
+  }
+}
