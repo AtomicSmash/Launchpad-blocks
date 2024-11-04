@@ -1,7 +1,5 @@
 import type { InterpretedAttributes } from "./attributes";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
-import { useLayoutStyles } from "@plugin/blocks/helpers.editor";
-import { Icon } from "@plugin/blocks/svgs";
 import {
 	store as blockEditorStore,
 	InspectorControls,
@@ -10,6 +8,8 @@ import {
 } from "@wordpress/block-editor";
 import { Panel, PanelBody, ToggleControl } from "@wordpress/components";
 import { useDispatch } from "@wordpress/data";
+import { useLayoutStyles } from "@plugin/blocks/helpers.editor";
+import { Icon } from "@plugin/blocks/svgs";
 import { supports } from "./supports";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;

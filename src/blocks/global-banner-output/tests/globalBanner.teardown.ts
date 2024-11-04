@@ -1,5 +1,5 @@
+import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
 import { test as tearDown } from "@tests/playwright-utils";
-import { WordPressAdminInteraction } from "@tests/wordpress-helper";
 import { contentPersistLocation } from "./index";
 
 tearDown("Delete global banner content page and posts", async ({ page }) => {

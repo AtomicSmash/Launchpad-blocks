@@ -27,7 +27,7 @@ function register_block() {
  * @param \WP_Block_Editor_Context $editor_context The current block editor context.
  */
 function disable_this_block_for_most_post_types( $allowed_block_types, $editor_context ) {
-	if ( 'global-banner' === $editor_context->post->post_type ) {
+	if ( isset( $editor_context->post ) && 'global-banner' === $editor_context->post->post_type ) {
 		return $allowed_block_types;
 	}
 

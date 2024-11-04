@@ -21,7 +21,7 @@ export const NumberInput = forwardRef<
 		onValidation,
 		...inputProps
 	},
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars -- we want to discard any refs passed in
 	forwardedRef,
 ) {
 	const [numberValue, setNumberValue] = useState(

@@ -1,5 +1,13 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- e7f9207: Fix error message in site editor
+- fca2ab3: Fix taxonomy relationship toggles
+- 74c8644: Minor linting updates
+
 ## 1.0.0-beta.5
 
 ### Patch Changes

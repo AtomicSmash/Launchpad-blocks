@@ -1,7 +1,7 @@
 import type { InterpretedAttributes } from "./attributes";
 import type { CreateBlockSaveProps } from "@atomicsmash/blocks-helpers";
-import { Icon } from "@plugin/blocks/svgs";
 import { useBlockProps, InnerBlocks, RichText } from "@wordpress/block-editor";
+import { Icon } from "@plugin/blocks/svgs";
 
 type BlockSaveProps = CreateBlockSaveProps<InterpretedAttributes>;
 

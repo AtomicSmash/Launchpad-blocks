@@ -16,7 +16,6 @@ The double selector is a editor specific specificity hack, which when using our 
 */
 .wp-block-launchpad-blocks-accordion.wp-block-launchpad-blocks-accordion
 	> :is(h2, h3, h4, h5, h6, p) {
-	/* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
 	font-family: system-ui;
 	font-size: 1em;
 	font-weight: 400;

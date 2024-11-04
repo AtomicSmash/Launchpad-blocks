@@ -10,8 +10,8 @@
 
 	/* The padding block MUST be zero as the JS code checks the scroll height to force a height, and padding-block interfere's with that. */
 	padding-block: 0 !important;
-	padding-inline-end: var(--wp--style--root--padding-right) !important;
-	padding-inline-start: var(--wp--style--root--padding-left) !important;
+	padding-inline: var(--wp--style--root--padding-left)
+		var(--wp--style--root--padding-right) !important;
 	position: relative;
 	transition: height var(--launchpad-banner-show-hide-timing) ease-in-out;
 

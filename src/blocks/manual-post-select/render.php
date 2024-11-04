@@ -51,22 +51,19 @@ if ( $should_fill_posts ) {
 		'relation' => $attributes['taxonomyAndTermInfoAutoPostsQuery']['relationship'],
 	);
 
-	$taxonomy_term_map = array_reduce(
-		$attributes['taxonomyAndTermInfoAutoPostsQuery']['terms'],
-		function ( $previous_value, $current_value ) {
-			if ( ! isset( $previous_value[ $current_value['taxonomySlug'] ] ) ) {
-				$previous_value[ $current_value['taxonomySlug'] ] = array();
-			}
-			$previous_value[ $current_value['taxonomySlug'] ][] = $current_value['termId'];
-			return $previous_value;
-		},
-		array()
-	);
-	foreach ( $taxonomy_term_map as $mapped_taxonomy => $mapped_terms ) {
-		$tax_query_array[] = array(
-			'taxonomy' => $mapped_taxonomy,
+	foreach ( $attributes['taxonomyAndTermInfoAutoPostsQuery']['taxonomies'] as $selected_taxonomy_slug => $selected_taxonomy_value ) {
+		$tax_query_array[ $selected_taxonomy_slug ] = array(
+			'taxonomy' => $selected_taxonomy_slug,
+			'operator' => 'AND' === $selected_taxonomy_value['operator'] ? 'AND' : 'IN',
 			'field'    => 'id',
-			'terms'    => $mapped_terms,
+			'terms' => array_reduce(
+				$selected_taxonomy_value['terms'],
+				function ( $previous_value, $current_value ) {
+					$previous_value[] = $current_value['id'];
+					return $previous_value;
+				},
+				array(),
+			),
 		);
 	}
 	

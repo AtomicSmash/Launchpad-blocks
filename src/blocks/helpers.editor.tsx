@@ -4,7 +4,6 @@ import type {
 } from "@atomicsmash/blocks-helpers";
 import type { Taxonomy } from "@wordpress/core-data";
 import type { ComponentPropsWithoutRef, CSSProperties } from "react";
-import { ASCircleLogo } from "@plugin/blocks/svgs";
 import { registerBlockCollection } from "@wordpress/blocks";
 import {
 	// spellchecker: disable-next-line
@@ -12,6 +11,7 @@ import {
 } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
 import { useSelect } from "@wordpress/data";
+import { ASCircleLogo } from "@plugin/blocks/svgs";
 
 export function registerLaunchpadBlocksCollection() {
 	registerBlockCollection("launchpad-blocks", {
@@ -137,8 +137,6 @@ export function useLayoutStyles<const Supports extends BlockSupports>(
 				style: {
 					flexDirection: layout.orientation === "vertical" ? "column" : "row",
 					alignItems:
-						/* eslint-disable no-nested-ternary */
-						// Nested ternary seems like the best way to handle this
 						layout.orientation === "vertical"
 							? layout.justifyContent === "left" ||
 								layout.justifyContent === undefined
@@ -164,7 +162,6 @@ export function useLayoutStyles<const Supports extends BlockSupports>(
 									? "flex-end"
 									: layout.justifyContent,
 					flexWrap: layout.flexWrap ?? "wrap",
-					/* eslint-enable no-nested-ternary */
 					...blockGapStyle,
 				},
 			};
@@ -242,7 +239,7 @@ type PostType = {
 		"wp:items": { href: string };
 	};
 };
-type TaxonomyTerms = {
+export type TaxonomyTerm = {
 	count: number;
 	description: string;
 	id: number;
@@ -278,21 +275,21 @@ export const usePostTypes = () => {
 		}
 		const mappedTaxonomies: Record<
 			PostType["slug"],
-			(Taxonomy<"view"> & { terms: TaxonomyTerms[] | null })[] | undefined
+			(Taxonomy<"edit"> & { terms: TaxonomyTerm[] | null })[] | undefined
 		> = {};
 		const excludedTaxonomies: string[] = [];
 		for (const postType of filteredPostTypes) {
-			const filteredTaxonomies = getEntityRecords<Taxonomy<"view">>(
+			const filteredTaxonomies = getEntityRecords<Taxonomy<"edit">>(
 				"root",
 				"taxonomy",
-				{ per_page: -1, orderby: "name" },
+				{ per_page: -1, orderby: "name", context: "edit" },
 			)?.filter(
 				({ types, slug }) =>
 					types.includes(postType.slug) && !excludedTaxonomies.includes(slug),
 			);
 			if (!filteredTaxonomies) continue;
 			mappedTaxonomies[postType.slug] = filteredTaxonomies.map((taxonomy) => {
-				const filteredTaxonomyTerms = getEntityRecords<TaxonomyTerms>(
+				const filteredTaxonomyTerms = getEntityRecords<TaxonomyTerm>(
 					"taxonomy",
 					taxonomy.slug,
 				);

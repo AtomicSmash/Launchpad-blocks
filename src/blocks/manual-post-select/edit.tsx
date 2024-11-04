@@ -4,24 +4,16 @@ import type {
 	CreateBlockEditProps,
 	InnerBlocks,
 } from "@atomicsmash/blocks-helpers";
-import type { Post, Page, User } from "@wordpress/core-data";
+import type { TaxonomyTerm } from "@plugin/blocks/helpers.editor";
+import type { Post, Page, User, Taxonomy } from "@wordpress/core-data";
 import type { ComponentPropsWithoutRef, Reducer } from "react";
 import { DatePHP } from "@atomicsmash/date-php";
-import { useReducer, useState, useEffect, Suspense } from "react";
-import {
-	usePostTypes,
-	CustomMultipleSelectList,
-	useLayoutStyles,
-	WPMenuIcon,
-	orderByValues as allOrderByValues,
-} from "@plugin/blocks/helpers.editor";
 import {
 	store as blockEditorStore,
 	useBlockProps,
 	InspectorControls,
 	useInnerBlocksProps,
 	BlockContextProvider,
-	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalUseBlockPreview as useBlockPreview,
 } from "@wordpress/block-editor";
 import {
@@ -31,14 +23,25 @@ import {
 	BaseControl,
 	ToggleControl,
 	SelectControl,
+	FormTokenField,
+	Flex,
+	FlexItem,
 } from "@wordpress/components";
 import { useInstanceId } from "@wordpress/compose";
 import { store as coreStore } from "@wordpress/core-data";
 import { useSelect, useSuspenseSelect } from "@wordpress/data";
+import { useReducer, useState, useEffect, Suspense } from "react";
+import {
+	usePostTypes,
+	CustomMultipleSelectList,
+	useLayoutStyles,
+	WPMenuIcon,
+	orderByValues as allOrderByValues,
+} from "@plugin/blocks/helpers.editor";
 import { NumberInput } from "../__components__/NumberInput";
 import { supports } from "./supports";
 
-// eslint-disable-next-line camelcase, @typescript-eslint/naming-convention -- Keys defined by WP.
+// eslint-disable-next-line @typescript-eslint/naming-convention -- Keys defined by WP.
 const { include, include_slugs, relevance, parent, ...orderByValues } =
 	allOrderByValues;
 
@@ -170,7 +173,7 @@ export function Edit({
 						</BaseControl>
 						<ToggleControl
 							checked={shouldFillRemainingSpots}
-							label={"Do you want to fill the remaining slots automatically?"}
+							label={"Fill remaining slots automatically"}
 							onChange={(newShouldFillRemainingSpots) => {
 								setAttributes({
 									shouldFillRemainingSpots: newShouldFillRemainingSpots,
@@ -184,7 +187,7 @@ export function Edit({
 						{shouldFillRemainingSpots ? (
 							<ToggleControl
 								checked={shouldInheritFromAutoPostsQuery}
-								label={"Use the same query as set in the Query section?"}
+								label={"Use same query as the Query section"}
 								onChange={(newShouldInheritFromAutoPostsQuery) => {
 									setAttributes({
 										shouldInheritFromAutoPostsQuery:
@@ -249,9 +252,7 @@ export function Edit({
 						<PanelBody title="Query">
 							<ToggleControl
 								checked={shouldExcludeCurrentPost}
-								label={
-									"Do you want to exclude the current post from the query?"
-								}
+								label={"Exclude current post from query"}
 								onChange={(newShouldExcludeCurrentPost) => {
 									setAttributes({
 										shouldExcludeCurrentPost: newShouldExcludeCurrentPost,
@@ -417,15 +418,22 @@ function useInefficientlyGetPostsByQuery({
 						orderby: search ? "relevance" : order.by,
 						order: search ? "asc" : order.direction,
 						tax_relation: taxonomyAndTermInfo.relationship,
-						...taxonomyAndTermInfo.terms.reduce<
-							Record<string, number[] | undefined>
-						>((accumulator, taxonomyAndTermInfoSingle) => {
-							const { restBase, termId } = taxonomyAndTermInfoSingle;
-							if (accumulator[restBase] === undefined) {
-								accumulator[restBase] = [];
-							}
-							accumulator[restBase].push(termId);
-							return accumulator;
+						...Object.values(taxonomyAndTermInfo.taxonomies).reduce<
+							Record<
+								string,
+								| {
+										operator: InterpretedAttributes["taxonomyAndTermInfoAutoPostsQuery"]["taxonomies"][number]["operator"];
+										terms: number[];
+								  }
+								| undefined
+							>
+						>((taxonomiesOutput, taxonomyAndTermInfoSingle) => {
+							const { operator, restBase, terms } = taxonomyAndTermInfoSingle;
+							taxonomiesOutput[restBase] = {
+								operator,
+								terms: terms.map((term) => term.id),
+							};
+							return taxonomiesOutput;
 						}, {}),
 					})
 					?.map((post) => {
@@ -582,8 +590,7 @@ function useInefficientlyGetPostsByQuery({
 			status,
 			exclude,
 			search,
-			taxonomyAndTermInfo.relationship,
-			taxonomyAndTermInfo.terms,
+			taxonomyAndTermInfo,
 		],
 	);
 
@@ -840,134 +847,191 @@ function TaxonomySelect({
 		);
 	}
 
-	const taxonomiesToShow = duplicates.filter((item) => item !== undefined);
+	const taxonomiesToShow = duplicates
+		.filter((item) => item !== undefined)
+		.filter(
+			(
+				item,
+			): item is Taxonomy<"edit"> & {
+				terms: TaxonomyTerm[];
+			} => !!(item.terms && item.terms.length > 0),
+		);
+
+	const activeTaxonomyFilters = taxonomiesToShow
+		.filter(
+			(taxonomyToShow) =>
+				Object.entries(taxonomyAndTermInfo.taxonomies)
+					// If no terms can be selected, filter is hidden.
+					.filter(([, selectedTaxonomy]) => selectedTaxonomy.terms.length > 0)
+					// If no terms are selected, filter is ignored.
+					.findIndex(
+						([taxonomySlug]) => taxonomySlug === taxonomyToShow.slug,
+					) !== -1,
+		)
+		.map((taxonomyToShow) => taxonomyToShow.name);
+
 	return (
 		<>
-			{taxonomiesToShow
-				? taxonomiesToShow.map((taxonomy) => {
-						if (!taxonomy.terms || taxonomy.terms.length === 0) {
-							return null;
+			{taxonomiesToShow && taxonomiesToShow.length > 0 ? (
+				<>
+					<ToggleControl
+						__nextHasNoMarginBottom
+						style={{ marginTop: "0.5rem" }}
+						checked={taxonomyAndTermInfo.relationship === "AND"}
+						label={`Only show posts that match all taxonomy conditions`}
+						help={
+							activeTaxonomyFilters.length === 0
+								? `Currently selected options mean you're showing all posts.`
+								: activeTaxonomyFilters.length === 1
+									? `Currently selected options mean you're showing all posts that pass the ${activeTaxonomyFilters[0]} filter.`
+									: `Currently selected options mean you're showing all posts that pass ${
+											taxonomyAndTermInfo.relationship === "OR"
+												? "either"
+												: "both"
+										} the ${activeTaxonomyFilters.join(
+											` ${taxonomyAndTermInfo.relationship} `,
+										)} filter${taxonomyAndTermInfo.relationship === "OR" ? "" : "s"}.`
 						}
+						onChange={(newTaxRelationship) => {
+							setAttributes({
+								[`taxonomyAndTermInfo${type}` as const]: {
+									relationship: newTaxRelationship ? "AND" : "OR",
+									taxonomies: taxonomyAndTermInfo.taxonomies,
+								},
+							});
+						}}
+					/>
+					{taxonomiesToShow.map((taxonomy) => {
+						const selectedTaxonomy =
+							taxonomyAndTermInfo.taxonomies[taxonomy.slug];
+						const selectedTerms = selectedTaxonomy?.terms ?? [];
+
+						const activeTermFilters = taxonomy.terms
+							.filter(
+								(term) =>
+									selectedTerms.findIndex(
+										(selectedTerm) => selectedTerm.id === term.id,
+									) !== -1,
+							)
+							.map((term) => term.name);
+
 						return (
-							<>
-								<ToggleControl
-									checked={taxonomyAndTermInfo.relationship === "AND"}
-									label={
-										"Only show posts that have all taxonomy terms attached?"
-									}
-									onChange={(newTaxRelationship) => {
-										setAttributes({
-											[`taxonomyAndTermInfo${type}` as const]: {
-												relationship: newTaxRelationship ? "AND" : "OR",
-												terms: taxonomyAndTermInfo.terms,
-											},
-										});
-									}}
-								/>
-								<BaseControl
-									key={taxonomy.slug}
-									id={`${taxonomy.slug}-custom-multiple-select-list`}
-									label={taxonomy.name}
-								>
-									<CustomMultipleSelectList
-										list={taxonomy.terms.map((term) => {
-											const uniqueId = `${taxonomy.slug}__${term.slug}`;
-											return {
-												id: uniqueId,
-												title: term.name,
-												isSelected:
-													taxonomyAndTermInfo.terms.findIndex(
-														(item) =>
-															item.taxonomySlug === taxonomy.slug &&
-															item.restBase === taxonomy.rest_base &&
-															item.termSlug === term.slug &&
-															item.termId === term.id,
-													) !== -1,
-												taxonomySlug: taxonomy.slug,
-												restBase: taxonomy.rest_base,
-												termSlug: term.slug,
-												termId: term.id,
-											};
-										})}
-										renderItem={({ listItem, buttonProps }) => {
-											return (
-												<button
-													key={listItem.id}
-													{...buttonProps}
-													onClick={(event) => {
-														event.preventDefault();
-														if (listItem.isSelected) {
-															setAttributes({
-																[`taxonomyAndTermInfo${type}` as const]: {
-																	relationship:
-																		taxonomyAndTermInfo.relationship,
-																	terms: taxonomyAndTermInfo.terms.filter(
-																		(filterListItem) => {
-																			return (
-																				filterListItem.taxonomySlug !==
-																					listItem.taxonomySlug ||
-																				filterListItem.restBase !==
-																					listItem.restBase ||
-																				filterListItem.termSlug !==
-																					listItem.termSlug ||
-																				filterListItem.termId !==
-																					listItem.termId
+							<fieldset key={taxonomy.slug}>
+								<Flex direction="column" gap={"0.5rem"}>
+									<FlexItem>
+										<FormTokenField
+											__nextHasNoMarginBottom
+											__next40pxDefaultSize
+											__experimentalExpandOnFocus
+											label={taxonomy.name}
+											suggestions={taxonomy.terms.map((term) => {
+												return term.id.toString();
+											})}
+											displayTransform={(token) => {
+												return (
+													taxonomy.terms?.find(
+														(term) => term.id.toString() === token,
+													)?.name ?? "Unknown"
+												);
+											}}
+											value={selectedTerms.map((selectedTerm) => {
+												return {
+													value: selectedTerm.id.toString(),
+													label: taxonomy.terms?.find(
+														(term) => term.id === selectedTerm.id,
+													)?.name,
+												};
+											})}
+											onChange={(values) => {
+												setAttributes({
+													[`taxonomyAndTermInfo${type}` as const]: {
+														...taxonomyAndTermInfo,
+														taxonomies: {
+															...taxonomyAndTermInfo.taxonomies,
+															[taxonomy.slug]: {
+																operator:
+																	taxonomyAndTermInfo.taxonomies[taxonomy.slug]
+																		?.operator ?? "AND",
+																restBase: taxonomy.rest_base,
+																terms: values
+																	.map((value) => {
+																		let foundTerm: TaxonomyTerm | undefined;
+																		if (typeof value === "string") {
+																			foundTerm = taxonomy.terms?.find(
+																				(term) => term.id.toString() === value,
 																			);
-																		},
-																	),
-																},
-															});
-														} else {
-															setAttributes({
-																[`taxonomyAndTermInfo${type}` as const]: {
-																	relationship:
-																		taxonomyAndTermInfo.relationship,
-																	terms: [
-																		...taxonomyAndTermInfo.terms,
-																		{
-																			taxonomySlug: listItem.taxonomySlug,
-																			restBase: listItem.restBase,
-																			termId: listItem.termId,
-																			termSlug: listItem.termSlug,
-																		},
-																	],
-																},
-															});
-														}
-													}}
-												>
-													<span className="custom-multiple-select-list-item-label">
-														{listItem.title === ""
-															? "(no title)"
-															: listItem.title}
-													</span>
-													{listItem.isSelected ? (
-														<svg
-															width="14"
-															height="11"
-															viewBox="0 0 14 11"
-															fill="none"
-															xmlns="http://www.w3.org/2000/svg"
-															focusable={false}
-															role="presentation"
-														>
-															<path
-																d="M1 5L5 9L13 1"
-																stroke="currentColor"
-																strokeWidth="2"
-																strokeLinecap="round"
-															/>
-														</svg>
-													) : null}
-												</button>
-											);
-										}}
-									/>
-								</BaseControl>
-							</>
+																		} else {
+																			foundTerm = taxonomy.terms?.find(
+																				(term) =>
+																					term.id.toString() === value.value,
+																			);
+																		}
+																		if (!foundTerm) {
+																			console.error(
+																				`Didn't find the term associated with the value ${typeof value === "string" ? value : (value.title ?? value.value)}`,
+																			);
+																			return null;
+																		}
+																		return {
+																			id: foundTerm.id,
+																			slug: foundTerm.slug,
+																		};
+																	})
+																	.filter((value) => !!value),
+															},
+														},
+													},
+												});
+											}}
+										/>
+									</FlexItem>
+									<FlexItem>
+										<ToggleControl
+											__nextHasNoMarginBottom
+											style={{ marginTop: "0.5rem" }}
+											checked={selectedTaxonomy?.operator !== "OR"}
+											label={`Only show posts with ${taxonomy.name} attached`}
+											help={
+												activeTermFilters.length === 0
+													? `Currently selected options mean posts are not being filtered by ${taxonomy.name}.`
+													: activeTermFilters.length === 1
+														? `Currently selected options mean you're showing all posts with the ${activeTermFilters[0]} ${taxonomy.labels.singular_name}.`
+														: `Currently selected options mean you're showing all posts with ${
+																selectedTaxonomy?.operator === "OR"
+																	? "either"
+																	: "both"
+															} the ${activeTermFilters.join(
+																` ${selectedTaxonomy?.operator ?? "AND"} `,
+															)} ${selectedTaxonomy?.operator === "OR" ? taxonomy.labels.singular_name : taxonomy.name}.`
+											}
+											onChange={(newTaxOperator) => {
+												setAttributes({
+													[`taxonomyAndTermInfo${type}` as const]: {
+														...taxonomyAndTermInfo,
+														taxonomies: {
+															...taxonomyAndTermInfo.taxonomies,
+															[taxonomy.slug]: {
+																restBase: taxonomy.rest_base,
+																operator: newTaxOperator ? "AND" : "OR",
+																terms:
+																	taxonomyAndTermInfo.taxonomies[taxonomy.slug]
+																		?.terms ?? [],
+															},
+														},
+													},
+												});
+											}}
+										/>
+									</FlexItem>
+									<FlexItem>
+										<hr style={{ marginTop: 0 }} />
+									</FlexItem>
+								</Flex>
+							</fieldset>
 						);
-					})
-				: null}
+					})}
+				</>
+			) : null}
 		</>
 	);
 }
@@ -1242,18 +1306,8 @@ function useTaxonomyResetOnPostTypeChange({
 		if (!mappedTaxonomies) {
 			return;
 		}
-		const deletedTaxonomies: string[] = [];
-		let newTaxonomyAndTermInfoTerms = [...taxonomyAndTermInfo.terms];
-		taxonomyAndTermInfo.terms.forEach((taxonomyAndTermInfoSingle) => {
-			const { taxonomySlug } = taxonomyAndTermInfoSingle;
-			if (deletedTaxonomies.includes(taxonomySlug)) {
-				newTaxonomyAndTermInfoTerms = newTaxonomyAndTermInfoTerms.filter(
-					(filterListItem) => {
-						return filterListItem !== taxonomyAndTermInfoSingle;
-					},
-				);
-				return;
-			}
+		const newTaxonomyAndTermInfoTerms = { ...taxonomyAndTermInfo.taxonomies };
+		Object.keys(taxonomyAndTermInfo.taxonomies).forEach((taxonomySlug) => {
 			if (
 				selectedPostTypes.some((selectedPostType) => {
 					return (
@@ -1263,19 +1317,17 @@ function useTaxonomyResetOnPostTypeChange({
 					);
 				})
 			) {
-				newTaxonomyAndTermInfoTerms = newTaxonomyAndTermInfoTerms.filter(
-					(filterListItem) => {
-						return filterListItem !== taxonomyAndTermInfoSingle;
-					},
-				);
-				deletedTaxonomies.push(taxonomySlug);
+				delete newTaxonomyAndTermInfoTerms[taxonomySlug];
 			}
 		});
-		if (taxonomyAndTermInfo.terms.length > newTaxonomyAndTermInfoTerms.length) {
+		if (
+			Object.keys(taxonomyAndTermInfo.taxonomies).length >
+			Object.keys(newTaxonomyAndTermInfoTerms).length
+		) {
 			setAttributes({
 				[`taxonomyAndTermInfo${type}` as const]: {
 					relationship: taxonomyAndTermInfo.relationship,
-					terms: newTaxonomyAndTermInfoTerms,
+					taxonomies: newTaxonomyAndTermInfoTerms,
 				},
 			});
 		}

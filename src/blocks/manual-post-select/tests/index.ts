@@ -1,5 +1,5 @@
 import type { TestFunctionType } from "@tests/playwright-utils";
-import { WordPressAdminInteraction } from "@tests/wordpress-helper";
+import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
 
 export const contentPersistLocation = `${process.cwd()}/tests/.tmp/manual-post-select-info.json`;
 

@@ -5,13 +5,13 @@
   "category": "theme",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.2bdb9b66b0e3b13cf67d.js"
+    "file:./index.d9c49ad940db10646e84.js"
   ],
   "viewScript": [
     "file:./view.8312640a0ebd720ca092.js"
   ],
   "style": [
-    "file:./style.a75e55cbd49d0fc39bc2.css"
+    "file:./style.433d348bfc9d5a9c8ac5.css"
   ],
   "render": "file:./render.php",
   "attributes": {

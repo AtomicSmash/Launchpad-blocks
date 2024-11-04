@@ -1,15 +1,6 @@
 import type { InterpretedAttributes } from "./attributes";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
 import {
-	headingLevel2,
-	headingLevel3,
-	headingLevel4,
-	headingLevel5,
-	headingLevel6,
-	paragraph,
-} from "@wordpress/icons";
-import { Icon } from "@plugin/blocks/svgs";
-import {
 	useBlockProps,
 	InspectorControls,
 	BlockControls,
@@ -27,6 +18,15 @@ import {
 	Button,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
+import {
+	headingLevel2,
+	headingLevel3,
+	headingLevel4,
+	headingLevel5,
+	headingLevel6,
+	paragraph,
+} from "@wordpress/icons";
+import { Icon } from "@plugin/blocks/svgs";
 import { attributes as definedAttributeOptions } from "./attributes";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;

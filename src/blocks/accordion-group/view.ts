@@ -189,7 +189,6 @@ class Accordion {
 		}
 	}
 	public debug() {
-		// eslint-disable-next-line no-console
 		console.log({
 			id: this.id,
 			state: this.state,

@@ -23,14 +23,19 @@ export const attributes = {
 	},
 	taxonomyAndTermInfoManualSelectSearch: {
 		type: "object",
-		default: { relationship: "AND", terms: [] } as {
+		default: { relationship: "AND", taxonomies: {} } as {
 			relationship: "AND" | "OR";
-			terms: {
-				taxonomySlug: string;
-				termSlug: string;
-				termId: number;
-				restBase: string;
-			}[];
+			taxonomies: Record<
+				string, // tax slug
+				{
+					restBase: string;
+					operator: "AND" | "OR";
+					terms: {
+						slug: string;
+						id: number;
+					}[];
+				}
+			>;
 		},
 	},
 	orderManualSelectSearch: {
@@ -56,14 +61,19 @@ export const attributes = {
 	},
 	taxonomyAndTermInfoAutoPostsQuery: {
 		type: "object",
-		default: { relationship: "AND", terms: [] } as {
+		default: { relationship: "AND", taxonomies: {} } as {
 			relationship: "AND" | "OR";
-			terms: {
-				taxonomySlug: string;
-				termSlug: string;
-				termId: number;
-				restBase: string;
-			}[];
+			taxonomies: Record<
+				string, // tax slug
+				{
+					restBase: string;
+					operator: "AND" | "OR";
+					terms: {
+						slug: string;
+						id: number;
+					}[];
+				}
+			>;
 		},
 	},
 	orderAutoPostsQuery: {
@@ -112,12 +122,17 @@ export type InterpretedAttributes = Omit<
 	selectedPostTypesAutoPostsQuery: string[];
 	taxonomyAndTermInfoManualSelectSearch: {
 		relationship: "AND" | "OR";
-		terms: {
-			taxonomySlug: string;
-			termSlug: string;
-			termId: number;
-			restBase: string;
-		}[];
+		taxonomies: Record<
+			string, // tax slug
+			{
+				restBase: string;
+				operator: "AND" | "OR";
+				terms: {
+					slug: string;
+					id: number;
+				}[];
+			}
+		>;
 	};
 	orderManualSelectSearch: {
 		by: Exclude<
@@ -128,12 +143,17 @@ export type InterpretedAttributes = Omit<
 	};
 	taxonomyAndTermInfoAutoPostsQuery: {
 		relationship: "AND" | "OR";
-		terms: {
-			taxonomySlug: string;
-			termSlug: string;
-			termId: number;
-			restBase: string;
-		}[];
+		taxonomies: Record<
+			string, // tax slug
+			{
+				restBase: string;
+				operator: "AND" | "OR";
+				terms: {
+					slug: string;
+					id: number;
+				}[];
+			}
+		>;
 	};
 	orderAutoPostsQuery: {
 		by: Exclude<
