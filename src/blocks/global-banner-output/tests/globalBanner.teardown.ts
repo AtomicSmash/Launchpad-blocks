@@ -1,5 +1,5 @@
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-import { test as tearDown } from "@tests/playwright-utils";
+import { test as tearDown } from "@playwright/test";
 import { contentPersistLocation } from "./index";
 
 tearDown("Delete global banner content page and posts", async ({ page }) => {
@@ -19,7 +19,7 @@ tearDown("Delete global banner content page and posts", async ({ page }) => {
 
 	for (let i = 0; i < itemCount; i++) {
 		const removeButton = bannersList
-			.nth(i)
+			.first()
 			.locator(".select2-selection__choice__remove");
 		await removeButton.click();
 	}

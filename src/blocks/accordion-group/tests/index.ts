@@ -1,6 +1,5 @@
-import type { TestFunctionType } from "@tests/playwright-utils";
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-import { expect } from "@tests/playwright-utils";
+import { test, expect } from "@playwright/test";
 
 export const contentPersistLocation = `${process.cwd()}/tests/.tmp/accordions-page-info.json`;
 
@@ -86,7 +85,7 @@ const accordionTests = async function ({ page }) {
 			visible: shouldAllowMultiple,
 		});
 	}
-} satisfies TestFunctionType;
+} satisfies Parameters<typeof test>[2];
 
 export const blockTestInfo = {
 	blockName: "Accordion",

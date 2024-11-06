@@ -1,6 +1,6 @@
 import type { TestFunctionType } from "@tests/playwright-utils";
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-// import { expect } from "@tests/playwright-utils";
+// import { expect } from "@playwright/test";
 
 export const contentPersistLocation = `${process.cwd()}/tests/.tmp/global-banner-page-info.json`;
 

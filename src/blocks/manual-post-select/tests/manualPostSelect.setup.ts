@@ -1,9 +1,9 @@
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-import { test as setup } from "@tests/playwright-utils";
+import { test as setup } from "@playwright/test";
 import { manualPostSelect } from "./fixture";
 import { contentPersistLocation } from "./index";
 
-setup("Manual post select test setup", async ({ authenticatedPage: page }) => {
+setup("Manual post select test setup", async ({ page }) => {
 	setup.setTimeout(60000);
 	const adminHelper = new WordPressAdminInteraction(
 		page,

@@ -1,9 +1,9 @@
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-import { test as setup } from "@tests/playwright-utils";
+import { test as setup } from "@playwright/test";
 import { accordionGroup } from "./fixture";
 import { contentPersistLocation } from "./index";
 
-setup("Accordion test setup", async ({ authenticatedPage: page, baseURL }) => {
+setup("Accordion test setup", async ({ page, baseURL }) => {
 	setup.setTimeout(60000);
 	const adminHelper = new WordPressAdminInteraction(
 		page,

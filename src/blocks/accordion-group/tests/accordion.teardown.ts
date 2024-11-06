@@ -1,5 +1,5 @@
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-import { test as tearDown } from "@tests/playwright-utils";
+import { test as tearDown } from "@playwright/test";
 import { contentPersistLocation } from "./index";
 
 tearDown("Delete accordion content page", async ({ page }) => {

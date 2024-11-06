@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- 041d5b9: Fix tests
+
 ## 1.0.0-beta.6
 
 ### Patch Changes
