@@ -2,9 +2,9 @@
 /**
  * Plugin Name:       Launchpad blocks
  * Description:       This is a block library created by Atomic Smash.
- * Requires at least: 6.6
+ * Requires at least: 6.7
  * Requires PHP:      8.2
- * Version:           1.0.0-beta.8
+ * Version:           1.0.0-beta.9
  * Author:            Atomic Smash
  * Author URI:        https://www.atomicsmash.co.uk/
  * License:           GPL-2.0-or-later
@@ -14,7 +14,7 @@
 
 namespace Launchpad\Blocks;
 
-define( 'LAUNCHPAD_BLOCKS_VERSION', '1.0.0-beta.8' );
+define( 'LAUNCHPAD_BLOCKS_VERSION', '1.0.0-beta.9' );
 
 // Require autoloader.
 require __DIR__ . '/vendor/autoload.php';

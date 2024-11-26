@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.9
+
+### Patch Changes
+
+- 7df832e: Update WordPress headers and schemas
+
 ## 1.0.0-beta.8
 
 ### Minor Changes
