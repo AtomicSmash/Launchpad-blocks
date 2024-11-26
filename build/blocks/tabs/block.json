@@ -1,0 +1,61 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/tabs",
+  "title": "Tabs",
+  "category": "theme",
+  "description": "Multiple sections of content collated together where only one is shown at a time.",
+  "textdomain": "launchpad",
+  "editorScript": [
+    "file:./index.6ba3a8d151a4cca1eb45.js"
+  ],
+  "viewScript": [
+    "file:./view.22921a0138475af2989a.js"
+  ],
+  "style": [
+    "file:./style.e6b81fe5df95ec195a7e.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.5bad094a17ad1b701732.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "tabsGroupId": {
+      "type": "string",
+      "default": ""
+    },
+    "shouldShowTabSectionTitle": {
+      "type": "boolean",
+      "default": true
+    },
+    "titleLevel": {
+      "type": "string",
+      "enum": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "default": "2"
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "initiallySelectedTab": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "providesContext": {
+    "launchpad/tabsGroupId": "tabsGroupId",
+    "launchpad/initiallySelectedTab": "initiallySelectedTab",
+    "launchpad/shouldShowTabSectionTitle": "shouldShowTabSectionTitle",
+    "launchpad/title": "title"
+  },
+  "usesContext": [],
+  "supports": {
+    "align": true
+  }
+}

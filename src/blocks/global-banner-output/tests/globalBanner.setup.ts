@@ -1,5 +1,6 @@
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
 import { test as setup } from "@playwright/test";
+import { CURRENT_WORDPRESS_VERSION } from "@tests/playwright-utils";
 import { globalBanner, globalBannerOutput } from "./fixture";
 import { contentPersistLocation } from "./index";
 
@@ -8,6 +9,7 @@ setup("Global banner test setup", async ({ page }) => {
 	const adminHelper = new WordPressAdminInteraction(
 		page,
 		contentPersistLocation,
+		CURRENT_WORDPRESS_VERSION,
 	);
 	await adminHelper.init();
 	await adminHelper.createPostsViaBlocksEditor([

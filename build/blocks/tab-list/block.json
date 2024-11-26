@@ -1,0 +1,41 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/tab-list",
+  "ancestor": [
+    "launchpad-blocks/tabs"
+  ],
+  "title": "Tab list",
+  "category": "theme",
+  "description": "The tab list associated with a Tabs block.",
+  "textdomain": "launchpad",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.ee21d878d133f88fa555.js"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "selectedTab": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "launchpad/tabsGroupId",
+    "launchpad/initiallySelectedTab",
+    "launchpad/shouldShowTabSectionTitle",
+    "launchpad/title"
+  ],
+  "supports": {
+    "align": true,
+    "alignWide": true,
+    "layout": {
+      "default": {
+        "type": "flex"
+      }
+    },
+    "spacing": {
+      "blockGap": true
+    }
+  }
+}

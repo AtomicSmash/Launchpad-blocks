@@ -1,0 +1,44 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+/** Functional styles **/
+.wp-block-launchpad-blocks-tab-list {
+	display: flex;
+}
+
+.wp-block-launchpad-blocks-tab-list > * {
+	transition-duration: 0.1s;
+	transition-property: background-color, color;
+	transition-timing-function: ease-in-out;
+}
+
+.wp-block-launchpad-blocks-tab-panel {
+	margin-top: 0 !important;
+}
+
+.wp-block-launchpad-blocks-tabs.alignfull > .wp-block-launchpad-blocks-tab-list,
+.wp-block-launchpad-blocks-tabs.alignfull
+	> .wp-block-launchpad-blocks-tab-panel-group,
+.wp-block-launchpad-blocks-tabs.alignfull
+	> .wp-block-launchpad-blocks-tab-panel-group
+	> .wp-block-launchpad-blocks-tab-panel {
+	margin-left: calc(var(--wp--style--root--padding-left) * -1);
+	margin-right: calc(var(--wp--style--root--padding-right) * -1);
+	padding-left: var(--wp--style--root--padding-left);
+	padding-right: var(--wp--style--root--padding-right);
+}
+
+// First panel if none selected, or all not-selected if there is one selected
+.wp-block-launchpad-blocks-tab-panel-group:not(
+		:has(.is-selected),
+		:has(.show-tab-in-editor)
+	)
+	.wp-block-launchpad-blocks-tab-panel:not(:first-child),
+.wp-block-launchpad-blocks-tab-panel-group:has(.is-selected):not(
+		:has(.show-tab-in-editor)
+	)
+	.wp-block-launchpad-blocks-tab-panel:not(.is-selected, .show-tab-in-editor) {
+	display: none;
+}

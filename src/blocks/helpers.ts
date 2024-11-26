@@ -16,6 +16,26 @@ export function getPixelNumber(pixelValue: string | undefined) {
 	return Number(pixelValue.replace("px", ""));
 }
 
+export function slugifyHTML(HTMLStringToSlugify: string) {
+	let innerText = "";
+	const div = document.createElement("div");
+	div.innerHTML = HTMLStringToSlugify;
+	innerText = div.innerText;
+	return slugify(innerText);
+}
+
+export function slugify(stringToSlugify: string) {
+	// REGEX_1: Match any character that isn't alphanumeric, underscore, whitespace and underscore
+	// REGEX_2: Match any character that is underscore, whitespace and underscore
+	// REGEX_3: Match any hyphens at the start or the end of the string
+	return stringToSlugify
+		.toLowerCase()
+		.trim()
+		.replace(/[^\w\s-]/g, "")
+		.replace(/[\s_-]+/g, "-")
+		.replace(/^-+|(?<!-)-+$/g, "");
+}
+
 /**
  * Get the first parent element which matches a given condition.
  * @param node      The node to search for parents of.

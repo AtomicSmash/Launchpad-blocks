@@ -1,0 +1,28 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/tab-panel-group",
+  "ancestor": [
+    "launchpad-blocks/tabs"
+  ],
+  "allowedBlocks": [
+    "launchpad-blocks/tab-panel"
+  ],
+  "title": "Tab panel group",
+  "category": "theme",
+  "description": "A container block for individual tab panels.",
+  "textdomain": "launchpad",
+  "editorScript": [
+    "file:./index.9254570fb61351c98fbf.js"
+  ],
+  "render": "file:./render.php",
+  "attributes": {},
+  "supports": {
+    "align": true,
+    "alignWide": true,
+    "layout": {
+      "default": {
+        "type": "constrained"
+      }
+    }
+  }
+}

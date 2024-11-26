@@ -17,6 +17,22 @@ export const iconMetaData = {
 		type: "blockIcon",
 		title: "Accordion single",
 	},
+	"tab-group": {
+		type: "blockIcon",
+		title: "Tab group",
+	},
+	"tab-list": {
+		type: "blockIcon",
+		title: "Tab list",
+	},
+	"tab-panel-group": {
+		type: "blockIcon",
+		title: "Tab panel group",
+	},
+	"tab-panel": {
+		type: "blockIcon",
+		title: "Tab panel",
+	},
 	"play-button": {
 		type: "plugin",
 		title: "Play button",

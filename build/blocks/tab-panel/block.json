@@ -1,0 +1,46 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/tab-panel",
+  "parent": [
+    "launchpad-blocks/tab-panel-group"
+  ],
+  "title": "Tab panel",
+  "category": "theme",
+  "description": "The panel of content associated with a tab in a Tabs block.",
+  "textdomain": "launchpad",
+  "editorScript": [
+    "file:./index.b6b1bea980688ab6b5e2.js"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "tab": {
+      "type": "object",
+      "default": {
+        "id": "",
+        "label": ""
+      }
+    }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "launchpad/tabsGroupId",
+    "launchpad/initiallySelectedTab"
+  ],
+  "supports": {
+    "align": true,
+    "anchor": false,
+    "color": true,
+    "layout": {
+      "default": {
+        "type": "default"
+      }
+    },
+    "spacing": {
+      "blockGap": true
+    }
+  }
+}

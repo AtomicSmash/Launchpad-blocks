@@ -1,5 +1,15 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.8
+
+### Minor Changes
+
+- 1958889: Added tabs custom block
+
+### Patch Changes
+
+- 3d6aac2: Upgrades from Wordpress 6.6 to Wordpress 6.7
+
 ## 1.0.0-beta.7
 
 ### Patch Changes
