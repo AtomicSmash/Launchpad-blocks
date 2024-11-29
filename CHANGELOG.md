@@ -1,5 +1,14 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.10
+
+### Patch Changes
+
+- de4aa26: Minor Launchpad fixes
+
+  1. Update's the accordion block to fix content font size when a different font size is selected for the header.
+  2. Update's the accordion block to fix padding when a larger font size is selected
+
 ## 1.0.0-beta.9
 
 ### Patch Changes
