@@ -1,5 +1,5 @@
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-import { test as setup } from "@playwright/test";
+import { test as setup, expect } from "@playwright/test";
 import { CURRENT_WORDPRESS_VERSION } from "@tests/playwright-utils";
 import { globalBanner, globalBannerOutput } from "./fixture";
 import { contentPersistLocation } from "./index";
@@ -68,7 +68,7 @@ setup("Global banner test setup", async ({ page }) => {
 	await page.goto("/wp/wp-admin/themes.php?page=global-banner");
 
 	// This will only appear if no global banners have already been selected
-	const inputField = page.getByPlaceholder("Select");
+	const inputField = page.locator(".select2-selection__rendered");
 
 	await inputField.click();
 
@@ -91,13 +91,11 @@ setup("Global banner test setup", async ({ page }) => {
 	// Click the first item to select it
 	await resultsList.getByText("GENERATED Global banner 1").click();
 
-	// When a selection has been made, the input changes to a span with this class
-	const selectionBox = page.locator(".select2-selection__rendered");
-
-	await selectionBox.click();
+	await inputField.click();
 	await resultsList.getByText("GENERATED Global banner 2").click();
-	await selectionBox.click();
+	await inputField.click();
 	await resultsList.getByText("GENERATED Global banner 3").click();
 
 	await page.getByRole("button", { name: "Update", exact: true }).click();
+	await expect(page.getByText("Options Updated.")).toBeVisible();
 });

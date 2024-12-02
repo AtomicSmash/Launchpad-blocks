@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.11
+
+### Patch Changes
+
+- 3593188: Fix global banner tests so it works if banners are already selected
+
 ## 1.0.0-beta.10
 
 ### Patch Changes
