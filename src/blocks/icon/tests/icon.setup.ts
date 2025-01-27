@@ -2,10 +2,10 @@ import { existsSync } from "node:fs";
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
 import { test as setup } from "@playwright/test";
 import { CURRENT_WORDPRESS_VERSION } from "@tests/playwright-utils";
-import { TEMPLATE } from "./fixture";
+import { icons } from "./fixture";
 import { contentPersistLocation, doTearDown } from "./index";
 
-setup("TEMPLATE test setup", async ({ page }) => {
+setup("Icon block test setup", async ({ page }) => {
 	setup.setTimeout(60000);
 	if (existsSync(contentPersistLocation)) {
 		await doTearDown(page);
@@ -18,10 +18,10 @@ setup("TEMPLATE test setup", async ({ page }) => {
 	await adminHelper.init();
 	await adminHelper.createPostsViaBlocksEditor([
 		{
-			postIdentifier: "TEMPLATE-test-page",
-			title: "TEMPLATE tests",
+			postIdentifier: "icons-test-page",
+			title: "Icon tests",
 			postType: "page",
 		},
 	]);
-	await adminHelper.addContentByFixture("TEMPLATE-test-page", [TEMPLATE]);
+	await adminHelper.addContentByFixture("icons-test-page", icons);
 });

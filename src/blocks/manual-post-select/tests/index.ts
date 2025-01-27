@@ -1,5 +1,9 @@
-import type { TestFunctionType } from "@tests/playwright-utils";
+import type { Page } from "@playwright/test";
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
+import {
+	CURRENT_WORDPRESS_VERSION,
+	type TestFunctionType,
+} from "@tests/playwright-utils";
 
 export const contentPersistLocation = `${process.cwd()}/tests/.tmp/manual-post-select-info.json`;
 
@@ -20,3 +24,13 @@ export const blockTestInfo = {
 	lighthouseTestsPage: "test-page",
 	visualTestsPage: "test-page",
 };
+
+export async function doTearDown(page: Page) {
+	const adminHelper = new WordPressAdminInteraction(
+		page,
+		contentPersistLocation,
+		CURRENT_WORDPRESS_VERSION,
+	);
+	await adminHelper.init();
+	await adminHelper.cleanup();
+}

@@ -1,0 +1,28 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/icon",
+  "title": "Icon",
+  "category": "theme",
+  "description": "Select an icon to display from one of our libraries.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.5c0874ab27f89b7393d4.js"
+  ],
+  "style": [
+    "file:./style.d118bf0c2d2ccf10d947.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "iconName": {
+      "type": "string"
+    },
+    "library": {
+      "type": "string"
+    }
+  },
+  "supports": {}
+}

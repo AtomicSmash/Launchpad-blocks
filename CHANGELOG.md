@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.12
+
+### Minor Changes
+
+- 7c98989: Add icon block and register icon libraries
+
 ## 1.0.0-beta.11
 
 ### Patch Changes
