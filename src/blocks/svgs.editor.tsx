@@ -38,10 +38,6 @@ export const iconMetaData = {
 	"tab-panel": {
 		title: "Tab panel",
 	},
-	"play-button": {
-		title: "Play button",
-		makeAvailableToUser: true,
-	},
 	"menu-close-icon": {
 		title: "Menu Close Icon",
 	},
@@ -50,9 +46,11 @@ export const iconMetaData = {
 	},
 	plus: {
 		title: "Plus",
+		makeAvailableToUser: true,
 	},
 	minus: {
 		title: "Minus",
+		makeAvailableToUser: true,
 	},
 } as const satisfies IconMetaData;
 export type IconNames = keyof typeof iconMetaData;

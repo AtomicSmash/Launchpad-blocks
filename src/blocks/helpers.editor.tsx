@@ -1,16 +1,28 @@
 import type {
+	BlockAttributes,
 	BlockSupports,
+	CreateBlockEditProps,
 	InterpretAttributes,
 } from "@atomicsmash/blocks-helpers";
 import type { Taxonomy } from "@wordpress/core-data";
 import type { ComponentPropsWithoutRef, CSSProperties } from "react";
+import { useSettings } from "@wordpress/block-editor";
 import { registerBlockCollection } from "@wordpress/blocks";
 import {
+	ColorIndicator,
+	ColorPalette,
 	// spellchecker: disable-next-line
 	Dashicon as DashIcon,
+	Dropdown,
+	__experimentalDropdownContentWrapper as DropdownContentWrapper,
+	Button,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
 import { useSelect } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
+import { useRef } from "react";
 import { ASCircleLogo } from "@plugin/blocks/svgs";
 
 export function registerLaunchpadBlocksCollection() {
@@ -605,3 +617,198 @@ export const orderByValues = {
 	title: "Title",
 } as const;
 export type OrderByOptions = keyof typeof orderByValues;
+
+type Colours = { name: string; slug: string; color: string }[];
+export function ColourSelectControl<
+	const Supports extends BlockSupports,
+	const Attributes extends BlockAttributes,
+>({
+	colours,
+	attributesDefinition,
+	attributes,
+	setAttributes,
+}: {
+	colours: { attributeName: keyof Attributes; label: string }[];
+	attributesDefinition: Attributes;
+	attributes: InterpretAttributes<Supports, Attributes>;
+	setAttributes: CreateBlockEditProps<
+		InterpretAttributes<Supports, Attributes>
+	>["setAttributes"];
+}) {
+	return (
+		<ToolsPanel
+			label={__("Custom colours", "launchpad")}
+			resetAll={(resetAllFilters) => {
+				if (!resetAllFilters) {
+					return;
+				}
+				for (const resetAllFilter of resetAllFilters) {
+					resetAllFilter();
+				}
+			}}
+		>
+			<div
+				className="color-block-support-panel__inner-wrapper"
+				style={{ gridColumn: "1 / -1" }}
+			>
+				{colours.map((colour) => {
+					return (
+						<SingleColourPickControl
+							key={colour.attributeName as string}
+							colour={colour}
+							attributesDefinition={attributesDefinition}
+							attributes={attributes}
+							setAttributes={setAttributes}
+						/>
+					);
+				})}
+			</div>
+		</ToolsPanel>
+	);
+}
+
+function SingleColourPickControl<
+	const Supports extends BlockSupports,
+	const Attributes extends BlockAttributes,
+>({
+	colour,
+	attributesDefinition,
+	attributes,
+	setAttributes,
+}: {
+	colour: { attributeName: keyof Attributes; label: string };
+	attributesDefinition: Attributes;
+	attributes: InterpretAttributes<Supports, Attributes>;
+	setAttributes: CreateBlockEditProps<
+		InterpretAttributes<Supports, Attributes>
+	>["setAttributes"];
+}) {
+	const [
+		userPalette,
+		themePalette,
+		defaultPalette,
+		shouldShowDefaultPalette,
+		shouldAllowCustomColours,
+	] = useSettings(
+		"color.palette.custom",
+		"color.palette.theme",
+		"color.palette.default",
+		"color.defaultPalette",
+		"color.custom",
+	) as [
+		Colours | undefined,
+		Colours | undefined,
+		Colours | undefined,
+		boolean,
+		boolean,
+	];
+	const hasValue = () =>
+		attributesDefinition[colour.attributeName]?.default !==
+		attributes[colour.attributeName];
+	const resetValue = () => {
+		// @ts-expect-error -- We can't know the individual attribute types here.
+		setAttributes({
+			[colour.attributeName]:
+				attributesDefinition[colour.attributeName]?.default ?? undefined,
+		});
+	};
+	const colorDropdownButtonRef = useRef<HTMLButtonElement>(null);
+	return (
+		<ToolsPanelItem
+			className="block-editor-tools-panel-color-gradient-settings__item"
+			style={{ marginBlockStart: "0" }}
+			resetAllFilter={resetValue}
+			key={colour.attributeName as string}
+			hasValue={hasValue}
+			onDeselect={resetValue}
+			label={colour.label}
+			isShownByDefault
+		>
+			<Dropdown
+				className="block-editor-tools-panel-color-gradient-settings__dropdown"
+				popoverProps={{
+					placement: "left-start",
+					offset: 36,
+					shift: true,
+				}}
+				renderToggle={({ isOpen, onToggle }) => {
+					return (
+						<>
+							<Button
+								ref={colorDropdownButtonRef}
+								__next40pxDefaultSize
+								onClick={onToggle}
+								aria-expanded={isOpen}
+								className={`block-editor-panel-color-gradient-settings__dropdown${isOpen ? " is-open" : ""}`}
+							>
+								<div
+									style={{
+										display: "flex",
+										justifyContent: "flex-start",
+										alignItems: "center",
+										gap: "8px",
+									}}
+								>
+									<ColorIndicator
+										colorValue={attributes[colour.attributeName] as string}
+									/>{" "}
+									<span>{colour.label}</span>
+								</div>
+							</Button>
+						</>
+					);
+				}}
+				renderContent={() => {
+					return (
+						<DropdownContentWrapper paddingSize="none">
+							<div className="block-editor-panel-color-gradient-settings__dropdown-content">
+								<div className="block-editor-color-gradient-control__panel">
+									<ColorPalette
+										colors={[
+											...(userPalette && userPalette?.length > 0
+												? [
+														{
+															name: "User",
+															colors: userPalette,
+														},
+													]
+												: []),
+											...(themePalette && themePalette?.length > 0
+												? [
+														{
+															name: "Theme",
+															colors: themePalette,
+														},
+													]
+												: []),
+											...(shouldShowDefaultPalette &&
+											defaultPalette &&
+											defaultPalette.length > 0
+												? [
+														{
+															name: "Default",
+															colors: defaultPalette,
+														},
+													]
+												: []),
+										]}
+										value={
+											attributes[colour.attributeName] as string | undefined
+										}
+										onChange={(newColour) => {
+											// @ts-expect-error -- We can't know the individual attribute types here.
+											setAttributes({
+												[colour.attributeName]: newColour,
+											});
+										}}
+										disableCustomColors={!shouldAllowCustomColours}
+									/>
+								</div>
+							</div>
+						</DropdownContentWrapper>
+					);
+				}}
+			/>
+		</ToolsPanelItem>
+	);
+}

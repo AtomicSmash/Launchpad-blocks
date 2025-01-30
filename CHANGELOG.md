@@ -1,5 +1,12 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.13
+
+### Minor Changes
+
+- dfc70e4: Remove test icon
+- dfc70e4: Add fancy list blocks
+
 ## 1.0.0-beta.12
 
 ### Minor Changes

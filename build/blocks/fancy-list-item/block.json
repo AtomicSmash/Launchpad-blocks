@@ -1,0 +1,47 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/fancy-list-item",
+  "title": "List item",
+  "category": "theme",
+  "description": "A block to display a semantic list of content.",
+  "parent": [
+    "launchpad-blocks/fancy-list"
+  ],
+  "allowedBlocks": [
+    "launchpad-blocks/fancy-list"
+  ],
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.0e51310c12d1996da942.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.9287b18c71e9f5ca85fd.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "iconName": {
+      "type": "string"
+    },
+    "library": {
+      "type": "string"
+    },
+    "textContent": {
+      "type": "string"
+    }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "launchpad-blocks/fancyListType",
+    "launchpad-blocks/fancyListMarkerType"
+  ],
+  "supports": {
+    "splitting": true
+  }
+}

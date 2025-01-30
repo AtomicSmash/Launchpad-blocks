@@ -1,0 +1,63 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/fancy-list",
+  "title": "List",
+  "category": "theme",
+  "description": "A block to display a semantic list of content.",
+  "allowedBlocks": [
+    "launchpad-blocks/fancy-list-item"
+  ],
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.e8b3bf59d881d2b3cf82.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.d118bf0c2d2ccf10d947.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "columnCount": {
+      "type": "integer",
+      "default": 1
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ul",
+        "ol"
+      ],
+      "default": "ul"
+    },
+    "markerType": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "icon"
+      ],
+      "default": "normal"
+    },
+    "markerColour": {
+      "type": "string"
+    },
+    "markerInnerColour": {
+      "type": "string"
+    }
+  },
+  "providesContext": {
+    "launchpad-blocks/fancyListType": "type",
+    "launchpad-blocks/fancyListMarkerType": "markerType"
+  },
+  "usesContext": [],
+  "supports": {
+    "typography": {
+      "fontSize": true
+    }
+  }
+}
