@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.15
+
+### Minor Changes
+
+- 4ec82fe: Add navigation blocks
+
 ## 1.0.0-beta.14
 
 ### Minor Changes

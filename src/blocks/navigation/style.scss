@@ -1,0 +1,136 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+:root {
+	--header-height: 78px;
+	--navigation-menu-open-close-timing: 400ms;
+}
+
+.wp-block-launchpad-blocks-navigation {
+	.navigation-content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--wp--style--block-gap);
+	}
+
+	&[data-is-menu-collapsed="expanded"] .navigation-content-toggle {
+		display: none;
+	}
+
+	&[data-is-menu-collapsed="collapsed"] {
+		.navigation-content-toggle > .text-to-open-menu,
+		.navigation-content-toggle > .text-to-close-menu {
+			white-space: nowrap;
+		}
+
+		.navigation-content-toggle > .text-to-open-menu,
+		.navigation-content-toggle > .text-to-close-menu,
+		.navigation-content {
+			transition: opacity var(--navigation-menu-open-close-timing) ease-in-out;
+		}
+
+		.navigation-content-toggle[data-state="open"] > .text-to-open-menu,
+		.navigation-content-toggle[data-state="closed"] > .text-to-close-menu {
+			opacity: 0;
+			position: absolute;
+			inset: 0;
+		}
+
+		.navigation-content[data-state="closed"] {
+			opacity: 0;
+		}
+
+		.navigation-content {
+			position: fixed;
+			top: calc(
+				var(--wp-admin--admin-bar--height, 0px) + var(--header-height, 0px)
+			);
+			left: 0;
+			width: 100%;
+			max-height: calc(
+				100dvh - var(--header-height, 0px) - var(
+						--wp-admin--admin-bar--height,
+						0px
+					)
+			);
+			align-items: flex-start;
+			transition: opacity var(--navigation-menu-open-close-timing) ease-in-out;
+			flex-direction: column;
+			padding-inline: var(--wp--style--root--padding-left)
+				var(--wp--style--root--padding-right);
+		}
+	}
+}
+
+.wp-block-launchpad-blocks-navigation .wp-block-social-links {
+	flex-shrink: 0;
+}
+
+.navigation-content-toggle {
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+	position: relative;
+	overflow: visible;
+
+	.text-to-open-menu,
+	.text-to-close-menu {
+		display: flex;
+		align-items: center;
+		gap: var(--wp--preset--spacing--2);
+	}
+
+	.navigation-content-toggle-icon {
+		width: 2em;
+		height: 2em;
+	}
+}
+
+.site-overlay {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: var(--wp--custom--z-index--site-overlay);
+	transition:
+		opacity var(--navigation-menu-open-close-timing) ease-in-out,
+		background-color var(--navigation-menu-open-close-timing) ease-in-out;
+
+	body.menu-is-open &,
+	body.sub-menu-is-open & {
+		opacity: 1;
+	}
+
+	body.menu-is-open & {
+		background-color: var(--wp--preset--color--white);
+	}
+}
+
+body.menu-is-open {
+	overflow-y: hidden;
+}
+
+.wp-block-launchpad-blocks-navigation.menu-js-loading {
+	// Hide from view but don't affect width for menu calculation
+	visibility: hidden;
+	height: 1px;
+	overflow-x: hidden;
+
+	// Hidden when expanded, so won't affect collapsing width
+	.navigation-content-toggle {
+		display: none;
+	}
+
+	.navigation-content {
+		overflow-x: scroll;
+
+		* {
+			flex-wrap: nowrap !important;
+		}
+	}
+}

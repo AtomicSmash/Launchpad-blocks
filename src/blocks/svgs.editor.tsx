@@ -26,6 +26,9 @@ export const iconMetaData = {
 	"accordion-single": {
 		title: "Accordion single",
 	},
+	"back-arrow": {
+		title: "Back Arrow",
+	},
 	"tab-group": {
 		title: "Tab group",
 	},
@@ -37,6 +40,9 @@ export const iconMetaData = {
 	},
 	"tab-panel": {
 		title: "Tab panel",
+	},
+	"menu-open-icon": {
+		title: "Menu Open Icon",
 	},
 	"menu-close-icon": {
 		title: "Menu Close Icon",

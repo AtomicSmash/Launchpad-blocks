@@ -3,7 +3,7 @@ import type { InterpretedUsedContext } from "./context";
 import { registerBlockType } from "@atomicsmash/blocks-helpers";
 import { registerBlockVariation } from "@wordpress/blocks";
 import { registerLaunchpadBlocksCollection } from "@plugin/blocks/helpers.editor";
-// import { Icon } from "@blocks/svgs";
+// import { Icon } from "@plugin/blocks/svgs";
 import blockMetaData from "./block.json";
 import { deprecated } from "./deprecation";
 import { Edit } from "./edit";

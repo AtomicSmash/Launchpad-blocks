@@ -1,0 +1,39 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/navigation",
+  "title": "Navigation",
+  "category": "theme",
+  "description": "A collection of blocks that allow visitors to get around your site.",
+  "allowedBlocks": [
+    "core/search",
+    "core/social-links",
+    "core/loginout",
+    "core/buttons",
+    "launchpad-blocks/nav-list"
+  ],
+  "textdomain": "launchpad-blocks",
+  "keywords": [
+    "menu",
+    "nav",
+    "links"
+  ],
+  "editorScript": [
+    "file:./index.8cf059f1eff2b828f3de.js"
+  ],
+  "viewScript": [
+    "file:./view.64232be789c1b4a9de3d.js"
+  ],
+  "style": [
+    "file:./style.6daaac5b6e49ae39a193.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "navId": {
+      "type": "string"
+    }
+  },
+  "supports": {}
+}

@@ -1,0 +1,38 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/nav-list",
+  "title": "Nav list",
+  "category": "theme",
+  "description": "The collection of the actual menu items for your navigation.",
+  "allowedBlocks": [
+    "launchpad-blocks/nav-submenu",
+    "launchpad-blocks/nav-menu-item"
+  ],
+  "parent": [
+    "launchpad-blocks/navigation",
+    "launchpad-blocks/nav-submenu"
+  ],
+  "textdomain": "launchpad-blocks",
+  "keywords": [
+    "menu",
+    "nav",
+    "links"
+  ],
+  "editorScript": [
+    "file:./index.5884f514afbf5d1a6264.js"
+  ],
+  "style": [
+    "file:./style.9ea98ec5df90fcae0fbf.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "isNestedInAnotherNavLink": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {}
+}

@@ -1,0 +1,43 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/nav-menu-item",
+  "title": "Nav menu item",
+  "category": "theme",
+  "description": "A simple link for the navigation menu.",
+  "parent": [
+    "launchpad-blocks/nav-list"
+  ],
+  "textdomain": "launchpad-blocks",
+  "keywords": [
+    "menu",
+    "nav",
+    "links"
+  ],
+  "editorScript": [
+    "file:./index.ffd4a2cb876f4f92f542.js"
+  ],
+  "style": [
+    "file:./style.a32270662bf9991deda9.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "linkHref": {
+      "type": "string"
+    },
+    "linkTarget": {
+      "type": "string",
+      "enum": [
+        "_self",
+        "_blank"
+      ],
+      "default": "_self"
+    },
+    "linkText": {
+      "type": "string"
+    }
+  },
+  "supports": {}
+}
