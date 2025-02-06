@@ -2,7 +2,7 @@ import type { InterpretedAttributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
 import type {
 	CreateBlockEditProps,
-	InnerBlocks,
+	BlockInstanceAsObject,
 } from "@atomicsmash/blocks-helpers";
 import type { TaxonomyTerm } from "@plugin/blocks/helpers.editor";
 import type { Post, Page, User, Taxonomy } from "@wordpress/core-data";
@@ -1043,7 +1043,7 @@ function BlockPreview({
 }: {
 	onClick: ComponentPropsWithoutRef<"div">["onClick"];
 	onKeyDown: ComponentPropsWithoutRef<"div">["onKeyDown"];
-	blocks: InnerBlocks[];
+	blocks: BlockInstanceAsObject[];
 }) {
 	/*
 	 TODO: When clicking a preview, currently it takes two clicks
@@ -1148,7 +1148,7 @@ function PostsInnerBlocks({
 	const { blocks } = useSelect(
 		(select) => {
 			const { getBlocks } = select(blockEditorStore) as {
-				getBlocks: (rootClientId?: string) => InnerBlocks[];
+				getBlocks: (rootClientId?: string) => BlockInstanceAsObject[];
 			};
 
 			return { blocks: getBlocks(clientId) };

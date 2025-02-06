@@ -22,12 +22,12 @@ function default_attributes( \WP_Block $block, array $attributes ) {
 
 	$color_support = isset( $block_supports_definition['color'] ) ? $block_supports_definition['color'] : false;
 	$supports_text_colour = true === $color_support || ( isset( $color_support['text'] ) && $color_support['text'] ) || ( is_array( $color_support ) && ! isset( $color_support['text'] ) );
-	if ( $supports_text_colour && $attributes['textColor'] === $block_attributes_definition['textColor']['default'] && ! isset( $block->parsed_block['textColor'] ) ) {
+	if ( $supports_text_colour && ( $attributes['textColor'] ?? null ) && ( $block_attributes_definition['textColor']['default'] ?? null ) === $attributes['textColor'] && ! isset( $block->parsed_block['textColor'] ) ) {
 		$fixed_attributes['class'][] = 'has-text-color';
 		$fixed_attributes['class'][] = 'has-' . $attributes['textColor'] . '-color';
 	}
 	$supports_background_colour = true === $color_support || ( isset( $color_support['background'] ) && $color_support['background'] ) || ( is_array( $color_support ) && ! isset( $color_support['background'] ) );
-	if ( $supports_background_colour && $attributes['backgroundColor'] === $block_attributes_definition['backgroundColor']['default'] && ! isset( $block->parsed_block['backgroundColor'] ) ) {
+	if ( $supports_background_colour && ( $attributes['backgroundColor'] ?? null ) && ( $block_attributes_definition['backgroundColor']['default'] ?? null ) === $attributes['backgroundColor'] && ! isset( $block->parsed_block['backgroundColor'] ) ) {
 		$fixed_attributes['class'][] = 'has-background';
 		$fixed_attributes['class'][] = 'has-' . $attributes['backgroundColor'] . '-background-color';
 	}

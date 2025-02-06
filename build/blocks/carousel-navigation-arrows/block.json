@@ -1,0 +1,87 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/carousel-navigation-arrows",
+  "title": "Carousel navigation arrows",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "allowedBlocks": [
+    "launchpad-blocks/carousel-thumbnails"
+  ],
+  "parent": [
+    "launchpad-blocks/carousel"
+  ],
+  "keywords": [],
+  "editorScript": [
+    "file:./index.6813ad1dd9ce4d1e0f59.js"
+  ],
+  "viewScript": [
+    "file:./view.61da9882363f510867e3.js"
+  ],
+  "style": [
+    "file:./style.7a320d8c1fad0ab087c3.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "styles": [
+    {
+      "name": "normal",
+      "label": "Normal",
+      "isDefault": true
+    },
+    {
+      "name": "overlay",
+      "label": "Overlay"
+    }
+  ],
+  "attributes": {
+    "prevText": {
+      "type": "string",
+      "default": "Go to previous slide"
+    },
+    "nextText": {
+      "type": "string",
+      "default": "Go to next slide"
+    },
+    "prevVisualText": {
+      "type": "string",
+      "default": "Previous"
+    },
+    "nextVisualText": {
+      "type": "string",
+      "default": "Next"
+    },
+    "shouldShowTextVisually": {
+      "type": "boolean",
+      "default": true
+    },
+    "backgroundColour": {
+      "type": "string",
+      "default": "black"
+    },
+    "iconColour": {
+      "type": "string",
+      "default": "white"
+    },
+    "prevIcon": {
+      "type": "object",
+      "default": {
+        "iconName": "chevron-left",
+        "library": "launchpad-blocks"
+      }
+    },
+    "nextIcon": {
+      "type": "object",
+      "default": {
+        "iconName": "chevron-right",
+        "library": "launchpad-blocks"
+      }
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "example": {},
+  "supports": {}
+}

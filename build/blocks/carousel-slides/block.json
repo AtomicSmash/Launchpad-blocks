@@ -1,0 +1,56 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/carousel-slides",
+  "title": "Carousel slides",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "parent": [
+    "launchpad-blocks/carousel"
+  ],
+  "allowedBlocks": [
+    "core/image"
+  ],
+  "editorScript": [
+    "file:./index.3fdbdb59112e3064d5d9.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.03eb962fae25499394a4.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "allowResize": {
+      "type": "boolean",
+      "default": false
+    },
+    "aspectRatio": {
+      "type": "string",
+      "default": "auto"
+    },
+    "imageFit": {
+      "type": "string",
+      "enum": [
+        "cover",
+        "contain"
+      ],
+      "default": "cover"
+    }
+  },
+  "providesContext": {
+    "allowResize": "allowResize"
+  },
+  "usesContext": [],
+  "example": {},
+  "supports": {
+    "color": {
+      "link": true
+    }
+  }
+}

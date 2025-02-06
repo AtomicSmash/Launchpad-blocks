@@ -18,11 +18,15 @@ import {
 	Button,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
+	SelectControl,
+	TextControl,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
 import { useSelect } from "@wordpress/data";
-import { __ } from "@wordpress/i18n";
-import { useRef } from "react";
+import { __, _x } from "@wordpress/i18n";
+import { useRef, useState } from "react";
 import { ASCircleLogo } from "@plugin/blocks/svgs";
 
 export function registerLaunchpadBlocksCollection() {
@@ -810,5 +814,118 @@ function SingleColourPickControl<
 				}}
 			/>
 		</ToolsPanelItem>
+	);
+}
+
+export function AspectRatioSelector({
+	ratioValue,
+	ratioOnChange,
+	imageFitValue,
+	imageFitOnChange,
+}: {
+	ratioValue: string;
+	ratioOnChange: (newAspectRatio: string) => void;
+	imageFitValue: "contain" | "cover";
+	imageFitOnChange: (newImageFitValue: "contain" | "cover") => void;
+}) {
+	const [defaultRatios, themeRatios, shouldShowDefaultRatios] = useSettings(
+		"dimensions.aspectRatios.default",
+		"dimensions.aspectRatios.theme",
+		"dimensions.defaultAspectRatios",
+	) as [
+		{ name: string; slug: string; ratio: string }[] | undefined,
+		{ name: string; slug: string; ratio: string }[] | undefined,
+		boolean,
+	];
+
+	const themeOptions =
+		themeRatios?.map(({ name, ratio }) => ({
+			label: name,
+			value: ratio,
+		})) ?? [];
+
+	const defaultOptions =
+		defaultRatios?.map(({ name, ratio }) => ({
+			label: name,
+			value: ratio,
+		})) ?? [];
+
+	const aspectRatioOptions = [
+		{
+			label: _x(
+				"Original",
+				"Aspect ratio option for dimensions control",
+				"launchpad-blocks",
+			),
+			value: "auto",
+		},
+		...(shouldShowDefaultRatios ? defaultOptions : []),
+		...(themeOptions ? themeOptions : []),
+		{
+			label: _x(
+				"Custom",
+				"Aspect ratio option for dimensions control",
+				"launchpad-blocks",
+			),
+			value: "custom",
+		},
+	];
+
+	const [aspectRatioSelectValue, setAspectRatioSelectValue] = useState(
+		aspectRatioOptions.map((option) => option.value).includes(ratioValue)
+			? ratioValue
+			: "custom",
+	);
+
+	return (
+		<>
+			<SelectControl
+				__nextHasNoMarginBottom
+				__next40pxDefaultSize
+				label={__("Aspect ratio", "launchpad-blocks")}
+				options={aspectRatioOptions}
+				value={aspectRatioSelectValue}
+				onChange={(selectedValue) => {
+					setAspectRatioSelectValue(selectedValue);
+					if (selectedValue !== "custom") {
+						ratioOnChange(selectedValue);
+					}
+				}}
+			/>
+			{aspectRatioSelectValue === "custom" ? (
+				<TextControl
+					label={__("Custom aspect ratio", "launchpad-blocks")}
+					help={__(
+						"Please enter a custom aspect ratio in the format `width/height`.",
+					)}
+					onChange={ratioOnChange}
+					value={ratioValue}
+				/>
+			) : null}
+			{ratioValue !== "auto" ? (
+				<ToggleGroupControl
+					__next40pxDefaultSize
+					__nextHasNoMarginBottom
+					isBlock
+					label="Image fit"
+					help={__(
+						"If your image doesn't match the selected aspect ratio, should we make the image `cover` the whole area (cutting off parts on the edge) or should we `contain` it (show the whole image in its correct aspect ratio, within a box of the aspect ratio you selected).",
+						"launchpad-blocks",
+					)}
+					onChange={(newValue) => {
+						if (
+							typeof newValue === "string" &&
+							["contain", "cover"].includes(newValue)
+						) {
+							imageFitOnChange(newValue as "contain" | "cover");
+						}
+					}}
+					value={imageFitValue}
+				>
+					<ToggleGroupControlOption label="Cover" value="cover" />
+					<ToggleGroupControlOption label="Contain" value="contain" />
+				</ToggleGroupControl>
+			) : null}
+		</>
 	);
 }

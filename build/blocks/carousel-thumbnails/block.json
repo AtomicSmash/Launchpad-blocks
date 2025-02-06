@@ -1,0 +1,54 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/carousel-thumbnails",
+  "title": "Carousel thumbnails",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "parent": [
+    "launchpad-blocks/carousel"
+  ],
+  "editorScript": [
+    "file:./index.f15d54bef24a28fc2c1c.js"
+  ],
+  "viewScript": [
+    "file:./view.a4a57372c665bdf230a9.js"
+  ],
+  "style": [
+    "file:./style.8e76d7f880c14b8458cb.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "styles": [
+    {
+      "name": "scroll",
+      "label": "Scroll",
+      "isDefault": true
+    },
+    {
+      "name": "grid",
+      "label": "Grid"
+    }
+  ],
+  "attributes": {
+    "selectedOutlineColour": {
+      "type": "string",
+      "default": "black"
+    },
+    "lock": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "launchpad-blocks/carouselImages"
+  ],
+  "example": {},
+  "supports": {
+    "lock": false
+  }
+}

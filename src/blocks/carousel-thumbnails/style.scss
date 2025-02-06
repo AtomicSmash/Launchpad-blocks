@@ -1,0 +1,56 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+:where(button.reset) {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+	padding: 0;
+}
+
+.wp-block-launchpad-blocks-carousel-thumbnails {
+	--thumbnail-size: 190px;
+
+	gap: 0.5rem;
+
+	&.is-style-scroll,
+	&:not([class^="is-style"], [class*=" is-style"]) {
+		display: flex;
+		align-items: stretch;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		border-radius: var(--border-radius, 4px);
+
+		> * {
+			flex: 1 0 var(--thumbnail-size);
+			max-width: min(100%, var(--thumbnail-size));
+		}
+	}
+
+	&.is-style-grid {
+		display: grid;
+		grid-template-columns: repeat(
+			auto-fill,
+			minmax(var(--thumbnail-size), 1fr)
+		);
+	}
+
+	.carousel-thumbnail-button {
+		aspect-ratio: 13 / 9;
+
+		&.is-selected {
+			--padding: 2px;
+
+			padding: var(--padding);
+			border: 2px solid var(--selected-outline-colour);
+			border-radius: calc(var(--padding) + var(--border-radius, 4px));
+		}
+	}
+
+	.carousel-thumbnail {
+		border-radius: var(--border-radius, 4px);
+		width: 100%;
+		height: 100%;
+	}
+}

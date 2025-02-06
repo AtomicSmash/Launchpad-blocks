@@ -1,5 +1,17 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.14
+
+### Minor Changes
+
+- b5b127b: Add aspect ratio select control
+- 1b9defc: Add carousel blocks
+
+### Patch Changes
+
+- 36f9a95: Update dependencies
+- 79c6089: Fix block defaults if no default value is set
+
 ## 1.0.0-beta.13
 
 ### Minor Changes

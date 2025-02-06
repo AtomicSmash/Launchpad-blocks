@@ -1,0 +1,40 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+.wp-block-launchpad-blocks-carousel-navigation-arrows {
+	--border-radius: 4px;
+
+	display: flex;
+	align-items: stretch;
+	gap: 0.5rem;
+
+	&.is-style-overlay {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+		padding: 0 1rem;
+	}
+
+	.carousel-navigation-button {
+		flex: 0 0 auto;
+		padding: 0.5rem;
+		display: flex;
+		align-items: center;
+		background-color: var(--background-colour, transparent);
+		color: var(--icon-colour, inherit);
+		border: none;
+		border-radius: var(--border-radius);
+		cursor: pointer;
+
+		.carousel-navigation-button-icon {
+			height: 2rem;
+			aspect-ratio: 1;
+		}
+	}
+
+	.carousel-navigation-inner-area {
+		flex: 1 0 1px;
+	}
+}
