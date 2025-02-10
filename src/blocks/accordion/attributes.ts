@@ -11,6 +11,7 @@ export const attributes = {
 	},
 	accordionId: {
 		type: "string",
+		default: "",
 	},
 	headerContent: {
 		type: "string",

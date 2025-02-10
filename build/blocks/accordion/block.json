@@ -12,21 +12,23 @@
     "accordion"
   ],
   "editorScript": [
-    "file:./index.d3242f3153a51dd664dd.js"
+    "file:./index.e2635f86f4c7e046d678.js"
   ],
   "style": [
-    "file:./style.98b259f3131fde3e3243.css"
+    "file:./style.3a0001f19429ae4c2998.css"
   ],
   "editorStyle": [
     "file:./editor-style.3847f4f13917d03d9740.css"
   ],
+  "render": "file:./render.php",
   "attributes": {
     "isInitiallyOpen": {
       "type": "boolean",
       "default": false
     },
     "accordionId": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "headerContent": {
       "type": "string"

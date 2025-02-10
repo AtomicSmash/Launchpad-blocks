@@ -50,6 +50,7 @@ The double selector is a editor specific specificity hack, which when using our 
 	transform-origin: center;
 	transition: transform var(--launchpad-accordion-open-close-timing) ease-in-out;
 	width: 2rem;
+	aspect-ratio: 1;
 }
 
 .accordion-header-button[data-state="collapsed"] svg {

@@ -3,12 +3,14 @@ import { registerBlockType } from "@atomicsmash/blocks-helpers";
 import { registerLaunchpadBlocksCollection } from "@plugin/blocks/helpers.editor";
 import { Icon } from "@plugin/blocks/svgs";
 import blockMetaData from "./block.json";
+import { deprecated } from "./deprecation";
 import { Edit } from "./edit";
-import { Save } from "./save";
+import { save } from "./save";
 
 registerBlockType<InterpretedAttributes>(blockMetaData.name, {
 	icon: <Icon iconName="accordion-group" />,
 	edit: Edit,
-	save: Save,
+	save: save({ hasInnerBlocks: true }),
+	deprecated,
 });
 registerLaunchpadBlocksCollection();

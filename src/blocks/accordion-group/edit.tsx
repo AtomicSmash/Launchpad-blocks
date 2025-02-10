@@ -4,22 +4,20 @@ import {
 	useBlockProps,
 	InspectorControls,
 	InnerBlocks,
-	Inserter,
 } from "@wordpress/block-editor";
-import {
-	Button,
-	ButtonGroup,
-	CheckboxControl,
-	Panel,
-	PanelBody,
-} from "@wordpress/components";
+import { CheckboxControl, Panel, PanelBody } from "@wordpress/components";
+import { useEffect } from "react";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
 
 export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
-	const { isMultiple } = attributes;
+	const { accordionGroupId, isMultiple } = attributes;
 	const blockProps = useBlockProps();
-	setAttributes({ accordionGroupId: clientId });
+	useEffect(() => {
+		if (accordionGroupId === "") {
+			setAttributes({ accordionGroupId: clientId });
+		}
+	}, [accordionGroupId, clientId, setAttributes]);
 
 	return (
 		<>
@@ -27,6 +25,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 				<Panel>
 					<PanelBody title="Block settings">
 						<CheckboxControl
+							__nextHasNoMarginBottom
 							label="Multiple open accordions"
 							help="Allow multiple accordions in the same group to be open at the same time."
 							checked={isMultiple}
@@ -38,33 +37,9 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 				</Panel>
 			</InspectorControls>
 			<div {...blockProps}>
-				<InnerBlocks
-					allowedBlocks={["launchpad-blocks/accordion"]}
-					renderAppender={() => (
-						<MyButtonBlockAppender rootClientId={clientId} />
-					)}
-				/>
+				<InnerBlocks allowedBlocks={["launchpad-blocks/accordion"]} />
 			</div>
 		</>
-	);
-}
-
-function MyButtonBlockAppender({ rootClientId }: { rootClientId: string }) {
-	return (
-		<Inserter
-			rootClientId={rootClientId}
-			renderToggle={({ onToggle }: { onToggle: () => void }) => (
-				<ButtonGroup>
-					<Button
-						className="accordion-inserter-button is-primary"
-						onClick={onToggle}
-					>
-						Add an accordion
-					</Button>
-				</ButtonGroup>
-			)}
-			isAppender
-		/>
 	);
 }
 Edit.displayName = "AccordionGroupEdit";

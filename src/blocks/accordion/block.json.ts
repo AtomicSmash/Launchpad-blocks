@@ -16,6 +16,7 @@ export const blockJson = {
 	editorScript: "file:./index.tsx",
 	style: "file:./style.scss",
 	editorStyle: "file:./editor-style.scss",
+	render: "file:./render.php",
 	attributes,
 	supports,
 } satisfies BlockMetaData<Supports, Attributes>;

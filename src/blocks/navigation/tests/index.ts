@@ -17,7 +17,7 @@ const navigationTests = async function ({ page }) {
 } satisfies Parameters<typeof test>[2];
 
 export const blockTestInfo = {
-	blockName: "navigation",
+	blockName: "Navigation",
 	tests: navigationTests,
 	contentPersistLocation,
 	lighthouseTestsPage: "navigation-test-page",

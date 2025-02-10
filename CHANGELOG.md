@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.16
+
+### Major Changes
+
+- 292eb0f: Convert accordion to dynamic block and make icon filterable
+
 ## 1.0.0-beta.15
 
 ### Minor Changes

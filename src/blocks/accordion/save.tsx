@@ -1,53 +1,24 @@
-import type { InterpretedAttributes } from "./attributes";
-import type { CreateBlockSaveProps } from "@atomicsmash/blocks-helpers";
-import { useBlockProps, InnerBlocks, RichText } from "@wordpress/block-editor";
-import { Icon } from "@plugin/blocks/svgs";
+import { InnerBlocks } from "@wordpress/block-editor";
 
-type BlockSaveProps = CreateBlockSaveProps<InterpretedAttributes>;
+/**
+ * For dynamic blocks, you generally want 1 of two save functions,
+ * depending if your block has or doesn't have inner blocks.
+ * If you need a custom Save function, you can delete these and
+ * export it from this file instead.
+ */
 
-export function Save({ attributes }: BlockSaveProps) {
-	const { isInitiallyOpen, accordionId, headerContent, headerElement } =
-		attributes;
-	const HeaderElement = headerElement;
-	const blockProps = useBlockProps.save({
-		"data-accordion": "",
-		"data-is-initially-open": isInitiallyOpen,
-		id: accordionId,
-	});
-	return (
-		<div {...blockProps}>
-			<HeaderElement>
-				<button
-					aria-expanded={"true"}
-					aria-controls={`${accordionId}-panel`}
-					data-state={"open"}
-					id={`${accordionId}-trigger`}
-					className="accordion-header-button"
-				>
-					<RichText.Content
-						tagName={"span"}
-						className={"accordion-header-button-text"}
-						value={headerContent}
-					/>
-					<Icon
-						iconName="accordion-arrow"
-						className={"accordion-header-button-icon"}
-						isEditorMode={true}
-						size="32"
-					/>
-				</button>
-			</HeaderElement>
-			<div
-				role="region"
-				data-state="open"
-				aria-labelledby={`${accordionId}-trigger`}
-				id={`${accordionId}-panel`}
-				className={"accordion-panel"}
-			>
-				<div className="accordion-panel-inner-wrapper">
-					<InnerBlocks.Content />
-				</div>
-			</div>
-		</div>
-	);
+/**
+ * Gets the correct generic save function based on if the block has inner blocks or not.
+ * @param hasInnerBlocks
+ * @param hasInnerBlocks.hasInnerBlocks Whether the block has innerBlocks or not.
+ * @return The Save react component needed by WP.
+ */
+export function save({ hasInnerBlocks }: { hasInnerBlocks: boolean }) {
+	return hasInnerBlocks ? Save2 : Save1;
+}
+function Save1() {
+	return null;
+}
+function Save2() {
+	return <InnerBlocks.Content />;
 }

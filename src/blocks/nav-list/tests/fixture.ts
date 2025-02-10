@@ -1,1 +1,1 @@
-export const navigation = "ENTER BLOCK CODE HERE";
+export const navigationNavList = "ENTER BLOCK CODE HERE";

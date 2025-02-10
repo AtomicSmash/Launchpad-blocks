@@ -9,7 +9,7 @@
     "accordion"
   ],
   "editorScript": [
-    "file:./index.94d3cda3c811a66dacbb.js"
+    "file:./index.d1ec8e0d906fc0968e3d.js"
   ],
   "viewScript": [
     "file:./view.0cb6cb928794d19b2a8e.js"
@@ -17,13 +17,15 @@
   "editorStyle": [
     "file:./editor-style.9df6f4b23e02fc94b51f.css"
   ],
+  "render": "file:./render.php",
   "attributes": {
     "isMultiple": {
       "type": "boolean",
       "default": false
     },
     "accordionGroupId": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "example": {

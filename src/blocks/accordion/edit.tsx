@@ -6,17 +6,15 @@ import {
 	BlockControls,
 	InnerBlocks,
 	RichText,
-	Inserter,
 } from "@wordpress/block-editor";
 import {
 	CheckboxControl,
 	Panel,
 	PanelBody,
-	DropdownMenu,
 	ToolbarGroup,
-	ButtonGroup,
-	Button,
+	ToolbarDropdownMenu,
 } from "@wordpress/components";
+import { applyFilters } from "@wordpress/hooks";
 import { __ } from "@wordpress/i18n";
 import {
 	headingLevel2,
@@ -26,6 +24,7 @@ import {
 	headingLevel6,
 	paragraph,
 } from "@wordpress/icons";
+import { useEffect } from "react";
 import { Icon } from "@plugin/blocks/svgs";
 import { attributes as definedAttributeOptions } from "./attributes";
 
@@ -39,11 +38,25 @@ export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
  *
  * @return Element to render.
  */
+// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
-	const { isInitiallyOpen, headerContent, headerElement } = attributes;
+	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
+	const { accordionId, isInitiallyOpen, headerContent, headerElement } =
+		attributes;
 	const HeaderElement = headerElement;
 	const blockProps = useBlockProps();
-	setAttributes({ accordionId: clientId });
+	useEffect(() => {
+		if (accordionId === "") {
+			setAttributes({ accordionId: clientId });
+		}
+	}, [accordionId, clientId, setAttributes]);
+
+	const AccordionIcon = applyFilters(
+		"launchpadBlocks.accordionIcon",
+		(props: { className: string; isEditorMode: boolean }) => (
+			<Icon iconName="accordion-arrow" {...props} />
+		),
+	) as (props: { className: string; isEditorMode: boolean }) => JSX.Element;
 
 	return (
 		<>
@@ -51,6 +64,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 				<Panel>
 					<PanelBody title="Block settings">
 						<CheckboxControl
+							__nextHasNoMarginBottom
 							label="Is accordion open by default?"
 							help={`Allows you to set the initial state for the accordion. If only one accordion is allowed to be open at a time in the group, this setting will only apply to the first accordion with this setting enabled.`}
 							checked={isInitiallyOpen}
@@ -63,22 +77,20 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 			</InspectorControls>
 			<BlockControls>
 				<ToolbarGroup>
-					<DropdownMenu
-						popoverProps={{ className: "accordion-heading-element-dropdown" }}
-						icon={<HeadingElementIcon elementType={headerElement} />}
+					<ToolbarDropdownMenu
 						label={__("Change title heading element", "launchpad-blocks")}
+						icon={getHeadingElementIcon(headerElement)}
 						controls={definedAttributeOptions.headerElement.enum.map(
 							(targetLevel) => {
 								{
 									const isActive = targetLevel === headerElement;
 
 									return {
-										icon: <HeadingElementIcon elementType={targetLevel} />,
+										icon: getHeadingElementIcon(targetLevel),
 										title: getHumanNameOfElement(targetLevel),
 										isDisabled: isActive,
 										onClick: () =>
 											setAttributes({ headerElement: targetLevel }),
-										role: "menuitemradio",
 									};
 								}
 							},
@@ -111,21 +123,15 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 								"launchpad-blocks",
 							)}
 						/>
-						<Icon
-							iconName="accordion-arrow"
-							className={"accordion-header-button-icon"}
-							isEditorMode={true}
-							size="32"
+						<AccordionIcon
+							className="accordion-header-button-icon"
+							isEditorMode
 						/>
 					</div>
 				</HeaderElement>
 				<div className={"accordion-panel"}>
 					<div className="accordion-panel-inner-wrapper">
-						<InnerBlocks
-							renderAppender={() => (
-								<MyButtonBlockAppender rootClientId={clientId} />
-							)}
-						/>
+						<InnerBlocks />
 					</div>
 				</div>
 			</div>
@@ -153,11 +159,9 @@ function getHumanNameOfElement(
 	}
 }
 
-function HeadingElementIcon({
-	elementType,
-}: {
-	elementType: InterpretedAttributes["headerElement"];
-}) {
+function getHeadingElementIcon(
+	elementType: InterpretedAttributes["headerElement"],
+) {
 	switch (elementType) {
 		case "h2":
 			return headingLevel2;
@@ -174,23 +178,4 @@ function HeadingElementIcon({
 		default:
 			return null;
 	}
-}
-
-function MyButtonBlockAppender({ rootClientId }: { rootClientId: string }) {
-	return (
-		<Inserter
-			rootClientId={rootClientId}
-			renderToggle={({ onToggle }: { onToggle: () => void }) => (
-				<ButtonGroup>
-					<Button
-						className="accordion-inserter-button is-primary"
-						onClick={onToggle}
-					>
-						Add a new block
-					</Button>
-				</ButtonGroup>
-			)}
-			isAppender
-		/>
-	);
 }

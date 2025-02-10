@@ -2,14 +2,14 @@ import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
 import { test, type Page } from "@playwright/test";
 import { CURRENT_WORDPRESS_VERSION } from "@tests/playwright-utils";
 
-export const contentPersistLocation = `${process.cwd()}/tests/.tmp/navigation-page-info.json`;
+export const contentPersistLocation = `${process.cwd()}/tests/.tmp/navigation-nav-list-page-info.json`;
 
-const navigationTests = async function ({ page }) {
-	// Go to navigation testing page
+const navigationNavListTests = async function ({ page }) {
+	// Go to navigation nav list testing page
 	await page.goto(
 		await WordPressAdminInteraction.getFrontEndURL(
 			contentPersistLocation,
-			"navigation-test-page",
+			"navigation-nav-list-test-page",
 		),
 	);
 
@@ -17,11 +17,11 @@ const navigationTests = async function ({ page }) {
 } satisfies Parameters<typeof test>[2];
 
 export const blockTestInfo = {
-	blockName: "navigation",
-	tests: navigationTests,
+	blockName: "Navigation - nav list",
+	tests: navigationNavListTests,
 	contentPersistLocation,
-	lighthouseTestsPage: "navigation-test-page",
-	visualTestsPage: "navigation-test-page",
+	lighthouseTestsPage: "navigation-nav-list-test-page",
+	visualTestsPage: "navigation-nav-list-test-page",
 };
 
 export async function doTearDown(page: Page) {
