@@ -1,0 +1,9 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+.wp-block-launchpad-blocks-gallery-carousel-lightbox {
+	position: fixed !important;
+	inset: 0;
+	display: grid;
+	place-items: center;
+}

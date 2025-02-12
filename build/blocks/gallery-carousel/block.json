@@ -1,0 +1,47 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/gallery-carousel",
+  "allowedBlocks": [
+    "launchpad-blocks/gallery-carousel-lightbox",
+    "launchpad-blocks/carousel-slides"
+  ],
+  "title": "Gallery carousel",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.046d14631f03675195df.js"
+  ],
+  "viewScript": [
+    "file:./view.8c109c01af3fed5ee681.js"
+  ],
+  "style": [
+    "file:./style.512707bb55ce98328b1b.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "images": {
+      "type": "array",
+      "default": []
+    },
+    "columnCount": {
+      "type": "integer",
+      "default": 4
+    },
+    "hasLightbox": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "providesContext": {
+    "launchpad-blocks/carouselImages": "images",
+    "launchpad-blocks/hasLightbox": "hasLightbox"
+  },
+  "usesContext": [],
+  "example": {},
+  "supports": {}
+}

@@ -1,5 +1,21 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.17
+
+### Major Changes
+
+- fe0eb54: Move sanitisation to blocks plugin
+
+### Minor Changes
+
+- baffd14: Add gallery carousel block
+- 06be248: Move colour controls to styles tab for consistency
+- 862ba05: Add style string builder helper function
+
+### Patch Changes
+
+- 80f54fe: Add cursor pointer style to button reset styles
+
 ## 1.0.0-beta.16
 
 ### Major Changes

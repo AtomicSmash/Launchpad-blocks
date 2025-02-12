@@ -50,7 +50,7 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 
 	return (
 		<>
-			<InspectorControls>
+			<InspectorControls group="styles">
 				<ColourSelectControl<Supports, Attributes>
 					colours={[
 						{
@@ -66,6 +66,8 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 					attributesDefinition={attributesDefinition}
 					setAttributes={setAttributes}
 				/>
+			</InspectorControls>
+			<InspectorControls>
 				<Panel>
 					<PanelBody>
 						<ToggleControl

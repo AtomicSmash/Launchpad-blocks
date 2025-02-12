@@ -34,14 +34,6 @@ if ( isset( $attributes['iconColour'] ) ) {
 	$wrapper_style['--icon-colour'] = $attributes['iconColour'];
 }
 
-$wrapper_style_string = '';
-foreach ( $wrapper_style as $property => $value ) {
-	if ( strlen( $wrapper_style_string ) !== 0 ) {
-		$wrapper_style_string .= ';';
-	}
-	$wrapper_style_string .= $property . ':' . $value;
-}
-
 $has_prev_icon = isset( $attributes['prevIcon'] ) && $attributes['prevIcon']['iconName'] && $attributes['prevIcon']['library'];
 $has_next_icon = isset( $attributes['nextIcon'] ) && $attributes['nextIcon']['iconName'] && $attributes['nextIcon']['library'];
 
@@ -62,7 +54,7 @@ echo wp_kses_data(
 		array(
 			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
 			'data-carousel-navigation-arrows' => '',
-			'style' => $wrapper_style_string,
+			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 		)
 	)
 );

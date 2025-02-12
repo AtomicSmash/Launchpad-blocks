@@ -101,3 +101,27 @@ export function getUserOperatingSystem() {
 	}
 	return operatingSystem;
 }
+
+export function objectArraysAreEqual(
+	array1: Record<string, unknown>[] | undefined,
+	array2: Record<string, unknown>[] | undefined,
+) {
+	if (array1 === undefined && array2 === undefined) {
+		return true;
+	}
+	if (array1 === undefined || array2 === undefined) {
+		return false;
+	}
+	if (array1.length !== array2.length) {
+		return false;
+	}
+	for (let $i = 0; $i < array1.length; $i++) {
+		const isObjectEqual = Object.entries(array1[$i]!).every(([key, value]) => {
+			return array2[$i]?.[key] === value;
+		});
+		if (!isObjectEqual) {
+			return false;
+		}
+	}
+	return true;
+}

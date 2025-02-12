@@ -34,12 +34,8 @@ if ( isset( $attributes['aspectRatio'] ) && 'auto' !== $attributes['aspectRatio'
 	$wrapper_style['--slide-image-fit'] = $attributes['imageFit'];
 }
 
-$wrapper_style_string = '';
-foreach ( $wrapper_style as $property => $value ) {
-	if ( strlen( $wrapper_style_string ) !== 0 ) {
-		$wrapper_style_string .= ';';
-	}
-	$wrapper_style_string .= $property . ':' . $value;
+if ( isset( $attributes['captionBackground'] ) ) {
+	$wrapper_style['--caption-background'] = $attributes['captionBackground'];
 }
 
 ?>
@@ -50,12 +46,25 @@ echo wp_kses_data(
 		array(
 			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
 			'data-carousel-slides' => '',
-			'style' => $wrapper_style_string,
+			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 			'class' => 'auto' !== $attributes['aspectRatio'] ? 'has-aspect-ratio' : '',
 		)
 	)
 );
 ?>
 >
-	<?php echo wp_kses_post( $content ); ?>
+<?php
+if ( $attributes['shouldPullImagesFromContext'] ) :
+	$carousel_images = $block->context['launchpad-blocks/carouselImages'];
+	foreach ( $carousel_images as $carousel_image ) :
+		?>
+		<figure class="wp-block-image size-full">
+			<?php echo wp_get_attachment_image( $carousel_image['id'], 'full' ); ?>
+		</figure>
+		<?php
+	endforeach;
+else :
+	echo wp_kses_post( $content );
+endif;
+?>
 </div>

@@ -1,6 +1,7 @@
 import type { SVGProps } from "react";
 import { BaseControl } from "@wordpress/components";
 import { applyFilters } from "@wordpress/hooks";
+import { Fragment } from "react";
 import { Icon } from "./svgs";
 
 export type IconMetaData = Record<
@@ -116,7 +117,7 @@ export function IconSelectControl({
 					return null;
 				}
 				return (
-					<>
+					<Fragment key={slug}>
 						<p>{library.name} icons</p>
 						<div className={`icon-select ${slug}-icon-select`}>
 							{Object.entries(library.availableIcons).map(
@@ -142,7 +143,7 @@ export function IconSelectControl({
 								},
 							)}
 						</div>
-					</>
+					</Fragment>
 				);
 			})}
 		</BaseControl>

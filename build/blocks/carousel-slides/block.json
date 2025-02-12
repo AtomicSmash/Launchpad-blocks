@@ -7,22 +7,23 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "parent": [
-    "launchpad-blocks/carousel"
+    "launchpad-blocks/carousel",
+    "launchpad-blocks/gallery-carousel"
   ],
   "allowedBlocks": [
     "core/image"
   ],
   "editorScript": [
-    "file:./index.3fdbdb59112e3064d5d9.js"
+    "file:./index.53a804dbd253a353be2d.js"
   ],
   "viewScript": [
     "file:./view.31d6cfe0d16ae931b73c.js"
   ],
   "style": [
-    "file:./style.03eb962fae25499394a4.css"
+    "file:./style.0ee574c7c730c48ec256.css"
   ],
   "editorStyle": [
-    "file:./editor-style.9a78aab58769514159d3.css"
+    "file:./editor-style.3ec794d066c23b46b0e9.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -41,12 +42,22 @@
         "contain"
       ],
       "default": "cover"
+    },
+    "shouldPullImagesFromContext": {
+      "type": "boolean",
+      "default": false
+    },
+    "captionBackground": {
+      "type": "string"
     }
   },
   "providesContext": {
     "allowResize": "allowResize"
   },
-  "usesContext": [],
+  "usesContext": [
+    "launchpad-blocks/carouselImages",
+    "launchpad-blocks/hasLightbox"
+  ],
   "example": {},
   "supports": {
     "color": {

@@ -78,3 +78,19 @@ function find_block_in_inner_blocks( array $blocks_to_search, array $block_attri
 	}
 	return null;
 }
+
+/**
+ * Convert an array of style declarations into a valid style string
+ *
+ * @param array $style_array an array of style declarations, where the key is the property and the value is the css value or keyword.
+ */
+function convert_style_array_to_string( array $style_array ) {
+	$style_string = '';
+	foreach ( $style_array as $property => $value ) {
+		if ( strlen( $style_string ) !== 0 ) {
+			$style_string .= ';';
+		}
+		$style_string .= $property . ':' . $value;
+	}
+	return $style_string;
+}

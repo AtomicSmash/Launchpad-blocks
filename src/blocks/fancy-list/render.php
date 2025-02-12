@@ -50,20 +50,11 @@ if ( $should_have_icon ) {
 	$wrapper_class[] = 'should-have-icon';
 }
 
-$wrapper_style_string = '';
-
-foreach ( $wrapper_style as $property => $value ) {
-	if ( strlen( $wrapper_style_string ) !== 0 ) {
-		$wrapper_style_string .= ';';
-	}
-	$wrapper_style_string .= $property . ':' . $value;
-}
-
 
 $block_wrapper_attributes = get_block_wrapper_attributes(
 	array(
 		'class' => join( ' ', $wrapper_class ),
-		'style' => $wrapper_style_string,
+		'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 	)
 );
 ?>

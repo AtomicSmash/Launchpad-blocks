@@ -15,6 +15,7 @@ export const blockJson = {
 	textdomain: "launchpad-blocks",
 	allowedBlocks: [
 		"launchpad-blocks/carousel-slides",
+		"launchpad-blocks/carousel-slides-from-context",
 		"launchpad-blocks/carousel-thumbnails",
 		"launchpad-blocks/carousel-navigation-arrows",
 	],

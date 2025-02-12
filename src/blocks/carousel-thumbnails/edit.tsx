@@ -22,7 +22,7 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 
 	return (
 		<>
-			<InspectorControls>
+			<InspectorControls group="styles">
 				<ColourSelectControl<Supports, Attributes>
 					colours={[
 						{

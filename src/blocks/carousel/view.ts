@@ -4,7 +4,7 @@ import { doAction, addAction } from "@wordpress/hooks";
 /**
  * The following JavaScript is loaded on the front end of the site when your block is present.
  */
-class Carousel {
+export class Carousel {
 	public carousel: HTMLDivElement;
 	public carouselSlides: HTMLDivElement;
 	public slideWidth: number;
@@ -49,7 +49,7 @@ class Carousel {
 		);
 	}
 
-	goToSlide(slideNumber: number) {
+	goToSlide(slideNumber: number, instant = false) {
 		if (this.currentSlide === slideNumber) {
 			return;
 		}
@@ -66,47 +66,44 @@ class Carousel {
 		this.currentSlide = slideNumber;
 		this.carouselSlides.scrollBy({
 			left: newScrollPosition - currentScrollPosition,
+			behavior: instant ? "instant" : "auto",
 		});
 		doAction("launchpadBlocks.carousel.updateActiveSlide");
 	}
 
-	goToPreviousSlide() {
+	goToPreviousSlide(instant = false) {
 		let prevSlide = this.currentSlide - 1;
-		console.log({ prevSlide });
 		if (prevSlide < 0) {
 			if (!this.loop) {
 				return;
 			}
 			prevSlide = this.slideCount - 1;
 		}
-		console.log({ prevSlide });
-		this.goToSlide(prevSlide);
+		this.goToSlide(prevSlide, instant);
 	}
 
-	goToNextSlide() {
+	goToNextSlide(instant = false) {
 		let nextSlide = this.currentSlide + 1;
-		console.log({ nextSlide });
 		if (nextSlide >= this.slideCount) {
 			if (!this.loop) {
 				return;
 			}
 			nextSlide = 0;
 		}
-		console.log({ nextSlide });
-		this.goToSlide(nextSlide);
+		this.goToSlide(nextSlide, instant);
 	}
 }
 
 export type CarouselInstance = InstanceType<typeof Carousel>;
 
-function enableCarousels() {
+domReady(() => {
 	const carousels =
 		document.querySelectorAll<HTMLDivElement>("[data-carousel]");
 	for (const carousel of carousels) {
+		if (carousel.parentElement?.dataset.lightbox === "") {
+			// Don't try and initialise carousels in lightboxes, they're hidden on load so it won't work.
+			continue;
+		}
 		new Carousel(carousel);
 	}
-}
-
-domReady(() => {
-	enableCarousels();
 });

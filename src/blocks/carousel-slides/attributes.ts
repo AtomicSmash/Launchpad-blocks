@@ -18,6 +18,13 @@ export const attributes = {
 		enum: ["cover", "contain"],
 		default: "cover",
 	},
+	shouldPullImagesFromContext: {
+		type: "boolean",
+		default: false,
+	},
+	captionBackground: {
+		type: "string",
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

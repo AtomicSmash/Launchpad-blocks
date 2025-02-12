@@ -7,18 +7,19 @@
   "textdomain": "launchpad-blocks",
   "allowedBlocks": [
     "launchpad-blocks/carousel-slides",
+    "launchpad-blocks/carousel-slides-from-context",
     "launchpad-blocks/carousel-thumbnails",
     "launchpad-blocks/carousel-navigation-arrows"
   ],
   "keywords": [],
   "editorScript": [
-    "file:./index.5fd76c80880c0fe56e56.js"
+    "file:./index.8f6fe7d62329114a7fe0.js"
   ],
   "viewScript": [
-    "file:./view.eb13e3f0a6ded6103097.js"
+    "file:./view.66d6d879341df0c8324e.js"
   ],
   "style": [
-    "file:./style.63a735769111c5b6a348.css"
+    "file:./style.60cb590869e95597750e.css"
   ],
   "editorStyle": [
     "file:./editor-style.9a78aab58769514159d3.css"
@@ -37,7 +38,9 @@
   "providesContext": {
     "launchpad-blocks/carouselImages": "images"
   },
-  "usesContext": [],
+  "usesContext": [
+    "launchpad-blocks/carouselImages"
+  ],
   "example": {},
   "supports": {}
 }

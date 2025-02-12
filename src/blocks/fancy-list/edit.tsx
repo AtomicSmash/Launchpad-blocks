@@ -118,6 +118,8 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 						) : null}
 					</PanelBody>
 				</Panel>
+			</InspectorControls>
+			<InspectorControls group="styles">
 				{type === "ul" ? (
 					markerType === "normal" ? (
 						<ColourSelectControl<Supports, Attributes>

@@ -1,6 +1,8 @@
-import type { InterpretedAttributes } from "./attributes";
+import type { Attributes, InterpretedAttributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
+import type { Supports } from "./supports";
 import type { InterpretedAttributes as CarouselInterpretedAttributes } from "../carousel/attributes";
+import type { InterpretedAttributes as GalleryCarouselInterpretedAttributes } from "../gallery-carousel/attributes";
 import type {
 	CreateBlockEditProps,
 	BlockInstanceAsObject,
@@ -11,53 +13,118 @@ import {
 	useInnerBlocksProps,
 	store as blockEditorStore,
 	InspectorControls,
+	MediaReplaceFlow,
+	BlockControls,
 } from "@wordpress/block-editor";
 import { createBlock } from "@wordpress/blocks";
-import { Panel, PanelBody } from "@wordpress/components";
+import { Button, Panel, PanelBody } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 import { gallery } from "@wordpress/icons";
-import { AspectRatioSelector } from "../helpers.editor";
+import { useEffect } from "react";
+import { objectArraysAreEqual } from "../helpers";
+import { AspectRatioSelector, ColourSelectControl } from "../helpers.editor";
+import { attributes as attributesDefinition } from "./attributes";
 
 export type BlockEditProps = CreateBlockEditProps<
 	InterpretedAttributes,
 	InterpretedUsedContext
 >;
 
-export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
-	const { aspectRatio, imageFit } = attributes;
+export function Edit({
+	clientId,
+	attributes,
+	setAttributes,
+	context,
+}: BlockEditProps) {
+	const {
+		aspectRatio,
+		imageFit,
+		shouldPullImagesFromContext,
+		captionBackground,
+	} = attributes;
 	const blockProps = useBlockProps({
 		className: aspectRatio !== "auto" ? "has-aspect-ratio" : "",
 		style: {
 			"--slide-aspect-ratio": aspectRatio,
 			"--slide-image-fit": aspectRatio !== "auto" ? imageFit : undefined,
+			"--caption-background": captionBackground,
 		},
 	});
 
-	const { hasChildren, innerBlockImages, parentCarouselClientId } = useSelect(
+	const hasLightbox = context["launchpad-blocks/hasLightbox"];
+
+	const {
+		hasChildren,
+		innerBlockImages,
+		parentCarousel,
+		associatedLightboxBlockId,
+	} = useSelect(
 		(select) => {
-			const { getBlocks, getBlockParentsByBlockName } = select(
+			const { getBlock, getBlocks, getBlockParentsByBlockName } = select(
 				blockEditorStore,
 			) as {
-				getBlocks: (rootClientId?: string) => BlockInstanceAsObject[];
+				getBlock: (clientId: string) => BlockInstanceAsObject & {
+					clientId: string;
+					isValid: boolean;
+					originalContent: string;
+					validationIssues: unknown[];
+				};
+				getBlocks: (rootClientId?: string) => (BlockInstanceAsObject & {
+					clientId: string;
+					isValid: boolean;
+					originalContent: string;
+					validationIssues: unknown[];
+				})[];
 				getBlockParentsByBlockName: (
 					clientId: string,
-					blockName: string,
+					blockName: string | string[],
 				) => string[];
 			};
 
 			const innerBlocks = getBlocks(clientId);
 
+			const parentCarouselClientId = getBlockParentsByBlockName(clientId, [
+				"launchpad-blocks/carousel",
+				"launchpad-blocks/gallery-carousel",
+			])[0]!;
+			const parentCarousel = getBlock(parentCarouselClientId);
+
+			function getBlockChildrenByBlockName(
+				blocks: ReturnType<typeof getBlocks>,
+				blockNames: string | string[],
+			) {
+				const blockChildrenIds: string[] = [];
+				blockNames = Array.isArray(blockNames) ? blockNames : [blockNames];
+				for (const block of blocks) {
+					if (blockNames.includes(block.name)) {
+						blockChildrenIds.push(block.clientId);
+					}
+					if (block.innerBlocks && block.innerBlocks.length > 0) {
+						blockChildrenIds.push(
+							...getBlockChildrenByBlockName(
+								block.innerBlocks as ReturnType<typeof getBlocks>,
+								blockNames,
+							),
+						);
+					}
+				}
+				return blockChildrenIds;
+			}
+
 			return {
 				hasChildren: innerBlocks.length > 0,
 				innerBlockImages: innerBlocks,
-				parentCarouselClientId: getBlockParentsByBlockName(
-					clientId,
-					"launchpad-blocks/carousel",
-				)[0]!,
+				parentCarousel,
+				associatedLightboxBlockId: hasLightbox
+					? (getBlockChildrenByBlockName(
+							getBlocks(parentCarouselClientId),
+							"launchpad-blocks/gallery-carousel-lightbox",
+						)[0] ?? null)
+					: null,
 			};
 		},
-		[clientId],
+		[clientId, hasLightbox],
 	);
 
 	const { replaceInnerBlocks, selectBlock, updateBlockAttributes } =
@@ -77,6 +144,19 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 				uniqueByBlock?: boolean,
 			) => void;
 		};
+
+	function convertImageBlocksToImagesAttribute(
+		imageBlocks: (BlockInstanceAsObject & {
+			clientId: string;
+		})[],
+	) {
+		return imageBlocks.map((imageBlock) => {
+			return {
+				id: imageBlock.attributes!.id as number,
+				url: imageBlock.attributes!.url as string,
+			};
+		});
+	}
 
 	function updateImages(
 		selectedImages: {
@@ -129,6 +209,10 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 		});
 
 		const newBlocksFullReplacement = existingImageBlocks
+			.map((block) => {
+				const { validationIssues, originalContent, ...existingBlock } = block;
+				return existingBlock;
+			})
 			.concat(newBlocks)
 			.sort(
 				(a, b) =>
@@ -138,25 +222,71 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 
 		replaceInnerBlocks(clientId, newBlocksFullReplacement);
 
-		updateBlockAttributes<CarouselInterpretedAttributes>(
-			parentCarouselClientId,
-			{
-				images: newBlocksFullReplacement.map((imageBlock) => {
-					return { id: imageBlock.attributes!.id as number };
-				}),
-			},
-		);
-
 		// Select the first block to scroll into view when new blocks are added.
 		if (newBlocks?.length > 0) {
 			selectBlock(newBlocks[0]!.clientId);
 		}
 	}
 
+	useEffect(() => {
+		if (shouldPullImagesFromContext) {
+			return;
+		}
+		const imageAttribute =
+			convertImageBlocksToImagesAttribute(innerBlockImages);
+		if (
+			!objectArraysAreEqual(
+				parentCarousel.attributes?.images as
+					| CarouselInterpretedAttributes["images"]
+					| GalleryCarouselInterpretedAttributes["images"],
+				imageAttribute,
+			)
+		) {
+			updateBlockAttributes<
+				CarouselInterpretedAttributes | GalleryCarouselInterpretedAttributes
+			>(parentCarousel.clientId, {
+				images: imageAttribute,
+			});
+		}
+	}, [
+		innerBlockImages,
+		parentCarousel,
+		shouldPullImagesFromContext,
+		updateBlockAttributes,
+	]);
+
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(blockProps);
 
 	return (
 		<>
+			{!shouldPullImagesFromContext ? (
+				<BlockControls group="other">
+					<MediaReplaceFlow
+						allowedTypes={["image"]}
+						accept="image/*"
+						onSelect={updateImages}
+						name={__("Add", "launchpad-blocks")}
+						multiple
+						mediaIds={convertImageBlocksToImagesAttribute(innerBlockImages)
+							.filter((image) => image.id)
+							.map((image) => image.id)}
+						addToGallery={innerBlockImages.length > 0}
+					/>
+				</BlockControls>
+			) : null}
+			<InspectorControls group="styles">
+				<ColourSelectControl<Supports, Attributes>
+					colours={[
+						{
+							attributeName: "captionBackground",
+							label: "Caption background colour",
+						},
+					]}
+					attributes={attributes}
+					attributesDefinition={attributesDefinition}
+					setAttributes={setAttributes}
+				/>
+			</InspectorControls>
 			<InspectorControls>
 				<Panel>
 					<PanelBody>
@@ -172,10 +302,39 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 						/>
 					</PanelBody>
 				</Panel>
+				{hasLightbox && associatedLightboxBlockId ? (
+					<Panel>
+						<PanelBody>
+							<Button
+								type="button"
+								variant="primary"
+								onClick={() => {
+									selectBlock(associatedLightboxBlockId);
+								}}
+							>
+								Edit lightbox
+							</Button>
+						</PanelBody>
+					</Panel>
+				) : null}
 			</InspectorControls>
 			<div {...innerBlocksProps}>
 				{hasChildren ? (
 					children
+				) : shouldPullImagesFromContext ? (
+					context["launchpad-blocks/carouselImages"].length ? (
+						context["launchpad-blocks/carouselImages"].map(({ id, url }) => {
+							return (
+								<figure key={id} className="wp-block-image">
+									<img src={url} alt="" />
+								</figure>
+							);
+						})
+					) : (
+						<figure className="wp-block-image">
+							<img src={`https://picsum.photos/id/237/2000/1600`} alt="" />
+						</figure>
+					)
 				) : (
 					<MediaPlaceholder
 						icon={gallery}

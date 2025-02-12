@@ -30,14 +30,6 @@ if ( isset( $attributes['selectedOutlineColour'] ) ) {
 	$wrapper_style['--selected-outline-colour'] = $attributes['selectedOutlineColour'];
 }
 
-$wrapper_style_string = '';
-foreach ( $wrapper_style as $property => $value ) {
-	if ( strlen( $wrapper_style_string ) !== 0 ) {
-		$wrapper_style_string .= ';';
-	}
-	$wrapper_style_string .= $property . ':' . $value;
-}
-
 ?>
 <div 
 <?php
@@ -46,7 +38,7 @@ echo wp_kses_data(
 		array(
 			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
 			'data-carousel-thumbnails' => '',
-			'style' => $wrapper_style_string,
+			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 		)
 	)
 );

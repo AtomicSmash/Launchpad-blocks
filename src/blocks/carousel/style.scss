@@ -3,6 +3,22 @@
  * and in the editor.
  */
 .wp-block-launchpad-blocks-carousel {
-	container: carousel / inline-size;
 	position: relative;
+
+	.wp-block-launchpad-blocks-carousel-slides {
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
+		overflow: hidden;
+		scroll-behavior: smooth;
+		aspect-ratio: var(--slide-aspect-ratio);
+
+		> * {
+			flex: 0 0 100%;
+		}
+
+		.wp-block-image {
+			height: 100%;
+		}
+	}
 }
