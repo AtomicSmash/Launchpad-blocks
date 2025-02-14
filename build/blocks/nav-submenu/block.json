@@ -17,7 +17,7 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.3f38771273828c93e814.js"
+    "file:./index.a71eee95d8abbe4a6307.js"
   ],
   "style": [
     "file:./style.704e40ca9a2e06ff766f.css"
@@ -31,7 +31,8 @@
       "type": "string"
     },
     "subMenuId": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "supports": {}

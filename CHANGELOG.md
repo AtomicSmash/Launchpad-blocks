@@ -1,5 +1,15 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.19
+
+### Minor Changes
+
+- eff47e4: Add function for getting icon renderers for all registered libraries
+
+### Patch Changes
+
+- f8dddff: fix subMenuId not setting correctly
+
 ## 1.0.0-beta.18
 
 ### Minor Changes

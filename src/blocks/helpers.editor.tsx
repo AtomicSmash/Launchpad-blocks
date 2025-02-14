@@ -988,8 +988,10 @@ export function useUniqueBlockId<
 			} as Partial<InterpretedAttributes>);
 		}
 		if (isBlockIdReserved(idAttribute)) {
-			console.log(`Regenerating ${idAttributeName} to make it unique.`);
 			const newIdAttribute = clientId.slice(0, clientId.indexOf("-"));
+			console.log(
+				`Regenerated ${idAttributeName} to make it unique. Old value: ${idAttribute}. New value: ${newIdAttribute}`,
+			);
 			setAttributes({
 				[idAttributeName]: newIdAttribute,
 			} as Partial<InterpretedAttributes>);

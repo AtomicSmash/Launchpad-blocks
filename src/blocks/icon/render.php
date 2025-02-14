@@ -28,14 +28,7 @@ $wrapper_style = array(
 	'--icon-size' => isset( $attributes['size'] ) ? $attributes['size'] : '2rem',
 );
 
-$icon_renderers = apply_filters(
-	'launchpad_blocks_icon_renderers',
-	array(
-		'launchpad-blocks' => function ( string $icon_name, array $attributes = array() ) {
-			return \LaunchpadBlocks\Helpers\icon( $icon_name, $attributes );
-		},
-	)
-);
+$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
 ?>
 <div 
 <?php

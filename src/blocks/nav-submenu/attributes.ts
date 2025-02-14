@@ -10,6 +10,7 @@ export const attributes = {
 	},
 	subMenuId: {
 		type: "string",
+		default: "",
 	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;

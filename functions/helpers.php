@@ -94,3 +94,19 @@ function convert_style_array_to_string( array $style_array ) {
 	}
 	return $style_string;
 }
+
+
+/**
+ * Get all the available icon renderers from the registered libraries.
+ */
+function get_icon_renderers() {
+	$icon_renderers = apply_filters(
+		'launchpad_blocks_icon_renderers',
+		array(
+			'launchpad-blocks' => function ( string $icon_name, array $attributes = array() ) {
+				return \LaunchpadBlocks\Helpers\icon( $icon_name, $attributes );
+			},
+		)
+	);
+	return $icon_renderers;
+}

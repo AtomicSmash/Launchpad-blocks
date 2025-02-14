@@ -37,14 +37,7 @@ if ( isset( $attributes['iconColour'] ) ) {
 $has_prev_icon = isset( $attributes['prevIcon'] ) && $attributes['prevIcon']['iconName'] && $attributes['prevIcon']['library'];
 $has_next_icon = isset( $attributes['nextIcon'] ) && $attributes['nextIcon']['iconName'] && $attributes['nextIcon']['library'];
 
-$icon_renderers = apply_filters(
-	'launchpad_blocks_icon_renderers',
-	array(
-		'launchpad-blocks' => function ( string $icon_name, array $attributes = array() ) {
-			return \LaunchpadBlocks\Helpers\icon( $icon_name, $attributes );
-		},
-	)
-);
+$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
 
 ?>
 <div 
