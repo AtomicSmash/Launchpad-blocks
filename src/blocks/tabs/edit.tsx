@@ -14,14 +14,16 @@ import {
 	PanelBody,
 	RadioControl,
 	SelectControl,
-	TextControl,
 	ToggleControl,
 	Fill,
 } from "@wordpress/components";
-import { select, useSelect } from "@wordpress/data";
-import { useState, useEffect } from "react";
+import { useSelect } from "@wordpress/data";
+import { useState } from "react";
 import { slugifyHTML } from "@plugin/blocks/helpers";
-import { getInnerBlocksByName } from "@plugin/blocks/helpers.editor";
+import {
+	getInnerBlocksByName,
+	useUniqueBlockId,
+} from "@plugin/blocks/helpers.editor";
 
 export type BlockEditProps = CreateBlockEditProps<
 	InterpretedAttributes,
@@ -94,23 +96,6 @@ type BlockInstance = {
 	validationIssues: unknown[];
 };
 
-const isBlockIdReserved = (clientId: string, tabsGroupId: string) => {
-	const tabsBlocksClientIds = (
-		select(blockEditorStore) as {
-			__experimentalGetGlobalBlocksByName: (blockName?: string) => string[];
-		}
-	).__experimentalGetGlobalBlocksByName("launchpad-blocks/tabs");
-	return tabsBlocksClientIds.some((_clientId) => {
-		const { tabsGroupId: _tabsGroupId } = (
-			select(blockEditorStore) as {
-				getBlock: (clientId: string) => BlockInstance;
-				getBlockAttributes: (clientId: string) => BlockInstance["attributes"];
-			}
-		).getBlockAttributes(_clientId) as InterpretedAttributes;
-		return clientId !== _clientId && tabsGroupId === _tabsGroupId;
-	});
-};
-
 export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 	const {
 		tabsGroupId,
@@ -134,26 +119,13 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 		[clientId],
 	);
 
-	// Set tab group id.
-	useEffect(() => {
-		if (tabsGroupId === "") {
-			const newTabsGroupId = clientId.slice(0, clientId.indexOf("-"));
-			setAttributes({
-				tabsGroupId: newTabsGroupId,
-			});
-			setTabsGroupIdField(newTabsGroupId);
-		}
-		if (isBlockIdReserved(clientId, tabsGroupId)) {
-			console.log("Regenerating tabs group id to make it unique.");
-			const newTabsGroupId = clientId.slice(0, clientId.indexOf("-"));
-			setAttributes({
-				tabsGroupId: newTabsGroupId,
-			});
-			setTabsGroupIdField(newTabsGroupId);
-		}
-	}, [tabsGroupId, clientId, setAttributes]);
-
-	const [tabsGroupIdField, setTabsGroupIdField] = useState(tabsGroupId);
+	const TabGroupIdEditControl = useUniqueBlockId(
+		attributes,
+		"tabsGroupId",
+		clientId,
+		setAttributes,
+		"launchpad-blocks/tabs",
+	);
 
 	const blockProps = useBlockProps({
 		"data-tabs-group": "true",
@@ -161,46 +133,38 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(blockProps);
 
 	const TitleTag = `h${titleLevel}` as const;
+
 	return (
 		<>
 			<InspectorControls>
 				<Panel>
 					<PanelBody>
-						<TextControl
+						<TabGroupIdEditControl
 							label="Unique tab identifier"
-							help={
+							help={(isValid) => (
 								<>
 									<span>
 										This will appear in the url when you interact with the tabs.
 										Must be unique on a page.
 									</span>
-									{isBlockIdReserved(clientId, tabsGroupIdField) ? (
+									{!isValid ? (
 										<>
 											<br />
 											<span style={{ fontWeight: "bold", color: "red" }}>
-												This value is used by another tabs group on the page.
+												This value is used by another tab group on the page.
 												Using this value: {tabsGroupId}{" "}
 											</span>
 										</>
 									) : null}
 								</>
-							}
-							value={tabsGroupIdField}
-							onChange={(newTabsGroupId) => {
-								setTabsGroupIdField(newTabsGroupId);
-								if (!isBlockIdReserved(clientId, newTabsGroupId)) {
-									setAttributes({
-										tabsGroupId: newTabsGroupId,
-									});
-								}
+							)}
+							onValidChange={(newIdAttribute) => {
+								setAttributes({
+									tabsGroupId: newIdAttribute,
+								});
 							}}
+							idAttribute={tabsGroupId}
 						/>
-						{isBlockIdReserved(clientId, tabsGroupIdField) ? (
-							<p>
-								This value is used by another tabs group on the page. Using this
-								value:{tabsGroupId}{" "}
-							</p>
-						) : null}
 						<SelectControl
 							label="Initially selected tab"
 							help="If there's no url parameter, which tab should be open when a page is loaded? Defaults to the first tab."

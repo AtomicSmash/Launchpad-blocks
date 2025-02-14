@@ -9,6 +9,10 @@ export const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	ariaLabel: {
+		type: "string",
+		default: "Primary navigation",
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

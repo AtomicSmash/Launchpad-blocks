@@ -14,13 +14,13 @@
     "core/image"
   ],
   "editorScript": [
-    "file:./index.53a804dbd253a353be2d.js"
+    "file:./index.952f6362f81774232e8d.js"
   ],
   "viewScript": [
     "file:./view.31d6cfe0d16ae931b73c.js"
   ],
   "style": [
-    "file:./style.0ee574c7c730c48ec256.css"
+    "file:./style.402d73de921a5d5fea94.css"
   ],
   "editorStyle": [
     "file:./editor-style.3ec794d066c23b46b0e9.css"
@@ -56,7 +56,7 @@
   },
   "usesContext": [
     "launchpad-blocks/carouselImages",
-    "launchpad-blocks/hasLightbox"
+    "launchpad-blocks/shouldLinkSlidesToLightbox"
   ],
   "example": {},
   "supports": {

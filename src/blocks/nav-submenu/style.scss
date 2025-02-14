@@ -2,6 +2,14 @@
  * The following styles get applied both on the front of your site
  * and in the editor.
  */
+:where(button.reset) {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
 .menu-group-list-item-submenu-button .sub-menu-label-arrow {
 	width: 1em;
 	height: 1em;
@@ -10,12 +18,8 @@
 .menu-group-list-item-submenu-button {
 	display: flex;
 	align-items: center;
-	padding: 0;
 	margin: 0;
-	border: none;
-	background: none;
 	white-space: nowrap;
-	cursor: pointer;
 }
 
 .menu-group-list-item-submenu {
@@ -79,12 +83,8 @@
 .menu-group-list-item-submenu .back-button {
 	display: flex;
 	align-items: center;
-	padding: 0;
 	margin: 0;
-	border: none;
-	background: none;
 	white-space: nowrap;
-	cursor: pointer;
 	margin-block-end: var(--wp--style--block-gap);
 
 	svg {

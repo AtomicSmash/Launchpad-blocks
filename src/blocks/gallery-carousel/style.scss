@@ -33,4 +33,12 @@
 .wp-block-launchpad-blocks-gallery-carousel
 	.wp-block-launchpad-blocks-carousel {
 	max-width: max(80%, 350px);
+
+	.wp-block-image {
+		aspect-ratio: var(--slide-aspect-ratio, contain);
+
+		img {
+			max-height: 90dvh;
+		}
+	}
 }

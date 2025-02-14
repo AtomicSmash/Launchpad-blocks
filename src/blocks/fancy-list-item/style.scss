@@ -79,6 +79,15 @@ ul.wp-block-launchpad-blocks-fancy-list.should-have-icon {
 	.wp-block-launchpad-blocks-fancy-list-item:not(.has-icon) {
 		padding-block-start: 0.45em;
 		min-height: var(--marker-size);
+
+		&::before {
+			justify-self: auto;
+			height: var(--marker-size);
+			width: var(--marker-size);
+			margin-block-start: -0.45em;
+			background-color: var(--marker-colour, #0000);
+			border-radius: 999px;
+		}
 	}
 
 	.wp-block-launchpad-blocks-fancy-list-item.has-icon {

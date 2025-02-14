@@ -43,7 +43,7 @@ echo wp_kses_data(
 ?>
 >
 	<button
-		class="navigation-content-toggle"
+		class="reset navigation-content-toggle"
 		data-navigation-content-toggle
 		aria-haspopup="true"
 		aria-expanded="false"

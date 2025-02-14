@@ -19,7 +19,7 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.5884f514afbf5d1a6264.js"
+    "file:./index.4da4c1810aa5f8965b40.js"
   ],
   "style": [
     "file:./style.9ea98ec5df90fcae0fbf.css"
@@ -32,6 +32,10 @@
     "isNestedInAnotherNavLink": {
       "type": "boolean",
       "default": false
+    },
+    "ariaLabel": {
+      "type": "string",
+      "default": "Primary navigation"
     }
   },
   "supports": {}

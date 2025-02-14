@@ -7,10 +7,10 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.0317b26db8a6e4adeaf6.js"
+    "file:./index.b7181b7c5db954dfae71.js"
   ],
   "style": [
-    "file:./style.d118bf0c2d2ccf10d947.css"
+    "file:./style.16400670a8ac45695969.css"
   ],
   "editorStyle": [
     "file:./editor-style.9a78aab58769514159d3.css"
@@ -22,6 +22,10 @@
     },
     "library": {
       "type": "string"
+    },
+    "size": {
+      "type": "string",
+      "default": "2rem"
     }
   },
   "supports": {}

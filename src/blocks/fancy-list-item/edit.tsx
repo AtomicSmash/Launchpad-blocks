@@ -7,9 +7,9 @@ import {
 	useBlockProps,
 	RichText,
 } from "@wordpress/block-editor";
-import { BaseControl, Panel, PanelBody, Button } from "@wordpress/components";
-
+import { useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
+import { store as richTextStore } from "@wordpress/rich-text";
 // import { split } from "@wordpress/rich-text";
 import { useRef } from "react";
 import { IconSelectControl, getIcons } from "../svgs.editor";
@@ -38,37 +38,36 @@ export function Edit({
 	const iconLibraries = getIcons();
 	const listItemTextContentRef = useRef<HTMLSpanElement>(null);
 
+	const allFormatTypes = useSelect(
+		(select) =>
+			(
+				select(richTextStore) as {
+					getFormatTypes: () => { name: string }[]; // there's more to this type, but name is all we need.
+				}
+			).getFormatTypes(),
+		[],
+	).map((formatType) => formatType.name);
+	console.log({ allFormatTypes });
+
 	return (
 		<>
 			<InspectorControls>
 				{shouldHaveIcon ? (
-					<Panel>
-						<PanelBody>
-							<IconSelectControl
-								dataOnSelectedIcon={{ iconName, library }}
-								onIconSelect={(dataOnSelectedIcon) => {
-									setAttributes({
-										iconName: dataOnSelectedIcon.iconName,
-										library: dataOnSelectedIcon.library,
-									});
-								}}
-							/>
-							<BaseControl __nextHasNoMarginBottom label="Remove icon">
-								<Button
-									variant="secondary"
-									isDestructive
-									onClick={() => {
-										setAttributes({
-											iconName: undefined,
-											library: undefined,
-										});
-									}}
-								>
-									Remove icon
-								</Button>
-							</BaseControl>
-						</PanelBody>
-					</Panel>
+					<IconSelectControl
+						dataOnSelectedIcon={{ iconName, library }}
+						onIconSelect={(dataOnSelectedIcon) => {
+							setAttributes({
+								iconName: dataOnSelectedIcon.iconName,
+								library: dataOnSelectedIcon.library,
+							});
+						}}
+						onReset={() => {
+							setAttributes({
+								iconName: undefined,
+								library: undefined,
+							});
+						}}
+					/>
 				) : null}
 			</InspectorControls>
 			<li {...blockProps}>
@@ -95,6 +94,11 @@ export function Edit({
 						"Write your list item content...",
 						"launchpad-blocks",
 					)}
+					allowedFormats={[
+						...allFormatTypes.filter((format) => {
+							return format !== "core/footnote" && format !== "core/image";
+						}),
+					]}
 				/>
 			</li>
 		</>

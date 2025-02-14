@@ -10,6 +10,7 @@ import { Popover } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 import { useState, useEffect } from "react";
+import { useUniqueBlockId } from "../helpers.editor";
 import { Icon } from "../svgs";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
@@ -22,10 +23,11 @@ export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
  */
 export function Edit({
 	clientId,
+	attributes,
 	isSelected,
-	attributes: { linkText },
 	setAttributes,
 }: BlockEditProps) {
+	const { linkText } = attributes;
 	const [isDropdownShown, setIsDropdownShown] = useState(false);
 	const blockProps = useBlockProps({
 		className: "menu-group-list-item has-children",
@@ -50,10 +52,18 @@ export function Edit({
 		setIsDropdownShown(isSelected || isInnerBlockSelected);
 	}, [isSelected, isInnerBlockSelected]);
 
+	useUniqueBlockId(
+		attributes,
+		"subMenuId",
+		clientId,
+		setAttributes,
+		"launchpad-blocks/nav-submenu",
+	);
+
 	return (
 		<>
 			<li {...blockProps}>
-				<button className="menu-group-list-item-submenu-button">
+				<button className="reset menu-group-list-item-submenu-button">
 					<RichText
 						tagName="span"
 						onChange={(newLinkText) => {

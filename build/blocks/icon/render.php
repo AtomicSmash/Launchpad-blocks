@@ -24,6 +24,10 @@ $content = $content;
  */
 $block = $block;
 
+$wrapper_style = array(
+	'--icon-size' => isset( $attributes['size'] ) ? $attributes['size'] : '2rem',
+);
+
 $icon_renderers = apply_filters(
 	'launchpad_blocks_icon_renderers',
 	array(
@@ -33,8 +37,21 @@ $icon_renderers = apply_filters(
 	)
 );
 ?>
-<div <?php echo wp_kses_data( get_block_wrapper_attributes( \LaunchpadBlocks\Fix\default_attributes( $block, $attributes ) ) ); ?>>
+<div 
+<?php
+echo wp_kses_data(
+	get_block_wrapper_attributes(
+		array(
+			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+		)
+	)
+);
+?>
+>
 	<?php
+	if ( isset( $attributes['library'] ) && isset( $attributes['iconName'] ) ) {
 		echo wp_kses_post( $icon_renderers[ $attributes['library'] ]( $attributes['iconName'] ) );
+	}
 	?>
 </div>

@@ -17,10 +17,10 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.aa4c329bcc00a4a3e516.js"
+    "file:./index.3f38771273828c93e814.js"
   ],
   "style": [
-    "file:./style.45de2a4d0206a83c5187.css"
+    "file:./style.704e40ca9a2e06ff766f.css"
   ],
   "editorStyle": [
     "file:./editor-style.902b93fe302bc506009e.css"
@@ -28,6 +28,9 @@
   "render": "file:./render.php",
   "attributes": {
     "linkText": {
+      "type": "string"
+    },
+    "subMenuId": {
       "type": "string"
     }
   },

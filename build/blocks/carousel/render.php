@@ -38,5 +38,6 @@ echo wp_kses_data(
 );
 ?>
 >
+	<div aria-live="polite" aria-atomic="true" class="screen-reader-text" data-carousel-live-region></div>
 	<?php echo wp_kses_post( $content ); ?>
 </div>

@@ -40,19 +40,26 @@ export function Edit({ clientId, isSelected }: BlockEditProps) {
 		template: [
 			[
 				"launchpad-blocks/carousel",
-				{},
+				{ lock: { move: true, remove: true } },
 				[
 					[
 						"launchpad-blocks/carousel-slides",
-						{ shouldPullImagesFromContext: true },
+						{
+							shouldPullImagesFromContext: true,
+							lock: { move: true, remove: true },
+						},
 					],
 					[
 						"launchpad-blocks/carousel-navigation-arrows",
-						{ className: "is-style-overlay" },
+						{
+							className: "is-style-overlay",
+							lock: { move: false, remove: true },
+						},
 					],
 				],
 			],
 		],
+		templateLock: "insert",
 	});
 	return (
 		<>

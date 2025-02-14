@@ -52,7 +52,8 @@ export function Edit({
 		},
 	});
 
-	const hasLightbox = context["launchpad-blocks/hasLightbox"];
+	const shouldLinkSlidesToLightbox =
+		context["launchpad-blocks/shouldLinkSlidesToLightbox"];
 
 	const {
 		hasChildren,
@@ -116,7 +117,7 @@ export function Edit({
 				hasChildren: innerBlocks.length > 0,
 				innerBlockImages: innerBlocks,
 				parentCarousel,
-				associatedLightboxBlockId: hasLightbox
+				associatedLightboxBlockId: shouldLinkSlidesToLightbox
 					? (getBlockChildrenByBlockName(
 							getBlocks(parentCarouselClientId),
 							"launchpad-blocks/gallery-carousel-lightbox",
@@ -124,7 +125,7 @@ export function Edit({
 					: null,
 			};
 		},
-		[clientId, hasLightbox],
+		[clientId, shouldLinkSlidesToLightbox],
 	);
 
 	const { replaceInnerBlocks, selectBlock, updateBlockAttributes } =
@@ -302,7 +303,7 @@ export function Edit({
 						/>
 					</PanelBody>
 				</Panel>
-				{hasLightbox && associatedLightboxBlockId ? (
+				{shouldLinkSlidesToLightbox && associatedLightboxBlockId ? (
 					<Panel>
 						<PanelBody>
 							<Button

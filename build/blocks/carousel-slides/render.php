@@ -39,7 +39,7 @@ if ( isset( $attributes['captionBackground'] ) ) {
 }
 
 ?>
-<div 
+<ul 
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
@@ -54,17 +54,31 @@ echo wp_kses_data(
 ?>
 >
 <?php
-if ( $attributes['shouldPullImagesFromContext'] ) :
-	$carousel_images = $block->context['launchpad-blocks/carouselImages'];
-	foreach ( $carousel_images as $carousel_image ) :
-		?>
-		<figure class="wp-block-image size-full">
-			<?php echo wp_get_attachment_image( $carousel_image['id'], 'full' ); ?>
-		</figure>
+if ( $attributes['shouldPullImagesFromContext'] ) {
+	$context_images = $block->context['launchpad-blocks/carouselImages'];
+	$carousel_images = array();
+	foreach ( $context_images as $context_image ) {
+		// There's no PHP function to recreate the figure structure of the image block, so we have to manually recreate it.
+		$carousel_images[] = '<figure class=\"wp-block-image size-full\">' . wp_get_attachment_image( $context_image['id'], 'full' ) . '</figure>';
+	}
+} else {
+	$carousel_slide_inner_blocks = $block->inner_blocks;
+	$carousel_images = array();
+	foreach ( $carousel_slide_inner_blocks as $carousel_slide_inner_block ) {
+		$carousel_images[] = render_block( $carousel_slide_inner_block->parsed_block );
+	}
+}
+$i = 0;
+foreach ( $carousel_images as $carousel_image ) :
+	?>
+	<li>
 		<?php
+		if ( $block->context['launchpad-blocks/shouldLinkSlidesToLightbox'] ) {
+			echo wp_kses_post( '<button type="button" class="reset" data-lightbox-open-button data-jump-to-slide="' . $i . '" aria-label="Open lightbox at slide ' . ( $i + 1 ) . '">' . $carousel_image . '</button>' );
+		} else {
+			echo wp_kses_post( $carousel_image );
+		}
+		++$i;
 	endforeach;
-else :
-	echo wp_kses_post( $content );
-endif;
 ?>
-</div>
+</ul>

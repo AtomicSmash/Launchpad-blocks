@@ -1,7 +1,18 @@
-import type { SVGProps } from "react";
-import { BaseControl } from "@wordpress/components";
+import type { ReactNode, SVGProps } from "react";
+import {
+	Button,
+	Panel,
+	PanelBody,
+	PanelHeader,
+	SearchControl,
+} from "@wordpress/components";
 import { applyFilters } from "@wordpress/hooks";
-import { Fragment } from "react";
+import {
+	Icon as WordPressIcon,
+	chevronDown,
+	chevronUp,
+} from "@wordpress/icons";
+import { useEffect, useState } from "react";
 import { Icon } from "./svgs";
 
 export type IconMetaData = Record<
@@ -102,50 +113,142 @@ export function getIcons() {
 }
 
 export function IconSelectControl({
+	iconSelectHeader = "Icon Select",
 	dataOnSelectedIcon,
 	onIconSelect,
+	onReset,
 }: {
+	iconSelectHeader?: string;
 	dataOnSelectedIcon: SingleSelectedIcon;
 	onIconSelect: (dataOnSelectedIcon: SingleSelectedIcon) => void;
+	onReset?: () => void;
 }) {
 	const iconLibraries = getIcons();
+	const [searchKeyword, setSearchKeyword] = useState("");
 
 	return (
-		<BaseControl __nextHasNoMarginBottom label="Icon Select">
-			{Object.entries(iconLibraries).map(([slug, library]) => {
-				if (Object.keys(library.availableIcons).length === 0) {
-					return null;
-				}
-				return (
-					<Fragment key={slug}>
-						<p>{library.name} icons</p>
-						<div className={`icon-select ${slug}-icon-select`}>
-							{Object.entries(library.availableIcons).map(
-								([icon, { title }]) => {
-									const isSelected =
-										dataOnSelectedIcon.iconName === icon &&
-										dataOnSelectedIcon.library === slug;
-									return (
-										<button
-											key={icon}
-											className={`icon-select-icon ${slug}-icon-select-icon ${slug}-icon-select-icon-${icon}${isSelected ? " is-selected" : ""}`}
-											onClick={() => {
-												onIconSelect({
-													iconName: icon,
-													library: slug,
-												});
-											}}
-											title={title}
-										>
-											{library.renderIcon(icon)}
-										</button>
-									);
-								},
-							)}
-						</div>
-					</Fragment>
-				);
-			})}
-		</BaseControl>
+		<Panel>
+			<PanelHeader>
+				{iconSelectHeader}{" "}
+				{onReset ? (
+					<Button
+						variant="secondary"
+						isDestructive
+						onClick={() => {
+							onReset();
+						}}
+						size="small"
+					>
+						Reset
+					</Button>
+				) : null}
+			</PanelHeader>
+			<PanelBody>
+				<SearchControl
+					label="Search icons"
+					value={searchKeyword}
+					onChange={(newSearchKeyword) => {
+						setSearchKeyword(newSearchKeyword);
+					}}
+				/>
+				<div>
+					{Object.entries(iconLibraries).map(([slug, library]) => {
+						if (Object.keys(library.availableIcons).length === 0) {
+							// If library has no icons before we filter by search, don't show the group at all.
+							return null;
+						}
+						const filteredIcons = Object.entries(library.availableIcons).filter(
+							([icon, { title }]) => {
+								if (
+									icon.includes(searchKeyword) ||
+									title.includes(searchKeyword)
+								) {
+									// TODO: This search is very rudimentary and could be improved later.
+									return true;
+								}
+								return false;
+							},
+						);
+						return (
+							<IconSelectGroupAccordion
+								key={slug}
+								name={library.name}
+								iconCount={filteredIcons.length}
+							>
+								<div className={`icon-select ${slug}-icon-select`}>
+									{filteredIcons.map(([icon, { title }]) => {
+										const isSelected =
+											dataOnSelectedIcon.iconName === icon &&
+											dataOnSelectedIcon.library === slug;
+										return (
+											<button
+												key={icon}
+												className={`icon-select-icon ${slug}-icon-select-icon ${slug}-icon-select-icon-${icon}${isSelected ? " is-selected" : ""}`}
+												onClick={() => {
+													onIconSelect({
+														iconName: icon,
+														library: slug,
+													});
+												}}
+												title={title}
+											>
+												{library.renderIcon(icon)}
+											</button>
+										);
+									})}
+								</div>
+							</IconSelectGroupAccordion>
+						);
+					})}
+				</div>
+			</PanelBody>
+		</Panel>
+	);
+}
+
+function IconSelectGroupAccordion({
+	name,
+	iconCount,
+	children,
+}: {
+	name: string;
+	iconCount: number;
+	children: ReactNode;
+}) {
+	const [isOpen, setIsOpen] = useState(false);
+	useEffect(() => {
+		if (iconCount === 0 && isOpen) {
+			setIsOpen(false);
+		}
+	}, [isOpen, iconCount]);
+
+	return (
+		<div className="icon-select-group-accordion">
+			<h3 className="icon-select-group-accordion-header">
+				<Button
+					type="button"
+					aria-expanded={isOpen}
+					onClick={() => {
+						if (iconCount > 0) {
+							setIsOpen(!isOpen);
+						}
+					}}
+					disabled={iconCount === 0}
+					className="icon-select-group-accordion-header-button"
+				>
+					<span className="icon-select-group-accordion-title">
+						{name} icons
+					</span>
+					<span className="icon-select-group-accordion-icon-count">
+						{iconCount}
+					</span>
+					<WordPressIcon
+						className="icon-select-group-accordion-arrow"
+						icon={isOpen ? chevronUp : chevronDown}
+					/>
+				</Button>
+			</h3>
+			{isOpen ? children : null}
+		</div>
 	);
 }

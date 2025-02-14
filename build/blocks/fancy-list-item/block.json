@@ -13,13 +13,13 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.de7a5f50aa3a9578fb93.js"
+    "file:./index.35a7204dfac879d260e9.js"
   ],
   "viewScript": [
     "file:./view.31d6cfe0d16ae931b73c.js"
   ],
   "style": [
-    "file:./style.9287b18c71e9f5ca85fd.css"
+    "file:./style.2b947f68936c626bbbf6.css"
   ],
   "editorStyle": [
     "file:./editor-style.9a78aab58769514159d3.css"

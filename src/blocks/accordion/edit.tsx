@@ -24,8 +24,8 @@ import {
 	headingLevel6,
 	paragraph,
 } from "@wordpress/icons";
-import { useEffect } from "react";
 import { Icon } from "@plugin/blocks/svgs";
+import { useUniqueBlockId } from "../helpers.editor";
 import { attributes as definedAttributeOptions } from "./attributes";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
@@ -41,15 +41,16 @@ export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
 // eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
-	const { accordionId, isInitiallyOpen, headerContent, headerElement } =
-		attributes;
+	const { isInitiallyOpen, headerContent, headerElement } = attributes;
 	const HeaderElement = headerElement;
 	const blockProps = useBlockProps();
-	useEffect(() => {
-		if (accordionId === "") {
-			setAttributes({ accordionId: clientId });
-		}
-	}, [accordionId, clientId, setAttributes]);
+	useUniqueBlockId(
+		attributes,
+		"accordionId",
+		clientId,
+		setAttributes,
+		"launchpad-blocks/accordion",
+	);
 
 	const AccordionIcon = applyFilters(
 		"launchpadBlocks.accordionIcon",

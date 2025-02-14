@@ -285,7 +285,7 @@ class NavigationSubMenu {
 		if (this.subMenuIsChild || this.parentNavigation.isMenuCollapsed()) {
 			const backButton = document.createElement("button");
 			backButton.type = "button";
-			backButton.classList.add("back-button");
+			backButton.classList.add("reset", "back-button");
 			backButton.addEventListener("click", () => {
 				this.closeSubMenu(true);
 			});

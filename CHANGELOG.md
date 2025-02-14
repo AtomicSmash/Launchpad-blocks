@@ -1,5 +1,29 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.18
+
+### Minor Changes
+
+- 76af133: Create helper hook for handling unique block ids
+
+### Patch Changes
+
+- db24e89: Add accessible name to lightbox close button
+- adad324: Fix img tag output if rendered from context in carousel
+- 0bac398: Fix lists when formatting tags are used
+- 76af133: Fix ids when duplicating accordion blocks
+- adad324: Fix subpixel rendering issue for slides in carousel
+- 9a9dde6: Show icon background for list item if no icon selected
+- adad324: Make accessibility fixes to carousel
+- bf31681: Fix accessibility of nav sub menus and add aria current to links
+- 7b46265: Prevent adding new blocks to gallery lightbox
+- b743805: Add size attribute to icon block
+- 3ea5d03: Add initial content when List block is first added
+- 98a7192: Add better default support for tall portrait images
+- d7d051a: Fix button text colour on safari in navigation
+- d9a56e9: Add aria label for nav list block
+- 57a8ee5: Improve icon select UX
+
 ## 1.0.0-beta.17
 
 ### Major Changes

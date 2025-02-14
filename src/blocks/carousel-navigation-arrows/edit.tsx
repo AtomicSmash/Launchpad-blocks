@@ -105,27 +105,25 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 							value={nextText}
 						/>
 					</PanelBody>
-					<PanelBody title="Previous icon">
-						<IconSelectControl
-							dataOnSelectedIcon={prevIcon}
-							onIconSelect={(dataOnSelectedIcon) => {
-								setAttributes({
-									prevIcon: dataOnSelectedIcon,
-								});
-							}}
-						/>
-					</PanelBody>
-					<PanelBody title="Next icon">
-						<IconSelectControl
-							dataOnSelectedIcon={nextIcon}
-							onIconSelect={(dataOnSelectedIcon) => {
-								setAttributes({
-									nextIcon: dataOnSelectedIcon,
-								});
-							}}
-						/>
-					</PanelBody>
 				</Panel>
+				<IconSelectControl
+					iconSelectHeader="Previous icon"
+					dataOnSelectedIcon={prevIcon}
+					onIconSelect={(dataOnSelectedIcon) => {
+						setAttributes({
+							prevIcon: dataOnSelectedIcon,
+						});
+					}}
+				/>
+				<IconSelectControl
+					iconSelectHeader="Next icon"
+					dataOnSelectedIcon={nextIcon}
+					onIconSelect={(dataOnSelectedIcon) => {
+						setAttributes({
+							nextIcon: dataOnSelectedIcon,
+						});
+					}}
+				/>
 			</InspectorControls>
 			<div {...innerBlocksProps}>
 				<button className="carousel-navigation-button">

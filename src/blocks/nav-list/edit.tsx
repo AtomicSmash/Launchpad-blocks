@@ -4,7 +4,9 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
+	InspectorAdvancedControls,
 } from "@wordpress/block-editor";
+import { TextControl } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
 import { useEffect } from "react";
 
@@ -18,7 +20,10 @@ export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
  */
 export function Edit({
 	clientId,
-	attributes: { isNestedInAnotherNavLink: isNestedInAnotherNavLinkAttribute },
+	attributes: {
+		isNestedInAnotherNavLink: isNestedInAnotherNavLinkAttribute,
+		ariaLabel,
+	},
 	setAttributes,
 }: BlockEditProps) {
 	const isNestedInAnotherNavLink = useSelect(
@@ -66,9 +71,25 @@ export function Edit({
 		);
 	}
 	return (
-		<nav {...blockProps}>
-			<ul {...innerBlocksProps}></ul>
-		</nav>
+		<>
+			<InspectorAdvancedControls>
+				<TextControl
+					label="Screen reader label"
+					help={
+						"Define how this navigation block will be described for users who can't see."
+					}
+					value={ariaLabel}
+					onChange={(newAriaLabel) => {
+						setAttributes({
+							ariaLabel: newAriaLabel,
+						});
+					}}
+				/>
+			</InspectorAdvancedControls>
+			<nav {...blockProps}>
+				<ul {...innerBlocksProps}></ul>
+			</nav>
+		</>
 	);
 }
 Edit.displayName = "NavListEdit";

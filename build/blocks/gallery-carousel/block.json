@@ -14,10 +14,10 @@
     "file:./index.046d14631f03675195df.js"
   ],
   "viewScript": [
-    "file:./view.8c109c01af3fed5ee681.js"
+    "file:./view.00a4f9f6ff6da960fd90.js"
   ],
   "style": [
-    "file:./style.512707bb55ce98328b1b.css"
+    "file:./style.a93d314249dc409bfb3e.css"
   ],
   "editorStyle": [
     "file:./editor-style.9a78aab58769514159d3.css"
@@ -32,14 +32,14 @@
       "type": "integer",
       "default": 4
     },
-    "hasLightbox": {
+    "shouldLinkSlidesToLightbox": {
       "type": "boolean",
       "default": true
     }
   },
   "providesContext": {
     "launchpad-blocks/carouselImages": "images",
-    "launchpad-blocks/hasLightbox": "hasLightbox"
+    "launchpad-blocks/shouldLinkSlidesToLightbox": "shouldLinkSlidesToLightbox"
   },
   "usesContext": [],
   "example": {},

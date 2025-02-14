@@ -42,6 +42,7 @@ echo wp_kses_data(
 		class="reset lightbox-close-button"
 		data-lightbox-close-button
 		autofocus
+		aria-label="Close lightbox"
 	>
 		<?php echo wp_kses_post( \LaunchpadBlocks\Helpers\icon( 'menu-close-icon' ) ); ?>
 	</button>

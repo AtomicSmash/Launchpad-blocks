@@ -2,6 +2,14 @@
  * The following styles get applied both on the front of your site
  * and in the editor.
  */
+:where(button.reset) {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
 :root {
 	--header-height: 78px;
 	--navigation-menu-open-close-timing: 400ms;
@@ -69,11 +77,7 @@
 }
 
 .navigation-content-toggle {
-	padding: 0;
 	margin: 0;
-	border: none;
-	background: none;
-	cursor: pointer;
 	position: relative;
 	overflow: visible;
 

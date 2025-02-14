@@ -8,7 +8,7 @@ import type {
 
 export const providesContext = {
 	"launchpad-blocks/carouselImages": "images",
-	"launchpad-blocks/hasLightbox": "hasLightbox",
+	"launchpad-blocks/shouldLinkSlidesToLightbox": "shouldLinkSlidesToLightbox",
 } as const satisfies BlockProvidesContext<InterpretedAttributes>;
 export type ProvidesContext = typeof providesContext;
 export type InterpretedProvidesContext = InterpretProvidesContext<

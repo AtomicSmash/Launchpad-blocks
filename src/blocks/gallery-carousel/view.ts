@@ -6,7 +6,7 @@ import { Lightbox } from "../gallery-carousel-lightbox/view";
  */
 class GalleryCarousel {
 	public carousel: HTMLDivElement;
-	public carouselSlides: HTMLDivElement | null = null;
+	public carouselSlides: HTMLUListElement | null = null;
 	public lightbox: Lightbox | null = null;
 
 	constructor(carousel: HTMLDivElement) {
@@ -19,22 +19,18 @@ class GalleryCarousel {
 			return;
 		}
 		this.lightbox = new Lightbox(lightbox);
-		const slides = carousel.querySelector<HTMLDivElement>(
-			"div[data-carousel-slides]",
+		const slides = carousel.querySelector<HTMLUListElement>(
+			"ul[data-carousel-slides]",
 		);
 		if (!slides) {
 			throw new Error("Carousels must have a slides element.");
 		}
 		this.carouselSlides = slides;
-		const images = this.carouselSlides.querySelectorAll(".wp-block-image");
-		let index = 0;
-		for (const image of images) {
-			const button = document.createElement("button");
-			button.classList.add("reset");
-			button.dataset.lightboxOpenButton = "";
-			button.dataset.jumpToSlide = `${index}`;
-			button.appendChild(image);
-			this.carouselSlides.appendChild(button);
+		const imageButtons =
+			this.carouselSlides.querySelectorAll<HTMLButtonElement>(
+				"button[data-lightbox-open-button]",
+			);
+		for (const button of imageButtons) {
 			button.addEventListener("click", () => {
 				if (this.lightbox) {
 					this.lightbox.open();
@@ -47,7 +43,6 @@ class GalleryCarousel {
 					);
 				}
 			});
-			index++;
 		}
 	}
 }

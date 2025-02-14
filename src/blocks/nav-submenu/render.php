@@ -36,13 +36,13 @@ echo wp_kses_data(
 );
 ?>
 >
-	<button class="menu-group-list-item-submenu-button" data-state="closed" data-navigation-sub-menu-toggle>
+	<button class="reset menu-group-list-item-submenu-button" data-state="closed" data-navigation-sub-menu-toggle aria-expanded="false" aria-controls="<?php echo esc_attr( $attributes['subMenuId'] ); ?>">
 		<?php
 		echo wp_kses_post( $attributes['linkText'] ?? '' );
 		echo wp_kses_data( \LaunchpadBlocks\Helpers\icon( 'accordion-arrow', array( 'class' => 'sub-menu-label-arrow' ) ) );
 		?>
 	</button>
-	<div class="menu-group-list-item-submenu" data-navigation-sub-menu-content hidden>
+	<div class="menu-group-list-item-submenu" data-navigation-sub-menu-content hidden id="<?php echo esc_attr( $attributes['subMenuId'] ); ?>">
 		<?php echo wp_kses_post( $content ); ?>
 	</div>
 </li>

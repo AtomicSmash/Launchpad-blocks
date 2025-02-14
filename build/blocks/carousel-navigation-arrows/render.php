@@ -60,7 +60,7 @@ echo wp_kses_data(
 );
 ?>
 >
-	<button class="carousel-navigation-button" data-carousel-prev-slide>
+	<button class="carousel-navigation-button" data-carousel-prev-slide aria-label="<?php echo esc_attr( $attributes['prevText'] ); ?>">
 		<?php
 		echo $has_prev_icon ? wp_kses_post( $icon_renderers[ $attributes['prevIcon']['library'] ]( $attributes['prevIcon']['iconName'], array( 'class' => 'carousel-navigation-button-icon' ) ) ) : '';
 		if ( $attributes['shouldShowTextVisually'] ) {
@@ -71,7 +71,7 @@ echo wp_kses_data(
 	<div class="carousel-navigation-inner-area">
 		<?php echo wp_kses_post( $content ); ?>
 	</div>
-	<button class="carousel-navigation-button" data-carousel-next-slide>
+	<button class="carousel-navigation-button" data-carousel-next-slide aria-label="<?php echo esc_attr( $attributes['nextText'] ); ?>">
 		<?php
 		if ( $attributes['shouldShowTextVisually'] ) {
 			echo wp_kses_post( $attributes['nextVisualText'] );

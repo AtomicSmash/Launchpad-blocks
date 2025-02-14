@@ -51,7 +51,18 @@ add_filter(
 			'allowfullscreen' => array(),
 			'referrerpolicy' => array(),
 		);
-		$tags['img']['draggable'] = array();
+		$tags['img'] = array(
+			'decoding' => true,
+			'loading' => true,
+			'width' => true,
+			'height' => true,
+			'draggable' => true,
+			'src' => true,
+			'alt' => true,
+			'srcset' => true,
+			'sizes' => true,
+			'class' => true,
+		);
 		$tags['dialog'] = array(
 			'open' => true,
 			'class' => true,

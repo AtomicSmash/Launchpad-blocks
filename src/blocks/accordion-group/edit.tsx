@@ -6,18 +6,21 @@ import {
 	InnerBlocks,
 } from "@wordpress/block-editor";
 import { CheckboxControl, Panel, PanelBody } from "@wordpress/components";
-import { useEffect } from "react";
+import { useUniqueBlockId } from "../helpers.editor";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
 
 export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
-	const { accordionGroupId, isMultiple } = attributes;
+	const { isMultiple } = attributes;
 	const blockProps = useBlockProps();
-	useEffect(() => {
-		if (accordionGroupId === "") {
-			setAttributes({ accordionGroupId: clientId });
-		}
-	}, [accordionGroupId, clientId, setAttributes]);
+
+	useUniqueBlockId(
+		attributes,
+		"accordionGroupId",
+		clientId,
+		setAttributes,
+		"launchpad-blocks/accordion-group",
+	);
 
 	return (
 		<>

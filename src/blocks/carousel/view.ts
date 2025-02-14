@@ -6,7 +6,8 @@ import { doAction, addAction } from "@wordpress/hooks";
  */
 export class Carousel {
 	public carousel: HTMLDivElement;
-	public carouselSlides: HTMLDivElement;
+	public carouselLiveRegion: HTMLDivElement;
+	public carouselSlides: HTMLUListElement;
 	public slideWidth: number;
 	public slideCount: number;
 	public currentSlide: number;
@@ -16,13 +17,21 @@ export class Carousel {
 		this.carousel = carousel;
 		this.loop = this.carousel.dataset.loop === "true";
 		this.currentSlide = 0;
-		const slides = carousel.querySelector<HTMLDivElement>(
-			"div[data-carousel-slides]",
+		const carouselLiveRegion = carousel.querySelector<HTMLDivElement>(
+			"div[data-carousel-live-region]",
+		);
+		if (!carouselLiveRegion) {
+			throw new Error("Carousels must have a live region for accessibility.");
+		}
+		this.carouselLiveRegion = carouselLiveRegion;
+		const slides = carousel.querySelector<HTMLUListElement>(
+			"ul[data-carousel-slides]",
 		);
 		if (!slides) {
 			throw new Error("Carousels must have a slides element.");
 		}
 		this.carouselSlides = slides;
+		this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
 		this.slideCount = slides.querySelectorAll(".wp-block-image").length;
 		const slideWidth =
 			this.carouselSlides.querySelector(".wp-block-image")?.clientWidth;
@@ -80,6 +89,7 @@ export class Carousel {
 			prevSlide = this.slideCount - 1;
 		}
 		this.goToSlide(prevSlide, instant);
+		this.carouselLiveRegion.textContent = `Slide ${this.currentSlide} of ${this.slideCount}`;
 	}
 
 	goToNextSlide(instant = false) {
@@ -91,6 +101,7 @@ export class Carousel {
 			nextSlide = 0;
 		}
 		this.goToSlide(nextSlide, instant);
+		this.carouselLiveRegion.textContent = `Slide ${this.currentSlide} of ${this.slideCount}`;
 	}
 }
 

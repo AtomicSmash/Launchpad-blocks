@@ -13,6 +13,10 @@ export const attributes = {
 		type: "boolean",
 		default: true,
 	},
+	shouldLinkSlidesToLightbox: {
+		type: "boolean",
+		default: false,
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

@@ -50,6 +50,6 @@ echo wp_kses_data(
 	>
 	<?php
 		echo $has_icon ? wp_kses_post( $icon_renderers[ $attributes['library'] ]( $attributes['iconName'], array( 'class' => 'list-item-icon' ) ) ) : '';
-		echo wp_kses_post( $attributes['textContent'] );
+		echo '<span>' . wp_kses_post( $attributes['textContent'] ) . '</span>';
 	?>
 </li>

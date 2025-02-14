@@ -23,6 +23,9 @@ $content = $content;
  * @var WP_Block $block The instance of the WP_Block class that represents the block being rendered.
  */
 $block = $block;
+
+global $wp;
+$current_url = trailingslashit( home_url( $wp->request ) );
 ?>
 <li <?php echo wp_kses_data( get_block_wrapper_attributes( array( 'class' => 'navigation-list-item' ) ) ); ?>>
 	<a
@@ -30,6 +33,7 @@ $block = $block;
 		target="<?php echo esc_attr( $attributes['linkTarget'] ); ?>"
 		class="navigation-list-item-link"
 		rel="<?php echo esc_attr( str_starts_with( $attributes['linkHref'] ?? '', get_site_url() ) ? 'noopener' : 'noopener noreferrer' ); ?>"
+		aria-current="<?php echo $current_url === $attributes['linkHref'] ? 'true' : 'false'; ?>"
 	>
 		<?php
 		echo wp_kses_post( $attributes['linkText'] ?? '' );

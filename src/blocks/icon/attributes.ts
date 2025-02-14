@@ -11,6 +11,10 @@ export const attributes = {
 	library: {
 		type: "string",
 	},
+	size: {
+		type: "string",
+		default: "2rem",
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

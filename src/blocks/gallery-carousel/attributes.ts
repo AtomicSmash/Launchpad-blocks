@@ -13,7 +13,7 @@ export const attributes = {
 		type: "integer",
 		default: 4,
 	},
-	hasLightbox: {
+	shouldLinkSlidesToLightbox: {
 		type: "boolean",
 		default: true,
 	},

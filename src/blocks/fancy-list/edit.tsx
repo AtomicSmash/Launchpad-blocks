@@ -55,7 +55,9 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 			.filter(Boolean)
 			.join(" "),
 	});
-	const innerBlocksProps = useInnerBlocksProps(blockProps);
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		template: [["launchpad-blocks/fancy-list-item"]],
+	});
 
 	return (
 		<>

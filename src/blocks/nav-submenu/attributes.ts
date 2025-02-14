@@ -8,6 +8,9 @@ export const attributes = {
 	linkText: {
 		type: "string",
 	},
+	subMenuId: {
+		type: "string",
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

@@ -5,8 +5,15 @@ import type {
 	InterpretAttributes,
 } from "@atomicsmash/blocks-helpers";
 import type { Taxonomy } from "@wordpress/core-data";
-import type { ComponentPropsWithoutRef, CSSProperties } from "react";
-import { useSettings } from "@wordpress/block-editor";
+import type {
+	ComponentProps,
+	ComponentPropsWithoutRef,
+	CSSProperties,
+} from "react";
+import {
+	useSettings,
+	store as blockEditorStore,
+} from "@wordpress/block-editor";
 import { registerBlockCollection } from "@wordpress/blocks";
 import {
 	ColorIndicator,
@@ -24,9 +31,9 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
-import { useSelect } from "@wordpress/data";
+import { useSelect, select } from "@wordpress/data";
 import { __, _x } from "@wordpress/i18n";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { ASCircleLogo } from "@plugin/blocks/svgs";
 
 export function registerLaunchpadBlocksCollection() {
@@ -928,4 +935,110 @@ export function AspectRatioSelector({
 			) : null}
 		</>
 	);
+}
+
+const isBlockIdReservedFactory = (
+	clientId: string,
+	idAttribute: string,
+	idAttributeName: string,
+	blockName: string,
+) => {
+	const { getBlocksByName, getBlockAttributes } = select(blockEditorStore) as {
+		getBlocksByName: (blockNames: string | string[]) => string[];
+		getBlockAttributes: (clientId: string) => BlockInstance["attributes"];
+	};
+	const tabsBlocksClientIds = getBlocksByName(blockName);
+	return tabsBlocksClientIds.some((_clientId) => {
+		const { [idAttributeName]: _idAttribute } = getBlockAttributes(_clientId);
+		return clientId !== _clientId && idAttribute === _idAttribute;
+	});
+};
+
+export function useUniqueBlockId<
+	IDAttributeName extends string,
+	InterpretedAttributes extends Record<IDAttributeName, string>,
+>(
+	attributes: InterpretedAttributes,
+	idAttributeName: IDAttributeName,
+	clientId: string,
+	setAttributes: CreateBlockEditProps<
+		InterpretedAttributes,
+		never
+	>["setAttributes"],
+	blockName: string,
+) {
+	const { [idAttributeName]: idAttribute } = attributes;
+
+	const isBlockIdReserved = useCallback(
+		(idAttribute: string) =>
+			isBlockIdReservedFactory(
+				clientId,
+				idAttribute,
+				idAttributeName,
+				blockName,
+			),
+		[clientId, idAttributeName, blockName],
+	);
+
+	useEffect(() => {
+		if (idAttribute === "") {
+			const newIdAttribute = clientId.slice(0, clientId.indexOf("-"));
+			setAttributes({
+				[idAttributeName]: newIdAttribute,
+			} as Partial<InterpretedAttributes>);
+		}
+		if (isBlockIdReserved(idAttribute)) {
+			console.log(`Regenerating ${idAttributeName} to make it unique.`);
+			const newIdAttribute = clientId.slice(0, clientId.indexOf("-"));
+			setAttributes({
+				[idAttributeName]: newIdAttribute,
+			} as Partial<InterpretedAttributes>);
+		}
+	}, [
+		idAttribute,
+		clientId,
+		setAttributes,
+		isBlockIdReserved,
+		idAttributeName,
+	]);
+
+	const AttributeIdEditControl = useMemo(
+		() =>
+			function AttributeIdEditControl({
+				label,
+				help,
+				onValidChange,
+				idAttribute,
+			}: {
+				label: ComponentProps<typeof TextControl>["label"];
+				help:
+					| ComponentProps<typeof TextControl>["help"]
+					| ((isValid: boolean) => ComponentProps<typeof TextControl>["help"]);
+				onValidChange: (newValue: string) => void;
+				idAttribute: string;
+			}) {
+				const [idAttributeFieldValue, setIdAttributeFieldValue] =
+					useState<string>(idAttribute);
+				return (
+					<TextControl
+						label={label}
+						help={
+							typeof help === "function"
+								? help(!isBlockIdReserved(idAttributeFieldValue))
+								: help
+						}
+						value={idAttributeFieldValue}
+						onChange={(newIdAttribute) => {
+							setIdAttributeFieldValue(newIdAttribute);
+							if (!isBlockIdReserved(newIdAttribute)) {
+								onValidChange(newIdAttribute);
+							}
+						}}
+					/>
+				);
+			},
+		[isBlockIdReserved],
+	);
+
+	return AttributeIdEditControl;
 }
