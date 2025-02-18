@@ -1,8 +1,8 @@
 import type { InterpretedAttributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
-import type { InterpretedAttributes as TabPanelInterpretedAttributes } from "@plugin/blocks/tab-panel/attributes";
-import type { FillProps } from "@plugin/blocks/tabs/edit";
+import type { InterpretedAttributes as TabPanelInterpretedAttributes } from "@launchpadBlocks/tab-panel/attributes";
+import type { FillProps } from "@launchpadBlocks/tabs/edit";
 import {
 	useBlockProps,
 	store as blockEditorStore,
@@ -10,7 +10,7 @@ import {
 import { Slot } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useEffect } from "react";
-import { getInnerBlocksByName } from "@plugin/blocks/helpers.editor";
+import { getInnerBlocksByName } from "@launchpadBlocks/helpers.editor";
 
 type BlockInstance = {
 	clientId: string;

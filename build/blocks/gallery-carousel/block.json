@@ -9,7 +9,9 @@
   "category": "theme",
   "description": "",
   "textdomain": "launchpad-blocks",
-  "keywords": [],
+  "keywords": [
+    "lightbox"
+  ],
   "editorScript": [
     "file:./index.046d14631f03675195df.js"
   ],

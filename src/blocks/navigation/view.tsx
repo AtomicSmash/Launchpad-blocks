@@ -10,8 +10,11 @@ import {
 } from "@floating-ui/dom";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
-import { getPixelNumber, getTimeInMilliseconds } from "@plugin/blocks/helpers";
-import { Icon } from "@plugin/blocks/svgs";
+import {
+	getPixelNumber,
+	getTimeInMilliseconds,
+} from "@launchpadBlocks/helpers";
+import { Icon } from "@launchpadBlocks/svgs";
 
 class Navigation {
 	private navigation: HTMLElementTagNameMap["nav"];

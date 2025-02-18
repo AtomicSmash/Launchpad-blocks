@@ -30,5 +30,8 @@
   "example": {},
   "supports": {
     "color": true
-  }
+  },
+  "parent": [
+    "launchpad-blocks/gallery-carousel"
+  ]
 }

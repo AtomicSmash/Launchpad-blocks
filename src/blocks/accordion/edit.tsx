@@ -24,7 +24,7 @@ import {
 	headingLevel6,
 	paragraph,
 } from "@wordpress/icons";
-import { Icon } from "@plugin/blocks/svgs";
+import { Icon } from "@launchpadBlocks/svgs";
 import { useUniqueBlockId } from "../helpers.editor";
 import { attributes as definedAttributeOptions } from "./attributes";
 

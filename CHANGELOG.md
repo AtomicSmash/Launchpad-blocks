@@ -1,5 +1,13 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.20
+
+### Patch Changes
+
+- 847f6b7: Use same alias name as child projects
+- 37dc1f9: Prevent lightbox block being used on its own
+- 26b1b1d: Add lightbox as keyword to gallery carousel to make it easier to find
+
 ## 1.0.0-beta.19
 
 ### Minor Changes

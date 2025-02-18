@@ -5,7 +5,7 @@ import type {
 	InterpretProvidesContext,
 	InterpretUsedContext,
 } from "@atomicsmash/blocks-helpers";
-import type { InterpretedProvidesContext as TabsInterpretedProvidesContext } from "@plugin/blocks/tabs";
+import type { InterpretedProvidesContext as TabsInterpretedProvidesContext } from "@launchpadBlocks/tabs";
 
 export const providesContext =
 	{} as const satisfies BlockProvidesContext<InterpretedAttributes>;

@@ -1,7 +1,7 @@
 import type { InterpretedAttributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
-import type { InterpretedAttributes as TabPanelInterpretedAttributes } from "@plugin/blocks/tab-panel/attributes";
+import type { InterpretedAttributes as TabPanelInterpretedAttributes } from "@launchpadBlocks/tab-panel/attributes";
 import {
 	store as blockEditorStore,
 	InspectorControls,
@@ -19,11 +19,11 @@ import {
 } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
 import { useState } from "react";
-import { slugifyHTML } from "@plugin/blocks/helpers";
+import { slugifyHTML } from "@launchpadBlocks/helpers";
 import {
 	getInnerBlocksByName,
 	useUniqueBlockId,
-} from "@plugin/blocks/helpers.editor";
+} from "@launchpadBlocks/helpers.editor";
 
 export type BlockEditProps = CreateBlockEditProps<
 	InterpretedAttributes,

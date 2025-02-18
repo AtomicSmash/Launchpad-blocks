@@ -8,7 +8,7 @@ import {
 } from "@wordpress/block-editor";
 import { useSelect } from "@wordpress/data";
 import { useState, useEffect } from "react";
-import { Icon } from "@plugin/blocks/svgs";
+import { Icon } from "@launchpadBlocks/svgs";
 
 export type BlockEditProps = CreateBlockEditProps<
 	InterpretedAttributes,

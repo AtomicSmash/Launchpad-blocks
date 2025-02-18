@@ -8,9 +8,9 @@ import {
 } from "@wordpress/block-editor";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useEffect } from "react";
-import { slugifyHTML } from "@plugin/blocks/helpers";
-import { getInnerBlocksByName } from "@plugin/blocks/helpers.editor";
-import { Tab } from "@plugin/blocks/tabs/edit";
+import { slugifyHTML } from "@launchpadBlocks/helpers";
+import { getInnerBlocksByName } from "@launchpadBlocks/helpers.editor";
+import { Tab } from "@launchpadBlocks/tabs/edit";
 
 export type BlockEditProps = CreateBlockEditProps<
 	InterpretedAttributes,

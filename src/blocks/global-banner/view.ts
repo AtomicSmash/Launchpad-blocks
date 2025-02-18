@@ -2,7 +2,7 @@
  * The following JavaScript is loaded on the front end of the site when your block is present.
  */
 import domReady from "@wordpress/dom-ready";
-import { getTimeInMilliseconds } from "@plugin/blocks/helpers";
+import { getTimeInMilliseconds } from "@launchpadBlocks/helpers";
 
 class GlobalBanner {
 	globalBanner: HTMLDivElement;

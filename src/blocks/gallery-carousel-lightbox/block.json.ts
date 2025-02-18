@@ -24,5 +24,6 @@ export const blockJson = {
 	usesContext,
 	example,
 	supports,
+	parent: ["launchpad-blocks/gallery-carousel"],
 } satisfies BlockMetaData<Supports, Attributes>;
 export default blockJson;

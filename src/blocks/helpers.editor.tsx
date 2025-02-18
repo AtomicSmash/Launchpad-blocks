@@ -34,7 +34,7 @@ import { store as coreStore } from "@wordpress/core-data";
 import { useSelect, select } from "@wordpress/data";
 import { __, _x } from "@wordpress/i18n";
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
-import { ASCircleLogo } from "@plugin/blocks/svgs";
+import { ASCircleLogo } from "@launchpadBlocks/svgs";
 
 export function registerLaunchpadBlocksCollection() {
 	registerBlockCollection("launchpad-blocks", {

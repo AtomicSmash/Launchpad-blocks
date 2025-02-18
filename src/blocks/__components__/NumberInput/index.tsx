@@ -1,7 +1,7 @@
 import type { ComponentPropsWithRef } from "react";
 import { useRef, useId, useState, forwardRef } from "react";
-import { getUserOperatingSystem } from "@plugin/blocks/helpers";
-import { Icon } from "@plugin/blocks/svgs";
+import { getUserOperatingSystem } from "@launchpadBlocks/helpers";
+import { Icon } from "@launchpadBlocks/svgs";
 import { Tooltip } from "../ToolTip";
 
 export const NumberInput = forwardRef<

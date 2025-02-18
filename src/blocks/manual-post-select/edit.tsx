@@ -4,7 +4,7 @@ import type {
 	CreateBlockEditProps,
 	BlockInstanceAsObject,
 } from "@atomicsmash/blocks-helpers";
-import type { TaxonomyTerm } from "@plugin/blocks/helpers.editor";
+import type { TaxonomyTerm } from "@launchpadBlocks/helpers.editor";
 import type { Post, Page, User, Taxonomy } from "@wordpress/core-data";
 import type { ComponentPropsWithoutRef, Reducer } from "react";
 import { DatePHP } from "@atomicsmash/date-php";
@@ -37,7 +37,7 @@ import {
 	useLayoutStyles,
 	WPMenuIcon,
 	orderByValues as allOrderByValues,
-} from "@plugin/blocks/helpers.editor";
+} from "@launchpadBlocks/helpers.editor";
 import { NumberInput } from "../__components__/NumberInput";
 import { supports } from "./supports";
 

@@ -1,6 +1,6 @@
 import type { InterpretedAttributes } from "./attributes";
 import { registerBlockType } from "@atomicsmash/blocks-helpers";
-import { registerLaunchpadBlocksCollection } from "@plugin/blocks/helpers.editor";
+import { registerLaunchpadBlocksCollection } from "@launchpadBlocks/helpers.editor";
 import blockMetaData from "./block.json";
 import { Edit } from "./edit";
 import { save } from "./save";

@@ -8,8 +8,8 @@ import {
 } from "@wordpress/block-editor";
 import { Panel, PanelBody, ToggleControl } from "@wordpress/components";
 import { useDispatch } from "@wordpress/data";
-import { useLayoutStyles } from "@plugin/blocks/helpers.editor";
-import { Icon } from "@plugin/blocks/svgs";
+import { useLayoutStyles } from "@launchpadBlocks/helpers.editor";
+import { Icon } from "@launchpadBlocks/svgs";
 import { supports } from "./supports";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;

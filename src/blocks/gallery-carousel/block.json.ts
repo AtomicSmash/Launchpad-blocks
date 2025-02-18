@@ -17,7 +17,7 @@ export const blockJson = {
 	category: "theme",
 	description: "",
 	textdomain: "launchpad-blocks",
-	keywords: [],
+	keywords: ["lightbox"],
 	editorScript: "file:./index.tsx",
 	viewScript: "file:./view.ts",
 	style: "file:./style.scss",
