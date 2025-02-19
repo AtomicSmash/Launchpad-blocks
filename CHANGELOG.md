@@ -1,5 +1,16 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.21
+
+### Minor Changes
+
+- 1bdbbef: Make all fixed icons filterable
+
+### Patch Changes
+
+- 3f842ee: match accordion arrow icon colour with text colour
+- 3f842ee: Fix height issues on menu open icon
+
 ## 1.0.0-beta.20
 
 ### Patch Changes

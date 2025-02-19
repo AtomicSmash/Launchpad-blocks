@@ -7,6 +7,7 @@ import {
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import { useSelect } from "@wordpress/data";
+import { applyFilters } from "@wordpress/hooks";
 import { useState, useEffect } from "react";
 import { Icon } from "@launchpadBlocks/svgs";
 
@@ -15,6 +16,7 @@ export type BlockEditProps = CreateBlockEditProps<
 	InterpretedUsedContext
 >;
 
+// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 export function Edit({ clientId, isSelected }: BlockEditProps) {
 	const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
@@ -61,6 +63,14 @@ export function Edit({ clientId, isSelected }: BlockEditProps) {
 		],
 		templateLock: "insert",
 	});
+
+	const LightboxCloseIcon = applyFilters(
+		"launchpadBlocks.lightboxCloseIcon",
+		(props: { className?: string; isEditorMode: boolean }) => (
+			<Icon iconName="menu-close-icon" {...props} />
+		),
+	) as (props: { className?: string; isEditorMode: boolean }) => JSX.Element;
+
 	return (
 		<>
 			<div {...innerBlocksProps}>
@@ -72,7 +82,7 @@ export function Edit({ clientId, isSelected }: BlockEditProps) {
 						setIsLightboxOpen(false);
 					}}
 				>
-					<Icon iconName="menu-close-icon" isEditorMode />
+					<LightboxCloseIcon isEditorMode />
 				</button>
 				{children}
 			</div>

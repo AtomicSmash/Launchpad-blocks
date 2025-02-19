@@ -24,6 +24,13 @@ $content = $content;
  */
 $block = $block;
 
+$banner_dismiss_icon_function = apply_filters(
+	'launchpad_blocks_global_banner_dismiss_icon',
+	function ( $attributes ) {
+		return \LaunchpadBlocks\Helpers\icon( 'menu-close-icon', $attributes );
+	}
+);
+
 ?>
 <div
 <?php
@@ -44,7 +51,9 @@ echo wp_kses_data(
 	<div class="info-banner-inner-content">
 		<?php echo wp_kses_post( $content ); ?>
 		<?php if ( $attributes['isDismissible'] ) : ?>
-			<button type="button" aria-label="Dismiss banner" class="dismiss-button"><?php echo wp_kses_post( \LaunchpadBlocks\Helpers\icon( 'menu-close-icon' ) ); ?></button>
+			<button type="button" aria-label="Dismiss banner" class="dismiss-button">
+				<?php echo wp_kses_post( $banner_dismiss_icon_function( array() ) ); ?>
+			</button>
 		<?php endif; ?>
 	</div>
 </div>

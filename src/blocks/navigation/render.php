@@ -24,6 +24,19 @@ $content = $content;
  */
 $block = $block;
 
+$navigation_open_icon_function = apply_filters(
+	'launchpad_blocks_navigation_open_icon',
+	function ( $attributes ) {
+		return \LaunchpadBlocks\Helpers\icon( 'menu-open-icon', $attributes );
+	}
+);
+$navigation_close_icon_function = apply_filters(
+	'launchpad_blocks_navigation_close_icon',
+	function ( $attributes ) {
+		return \LaunchpadBlocks\Helpers\icon( 'menu-close-icon', $attributes );
+	}
+);
+
 ?>
 <div 
 <?php
@@ -52,11 +65,11 @@ echo wp_kses_data(
 	>
 		<span class="text-to-open-menu">
 			Menu
-			<?php echo wp_kses_data( \LaunchpadBlocks\Helpers\icon( 'menu-open-icon', array( 'class' => 'navigation-content-toggle-icon navigation-content-toggle-icon--open' ) ) ); ?>
+			<?php echo wp_kses_post( $navigation_open_icon_function( array( 'class' => 'navigation-content-toggle-icon navigation-content-toggle-icon--open' ) ) ); ?>
 		</span>
 		<span class="text-to-close-menu">
 			Close
-			<?php echo wp_kses_data( \LaunchpadBlocks\Helpers\icon( 'menu-close-icon', array( 'class' => 'navigation-content-toggle-icon navigation-content-toggle-icon--close' ) ) ); ?>
+			<?php echo wp_kses_post( $navigation_close_icon_function( array( 'class' => 'navigation-content-toggle-icon navigation-content-toggle-icon--close' ) ) ); ?>
 		</span>
 	</button>
 	<div class="navigation-content" id="<?php echo esc_attr( $attributes['navId'] ); ?>-navigation-content" data-navigation-content data-state="closed">

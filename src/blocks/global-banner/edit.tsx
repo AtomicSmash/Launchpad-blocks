@@ -8,13 +8,16 @@ import {
 } from "@wordpress/block-editor";
 import { Panel, PanelBody, ToggleControl } from "@wordpress/components";
 import { useDispatch } from "@wordpress/data";
+import { applyFilters } from "@wordpress/hooks";
 import { useLayoutStyles } from "@launchpadBlocks/helpers.editor";
 import { Icon } from "@launchpadBlocks/svgs";
 import { supports } from "./supports";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
 
+// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 export function Edit({ attributes, setAttributes }: BlockEditProps) {
+	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	const { isDismissible, layout, style } = attributes;
 	const { className: layoutClassName, style: layoutStyle } = useLayoutStyles(
 		layout,
@@ -60,6 +63,13 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 		});
 	}
 
+	const BannerDismissIcon = applyFilters(
+		"launchpadBlocks.globalBannerDismissIcon",
+		(props: { className?: string; isEditorMode: boolean }) => (
+			<Icon iconName="menu-close-icon" {...props} />
+		),
+	) as (props: { className?: string; isEditorMode: boolean }) => JSX.Element;
+
 	return (
 		<>
 			<InspectorControls>
@@ -80,7 +90,7 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 					{children}
 					{isDismissible ? (
 						<button className="dismiss-button">
-							<Icon iconName="menu-close-icon" isEditorMode={true} />
+							<BannerDismissIcon isEditorMode={true} />
 						</button>
 					) : null}
 				</div>

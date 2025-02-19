@@ -23,6 +23,14 @@ $content = $content;
  * @var WP_Block $block The instance of the WP_Block class that represents the block being rendered.
  */
 $block = $block;
+
+$nav_submenu_dropdown_icon_function = apply_filters(
+	'launchpad_blocks_nav_submenu_dropdown_icon',
+	function ( $attributes ) {
+		return \LaunchpadBlocks\Helpers\icon( 'accordion-arrow', $attributes );
+	}
+);
+
 ?>
 <li 
 <?php
@@ -39,7 +47,7 @@ echo wp_kses_data(
 	<button class="reset menu-group-list-item-submenu-button" data-state="closed" data-navigation-sub-menu-toggle aria-expanded="false" aria-controls="<?php echo esc_attr( $attributes['subMenuId'] ); ?>">
 		<?php
 		echo wp_kses_post( $attributes['linkText'] ?? '' );
-		echo wp_kses_data( \LaunchpadBlocks\Helpers\icon( 'accordion-arrow', array( 'class' => 'sub-menu-label-arrow' ) ) );
+		echo wp_kses_post( $nav_submenu_dropdown_icon_function( array( 'class' => 'sub-menu-label-arrow' ) ) );
 		?>
 	</button>
 	<div class="menu-group-list-item-submenu" data-navigation-sub-menu-content hidden id="<?php echo esc_attr( $attributes['subMenuId'] ); ?>">

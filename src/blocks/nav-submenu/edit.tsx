@@ -8,6 +8,7 @@ import {
 } from "@wordpress/block-editor";
 import { Popover } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
+import { applyFilters } from "@wordpress/hooks";
 import { __ } from "@wordpress/i18n";
 import { useState, useEffect } from "react";
 import { useUniqueBlockId } from "../helpers.editor";
@@ -22,11 +23,16 @@ export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  */
 export function Edit({
+	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	clientId,
+	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	attributes,
+	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	isSelected,
+	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	setAttributes,
 }: BlockEditProps) {
+	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	const { linkText } = attributes;
 	const [isDropdownShown, setIsDropdownShown] = useState(false);
 	const blockProps = useBlockProps({
@@ -60,6 +66,13 @@ export function Edit({
 		"launchpad-blocks/nav-submenu",
 	);
 
+	const NavSubMenuDropdownIcon = applyFilters(
+		"launchpadBlocks.navSubMenuDropdownIcon",
+		(props: { className?: string; isEditorMode: boolean }) => (
+			<Icon iconName="accordion-arrow" {...props} />
+		),
+	) as (props: { className?: string; isEditorMode: boolean }) => JSX.Element;
+
 	return (
 		<>
 			<li {...blockProps}>
@@ -73,8 +86,7 @@ export function Edit({
 						value={linkText}
 						placeholder={"Add text..."}
 					/>
-					<Icon
-						iconName="accordion-arrow"
+					<NavSubMenuDropdownIcon
 						isEditorMode
 						className="sub-menu-label-arrow"
 					/>

@@ -24,6 +24,13 @@ $content = $content;
  */
 $block = $block;
 
+$lightbox_close_icon_function = apply_filters(
+	'launchpad_blocks_lightbox_close_icon',
+	function ( $attributes ) {
+		return \LaunchpadBlocks\Helpers\icon( 'menu-close-icon', $attributes );
+	}
+);
+
 ?>
 <dialog 
 <?php
@@ -44,7 +51,7 @@ echo wp_kses_data(
 		autofocus
 		aria-label="Close lightbox"
 	>
-		<?php echo wp_kses_post( \LaunchpadBlocks\Helpers\icon( 'menu-close-icon' ) ); ?>
+		<?php echo wp_kses_post( $lightbox_close_icon_function( array() ) ); ?>
 	</button>
 	<?php echo wp_kses_post( $content ); ?>
 </dialog>
