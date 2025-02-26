@@ -24,6 +24,18 @@ $content = $content;
  */
 $block = $block;
 
+// Check for empty list items and return early if there's no content
+$list_block_is_empty = true;
+foreach ( $block->inner_blocks as $inner_block ) {
+	if ( isset( $inner_block->parsed_block['attrs']['textContent'] ) && ! empty( $inner_block->parsed_block['attrs']['textContent'] ) ) {
+		$list_block_is_empty = false;
+		break;
+	}
+}
+if ( $list_block_is_empty ) {
+	return;
+}
+
 $is_marker_type = 'ul' === $attributes['type'] && 'normal' === $attributes['markerType'];
 $has_marker_colour = isset( $attributes['markerColour'] ) && $attributes['markerColour'];
 $has_marker_inner_colour = isset( $attributes['markerInnerColour'] ) && $attributes['markerInnerColour'] && ! $is_marker_type;

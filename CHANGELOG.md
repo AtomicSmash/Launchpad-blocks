@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.22
+
+### Patch Changes
+
+- 4cd5cbb: Add checks on the render side for empty lists and list items
+
 ## 1.0.0-beta.21
 
 ### Minor Changes
