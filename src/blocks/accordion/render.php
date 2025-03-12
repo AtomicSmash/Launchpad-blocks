@@ -61,7 +61,7 @@ echo wp_kses_data(
 	<<?php echo esc_html( $attributes['headerElement'] ); ?>>
 		<button aria-expanded="true" aria-controls="<?php echo esc_html( $attributes['accordionId'] ); ?>-panel" data-state="open" id="<?php echo esc_html( $attributes['accordionId'] ); ?>-trigger" class="accordion-header-button">
 			<span class="accordion-header-button-text"><?php echo wp_kses_post( $attributes['headerContent'] ); ?></span>
-			<?php echo wp_kses_post( $accordion_icon_function( array( 'class' => 'accordion-header-button-icon' ) ) ); ?>
+			<div class="accordion-header-button-icon-wrapper"><?php echo wp_kses_post( $accordion_icon_function( array( 'class' => 'accordion-header-button-icon' ) ) ); ?></div>
 		</button>
 	</<?php echo esc_html( $attributes['headerElement'] ); ?>>
 	<div role="region" data-state="open" aria-labelledby="<?php echo esc_html( $attributes['accordionId'] ); ?>-trigger" id="<?php echo esc_html( $attributes['accordionId'] ); ?>-panel" class="accordion-panel">

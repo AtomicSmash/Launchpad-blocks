@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.23
+
+### Major Changes
+
+- a0a274b: Wrap accordion open/close icon in wrapping div to make it easier to create some styles
+
 ## 1.0.0-beta.22
 
 ### Patch Changes

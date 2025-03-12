@@ -45,15 +45,24 @@ The double selector is a editor specific specificity hack, which when using our 
 	flex: 1;
 }
 
-.accordion-header-button-icon {
-	flex-basis: 2rem;
-	transform-origin: center;
-	transition: transform var(--launchpad-accordion-open-close-timing) ease-in-out;
+.accordion-header-button-icon-wrapper {
+	height: 2rem;
 	width: 2rem;
 	aspect-ratio: 1;
+	flex: 0 0 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.accordion-header-button[data-state="collapsed"] svg {
+.accordion-header-button-icon {
+	transform-origin: center;
+	transition: transform var(--launchpad-accordion-open-close-timing) ease-in-out;
+	width: 100%;
+	height: 100%;
+}
+
+.accordion-header-button[data-state="collapsed"] .accordion-header-button-icon {
 	transform: rotate(-90deg);
 }
 

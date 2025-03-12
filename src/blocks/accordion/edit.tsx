@@ -124,10 +124,12 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 								"launchpad-blocks",
 							)}
 						/>
-						<AccordionIcon
-							className="accordion-header-button-icon"
-							isEditorMode
-						/>
+						<div className="accordion-header-button-icon-wrapper">
+							<AccordionIcon
+								className="accordion-header-button-icon"
+								isEditorMode
+							/>
+						</div>
 					</div>
 				</HeaderElement>
 				<div className={"accordion-panel"}>
