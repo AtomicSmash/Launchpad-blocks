@@ -6,4 +6,25 @@
 	inset: 0;
 	display: grid;
 	place-items: center;
+	z-index: var(--wp--custom--z-index--lightbox, 100);
+}
+
+// Only apply styles to non-iframed editor
+html.interface-interface-skeleton__html-container {
+	.is-root-container,
+	.wp-block-launchpad-blocks-gallery-carousel {
+		position: static;
+	}
+
+	.wp-block-launchpad-blocks-gallery-carousel-lightbox {
+		position: absolute !important;
+		max-height: calc(100vh - 60px - 25px);
+	}
+
+	.wp-block-launchpad-blocks-gallery-carousel
+		.wp-block-launchpad-blocks-carousel
+		.wp-block-image
+		img {
+		max-height: calc(80vh - 60px - 25px);
+	}
 }

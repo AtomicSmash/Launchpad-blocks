@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.24
+
+### Patch Changes
+
+- eeb4c6e: Bugfix styling for old API versions
+
 ## 1.0.0-beta.23
 
 ### Major Changes
