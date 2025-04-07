@@ -99,7 +99,14 @@ function handle_default_block_comment_generation( array $output, string $name, a
 				// TODO: Improve embed block markup generation.
 				$block_comment_string = '<!-- wp:%1$s %2$s -->';
 				$block_comment_string .= '<figure class="wp-block-embed is-type-' . $attributes['type'] . ' is-provider-' . $attributes['providerNameSlug'] . ' wp-block-embed-' . $attributes['providerNameSlug'] . '">';
-				$block_comment_string .= '<div class="wp-block-embed__wrapper">' . $attributes['url'] . '</div>';
+				$block_comment_string .= join(
+					"\n",
+					array(
+						'<div class="wp-block-embed__wrapper">',
+						$attributes['url'], // The url must be on its own line.
+						'</div>',
+					)
+				);
 				$block_comment_string .= '</figure>';
 				$block_comment_string .= '<!-- /wp:%1$s -->';
 			break;
@@ -129,5 +136,6 @@ add_filter( 'launchpad_blocks_block_comment_markup', __NAMESPACE__ . '\\handle_d
  */
 function render_block( string $name, $attributes = array(), $inner_blocks = array(), $field_map = array(), ) {
 	$block_comment = get_block_comment( $name, $attributes, $inner_blocks, $field_map );
-	return do_blocks( $block_comment );
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- We want the core filter.
+	return do_blocks( apply_filters( 'the_content', $block_comment ) );
 }

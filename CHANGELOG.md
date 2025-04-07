@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.27
+
+### Patch Changes
+
+- b5c78ed: Fix embeds block rendering
+
 ## 1.0.0-beta.26
 
 ### Minor Changes
