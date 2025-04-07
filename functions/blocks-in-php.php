@@ -50,8 +50,39 @@ function get_block_comment( string $name, $attributes = array(), $inner_blocks =
 			'data' => $data_attribute,
 		);
 	}
+	
+	$output = apply_filters(
+		'launchpad_blocks_block_comment_markup',
+		array(
+			'attributes' => $attributes,
+			'block_markup' => null,
+		),
+		$name,
+		$inner_blocks
+	);
+	$serialised_attributes = serialize_block_attributes( $output['attributes'] );
+	
+	return sprintf( $output['block_markup'], $name, $serialised_attributes );
+}
 
+/**
+ * Generate the block comment markup for blocks
+ *
+ * @param array{attributes:array, block_markup:string} $output The block attributes and block markup to use to generate the block comment.
+ * @param string                                       $name The name of the block.
+ * @param string[]                                     $inner_blocks The inner blocks to output for this block.
+ *
+ * @return array{attributes:array, block_markup:string}
+ */
+function handle_default_block_comment_generation( array $output, string $name, array $inner_blocks ): array {
+	$block_comment = $output['block_markup'];
+	if ( null !== $block_comment ) {
+		// The markup for this block was already provided.
+		return $output;
+	}
+	$attributes = $output['attributes'];
 	$has_inner_blocks = count( $inner_blocks );
+
 	switch ( $name ) {
 		case 'image':
 			// TODO: Improve image block markup generation.
@@ -64,6 +95,14 @@ function get_block_comment( string $name, $attributes = array(), $inner_blocks =
 				'sizeSlug' => $attributes['sizeSlug'],
 			);
 			break;
+		case 'embed':
+				// TODO: Improve embed block markup generation.
+				$block_comment_string = '<!-- wp:%1$s %2$s -->';
+				$block_comment_string .= '<figure class="wp-block-embed is-type-' . $attributes['type'] . ' is-provider-' . $attributes['providerNameSlug'] . ' wp-block-embed-' . $attributes['providerNameSlug'] . '">';
+				$block_comment_string .= '<div class="wp-block-embed__wrapper">' . $attributes['url'] . '</div>';
+				$block_comment_string .= '</figure>';
+				$block_comment_string .= '<!-- /wp:%1$s -->';
+			break;
 		default:
 			$block_comment_string = '<!-- wp:%1$s ' . ( count( $attributes ) ? '%2$s ' : '' ) . ( $has_inner_blocks ? '-->' : '/-->' );
 			if ( $has_inner_blocks ) {
@@ -71,10 +110,12 @@ function get_block_comment( string $name, $attributes = array(), $inner_blocks =
 				$block_comment_string .= '<!-- /wp:%1$s -->';
 			}
 	}
-	$serialised_attributes = serialize_block_attributes( $attributes );
-	
-	return sprintf( $block_comment_string, $name, $serialised_attributes );
+	return array(
+		'attributes' => $attributes,
+		'block_markup' => $block_comment_string,
+	);
 }
+add_filter( 'launchpad_blocks_block_comment_markup', __NAMESPACE__ . '\\handle_default_block_comment_generation', 50, 3 ); // Priority is 50 so a user can both override blocks handled here completely, or adjust the generated block comments after we generate them.
 
 /**
  * Render a block from an array of attributes.
@@ -88,6 +129,5 @@ function get_block_comment( string $name, $attributes = array(), $inner_blocks =
  */
 function render_block( string $name, $attributes = array(), $inner_blocks = array(), $field_map = array(), ) {
 	$block_comment = get_block_comment( $name, $attributes, $inner_blocks, $field_map );
-	$block = new WP_Block( parse_blocks( $block_comment )[0] );
-	return $block->render();
+	return do_blocks( $block_comment );
 }

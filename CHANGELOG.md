@@ -1,5 +1,16 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.26
+
+### Minor Changes
+
+- 464ed23: Add filter so custom block markup generation can be added for blocks not supported by Launchpad
+- 464ed23: Add embed support to block comment generation
+
+### Patch Changes
+
+- 64e47f9: Apply content filters to rendered blocks correctly
+
 ## 1.0.0-beta.25
 
 ### Minor Changes
