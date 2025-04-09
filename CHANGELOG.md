@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.29
+
+### Patch Changes
+
+- 75d2671: fix group support for acf fields
+
 ## 1.0.0-beta.28
 
 ### Patch Changes

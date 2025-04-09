@@ -47,7 +47,8 @@ function interpret_acf_fields_array( array $attributes, array $field_map ) {
 			} elseif ( is_image_array_field( $attributes_value ) ) {
 				$new_array[ $field_map[ $attributes_key ] ] = $attributes_value['id'];
 			} else {
-				$new_array[ $field_map[ $attributes_key ] ] = interpret_acf_fields_array( $attributes_value, $field_map[ $attributes_key ] );
+				// Group fields (field map uses same format as repeater)
+				$new_array[ $field_map[ $attributes_key ]['id'] ] = interpret_acf_fields_array( $attributes_value, $field_map[ $attributes_key ]['children'] );
 			}
 		} else {
 			$new_array[ $field_map[ $attributes_key ] ] = $attributes_value;
