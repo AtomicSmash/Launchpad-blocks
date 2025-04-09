@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.28
+
+### Patch Changes
+
+- f7ec836: Handle image and link fields if array is returned
+
 ## 1.0.0-beta.27
 
 ### Patch Changes

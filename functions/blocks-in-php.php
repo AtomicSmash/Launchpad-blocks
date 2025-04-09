@@ -5,7 +5,27 @@
 
 namespace LaunchpadBlocks\Blocks\ToPHP;
 
-use WP_Block;
+/**
+ * Check array to see if it's a link array.
+ *
+ * @param array $array_to_check The array to check.
+ */
+function is_link_field( array $array_to_check ) {
+	return array_key_exists( 'title', $array_to_check ) && array_key_exists( 'url', $array_to_check ) && array_key_exists( 'target', $array_to_check );
+}
+
+/**
+ * Check array to see if it's an image array.
+ *
+ * @param array $array_to_check The array to check.
+ */
+function is_image_array_field( array $array_to_check ) {
+	return array_key_exists( 'id', $array_to_check )
+		&& array_key_exists( 'url', $array_to_check )
+		&& array_key_exists( 'title', $array_to_check )
+		&& array_key_exists( 'alt', $array_to_check )
+		&& array_key_exists( 'sizes', $array_to_check );
+}
 
 /**
  * Interpret ACF fields into block attributes
@@ -22,6 +42,10 @@ function interpret_acf_fields_array( array $attributes, array $field_map ) {
 				foreach ( $attributes_value as $index => $attributes_subvalue ) {
 					$new_array[ $field_map[ $attributes_key ]['id'] ][ "$index" ] = interpret_acf_fields_array( $attributes_subvalue, $field_map[ $attributes_key ]['children'] );
 				}
+			} elseif ( is_link_field( $attributes_value ) ) {
+				$new_array[ $field_map[ $attributes_key ] ] = $attributes_value;
+			} elseif ( is_image_array_field( $attributes_value ) ) {
+				$new_array[ $field_map[ $attributes_key ] ] = $attributes_value['id'];
 			} else {
 				$new_array[ $field_map[ $attributes_key ] ] = interpret_acf_fields_array( $attributes_value, $field_map[ $attributes_key ] );
 			}
