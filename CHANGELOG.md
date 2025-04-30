@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.30
+
+### Minor Changes
+
+- 5cfd0e9: Add some core blocks support for block comment generation
+
 ## 1.0.0-beta.29
 
 ### Patch Changes

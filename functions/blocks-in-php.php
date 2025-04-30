@@ -5,6 +5,45 @@
 
 namespace LaunchpadBlocks\Blocks\ToPHP;
 
+use Error;
+
+/**
+ * Convert block markup attributes array into a HTML string.
+ *
+ * @param array $attributes The array of attributes to convert.
+ */
+function get_block_markup_attributes_as_string( array $attributes ) {
+	$classes = array(
+		...explode( ' ', $attributes['class'] ?? '' ),
+	);
+	if ( isset( $attributes['align'] ) ) {
+		$classes[] = 'align' . $attributes['align'];
+	}
+	unset( $attributes['align'] );
+
+	if ( isset( $attributes['className'] ) ) {
+		$classes[] = $attributes['className'];
+	}
+	unset( $attributes['className'] );
+
+	if ( count( $classes ) ) {
+		$attributes['class'] = join( ' ', $classes );
+	}
+	return join(
+		' ',
+		array_map(
+			function ( $key ) use ( $attributes ) {
+				if ( is_bool( $attributes[ $key ] ) ) {
+					return $attributes[ $key ] ? $key : '';
+				}
+				return $key . '="' . $attributes[ $key ] . '"';
+			},
+			array_keys( $attributes )
+		)
+	);
+}
+
+
 /**
  * Check array to see if it's a link array.
  *
@@ -32,29 +71,45 @@ function is_image_array_field( array $array_to_check ) {
  *
  * @param array $attributes The block data to use to render the block.
  * @param array $field_map  A field map of field names to field keys.
+ *
+ * @throws Error If a child of an acf array attribute is not handled.
  */
 function interpret_acf_fields_array( array $attributes, array $field_map ) {
-	$new_array = array();
+	$remaining_attributes = array();
+	$data_array = array();
 	foreach ( $attributes as $attributes_key => $attributes_value ) {
-		if ( 'array' === gettype( $attributes_value ) ) {
+		if ( ! isset( $field_map[ $attributes_key ] ) ) {
+			$remaining_attributes[ $attributes_key ] = $attributes_value;
+		} elseif ( 'array' === gettype( $attributes_value ) ) {
 			if ( array_is_list( $attributes_value ) ) {
-				$new_array[ $field_map[ $attributes_key ]['id'] ] = array();
+				$data_array[ $field_map[ $attributes_key ]['id'] ] = array();
 				foreach ( $attributes_value as $index => $attributes_subvalue ) {
-					$new_array[ $field_map[ $attributes_key ]['id'] ][ "$index" ] = interpret_acf_fields_array( $attributes_subvalue, $field_map[ $attributes_key ]['children'] );
+					list('data' => $data, 'remaining_attributes' => $remaining_attributes) = interpret_acf_fields_array( $attributes_subvalue, $field_map[ $attributes_key ]['children'] );
+					if ( count( $remaining_attributes ) ) {
+						throw new Error( 'Your field map is missing a child key for ' . esc_html( join( ', ', array_keys( $remaining_attributes ) ) ) . ' in ' . esc_html( $field_map[ $attributes_key ]['id'] ) );
+					}
+					$data_array[ $field_map[ $attributes_key ]['id'] ][ "$index" ] = $data;
 				}
 			} elseif ( is_link_field( $attributes_value ) ) {
-				$new_array[ $field_map[ $attributes_key ] ] = $attributes_value;
+				$data_array[ $field_map[ $attributes_key ] ] = $attributes_value;
 			} elseif ( is_image_array_field( $attributes_value ) ) {
-				$new_array[ $field_map[ $attributes_key ] ] = $attributes_value['id'];
+				$data_array[ $field_map[ $attributes_key ] ] = $attributes_value['id'];
 			} else {
 				// Group fields (field map uses same format as repeater)
-				$new_array[ $field_map[ $attributes_key ]['id'] ] = interpret_acf_fields_array( $attributes_value, $field_map[ $attributes_key ]['children'] );
+				list('data' => $data, 'remaining_attributes' => $remaining_attributes) = interpret_acf_fields_array( $attributes_value, $field_map[ $attributes_key ]['children'] );
+				if ( count( $remaining_attributes ) ) {
+					throw new Error( 'Your field map is missing a child key for ' . esc_html( join( ', ', array_keys( $remaining_attributes ) ) ) . ' in ' . esc_html( $field_map[ $attributes_key ]['id'] ) );
+				}
+				$data_array[ $field_map[ $attributes_key ]['id'] ] = $data;
 			}
 		} else {
-			$new_array[ $field_map[ $attributes_key ] ] = $attributes_value;
+			$data_array[ $field_map[ $attributes_key ] ] = $attributes_value;
 		}
 	}
-	return $new_array;
+	return array(
+		'data' => $data_array,
+		'remaining_attributes' => $remaining_attributes,
+	);
 }
 
 /**
@@ -69,10 +124,11 @@ function interpret_acf_fields_array( array $attributes, array $field_map ) {
  */
 function get_block_comment( string $name, $attributes = array(), $inner_blocks = array(), $field_map = array(), ) {
 	if ( str_starts_with( $name, 'acf/' ) && count( $attributes ) ) {
-		$data_attribute = interpret_acf_fields_array( $attributes, $field_map );
+		list('data' => $data, 'remaining_attributes' => $remaining_attributes) = interpret_acf_fields_array( $attributes, $field_map );
 		$attributes = array(
 			'name' => $name,
-			'data' => $data_attribute,
+			'data' => $data,
+			...$remaining_attributes,
 		);
 	}
 	
@@ -85,7 +141,11 @@ function get_block_comment( string $name, $attributes = array(), $inner_blocks =
 		$name,
 		$inner_blocks
 	);
-	$serialised_attributes = serialize_block_attributes( $output['attributes'] );
+	if ( count( $output['attributes'] ) ) {
+		$serialised_attributes = serialize_block_attributes( $output['attributes'] );
+	} else {
+		$serialised_attributes = '';
+	}
 	
 	return sprintf( $output['block_markup'], $name, $serialised_attributes );
 }
@@ -98,6 +158,8 @@ function get_block_comment( string $name, $attributes = array(), $inner_blocks =
  * @param string[]                                     $inner_blocks The inner blocks to output for this block.
  *
  * @return array{attributes:array, block_markup:string}
+ *
+ * @throws Error If missing required block attributes.
  */
 function handle_default_block_comment_generation( array $output, string $name, array $inner_blocks ): array {
 	$block_comment = $output['block_markup'];
@@ -110,10 +172,11 @@ function handle_default_block_comment_generation( array $output, string $name, a
 
 	switch ( $name ) {
 		case 'image':
-			// TODO: Improve image block markup generation.
+			$markup_attributes = array();
+			$markup_attributes['class'] = 'wp-block-image size-' . $attributes['sizeSlug'];
 			$attributes['sizeSlug'] = $attributes['sizeSlug'] ?? 'large';
 			$block_comment_string = '<!-- wp:%1$s %2$s -->';
-			$block_comment_string .= '<figure class="wp-block-image size-' . $attributes['sizeSlug'] . '"><img src="' . $attributes['url'] . '" alt="' . $attributes['alt'] . '" class="wp-image-' . $attributes['id'] . '"/></figure>';
+			$block_comment_string .= '<figure ' . get_block_markup_attributes_as_string( $markup_attributes ) . '><img src="' . $attributes['url'] . '" alt="' . $attributes['alt'] . '" class="wp-image-' . $attributes['id'] . '"/></figure>';
 			$block_comment_string .= '<!-- /wp:%1$s -->';
 			$attributes = array(
 				'id' => $attributes['id'],
@@ -121,9 +184,12 @@ function handle_default_block_comment_generation( array $output, string $name, a
 			);
 			break;
 		case 'embed':
-				// TODO: Improve embed block markup generation.
+				$markup_attributes = $attributes;
+				$markup_attributes['class'] = 'wp-block-embed is-type-' . $attributes['type'] . ' is-provider-' . $attributes['providerNameSlug'] . ' wp-block-embed-' . $attributes['providerNameSlug'];
+				unset( $markup_attributes['type'] );
+				unset( $markup_attributes['providerNameSlug'] );
 				$block_comment_string = '<!-- wp:%1$s %2$s -->';
-				$block_comment_string .= '<figure class="wp-block-embed is-type-' . $attributes['type'] . ' is-provider-' . $attributes['providerNameSlug'] . ' wp-block-embed-' . $attributes['providerNameSlug'] . '">';
+				$block_comment_string .= '<figure ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>';
 				$block_comment_string .= join(
 					"\n",
 					array(
@@ -134,6 +200,163 @@ function handle_default_block_comment_generation( array $output, string $name, a
 				);
 				$block_comment_string .= '</figure>';
 				$block_comment_string .= '<!-- /wp:%1$s -->';
+			break;
+		case 'paragraph':
+			$markup_attributes = $attributes;
+			unset( $markup_attributes['content'] );
+			$block_comment = '<!-- wp:%1$s --><p ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>' . $attributes['content'] . '</p><!-- /wp:%1$s -->';
+			if ( isset( $attributes['className'] ) ) {
+				$attributes = array(
+					'className' => $attributes['className'],
+				);
+			} else {
+				$attributes = array();
+			}
+			break;
+		case 'heading':
+			$markup_attributes = $attributes;
+			unset( $markup_attributes['level'] );
+			unset( $markup_attributes['content'] );
+			$block_comment = '<!-- wp:%1$s %2$s --><h' . $attributes['level'] . ' ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>' . $attributes['content'] . '</h' . $attributes['level'] . '><!-- /wp:%1$s -->';
+			if ( isset( $attributes['className'] ) ) {
+				$attributes = array(
+					'level' => $attributes['level'],
+					'className' => $attributes['className'],
+				);
+			} else {
+				$attributes = array(
+					'level' => $attributes['level'],
+				);
+			}
+			break;
+		case 'quote':
+			$markup_attributes = $attributes;
+			unset( $markup_attributes['citation'] );
+			$markup_attributes['class'] = 'wp-block-quote';
+
+			$block_comment = '<!-- wp:%1$s %2$s --><blockquote ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>';
+			$block_comment .= join( '', $inner_blocks );
+			$block_comment .= isset( $attributes['citation'] ) ? '<cite>' . $attributes['citation'] . '</cite>' : '';
+			$block_comment .= '</blockquote><!-- /wp:%1$s -->';
+			if ( isset( $attributes['className'] ) ) {
+				$attributes = array(
+					'className' => $attributes['className'],
+				);
+			} else {
+				$attributes = array();
+			}
+			break;
+		case 'list':
+			$markup_attributes = $attributes;
+			$markup_attributes['class'] = 'wp-block-list';
+			$is_ordered_list = $attributes['ordered'] ?? false;
+			if ( ! $is_ordered_list ) {
+				unset( $attributes['start'] );
+				unset( $attributes['reversed'] );
+				unset( $attributes['ordered'] );
+			}
+			$block_comment = '<!-- wp:%1$s %2$s -->';
+			$block_comment .= ( $is_ordered_list ? '<ol ' : '<ul ' ) . get_block_markup_attributes_as_string( $markup_attributes ) . '>';
+			$block_comment .= join( '', $inner_blocks );
+			$block_comment .= $is_ordered_list ? '</ol>' : '</ul>';
+			$block_comment .= '<!-- /wp:%1$s -->';
+			if ( $is_ordered_list ) {
+				$attributes = array(
+					'ordered' => $attributes['ordered'] ?? null,
+					'start' => $attributes['start'] ?? null,
+					'reversed' => $attributes['reversed'] ?? null,
+				);
+			} else {
+				$attributes = array();
+			}
+			break;
+		case 'list-item':
+			$markup_attributes = $attributes;
+			unset( $markup_attributes['content'] );
+			$block_comment = '<!-- wp:%1$s %2$s --><li ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>' . ( $attributes['content'] ?? '' );
+			$block_comment .= join( '', $inner_blocks );
+			$block_comment .= '</li><!-- /wp:%1$s -->';
+			break;
+		case 'pullquote':
+			$markup_attributes = $attributes;
+			unset( $markup_attributes['citation'] );
+			$markup_attributes['class'] = 'wp-block-pullquote';
+			$block_comment = '<!-- wp:%1$s %2$s --><figure ' . get_block_markup_attributes_as_string( $markup_attributes ) . '><blockquote>' . ( $attributes['content'] ?? '' );
+			$block_comment .= isset( $attributes['citation'] ) ? '<cite>' . $attributes['citation'] . '</cite>' : '';
+			$block_comment .= '</blockquote></figure><!-- /wp:%1$s -->';
+			if ( isset( $attributes['className'] ) ) {
+				$attributes = array(
+					'className' => $attributes['className'],
+				);
+			} else {
+				$attributes = array();
+			}
+			break;
+
+		case 'audio':
+			if ( isset( $attributes['id'] ) ) {
+				$attributes['src'] = wp_get_attachment_url( $attributes['id'] );
+			}
+
+			if ( ! isset( $attributes['src'] ) || ! $attributes['src'] ) {
+				throw new Error( 'Audio file not found' );
+			}
+
+			$markup_attributes = $attributes;
+			unset( $markup_attributes['src'] );
+			unset( $markup_attributes['caption'] );
+			unset( $markup_attributes['preload'] );
+			unset( $markup_attributes['autoplay'] );
+			unset( $markup_attributes['loop'] );
+			unset( $markup_attributes['id'] );
+			$markup_attributes['class'] = 'wp-block-audio';
+
+			$block_comment = '<!-- wp:%1$s %2$s --><figure ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>';
+			// All percentage characters in URLs must be escaped with a double percentage sign (%%) to prevent them from being interpreted as a placeholder by sprintf.
+			$block_comment .= '<audio controls src="' . str_replace( '%', '%%', $attributes['src'] );
+			$block_comment .= isset( $attributes['autoplay'] ) && $attributes['autoplay'] ? 'autoplay' : '';
+			$block_comment .= isset( $attributes['loop'] ) && $attributes['loop'] ? 'loop' : '';
+			$block_comment .= isset( $attributes['preload'] ) ? 'preload="' . $attributes['preload'] . '"' : '';
+			$block_comment .= '"></audio>';
+			$block_comment .= isset( $attributes['caption'] ) ? '<figcaption class="wp-element-caption">' . $attributes['caption'] . '</figcaption>' : '';
+			$block_comment .= '</figure><!-- /wp:%1$s -->';
+
+			$attributes = array_filter(
+				$attributes,
+				function ( $key ): bool {
+					return in_array( $key, array( 'id' ), true );
+				},
+				ARRAY_FILTER_USE_KEY
+			);
+			break;
+		case 'gallery':
+			$attributes['linkTo'] = $attributes['linkTo'] ?? 'none';
+			$image_crop = $attributes['imageCrop'] ?? true;
+			$markup_attributes = $attributes;
+			unset( $markup_attributes['columns'] );
+			unset( $markup_attributes['sizeSlug'] );
+			unset( $markup_attributes['linkTo'] );
+			unset( $markup_attributes['imageCrop'] );
+			unset( $markup_attributes['randomOrder'] );
+			$markup_attributes['class'] = 'wp-block-gallery has-nested-images';
+			if ( $image_crop ) {
+				$markup_attributes['class'] .= ' is-cropped';
+			}
+			$markup_attributes['class'] .= ' columns-' . ( $attributes['columns'] ?? 'default' );
+			$block_comment = '<!-- wp:%1$s %2$s --><figure ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>';
+			$block_comment .= join( '', $inner_blocks );
+			$block_comment .= '</figure><!-- /wp:%1$s -->';
+			break;
+		case 'cover':
+			$markup_attributes = $attributes;
+			unset( $markup_attributes['id'] );
+			unset( $markup_attributes['url'] );
+			unset( $markup_attributes['alt'] );
+			$markup_attributes['class'] = 'wp-block-cover';
+			$block_comment = '<!-- wp:%1$s %2$s --><div ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>';
+			$block_comment .= '<span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span>';
+			$block_comment .= '<img class="wp-block-cover__image-background wp-image-' . $attributes['id'] . '" alt="' . $attributes['alt'] . '" src="' . $attributes['url'] . '" data-object-fit="cover"/>';
+			$block_comment .= '<div class="wp-block-cover__inner-container">' . join( '', $inner_blocks ) . '</div></div><!-- /wp:%1$s -->';
 			break;
 		default:
 			$block_comment_string = '<!-- wp:%1$s ' . ( count( $attributes ) ? '%2$s ' : '' ) . ( $has_inner_blocks ? '-->' : '/-->' );
