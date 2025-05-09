@@ -43,6 +43,7 @@ if ( $parsed_content->get_attribute( 'data-accordion' ) !== null ) {
 	$content = $new_content;
 }
 
+$heading_level = isset( $block->context['launchpad-blocks/accordion-heading-level'] ) ? $block->context['launchpad-blocks/accordion-heading-level'] : ( isset( $block->parsed_block['attrs']['headerElement'] ) ? $block->parsed_block['attrs']['headerElement'] : 'h2' );
 ?>
 <div 
 <?php
@@ -58,12 +59,12 @@ echo wp_kses_data(
 );
 ?>
 >
-	<<?php echo esc_html( $attributes['headerElement'] ); ?>>
+	<<?php echo esc_html( $heading_level ); ?>>
 		<button aria-expanded="true" aria-controls="<?php echo esc_html( $attributes['accordionId'] ); ?>-panel" data-state="open" id="<?php echo esc_html( $attributes['accordionId'] ); ?>-trigger" class="accordion-header-button">
 			<span class="accordion-header-button-text"><?php echo wp_kses_post( $attributes['headerContent'] ); ?></span>
 			<div class="accordion-header-button-icon-wrapper"><?php echo wp_kses_post( $accordion_icon_function( array( 'class' => 'accordion-header-button-icon' ) ) ); ?></div>
 		</button>
-	</<?php echo esc_html( $attributes['headerElement'] ); ?>>
+	</<?php echo esc_html( $heading_level ); ?>>
 	<div role="region" data-state="open" aria-labelledby="<?php echo esc_html( $attributes['accordionId'] ); ?>-trigger" id="<?php echo esc_html( $attributes['accordionId'] ); ?>-panel" class="accordion-panel">
 		<div class="accordion-panel-inner-wrapper">
 			<?php echo wp_kses_post( $content ); ?>

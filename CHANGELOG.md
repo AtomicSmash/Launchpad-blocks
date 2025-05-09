@@ -1,5 +1,21 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.31
+
+### Major Changes
+
+- efb0174: Move accordion heading level select to accordion group
+
+### Minor Changes
+
+- efb0174: Improve accordion appender for clarity
+- efb0174: Rename custom list to increase list distinction
+- efb0174: Automatically add accordion when adding accordion group
+
+### Patch Changes
+
+- efb0174: Remove false positives from prop types eslint rule by disabling rule
+
 ## 1.0.0-beta.30
 
 ### Minor Changes

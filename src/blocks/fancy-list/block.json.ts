@@ -8,7 +8,7 @@ import { supports } from "./supports";
 export const blockJson = {
 	apiVersion: 3,
 	name: "launchpad-blocks/fancy-list",
-	title: "List",
+	title: "Fancy list",
 	category: "theme",
 	description: "A block to display a semantic list of content.",
 	allowedBlocks: ["launchpad-blocks/fancy-list-item"],

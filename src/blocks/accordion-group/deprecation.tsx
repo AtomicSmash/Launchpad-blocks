@@ -82,7 +82,18 @@ const v1 = {
 			);
 		},
 		migrate: (oldAttributes, oldInnerBlocks) => [
-			oldAttributes,
+			{
+				...oldAttributes,
+				headerElement:
+					(oldInnerBlocks.at(0)?.attributes?.headerElement as
+						| "h2"
+						| "h3"
+						| "h4"
+						| "h5"
+						| "h6"
+						| "p"
+						| undefined) ?? "h2",
+			},
 			[...oldInnerBlocks],
 		],
 		isEligible: () => true,

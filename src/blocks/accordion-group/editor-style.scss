@@ -20,4 +20,17 @@
 	background: var(--wp-admin-theme-color, #007cba);
 	box-shadow: none;
 	margin: 0.5rem;
+	font-size: 13px;
+	line-height: 1;
+	font-family: system-ui;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25rem;
+
+	> svg {
+		width: 2em;
+		height: auto;
+		aspect-ratio: 1;
+	}
 }

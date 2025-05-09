@@ -16,7 +16,6 @@ export type BlockEditProps = CreateBlockEditProps<
 	InterpretedUsedContext
 >;
 
-// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 export function Edit({ clientId, isSelected }: BlockEditProps) {
 	const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 

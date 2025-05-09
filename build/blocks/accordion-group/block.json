@@ -9,13 +9,13 @@
     "accordion"
   ],
   "editorScript": [
-    "file:./index.810cefc64412199a5557.js"
+    "file:./index.a7baf5c1edc1cbea980b.js"
   ],
   "viewScript": [
     "file:./view.0cb6cb928794d19b2a8e.js"
   ],
   "editorStyle": [
-    "file:./editor-style.9df6f4b23e02fc94b51f.css"
+    "file:./editor-style.78b9807aa74eb34597f7.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -26,12 +26,25 @@
     "accordionGroupId": {
       "type": "string",
       "default": ""
+    },
+    "headerElement": {
+      "type": "string",
+      "enum": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
+      "default": "h2"
     }
   },
   "example": {
     "attributes": {
       "isMultiple": true,
-      "accordionGroupId": "group-123"
+      "accordionGroupId": "group-123",
+      "headerElement": "h3"
     },
     "innerBlocks": [
       {
@@ -39,8 +52,7 @@
         "attributes": {
           "isInitiallyOpen": true,
           "accordionId": "single-123",
-          "headerContent": "Joke 1",
-          "headerElement": "h3"
+          "headerContent": "Joke 1"
         },
         "innerBlocks": [
           {
@@ -56,8 +68,7 @@
         "attributes": {
           "isInitiallyOpen": true,
           "accordionId": "single-456",
-          "headerContent": "Joke 2",
-          "headerElement": "h3"
+          "headerContent": "Joke 2"
         },
         "innerBlocks": [
           {
@@ -73,8 +84,7 @@
         "attributes": {
           "isInitiallyOpen": true,
           "accordionId": "single-789",
-          "headerContent": "Joke 3",
-          "headerElement": "h3"
+          "headerContent": "Joke 3"
         },
         "innerBlocks": [
           {
@@ -99,5 +109,12 @@
       "padding": true,
       "margin": true
     }
-  }
+  },
+  "providesContext": {
+    "launchpad-blocks/accordion-heading-level": "headerElement"
+  },
+  "usesContext": [],
+  "allowedBlocks": [
+    "launchpad-blocks/accordion"
+  ]
 }

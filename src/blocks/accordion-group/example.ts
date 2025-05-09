@@ -5,6 +5,7 @@ export const example = {
 	attributes: {
 		isMultiple: true,
 		accordionGroupId: "group-123",
+		headerElement: "h3",
 	},
 	innerBlocks: [
 		{
@@ -13,7 +14,6 @@ export const example = {
 				isInitiallyOpen: true,
 				accordionId: "single-123",
 				headerContent: "Joke 1",
-				headerElement: "h3",
 			},
 			innerBlocks: [
 				{
@@ -31,7 +31,6 @@ export const example = {
 				isInitiallyOpen: true,
 				accordionId: "single-456",
 				headerContent: "Joke 2",
-				headerElement: "h3",
 			},
 			innerBlocks: [
 				{
@@ -49,7 +48,6 @@ export const example = {
 				isInitiallyOpen: true,
 				accordionId: "single-789",
 				headerContent: "Joke 3",
-				headerElement: "h3",
 			},
 			innerBlocks: [
 				{

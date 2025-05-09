@@ -12,13 +12,13 @@
     "accordion"
   ],
   "editorScript": [
-    "file:./index.adc6262fdd31cb6142ad.js"
+    "file:./index.398a91cb6e1aa25e930f.js"
   ],
   "style": [
     "file:./style.4be4583be1651f417754.css"
   ],
   "editorStyle": [
-    "file:./editor-style.3847f4f13917d03d9740.css"
+    "file:./editor-style.d7196dce1746d4956dfa.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -58,5 +58,9 @@
       "padding": true,
       "margin": true
     }
-  }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "launchpad-blocks/accordion-heading-level"
+  ]
 }

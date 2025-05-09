@@ -29,10 +29,19 @@ import {
 	TextControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+	ToolbarDropdownMenu,
 } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
 import { useSelect, select } from "@wordpress/data";
 import { __, _x } from "@wordpress/i18n";
+import {
+	headingLevel2,
+	headingLevel3,
+	headingLevel4,
+	headingLevel5,
+	headingLevel6,
+	paragraph,
+} from "@wordpress/icons";
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { ASCircleLogo } from "@launchpadBlocks/svgs";
 
@@ -1043,4 +1052,82 @@ export function useUniqueBlockId<
 	);
 
 	return AttributeIdEditControl;
+}
+
+export function HeadingLevelSelect<
+	const HeadingLevelOptions extends readonly (
+		| "h2"
+		| "h3"
+		| "h4"
+		| "h5"
+		| "h6"
+		| "p"
+	)[],
+>({
+	levelOptions,
+	selectedLevel,
+	setSelectedHeadingLevel,
+}: {
+	levelOptions: HeadingLevelOptions;
+	selectedLevel: HeadingLevelOptions[number];
+	setSelectedHeadingLevel: (
+		newHeadingLevel: HeadingLevelOptions[number],
+	) => void;
+}) {
+	return (
+		<ToolbarDropdownMenu
+			label={__("Change title heading element", "launchpad-blocks")}
+			icon={getHeadingElementIcon(selectedLevel)}
+			controls={levelOptions.map((targetLevel) => {
+				{
+					const isActive = targetLevel === selectedLevel;
+
+					return {
+						icon: getHeadingElementIcon(targetLevel),
+						title: getHumanNameOfElement(targetLevel),
+						isDisabled: isActive,
+						onClick: () => setSelectedHeadingLevel(targetLevel),
+					};
+				}
+			})}
+		/>
+	);
+}
+
+function getHumanNameOfElement(
+	element: "h2" | "h3" | "h4" | "h5" | "h6" | "p",
+) {
+	switch (element) {
+		case "h2":
+			return __("Heading 2", "launchpad-blocks");
+		case "h3":
+			return __("Heading 3", "launchpad-blocks");
+		case "h4":
+			return __("Heading 4", "launchpad-blocks");
+		case "h5":
+			return __("Heading 5", "launchpad-blocks");
+		case "h6":
+			return __("Heading 6", "launchpad-blocks");
+		case "p":
+			return __("Paragraph", "launchpad-blocks");
+	}
+}
+
+function getHeadingElementIcon(
+	elementType: "h2" | "h3" | "h4" | "h5" | "h6" | "p",
+) {
+	switch (elementType) {
+		case "h2":
+			return headingLevel2;
+		case "h3":
+			return headingLevel3;
+		case "h4":
+			return headingLevel4;
+		case "h5":
+			return headingLevel5;
+		case "h6":
+			return headingLevel6;
+		case "p":
+			return paragraph;
+	}
 }

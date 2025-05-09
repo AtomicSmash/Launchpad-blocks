@@ -23,16 +23,11 @@ export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  */
 export function Edit({
-	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	clientId,
-	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	attributes,
-	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	isSelected,
-	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	setAttributes,
 }: BlockEditProps) {
-	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	const { linkText } = attributes;
 	const [isDropdownShown, setIsDropdownShown] = useState(false);
 	const blockProps = useBlockProps({

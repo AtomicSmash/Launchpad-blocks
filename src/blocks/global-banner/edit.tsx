@@ -15,9 +15,7 @@ import { supports } from "./supports";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
 
-// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 export function Edit({ attributes, setAttributes }: BlockEditProps) {
-	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
 	const { isDismissible, layout, style } = attributes;
 	const { className: layoutClassName, style: layoutStyle } = useLayoutStyles(
 		layout,

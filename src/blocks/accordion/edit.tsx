@@ -1,34 +1,32 @@
 import type { InterpretedAttributes } from "./attributes";
+import type { InterpretedUsedContext } from "./context";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
 import {
 	useBlockProps,
 	InspectorControls,
-	BlockControls,
-	InnerBlocks,
+	useInnerBlocksProps,
 	RichText,
+	Inserter,
+	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import {
 	CheckboxControl,
 	Panel,
 	PanelBody,
-	ToolbarGroup,
-	ToolbarDropdownMenu,
+	ButtonGroup,
+	Button,
 } from "@wordpress/components";
+import { useSelect } from "@wordpress/data";
 import { applyFilters } from "@wordpress/hooks";
 import { __ } from "@wordpress/i18n";
-import {
-	headingLevel2,
-	headingLevel3,
-	headingLevel4,
-	headingLevel5,
-	headingLevel6,
-	paragraph,
-} from "@wordpress/icons";
+import { plusCircle } from "@wordpress/icons";
 import { Icon } from "@launchpadBlocks/svgs";
 import { useUniqueBlockId } from "../helpers.editor";
-import { attributes as definedAttributeOptions } from "./attributes";
 
-export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
+export type BlockEditProps = CreateBlockEditProps<
+	InterpretedAttributes,
+	InterpretedUsedContext
+>;
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -38,12 +36,42 @@ export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
  *
  * @return Element to render.
  */
-// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
-export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
-	// eslint-disable-next-line react/prop-types -- This is a false positive triggered by `applyFilters`.
-	const { isInitiallyOpen, headerContent, headerElement } = attributes;
-	const HeaderElement = headerElement;
+export function Edit({
+	clientId,
+	attributes,
+	setAttributes,
+	isSelected,
+	context,
+}: BlockEditProps) {
+	const { isInitiallyOpen, headerContent } = attributes;
+	const HeaderElement = context["launchpad-blocks/accordion-heading-level"];
 	const blockProps = useBlockProps();
+	const innerBlockProps = useInnerBlocksProps(
+		{ className: "accordion-panel-inner-wrapper" },
+		{
+			renderAppender: () => (
+				<Inserter
+					rootClientId={clientId}
+					renderToggle={({ onToggle }: { onToggle: () => void }) => {
+						if (!isSelected && !isInnerBlockSelected) {
+							return null;
+						}
+						return (
+							<ButtonGroup>
+								<Button
+									className="accordion-inserter-button is-primary"
+									onClick={onToggle}
+								>
+									{plusCircle} Add block inside the accordion
+								</Button>
+							</ButtonGroup>
+						);
+					}}
+					isAppender
+				/>
+			),
+		},
+	);
 	useUniqueBlockId(
 		attributes,
 		"accordionId",
@@ -58,6 +86,16 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 			<Icon iconName="accordion-arrow" {...props} />
 		),
 	) as (props: { className: string; isEditorMode: boolean }) => JSX.Element;
+
+	const isInnerBlockSelected = useSelect(
+		(select) =>
+			(
+				select(blockEditorStore) as {
+					hasSelectedInnerBlock: (clientId: string, deep: boolean) => boolean;
+				}
+			).hasSelectedInnerBlock(clientId, true),
+		[clientId],
+	);
 
 	return (
 		<>
@@ -76,29 +114,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
-			<BlockControls>
-				<ToolbarGroup>
-					<ToolbarDropdownMenu
-						label={__("Change title heading element", "launchpad-blocks")}
-						icon={getHeadingElementIcon(headerElement)}
-						controls={definedAttributeOptions.headerElement.enum.map(
-							(targetLevel) => {
-								{
-									const isActive = targetLevel === headerElement;
 
-									return {
-										icon: getHeadingElementIcon(targetLevel),
-										title: getHumanNameOfElement(targetLevel),
-										isDisabled: isActive,
-										onClick: () =>
-											setAttributes({ headerElement: targetLevel }),
-									};
-								}
-							},
-						)}
-					/>
-				</ToolbarGroup>
-			</BlockControls>
 			<div {...blockProps}>
 				<HeaderElement>
 					<div className="accordion-header-button">
@@ -133,52 +149,10 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 					</div>
 				</HeaderElement>
 				<div className={"accordion-panel"}>
-					<div className="accordion-panel-inner-wrapper">
-						<InnerBlocks />
-					</div>
+					<div {...innerBlockProps} />
 				</div>
 			</div>
 		</>
 	);
 }
 Edit.displayName = "AccordionEdit";
-
-function getHumanNameOfElement(
-	element: InterpretedAttributes["headerElement"],
-) {
-	switch (element) {
-		case "h2":
-			return __("Heading 2", "launchpad-blocks");
-		case "h3":
-			return __("Heading 3", "launchpad-blocks");
-		case "h4":
-			return __("Heading 4", "launchpad-blocks");
-		case "h5":
-			return __("Heading 5", "launchpad-blocks");
-		case "h6":
-			return __("Heading 6", "launchpad-blocks");
-		case "p":
-			return __("Paragraph", "launchpad-blocks");
-	}
-}
-
-function getHeadingElementIcon(
-	elementType: InterpretedAttributes["headerElement"],
-) {
-	switch (elementType) {
-		case "h2":
-			return headingLevel2;
-		case "h3":
-			return headingLevel3;
-		case "h4":
-			return headingLevel4;
-		case "h5":
-			return headingLevel5;
-		case "h6":
-			return headingLevel6;
-		case "p":
-			return paragraph;
-		default:
-			return null;
-	}
-}

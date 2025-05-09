@@ -5,8 +5,8 @@ import { CURRENT_WORDPRESS_VERSION } from "@tests/playwright-utils";
 export const contentPersistLocation = `${process.cwd()}/tests/.tmp/accordions-page-info.json`;
 
 const accordionTests = async function ({ page }) {
-	for (const version of ["v1", "v2"]) {
-		// Go to accordion v1 testing page
+	for (const version of ["v1", "v2", "v3"]) {
+		// Go to accordion testing page
 		await page.goto(
 			await WordPressAdminInteraction.getFrontEndURL(
 				contentPersistLocation,
@@ -94,8 +94,8 @@ export const blockTestInfo = {
 	blockName: "Accordion",
 	tests: accordionTests,
 	contentPersistLocation,
-	lighthouseTestsPage: "accordion-v2-test-page",
-	visualTestsPage: "accordion-v2-test-page",
+	lighthouseTestsPage: "accordion-v3-test-page",
+	visualTestsPage: "accordion-v3-test-page",
 };
 
 export async function doTearDown(page: Page) {
