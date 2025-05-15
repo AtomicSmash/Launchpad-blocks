@@ -17,10 +17,10 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.97595473fb64b2d15505.js"
+    "file:./index.8ba9e9a36490c7286a6a.js"
   ],
   "style": [
-    "file:./style.704e40ca9a2e06ff766f.css"
+    "file:./style.6bd74d44d8362052176c.css"
   ],
   "editorStyle": [
     "file:./editor-style.902b93fe302bc506009e.css"
@@ -35,5 +35,21 @@
       "default": ""
     }
   },
-  "supports": {}
+  "supports": {},
+  "example": {
+    "viewportWidth": 200,
+    "attributes": {
+      "linkText": "Sub menu",
+      "isPreview": true
+    },
+    "innerBlocks": [
+      {
+        "name": "launchpad-blocks/nav-list",
+        "attributes": {
+          "isNestedInAnotherNavLink": true
+        },
+        "innerBlocks": []
+      }
+    ]
+  }
 }

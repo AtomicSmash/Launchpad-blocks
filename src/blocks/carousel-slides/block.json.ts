@@ -3,7 +3,6 @@ import type { Supports } from "./supports";
 import type { BlockMetaData } from "@atomicsmash/blocks-helpers";
 import { attributes } from "./attributes";
 import { providesContext, usesContext } from "./context";
-import { example } from "./example";
 import { supports } from "./supports";
 
 export const blockJson = {
@@ -24,7 +23,7 @@ export const blockJson = {
 	attributes,
 	providesContext,
 	usesContext,
-	example,
 	supports,
+	// Example not possible while this block relies on context
 } satisfies BlockMetaData<Supports, Attributes>;
 export default blockJson;

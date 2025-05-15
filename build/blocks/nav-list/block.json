@@ -19,7 +19,7 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.4da4c1810aa5f8965b40.js"
+    "file:./index.297a66c2aef28b93424e.js"
   ],
   "style": [
     "file:./style.9ea98ec5df90fcae0fbf.css"
@@ -38,5 +38,59 @@
       "default": "Primary navigation"
     }
   },
-  "supports": {}
+  "supports": {},
+  "example": {
+    "viewportWidth": 400,
+    "attributes": {
+      "isNestedInAnotherNavLink": false
+    },
+    "innerBlocks": [
+      {
+        "name": "launchpad-blocks/nav-submenu",
+        "attributes": {
+          "linkText": "Sub menu",
+          "isPreview": true
+        },
+        "innerBlocks": [
+          {
+            "name": "launchpad-blocks/nav-list",
+            "attributes": {
+              "isNestedInAnotherNavLink": true
+            },
+            "innerBlocks": []
+          }
+        ]
+      },
+      {
+        "name": "launchpad-blocks/nav-submenu",
+        "attributes": {
+          "linkText": "Sub menu",
+          "isPreview": true
+        },
+        "innerBlocks": [
+          {
+            "name": "launchpad-blocks/nav-list",
+            "attributes": {
+              "isNestedInAnotherNavLink": true
+            },
+            "innerBlocks": []
+          }
+        ]
+      },
+      {
+        "name": "launchpad-blocks/nav-menu-item",
+        "attributes": {
+          "linkText": "Menu link",
+          "linkHref": "#"
+        }
+      },
+      {
+        "name": "launchpad-blocks/nav-menu-item",
+        "attributes": {
+          "linkText": "Menu link",
+          "linkHref": "#"
+        }
+      }
+    ]
+  }
 }

@@ -9,7 +9,7 @@
   "description": "The panel of content associated with a tab in a Tabs block.",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.985053ccdb7cb2879fd9.js"
+    "file:./index.36daaa5091702477c62d.js"
   ],
   "render": "file:./render.php",
   "attributes": {

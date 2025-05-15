@@ -14,7 +14,7 @@
     "core/image"
   ],
   "editorScript": [
-    "file:./index.952f6362f81774232e8d.js"
+    "file:./index.8e5cceccb571e6ed2816.js"
   ],
   "viewScript": [
     "file:./view.31d6cfe0d16ae931b73c.js"
@@ -58,7 +58,6 @@
     "launchpad-blocks/carouselImages",
     "launchpad-blocks/shouldLinkSlidesToLightbox"
   ],
-  "example": {},
   "supports": {
     "color": {
       "link": true

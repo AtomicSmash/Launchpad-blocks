@@ -21,9 +21,4 @@ export const attributes = {
 	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
-export type InterpretedAttributes = InterpretAttributes<
-	Supports,
-	Attributes
-> & {
-	metadata: Record<string, unknown> & { name?: string };
-};
+export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

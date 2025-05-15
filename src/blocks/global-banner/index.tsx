@@ -1,11 +1,14 @@
-import type { InterpretedAttributes } from "./attributes";
-import { registerBlockType } from "@atomicsmash/blocks-helpers";
+import type { Attributes } from "./attributes";
+import type { Supports } from "./supports";
+import { registerBlockType } from "@wordpress/blocks";
 import { registerLaunchpadBlocksCollection } from "@launchpadBlocks/helpers.editor";
+import { Icon } from "@launchpadBlocks/svgs";
 import blockMetaData from "./block.json";
 import { Edit } from "./edit";
 import { save } from "./save";
 
-registerBlockType<InterpretedAttributes>(blockMetaData.name, {
+registerBlockType<Supports, Attributes>(blockMetaData.name, {
+	icon: <Icon iconName="information" />,
 	edit: Edit,
 	save: save({ hasInnerBlocks: true }),
 });

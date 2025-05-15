@@ -18,7 +18,7 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.8cf059f1eff2b828f3de.js"
+    "file:./index.1f731a4721c5885f46db.js"
   ],
   "viewScript": [
     "file:./view.b8629580455b150d75d0.js"
@@ -35,5 +35,75 @@
       "type": "string"
     }
   },
-  "supports": {}
+  "supports": {},
+  "example": {
+    "viewportWidth": 500,
+    "innerBlocks": [
+      {
+        "name": "launchpad-blocks/nav-list",
+        "attributes": {
+          "isNestedInAnotherNavLink": false
+        },
+        "innerBlocks": [
+          {
+            "name": "launchpad-blocks/nav-submenu",
+            "attributes": {
+              "linkText": "Sub menu",
+              "isPreview": true
+            },
+            "innerBlocks": [
+              {
+                "name": "launchpad-blocks/nav-list",
+                "attributes": {
+                  "isNestedInAnotherNavLink": true
+                },
+                "innerBlocks": []
+              }
+            ]
+          },
+          {
+            "name": "launchpad-blocks/nav-submenu",
+            "attributes": {
+              "linkText": "Sub menu",
+              "isPreview": true
+            },
+            "innerBlocks": [
+              {
+                "name": "launchpad-blocks/nav-list",
+                "attributes": {
+                  "isNestedInAnotherNavLink": true
+                },
+                "innerBlocks": []
+              }
+            ]
+          },
+          {
+            "name": "launchpad-blocks/nav-menu-item",
+            "attributes": {
+              "linkText": "Menu link",
+              "linkHref": "#"
+            }
+          },
+          {
+            "name": "launchpad-blocks/nav-menu-item",
+            "attributes": {
+              "linkText": "Menu link",
+              "linkHref": "#"
+            }
+          }
+        ]
+      },
+      {
+        "name": "core/buttons",
+        "innerBlocks": [
+          {
+            "name": "core/button",
+            "attributes": {
+              "text": "Example button"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }

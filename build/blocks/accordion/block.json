@@ -12,7 +12,7 @@
     "accordion"
   ],
   "editorScript": [
-    "file:./index.398a91cb6e1aa25e930f.js"
+    "file:./index.903750fc9c35bbbc81f2.js"
   ],
   "style": [
     "file:./style.4be4583be1651f417754.css"
@@ -62,5 +62,21 @@
   "providesContext": {},
   "usesContext": [
     "launchpad-blocks/accordion-heading-level"
-  ]
+  ],
+  "example": {
+    "attributes": {
+      "isInitiallyOpen": false,
+      "accordionId": "123",
+      "headerElement": "h2",
+      "headerContent": "Joke 1"
+    },
+    "innerBlocks": [
+      {
+        "name": "core/paragraph",
+        "attributes": {
+          "content": "I was going to sail around the globe in the world’s smallest ship but I bottled it."
+        }
+      }
+    ]
+  }
 }

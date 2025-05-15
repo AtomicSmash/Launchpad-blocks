@@ -1,6 +1,7 @@
-import type { InterpretedAttributes } from "./attributes";
+import type { Attributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
-import { registerBlockType } from "@atomicsmash/blocks-helpers";
+import type { Supports } from "./supports";
+import { registerBlockType } from "@wordpress/blocks";
 import { registerLaunchpadBlocksCollection } from "@launchpadBlocks/helpers.editor";
 import { Icon } from "@launchpadBlocks/svgs";
 import blockMetaData from "./block.json";
@@ -10,10 +11,10 @@ import { save } from "./save";
 
 export { type InterpretedProvidesContext } from "./context";
 
-registerBlockType<InterpretedAttributes, InterpretedUsedContext>(
+registerBlockType<Supports, Attributes, InterpretedUsedContext>(
 	blockMetaData.name,
 	{
-		icon: <Icon iconName="accordion-single" />,
+		icon: <Icon iconName="accordion" />,
 		edit: Edit,
 		save: save({ hasInnerBlocks: true }),
 		deprecated,

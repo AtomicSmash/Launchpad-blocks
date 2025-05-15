@@ -7,7 +7,7 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.b7181b7c5db954dfae71.js"
+    "file:./index.0f4bdb0cbd2e4760624d.js"
   ],
   "style": [
     "file:./style.16400670a8ac45695969.css"
@@ -28,5 +28,13 @@
       "default": "2rem"
     }
   },
-  "supports": {}
+  "supports": {},
+  "example": {
+    "viewportWidth": 48,
+    "attributes": {
+      "library": "launchpad-blocks",
+      "iconName": "accordion-arrow",
+      "size": "2rem"
+    }
+  }
 }

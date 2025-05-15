@@ -2,6 +2,7 @@ import type { Attributes } from "./attributes";
 import type { Supports } from "./supports";
 import type { BlockMetaData } from "@atomicsmash/blocks-helpers";
 import { attributes } from "./attributes";
+import { example } from "./example";
 import { supports } from "./supports";
 
 export const blockJson = {
@@ -23,5 +24,6 @@ export const blockJson = {
 	render: "file:./render.php",
 	attributes,
 	supports,
+	example,
 } satisfies BlockMetaData<Supports, Attributes>;
 export default blockJson;

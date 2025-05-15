@@ -7,7 +7,7 @@
   "textdomain": "launchpad",
   "keywords": [],
   "editorScript": [
-    "file:./index.03fc72fb1f218f123ee2.js"
+    "file:./index.6d03679cc6938009272c.js"
   ],
   "editorStyle": [
     "file:./editor-style.fd8f66484ec7d6017750.css"
@@ -118,5 +118,31 @@
       "fontSize": true,
       "lineHeight": true
     }
+  },
+  "example": {
+    "viewportWidth": 1200,
+    "attributes": {
+      "namespace": "preview",
+      "shouldFillRemainingSpots": true,
+      "postsToShow": 3,
+      "layout": {
+        "type": "grid",
+        "columnCount": 3
+      }
+    },
+    "innerBlocks": [
+      {
+        "name": "core/post-featured-image"
+      },
+      {
+        "name": "core/post-title"
+      },
+      {
+        "name": "core/post-excerpt"
+      },
+      {
+        "name": "core/read-more"
+      }
+    ]
   }
 }

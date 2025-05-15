@@ -14,10 +14,10 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.ffd4a2cb876f4f92f542.js"
+    "file:./index.3a9fc11d311f092406c2.js"
   ],
   "style": [
-    "file:./style.a32270662bf9991deda9.css"
+    "file:./style.6af02fec6b1cfcf47bb8.css"
   ],
   "editorStyle": [
     "file:./editor-style.9a78aab58769514159d3.css"
@@ -39,5 +39,12 @@
       "type": "string"
     }
   },
-  "supports": {}
+  "supports": {},
+  "example": {
+    "viewportWidth": 200,
+    "attributes": {
+      "linkText": "Menu link",
+      "linkHref": "#"
+    }
+  }
 }

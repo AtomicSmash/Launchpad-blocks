@@ -1,18 +1,19 @@
-import type { InterpretedAttributes } from "./attributes";
+import type { Attributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
-import { registerBlockType } from "@atomicsmash/blocks-helpers";
+import type { Supports } from "./supports";
+import { registerBlockType } from "@wordpress/blocks";
 import { registerLaunchpadBlocksCollection } from "@launchpadBlocks/helpers.editor";
-// import { Icon } from "@blocks/svgs";
+import { Icon } from "@launchpadBlocks/svgs";
 import blockMetaData from "./block.json";
 import { Edit } from "./edit";
 import { save } from "./save";
 
 export { type InterpretedProvidesContext } from "./context";
 
-registerBlockType<InterpretedAttributes, InterpretedUsedContext>(
+registerBlockType<Supports, Attributes, InterpretedUsedContext>(
 	blockMetaData.name,
 	{
-		// icon: <Icon iconName="" />,
+		icon: <Icon iconName="list" />,
 		edit: Edit,
 		save: save({ hasInnerBlocks: true }),
 	},

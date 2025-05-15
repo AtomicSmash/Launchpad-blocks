@@ -13,7 +13,7 @@
   ],
   "keywords": [],
   "editorScript": [
-    "file:./index.8f6fe7d62329114a7fe0.js"
+    "file:./index.cfd201b3521b1ec7be4c.js"
   ],
   "viewScript": [
     "file:./view.4a6b6587b53b95de1e3f.js"
@@ -46,6 +46,5 @@
   "usesContext": [
     "launchpad-blocks/carouselImages"
   ],
-  "example": {},
   "supports": {}
 }

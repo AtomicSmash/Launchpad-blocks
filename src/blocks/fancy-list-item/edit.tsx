@@ -84,9 +84,7 @@ export function Edit({
 					onChange={(newTextContent) => {
 						setAttributes({ textContent: newTextContent });
 					}}
-					// @ts-expect-error -- Undocumented property, need to add type to helpers.
 					onMerge={mergeBlocks}
-					// @ts-expect-error -- Undocumented property, need to add type to helpers.
 					onReplace={onReplace}
 					onRemove={onRemove}
 					value={textContent}

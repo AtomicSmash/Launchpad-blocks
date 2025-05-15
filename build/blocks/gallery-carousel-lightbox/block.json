@@ -7,7 +7,7 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.6757f520e079b03795e2.js"
+    "file:./index.1bb432d7ee6999defa57.js"
   ],
   "viewScript": [
     "file:./view.26e1ec83e42e8a586969.js"
@@ -27,7 +27,6 @@
   },
   "providesContext": {},
   "usesContext": [],
-  "example": {},
   "supports": {
     "color": true
   },

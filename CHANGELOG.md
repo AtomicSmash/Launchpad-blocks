@@ -1,5 +1,15 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.32
+
+### Minor Changes
+
+- 2919e80: Add block icons and previews
+
+### Patch Changes
+
+- e21d695: Fix overflow issue in chrome for carousel arrows inner area
+
 ## 1.0.0-beta.31
 
 ### Major Changes

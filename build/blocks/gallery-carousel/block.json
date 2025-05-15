@@ -13,7 +13,7 @@
     "lightbox"
   ],
   "editorScript": [
-    "file:./index.046d14631f03675195df.js"
+    "file:./index.18473a8160800433af9c.js"
   ],
   "viewScript": [
     "file:./view.00a4f9f6ff6da960fd90.js"
@@ -44,6 +44,135 @@
     "launchpad-blocks/shouldLinkSlidesToLightbox": "shouldLinkSlidesToLightbox"
   },
   "usesContext": [],
-  "example": {},
+  "example": {
+    "attributes": {
+      "images": [
+        {
+          "id": 237,
+          "url": "https://picsum.photos/id/237/260/180"
+        },
+        {
+          "id": 433,
+          "url": "https://picsum.photos/id/433/260/180"
+        },
+        {
+          "id": 582,
+          "url": "https://picsum.photos/id/582/260/180"
+        },
+        {
+          "id": 593,
+          "url": "https://picsum.photos/id/593/260/180"
+        },
+        {
+          "id": 943,
+          "url": "https://picsum.photos/id/943/260/180"
+        },
+        {
+          "id": 1024,
+          "url": "https://picsum.photos/id/1024/260/180"
+        }
+      ]
+    },
+    "innerBlocks": [
+      {
+        "name": "launchpad-blocks/carousel-slides",
+        "innerBlocks": [
+          {
+            "name": "core/image",
+            "attributes": {
+              "id": 237,
+              "url": "https://picsum.photos/id/237/260/180"
+            }
+          },
+          {
+            "name": "core/image",
+            "attributes": {
+              "id": 433,
+              "url": "https://picsum.photos/id/433/260/180"
+            }
+          },
+          {
+            "name": "core/image",
+            "attributes": {
+              "id": 582,
+              "url": "https://picsum.photos/id/582/260/180"
+            }
+          },
+          {
+            "name": "core/image",
+            "attributes": {
+              "id": 593,
+              "url": "https://picsum.photos/id/593/260/180"
+            }
+          },
+          {
+            "name": "core/image",
+            "attributes": {
+              "id": 943,
+              "url": "https://picsum.photos/id/943/260/180"
+            }
+          },
+          {
+            "name": "core/image",
+            "attributes": {
+              "id": 1024,
+              "url": "https://picsum.photos/id/1024/260/180"
+            }
+          }
+        ]
+      },
+      {
+        "name": "launchpad-blocks/gallery-carousel-lightbox",
+        "innerBlocks": [
+          {
+            "name": "launchpad-blocks/carousel",
+            "attributes": {
+              "images": [
+                {
+                  "id": 237,
+                  "url": "https://picsum.photos/id/237/260/180"
+                },
+                {
+                  "id": 433,
+                  "url": "https://picsum.photos/id/433/260/180"
+                },
+                {
+                  "id": 582,
+                  "url": "https://picsum.photos/id/582/260/180"
+                },
+                {
+                  "id": 593,
+                  "url": "https://picsum.photos/id/593/260/180"
+                },
+                {
+                  "id": 943,
+                  "url": "https://picsum.photos/id/943/260/180"
+                },
+                {
+                  "id": 1024,
+                  "url": "https://picsum.photos/id/1024/260/180"
+                }
+              ]
+            },
+            "innerBlocks": [
+              {
+                "name": "launchpad-blocks/carousel-slides",
+                "attributes": {
+                  "shouldPullImagesFromContext": true
+                }
+              },
+              {
+                "name": "launchpad-blocks/carousel-navigation-arrows",
+                "attributes": {
+                  "shouldShowTextVisually": false,
+                  "className": "is-style-overlay"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "supports": {}
 }

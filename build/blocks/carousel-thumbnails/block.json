@@ -10,7 +10,7 @@
     "launchpad-blocks/carousel"
   ],
   "editorScript": [
-    "file:./index.8e49060f18775d05d9b4.js"
+    "file:./index.960ec34cdb9744bc3877.js"
   ],
   "viewScript": [
     "file:./view.a4a57372c665bdf230a9.js"
@@ -47,7 +47,9 @@
   "usesContext": [
     "launchpad-blocks/carouselImages"
   ],
-  "example": {},
+  "example": {
+    "viewportWidth": 1200
+  },
   "supports": {
     "lock": false
   }

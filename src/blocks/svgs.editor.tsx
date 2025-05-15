@@ -35,14 +35,62 @@ export const iconMetaData = {
 	"accordion-group": {
 		title: "Accordion group",
 	},
-	"accordion-single": {
-		title: "Accordion single",
+	accordion: {
+		title: "Accordion",
 	},
 	"back-arrow": {
 		title: "Back Arrow",
 	},
-	"tab-group": {
-		title: "Tab group",
+	"banner-zone": {
+		title: "Banner zone",
+	},
+	carousel: {
+		title: "Carousel",
+	},
+	"carousel-navigation-arrows": {
+		title: "Carousel navigation arrows",
+	},
+	"carousel-thumbnails": {
+		title: "Carousel thumbnails",
+	},
+	"carousel-slides": {
+		title: "Carousel slides",
+	},
+	"carousel-with-thumbnails": {
+		title: "Carousel with thumbnails",
+	},
+	"gallery-carousel": {
+		title: "Gallery carousel",
+	},
+	"gallery-carousel-lightbox": {
+		title: "Gallery carousel lightbox",
+	},
+	icon: {
+		title: "Icon",
+	},
+	information: {
+		title: "Information",
+	},
+	list: {
+		title: "List",
+	},
+	"list-item": {
+		title: "List item",
+	},
+	navigation: {
+		title: "Navigation",
+	},
+	"nav-list": {
+		title: "Nav list",
+	},
+	"nav-menu-item": {
+		title: "Nav menu item",
+	},
+	"nav-sub-menu": {
+		title: "Nav sub menu",
+	},
+	tabs: {
+		title: "Tabs",
 	},
 	"tab-list": {
 		title: "Tab list",
