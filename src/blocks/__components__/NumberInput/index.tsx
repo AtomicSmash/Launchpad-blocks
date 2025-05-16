@@ -241,7 +241,7 @@ export const NumberInput = forwardRef<
 							type="button"
 							aria-controls={uniqueId}
 							disabled={numberValue <= Number(inputProps.min)}
-							className={`number-button ${numberValue <= Number(inputProps.max) ? "inactive" : "active"}`}
+							className={`number-button ${numberValue <= Number(inputProps.min) ? "inactive" : "active"}`}
 							onClick={(event) => {
 								const potentialNumber = Number(numberValue);
 								if (!isNaN(Number(numberValue))) {

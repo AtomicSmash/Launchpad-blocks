@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.33
+
+### Patch Changes
+
+- d566c0e: Fix reduce number inactive class in NumberInput
+
 ## 1.0.0-beta.32
 
 ### Minor Changes
