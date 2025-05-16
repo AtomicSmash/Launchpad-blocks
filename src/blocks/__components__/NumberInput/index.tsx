@@ -1,5 +1,5 @@
 import type { ComponentPropsWithRef } from "react";
-import { useRef, useId, useState, forwardRef } from "react";
+import { useRef, useId, useState, forwardRef, useEffect } from "react";
 import { getUserOperatingSystem } from "@launchpadBlocks/helpers";
 import { Icon } from "@launchpadBlocks/svgs";
 import { Tooltip } from "../ToolTip";
@@ -11,22 +11,32 @@ export const NumberInput = forwardRef<
 		allowAltClick?: boolean;
 		allowMetaOrCtrlClick?: boolean;
 		onValidation?: (newValue: number) => void;
-	} & Omit<ComponentPropsWithRef<"input">, "type" | "value">
+	} & (
+		| { value: number; defaultValue?: never }
+		| { defaultValue?: number; value?: never }
+	) &
+		Omit<ComponentPropsWithRef<"input">, "type" | "value" | "defaultValue">
 >(function NumberInput(
 	{
 		allowShiftClick = true,
 		allowAltClick = true,
 		allowMetaOrCtrlClick = true,
 		defaultValue,
+		value,
 		onValidation,
 		...inputProps
 	},
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars -- we want to discard any refs passed in
-	forwardedRef,
+	_forwardedRef,
 ) {
-	const [numberValue, setNumberValue] = useState(
-		defaultValue ? Number(defaultValue) : 0,
-	);
+	const [numberValue, setNumberValue] = useState(defaultValue ?? value ?? 0);
+	useEffect(() => {
+		if (value !== undefined) {
+			setNumberValue(value);
+			if (input.current) {
+				input.current.value = value.toString();
+			}
+		}
+	}, [value]);
 	const generatedId = useId();
 	const uniqueId = inputProps.id ?? generatedId;
 	const inputStep = inputProps.step ? Number(inputProps.step) : 1;

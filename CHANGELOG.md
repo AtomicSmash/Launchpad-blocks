@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.34
+
+### Minor Changes
+
+- 66a4630: Allow NumberInput to be updated by external values
+
 ## 1.0.0-beta.33
 
 ### Patch Changes
