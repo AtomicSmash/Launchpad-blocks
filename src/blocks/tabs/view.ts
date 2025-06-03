@@ -153,8 +153,9 @@ class Tabs {
 }
 
 domReady(() => {
-	const tabsGroups =
-		document.querySelectorAll<HTMLDivElement>("[data-tabs-group]");
+	const tabsGroups = document.querySelectorAll<HTMLDivElement>(
+		"[data-launchpad-tabs-group]",
+	);
 	for (const tabsGroup of tabsGroups) {
 		new Tabs(tabsGroup);
 	}

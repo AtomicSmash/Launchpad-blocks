@@ -128,7 +128,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 	);
 
 	const blockProps = useBlockProps({
-		"data-tabs-group": "true",
+		"data-launchpad-tabs-group": "true",
 	});
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(blockProps);
 

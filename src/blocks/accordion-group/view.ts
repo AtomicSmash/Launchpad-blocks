@@ -41,7 +41,7 @@ class AccordionGroup {
 	}
 	private initialiseAccordions() {
 		const accordionsInGroup = document.querySelectorAll<HTMLElement>(
-			`[id='${this.accordionGroup.id}'] > [data-accordion]`,
+			`[id='${this.accordionGroup.id}'] > [data-launchpad-accordion]`,
 		);
 		let isFirstInitiallyOpenAccordion = true;
 		for (const accordionElement of accordionsInGroup) {
@@ -201,7 +201,7 @@ class Accordion {
 
 function enableAccordionFunctionality() {
 	const accordionGroups = document.querySelectorAll<HTMLDivElement>(
-		"[data-accordion-group]",
+		"[data-launchpad-accordion-group]",
 	);
 	for (const accordionGroupElement of accordionGroups) {
 		new AccordionGroup(accordionGroupElement);

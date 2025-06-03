@@ -31,8 +31,9 @@ class Navigation {
 	public navListHeight = 0;
 
 	constructor() {
-		const navigation =
-			document.querySelector<HTMLDivElement>("[data-navigation]");
+		const navigation = document.querySelector<HTMLDivElement>(
+			"[data-launchpad-navigation]",
+		);
 		if (!navigation) {
 			throw new Error("Unable to find the navigation element.");
 		}
@@ -475,7 +476,7 @@ async function checkElementExists(element: string, timeout = Infinity) {
 	});
 }
 
-checkElementExists("[data-navigation]", 1)
+checkElementExists("[data-launchpad-navigation]", 1)
 	.then((result) => {
 		if (result) {
 			new Navigation();

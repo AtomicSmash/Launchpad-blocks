@@ -23,8 +23,9 @@ export class Lightbox {
 
 	initCarousel() {
 		this.lightbox.style.opacity = "0";
-		const carousel =
-			this.lightbox.querySelector<HTMLDivElement>("div[data-carousel]");
+		const carousel = this.lightbox.querySelector<HTMLDivElement>(
+			"div[data-launchpad-carousel]",
+		);
 		if (!carousel) {
 			throw new Error(
 				"Expected to initialise a carousel in the gallery lightbox, but one wasn't found.",

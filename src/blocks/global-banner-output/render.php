@@ -37,7 +37,7 @@ $selected_banners = is_array( $selected_banners ) ? $selected_banners : array();
 	<?php
 	foreach ( $selected_banners as $selected_banner ) {
 		$banner_id = get_post_meta( $selected_banner->ID, '_banner_id', true ) ?? '';
-		echo wp_kses_post( str_replace( 'data-global-banner="true"', 'data-global-banner="true" data-banner-id="' . $banner_id . '"', do_blocks( $selected_banner->post_content ) ) );
+		echo wp_kses_post( str_replace( 'data-launchpad-global-banner="true"', 'data-launchpad-global-banner="true" data-banner-id="' . $banner_id . '"', do_blocks( $selected_banner->post_content ) ) );
 	}
 	?>
 </div>

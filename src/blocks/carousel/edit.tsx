@@ -29,7 +29,7 @@ export function Edit({
 }: BlockEditProps) {
 	const { shouldLoop, images } = attributes;
 	const blockProps = useBlockProps({
-		"data-carousel": "",
+		"data-launchpad-carousel": "",
 		"data-loop": shouldLoop ? "true" : "false",
 	});
 

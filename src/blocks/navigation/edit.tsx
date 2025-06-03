@@ -18,7 +18,7 @@ export function Edit({
 }: BlockEditProps) {
 	const navId = navIdAttribute ?? `nav-${clientId}`;
 	const blockProps = useBlockProps({
-		"data-navigation": true,
+		"data-launchpad-navigation": true,
 		"data-nav-id": navId,
 		"data-state": "closed",
 	});

@@ -39,7 +39,7 @@ echo wp_kses_data(
 		array_merge(
 			\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
 			array(
-				'data-global-banner' => 'true',
+				'data-launchpad-global-banner' => 'true',
 				'data-is-dismissible' => $attributes['isDismissible'] ? 'true' : 'false',
 				'style' => 'height: 0; overflow: auto; display: none;',
 			)

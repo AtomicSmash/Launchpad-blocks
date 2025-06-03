@@ -57,7 +57,7 @@ class GlobalBanner {
 
 domReady(() => {
 	const globalBanners = document.querySelectorAll<HTMLDivElement>(
-		"[data-global-banner]",
+		"[data-launchpad-global-banner]",
 	);
 	for (const globalBanner of globalBanners) {
 		new GlobalBanner(globalBanner);

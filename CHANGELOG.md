@@ -1,5 +1,12 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.35
+
+### Patch Changes
+
+- a50435c: Prefix all data attributes used to target blocks in the document scope
+- 045371e: fix screen reader text for carousel
+
 ## 1.0.0-beta.34
 
 ### Minor Changes

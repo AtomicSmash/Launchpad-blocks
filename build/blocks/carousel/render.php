@@ -31,7 +31,7 @@ echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
 			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
-			'data-carousel' => '',
+			'data-launchpad-carousel' => '',
 			'data-loop' => $attributes['shouldLoop'] ? 'true' : 'false',
 		)
 	)

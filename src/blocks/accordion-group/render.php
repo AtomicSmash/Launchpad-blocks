@@ -44,7 +44,7 @@ echo wp_kses_data(
 		array(
 			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
 			'id' => $attributes['accordionGroupId'],
-			'data-accordion-group' => '',
+			'data-launchpad-accordion-group' => '',
 			'data-is-multiple' => $attributes['isMultiple'] ? 'true' : 'false',
 		)
 	)

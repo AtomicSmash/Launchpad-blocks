@@ -51,7 +51,7 @@ echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
 			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
-			'data-accordion' => '',
+			'data-launchpad-accordion' => '',
 			'data-is-initially-open' => $attributes['isInitiallyOpen'] ? 'true' : 'false',
 			'id' => $attributes['accordionId'],
 		)

@@ -46,7 +46,7 @@ echo wp_kses_data(
 			\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
 			array(
 				'class' => 'menu-js-loading',
-				'data-navigation' => true,
+				'data-launchpad-navigation' => true,
 				'data-state' => 'closed',
 				'data-nav-id' => esc_attr( $attributes['navId'] ),
 			)

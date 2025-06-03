@@ -34,7 +34,7 @@ $title_id = $attributes['tabsGroupId'] . '_tabs_title';
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			'data-tabs-group' => 'true',
+			'data-launchpad-tabs-group' => 'true',
 			'data-tabs-group-id' => $attributes['tabsGroupId'],
 		)
 	)

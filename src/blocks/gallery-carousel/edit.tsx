@@ -16,7 +16,7 @@ export type BlockEditProps = CreateBlockEditProps<
 export function Edit({ attributes, setAttributes }: BlockEditProps) {
 	const { columnCount } = attributes;
 	const blockProps = useBlockProps({
-		"data-gallery-carousel": "",
+		"data-launchpad-gallery-carousel": "",
 		style: {
 			"--column-count": columnCount,
 		},

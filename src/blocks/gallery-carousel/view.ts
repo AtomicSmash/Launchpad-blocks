@@ -49,7 +49,7 @@ class GalleryCarousel {
 
 domReady(() => {
 	const galleryCarousels = document.querySelectorAll<HTMLDivElement>(
-		"[data-gallery-carousel]",
+		"[data-launchpad-gallery-carousel]",
 	);
 	for (const carousel of galleryCarousels) {
 		new GalleryCarousel(carousel);

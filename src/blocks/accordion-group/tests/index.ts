@@ -14,7 +14,9 @@ const accordionTests = async function ({ page }) {
 			),
 		);
 
-		const accordionGroups = page.locator("css=[data-accordion-group]");
+		const accordionGroups = page.locator(
+			"css=[data-launchpad-accordion-group]",
+		);
 
 		await expect(accordionGroups).toHaveCount(2);
 

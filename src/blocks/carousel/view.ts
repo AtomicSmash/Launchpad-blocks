@@ -77,6 +77,7 @@ export class Carousel {
 			left: newScrollPosition - currentScrollPosition,
 			behavior: instant ? "instant" : "auto",
 		});
+		this.carouselLiveRegion.textContent = `Slide ${this.currentSlide + 1} of ${this.slideCount}`;
 		doAction("launchpadBlocks.carousel.updateActiveSlide");
 	}
 
@@ -89,7 +90,6 @@ export class Carousel {
 			prevSlide = this.slideCount - 1;
 		}
 		this.goToSlide(prevSlide, instant);
-		this.carouselLiveRegion.textContent = `Slide ${this.currentSlide} of ${this.slideCount}`;
 	}
 
 	goToNextSlide(instant = false) {
@@ -101,15 +101,15 @@ export class Carousel {
 			nextSlide = 0;
 		}
 		this.goToSlide(nextSlide, instant);
-		this.carouselLiveRegion.textContent = `Slide ${this.currentSlide} of ${this.slideCount}`;
 	}
 }
 
 export type CarouselInstance = InstanceType<typeof Carousel>;
 
 domReady(() => {
-	const carousels =
-		document.querySelectorAll<HTMLDivElement>("[data-carousel]");
+	const carousels = document.querySelectorAll<HTMLDivElement>(
+		"[data-launchpad-carousel]",
+	);
 	for (const carousel of carousels) {
 		if (carousel.parentElement?.dataset.lightbox === "") {
 			// Don't try and initialise carousels in lightboxes, they're hidden on load so it won't work.
