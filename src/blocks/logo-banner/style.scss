@@ -1,0 +1,56 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+.wp-block-launchpad-blocks-logo-banner {
+	overflow: auto;
+	pointer-events: none;
+
+	.images {
+		width: 100%;
+		overflow: auto;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		justify-content: space-between;
+	}
+
+	&.is-scrolling {
+		overflow: hidden;
+
+		.push-flex-children-to-start {
+			display: none;
+		}
+
+		.images {
+			flex-wrap: nowrap;
+		}
+	}
+
+	.push-flex-children-to-start {
+		flex: 1 0 auto;
+	}
+
+	.wp-block-image {
+		width: auto !important;
+		flex: 0 0 auto !important;
+		margin: auto;
+		height: 6.5rem;
+
+		img,
+		picture,
+		picture > * {
+			height: 100% !important;
+			object-fit: cover;
+			width: auto;
+		}
+
+		figcaption {
+			display: none;
+		}
+
+		@media (width >= 640px) {
+			height: 7.5rem;
+		}
+	}
+}

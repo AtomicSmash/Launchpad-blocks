@@ -1,0 +1,38 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/logo-banner",
+  "title": "Logo banner",
+  "category": "media",
+  "description": "A banner of logos to display, with optional scrolling animation.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.a4e08d8a0a041976cf67.js"
+  ],
+  "viewScript": [
+    "file:./view.58ba9b835a69e73e5599.js"
+  ],
+  "style": [
+    "file:./style.f249647136a9531f0ff6.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.b84a6b44e64225bc64db.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "isScrolling": {
+      "type": "boolean",
+      "default": false
+    },
+    "allowResize": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "providesContext": {
+    "allowResize": "allowResize"
+  },
+  "usesContext": [],
+  "example": {},
+  "supports": {}
+}

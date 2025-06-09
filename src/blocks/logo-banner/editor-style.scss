@@ -1,0 +1,16 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+.wp-block-launchpad-blocks-logo-banner {
+	width: 100%;
+	overflow: hidden;
+	height: auto;
+
+	.wp-block-image {
+		height: 120px;
+
+		> div {
+			height: 100%;
+		}
+	}
+}

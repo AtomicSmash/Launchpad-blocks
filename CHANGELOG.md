@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.36
+
+### Minor Changes
+
+- d9f5767: Add logo banner block
+
 ## 1.0.0-beta.35
 
 ### Patch Changes

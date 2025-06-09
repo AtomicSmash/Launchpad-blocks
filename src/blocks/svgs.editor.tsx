@@ -118,6 +118,9 @@ export const iconMetaData = {
 		title: "Minus",
 		makeAvailableToUser: true,
 	},
+	"logo-banner": {
+		title: "Logo banner",
+	},
 } as const satisfies IconMetaData;
 export type IconNames = keyof typeof iconMetaData;
 
