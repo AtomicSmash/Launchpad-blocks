@@ -6,34 +6,35 @@
 	overflow: auto;
 	pointer-events: none;
 
+	.scroll-container {
+		overflow: auto;
+	}
+
 	.images {
 		width: 100%;
 		overflow: auto;
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
-		justify-content: space-between;
+		justify-content: center;
 	}
 
 	&.is-scrolling {
 		overflow: hidden;
 
-		.push-flex-children-to-start {
-			display: none;
-		}
-
 		.images {
+			width: max-content;
 			flex-wrap: nowrap;
 		}
 	}
 
 	.push-flex-children-to-start {
-		flex: 1 0 auto;
+		flex: 9999 0 auto;
 	}
 
 	.wp-block-image {
 		width: auto !important;
-		flex: 0 0 auto !important;
+		flex: 1 0 auto !important;
 		margin: auto;
 		height: 6.5rem;
 
@@ -43,6 +44,7 @@
 			height: 100% !important;
 			object-fit: cover;
 			width: auto;
+			margin-inline: auto;
 		}
 
 		figcaption {

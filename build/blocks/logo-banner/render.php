@@ -40,9 +40,17 @@ if ( ! empty( $content ) ) :
 	);
 	?>
 	>
-		<div class="images">
-			<?php echo wp_kses_post( $content ); ?>
-			<div class="push-flex-children-to-start"></div>
+		<div class="scroll-container">
+			<div class="images">
+				<?php
+				echo wp_kses_post( $content );
+				if ( ! $attributes['isScrolling'] && $attributes['shouldAlignBottomRowToLeft'] ) :
+					?>
+					<div class="push-flex-children-to-start"></div>
+					<?php
+				endif;
+				?>
+			</div>
 		</div>
 	</div>
 	<?php

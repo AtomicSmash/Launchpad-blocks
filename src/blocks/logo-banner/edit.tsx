@@ -25,7 +25,7 @@ export type BlockEditProps = CreateBlockEditProps<
 >;
 
 export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
-	const { isScrolling } = attributes;
+	const { isScrolling, shouldAlignBottomRowToLeft } = attributes;
 	const blockProps = useBlockProps({
 		"data-launchpad-logo-banner": true,
 		"data-is-scrolling": isScrolling ? "true" : "false",
@@ -180,14 +180,30 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 							}}
 							checked={isScrolling}
 						/>
+						{!isScrolling ? (
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={"Align bottom row of images to the left."}
+								onChange={(newChecked) => {
+									setAttributes({
+										shouldAlignBottomRowToLeft: newChecked,
+									});
+								}}
+								checked={shouldAlignBottomRowToLeft}
+							/>
+						) : null}
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
 			<div {...innerBlocksProps}>
 				{hasChildren ? (
-					<div className="images">
-						{children}
-						<div className="push-flex-children-to-start"></div>
+					<div className="scroll-container">
+						<div className="images">
+							{children}
+							{!isScrolling && shouldAlignBottomRowToLeft ? (
+								<div className="push-flex-children-to-start"></div>
+							) : null}
+						</div>
 					</div>
 				) : (
 					<MediaPlaceholder

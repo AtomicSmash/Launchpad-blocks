@@ -7,20 +7,24 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.a4e08d8a0a041976cf67.js"
+    "file:./index.c16f03eb0c94221dc041.js"
   ],
   "viewScript": [
-    "file:./view.58ba9b835a69e73e5599.js"
+    "file:./view.4fa32d75c9f954b0ecb5.js"
   ],
   "style": [
-    "file:./style.f249647136a9531f0ff6.css"
+    "file:./style.cf1544f9bd6c2bb9ab8b.css"
   ],
   "editorStyle": [
-    "file:./editor-style.b84a6b44e64225bc64db.css"
+    "file:./editor-style.75b2b31374dcd7fef648.css"
   ],
   "render": "file:./render.php",
   "attributes": {
     "isScrolling": {
+      "type": "boolean",
+      "default": false
+    },
+    "shouldAlignBottomRowToLeft": {
       "type": "boolean",
       "default": false
     },

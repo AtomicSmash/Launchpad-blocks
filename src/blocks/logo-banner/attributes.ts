@@ -9,6 +9,10 @@ export const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	shouldAlignBottomRowToLeft: {
+		type: "boolean",
+		default: false,
+	},
 	allowResize: {
 		type: "boolean",
 		default: false,

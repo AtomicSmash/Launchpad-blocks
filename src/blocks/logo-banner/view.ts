@@ -26,6 +26,7 @@ function scrollToPromise<T extends HTMLElement>(
 class ScrollingLogoBanner {
 	private userPrefersReducedMotion = true;
 	private banner: HTMLDivElement;
+	private scrollContainer: HTMLDivElement;
 	private imagesContainer: HTMLDivElement;
 	private initiallyVisibleItems: Element[] = [];
 	private scrollbarWidth: number;
@@ -41,10 +42,14 @@ class ScrollingLogoBanner {
 		this._setUserPrefersReducedMotion(this._getUserPrefersReducedMotion());
 		this._attachPrefersReducedMotionListener();
 		this.banner = banner;
-		this.imagesContainer = this.banner.querySelector<HTMLDivElement>(
+		this.scrollContainer = this.banner.querySelector<HTMLDivElement>(
+			"div.scroll-container",
+		)!;
+		this.imagesContainer = this.scrollContainer.querySelector<HTMLDivElement>(
 			":scope > div.images",
 		)!;
-		this.scrollbarWidth = this.banner.offsetHeight - this.banner.clientHeight;
+		this.scrollbarWidth =
+			this.scrollContainer.offsetHeight - this.scrollContainer.clientHeight;
 
 		if (document.readyState === "complete") {
 			this.initialiseBanner().catch(() => {
@@ -81,12 +86,10 @@ class ScrollingLogoBanner {
 	}
 
 	async initialiseBanner() {
-		const scrollbarWidth =
-			this.imagesContainer.offsetHeight - this.imagesContainer.clientHeight;
-		this.imagesContainer.style.marginBlockEnd = `-${scrollbarWidth}px`;
+		this.scrollContainer.style.marginBlockEnd = `-${this.scrollbarWidth}px`;
 		await this.getInitiallyVisibleImages().then(() => {
 			this.imagesContainer.append(...this.initiallyVisibleItems);
-			this.scrollOffset = this.imagesContainer.offsetLeft;
+			this.scrollOffset = this.scrollContainer.offsetLeft;
 			this.scrollInterval = setInterval(() => {
 				const scrollToElement =
 					this.imagesContainer.querySelectorAll<HTMLDivElement>(
@@ -96,7 +99,7 @@ class ScrollingLogoBanner {
 					clearInterval(this.scrollInterval);
 					throw new Error("Expected element, but received undefined.");
 				}
-				scrollToPromise(this.imagesContainer, {
+				scrollToPromise(this.scrollContainer, {
 					left: scrollToElement.offsetLeft - this.scrollOffset,
 					behavior: this.userPrefersReducedMotion ? "instant" : "smooth",
 					timeout: 2000,
@@ -110,7 +113,7 @@ class ScrollingLogoBanner {
 									this.currentScrollPosition
 								]!.classList.contains("overflow-item")
 						) {
-							this.imagesContainer.scrollTo({ left: 0, behavior: "instant" });
+							this.scrollContainer.scrollTo({ left: 0, behavior: "instant" });
 							this.currentScrollPosition = 0;
 						}
 					})
