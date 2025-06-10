@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.38
+
+### Patch Changes
+
+- c5edb1c: Make sure logos don't get too big and don't crop logos
+
 ## 1.0.0-beta.37
 
 ### Patch Changes

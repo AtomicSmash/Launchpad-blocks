@@ -37,12 +37,13 @@
 		flex: 1 0 auto !important;
 		margin: auto;
 		height: 6.5rem;
+		max-width: 12.5rem;
 
 		img,
 		picture,
 		picture > * {
 			height: 100% !important;
-			object-fit: cover;
+			object-fit: contain;
 			width: auto;
 			margin-inline: auto;
 		}
