@@ -4,7 +4,7 @@
  * Description:       This is a block library created by Atomic Smash.
  * Requires at least: 6.7
  * Requires PHP:      8.2
- * Version:           1.0.0-beta.38
+ * Version:           1.0.0-beta.39
  * Author:            Atomic Smash
  * Author URI:        https://www.atomicsmash.co.uk/
  * License:           GPL-2.0-or-later
@@ -14,7 +14,7 @@
 
 namespace Launchpad\Blocks;
 
-define( 'LAUNCHPAD_BLOCKS_VERSION', '1.0.0-beta.38' );
+define( 'LAUNCHPAD_BLOCKS_VERSION', '1.0.0-beta.39' );
 
 // Require autoloader.
 require __DIR__ . '/vendor/autoload.php';
@@ -52,6 +52,7 @@ foreach ( LAUNCHPAD_BLOCKS as $block ) {
 require_once plugin_dir_path( __FILE__ ) . 'functions/blocks-in-php.php';
 require_once plugin_dir_path( __FILE__ ) . 'functions/fix-block-defaults.php';
 require_once plugin_dir_path( __FILE__ ) . 'functions/helpers.php';
+require_once plugin_dir_path( __FILE__ ) . 'functions/media.php';
 require_once plugin_dir_path( __FILE__ ) . 'functions/sanitisation.php';
 
 /**

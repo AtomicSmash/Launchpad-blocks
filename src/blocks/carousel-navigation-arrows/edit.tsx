@@ -114,6 +114,11 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 							prevIcon: dataOnSelectedIcon,
 						});
 					}}
+					onReset={() => {
+						setAttributes({
+							prevIcon: attributesDefinition.prevIcon.default,
+						});
+					}}
 				/>
 				<IconSelectControl
 					iconSelectHeader="Next icon"
@@ -121,6 +126,11 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 					onIconSelect={(dataOnSelectedIcon) => {
 						setAttributes({
 							nextIcon: dataOnSelectedIcon,
+						});
+					}}
+					onReset={() => {
+						setAttributes({
+							nextIcon: attributesDefinition.nextIcon.default,
 						});
 					}}
 				/>

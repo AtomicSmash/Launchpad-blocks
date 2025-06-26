@@ -52,7 +52,7 @@ echo wp_kses_data(
 			<?php
 			echo wp_get_attachment_image(
 				$image['id'],
-				array( 520, 360 ),
+				apply_filters( 'launchpad_blocks_carousel_thumbnails_size', array( 190, 132 ) ),
 				false,
 				array(
 					'class' => 'carousel-thumbnail',

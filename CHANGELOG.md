@@ -1,5 +1,15 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.39
+
+### Minor Changes
+
+- adfc4e9: Add reset buttons to carousel navigation arrows icon select
+
+### Patch Changes
+
+- adfc4e9: Render carousel images as smaller images
+
 ## 1.0.0-beta.38
 
 ### Patch Changes
