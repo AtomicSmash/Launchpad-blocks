@@ -17,7 +17,7 @@ const galleryCarouselTests = async function ({ page }) {
 } satisfies Parameters<typeof test>[2];
 
 export const blockTestInfo = {
-	blockName: "Gallery Carousel",
+	blockName: "Gallery with lightbox",
 	tests: galleryCarouselTests,
 	contentPersistLocation,
 	lighthouseTestsPage: "gallery-carousel-test-page",

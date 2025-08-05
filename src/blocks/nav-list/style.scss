@@ -22,6 +22,7 @@ nav.wp-block-launchpad-blocks-nav-list {
 	> .navigation-nav-list,
 .menu-group-list-item-submenu
 	> .wp-block-launchpad-blocks-nav-list
-	> .navigation-nav-list {
+	> .navigation-nav-list,
+.wp-block-launchpad-blocks-nav-list.is-vertical > .navigation-nav-list {
 	flex-direction: column;
 }

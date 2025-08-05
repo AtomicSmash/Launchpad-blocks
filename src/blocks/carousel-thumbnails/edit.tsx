@@ -12,7 +12,7 @@ export type BlockEditProps = CreateBlockEditProps<
 	InterpretedUsedContext
 >;
 
-export function Edit({ attributes, setAttributes }: BlockEditProps) {
+export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 	const { selectedOutlineColour } = attributes;
 	const blockProps = useBlockProps({
 		style: {
@@ -36,28 +36,27 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 				/>
 			</InspectorControls>
 			<div {...blockProps}>
-				{[237, 433, 582, 593, 943, 1024].map((imageId, index) => {
-					return (
-						<button
-							key={imageId}
-							type="button"
-							className={`reset carousel-thumbnail-button${index === 1 ? " is-selected" : ""}`}
-							data-carousel-slide={index}
-						>
-							{/* Just like with pagination block, we need to show the controls at all times,
-									so we should show random photos instead of gallery items so this is always
-									the case. Otherwise we could end up not showing anything. */}
-							<img
-								width={260}
-								height={180}
-								src={`https://picsum.photos/id/${imageId}/260/180`}
-								alt=""
-								draggable={false}
-								className={`carousel-thumbnail`}
-							/>
-						</button>
-					);
-				})}
+				{context["launchpad-blocks/carouselImages"].map(
+					({ id, url }, index) => {
+						return (
+							<button
+								key={id}
+								type="button"
+								className={`reset carousel-thumbnail-button${index === 1 || (index === 0 && context["launchpad-blocks/carouselImages"].length === 1) ? " is-selected" : ""}`}
+								data-carousel-slide={index}
+							>
+								<img
+									width={190}
+									height={132}
+									src={url}
+									alt=""
+									draggable={false}
+									className={`carousel-thumbnail`}
+								/>
+							</button>
+						);
+					},
+				)}
 			</div>
 		</>
 	);

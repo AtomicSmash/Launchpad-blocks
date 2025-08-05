@@ -39,6 +39,10 @@
 		height: 6.5rem;
 		max-width: 12.5rem;
 
+		@media (width >= 640px) {
+			height: 7.5rem;
+		}
+
 		img,
 		picture,
 		picture > * {
@@ -50,10 +54,6 @@
 
 		figcaption {
 			display: none;
-		}
-
-		@media (width >= 640px) {
-			height: 7.5rem;
 		}
 	}
 }

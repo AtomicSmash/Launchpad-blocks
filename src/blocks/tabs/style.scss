@@ -42,3 +42,19 @@
 	.wp-block-launchpad-blocks-tab-panel:not(.is-selected, .show-tab-in-editor) {
 	display: none;
 }
+
+// Vertical variation
+.wp-block-launchpad-blocks-tabs--vertical {
+	.wp-block-launchpad-blocks-tabs-content-wrapper {
+		display: flex;
+		gap: 1rem;
+
+		.wp-block-launchpad-blocks-tab-list {
+			flex-direction: column;
+		}
+
+		.wp-block-launchpad-blocks-tab-panel-group {
+			flex-grow: 1;
+		}
+	}
+}

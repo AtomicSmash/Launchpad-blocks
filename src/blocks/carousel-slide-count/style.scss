@@ -1,0 +1,17 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+.wp-block-launchpad-blocks-carousel-slide-count {
+	display: flex;
+	justify-content: center;
+	gap: 1ch; // 1 character width to emulate a space
+	flex-wrap: wrap;
+}
+
+.carousel-navigation-inner-area
+	> .wp-block-launchpad-blocks-carousel-slide-count:only-child {
+	height: 100%;
+	align-items: center;
+}

@@ -24,16 +24,16 @@ $content = $content;
  */
 $block = $block;
 
-global $wp;
-$current_url = trailingslashit( home_url( $wp->request ) );
+$is_active = \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_active( $attributes );
+
 ?>
-<li <?php echo wp_kses_data( get_block_wrapper_attributes( array( 'class' => 'navigation-list-item' ) ) ); ?>>
+<li <?php echo wp_kses_data( get_block_wrapper_attributes( array( 'class' => 'navigation-list-item' . ( $is_active ? ' current-menu-item' : '' ) ) ) ); ?>>
 	<a
 		href="<?php echo esc_attr( $attributes['linkHref'] ?? '' ); ?>"
 		target="<?php echo esc_attr( $attributes['linkTarget'] ); ?>"
 		class="navigation-list-item-link"
 		rel="<?php echo esc_attr( str_starts_with( $attributes['linkHref'] ?? '', get_site_url() ) ? 'noopener' : 'noopener noreferrer' ); ?>"
-		aria-current="<?php echo $current_url === $attributes['linkHref'] ? 'true' : 'false'; ?>"
+		aria-current="<?php echo $is_active ? 'true' : 'false'; ?>"
 	>
 		<?php
 		echo wp_kses_post( $attributes['linkText'] ?? '' );

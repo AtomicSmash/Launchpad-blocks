@@ -30,6 +30,7 @@ import {
 import { useInstanceId } from "@wordpress/compose";
 import { store as coreStore } from "@wordpress/core-data";
 import { useSelect, useSuspenseSelect } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
 import { useReducer, useState, useEffect, Suspense } from "react";
 import {
 	usePostTypes,
@@ -37,9 +38,14 @@ import {
 	useLayoutStyles,
 	WPMenuIcon,
 	orderByValues as allOrderByValues,
+	useHasChildren,
+	VariationSelect,
 } from "@launchpadBlocks/helpers.editor";
+import { Icon } from "@launchpadBlocks/svgs";
 import { NumberInput } from "../__components__/NumberInput";
+import blockJson from "./block.json";
 import { supports } from "./supports";
+import { variations } from "./variations";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention -- Keys defined by WP.
 const { include, include_slugs, relevance, parent, ...orderByValues } =
@@ -79,6 +85,7 @@ export function Edit({
 		shouldInheritFromAutoPostsQuery,
 		layout,
 		shouldExcludeCurrentPost,
+		hasDismissedVariationsSelector,
 	} = attributes;
 
 	let timeout: NodeJS.Timeout;
@@ -145,6 +152,10 @@ export function Edit({
 			});
 		}
 	}
+
+	const hasChildren = useHasChildren(clientId);
+
+	const blockProps = useBlockProps();
 
 	return (
 		<>
@@ -268,13 +279,27 @@ export function Edit({
 					</Panel>
 				) : null}
 			</InspectorControls>
-			<Suspense fallback="Loading...">
-				<PostsInnerBlocks
-					clientId={clientId}
-					attributes={attributes}
-					context={context}
-				/>
-			</Suspense>
+			{hasChildren || hasDismissedVariationsSelector ? (
+				<Suspense fallback="Loading...">
+					<PostsInnerBlocks
+						clientId={clientId}
+						attributes={attributes}
+						context={context}
+					/>
+				</Suspense>
+			) : (
+				<div {...blockProps}>
+					<VariationSelect
+						clientId={clientId}
+						blockInfo={{
+							name: blockJson.title,
+							icon: <Icon isEditorMode={true} iconName="manual-post-select" />,
+						}}
+						variations={variations}
+						allowSkip={true}
+					/>
+				</div>
+			)}
 		</>
 	);
 }
@@ -1137,8 +1162,6 @@ function PostsInnerBlocks({
 		{},
 		{
 			__unstableDisableLayoutClassNames: true,
-			template: [["core/post-title"]],
-			templateLock: false,
 		},
 	);
 	const [activeBlockContextId, setActiveBlockContextId] = useState<

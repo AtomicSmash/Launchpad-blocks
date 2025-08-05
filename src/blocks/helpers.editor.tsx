@@ -3,7 +3,10 @@ import type {
 	BlockSupports,
 	CreateBlockEditProps,
 	InterpretAttributes,
+	BlockVariations,
+	BlockInstanceAsObject,
 } from "@atomicsmash/blocks-helpers";
+import type { BlockInstance as WordPressBlockInstance } from "@wordpress/blocks";
 import type { Taxonomy } from "@wordpress/core-data";
 import type {
 	ComponentProps,
@@ -14,7 +17,10 @@ import {
 	useSettings,
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
-import { registerBlockCollection } from "@wordpress/blocks";
+import {
+	registerBlockCollection,
+	createBlocksFromInnerBlocksTemplate,
+} from "@wordpress/blocks";
 import {
 	ColorIndicator,
 	ColorPalette,
@@ -30,9 +36,10 @@ import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	ToolbarDropdownMenu,
+	Placeholder,
 } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
-import { useSelect, select } from "@wordpress/data";
+import { useSelect, select, useDispatch } from "@wordpress/data";
 import { __, _x } from "@wordpress/i18n";
 import {
 	headingLevel2,
@@ -952,12 +959,24 @@ const isBlockIdReservedFactory = (
 	idAttributeName: string,
 	blockName: string,
 ) => {
-	const { getBlocksByName, getBlockAttributes } = select(blockEditorStore) as {
-		getBlocksByName: (blockNames: string | string[]) => string[];
-		getBlockAttributes: (clientId: string) => BlockInstance["attributes"];
-	};
+	const { getBlocksByName, getBlockAttributes, getBlockParentsByBlockName } =
+		select(blockEditorStore) as {
+			getBlocksByName: (blockNames: string | string[]) => string[];
+			getBlockAttributes: (clientId: string) => BlockInstance["attributes"];
+			getBlockParentsByBlockName: (
+				clientId: string,
+				blockNames: string | string[],
+				ascending: boolean,
+			) => string[];
+		};
 	const tabsBlocksClientIds = getBlocksByName(blockName);
 	return tabsBlocksClientIds.some((_clientId) => {
+		if (
+			getBlockParentsByBlockName(_clientId, "core/template-part", true).length
+		) {
+			// Prevent infinite loop if blocks are within template parts.
+			return false;
+		}
 		const { [idAttributeName]: _idAttribute } = getBlockAttributes(_clientId);
 		return clientId !== _clientId && idAttribute === _idAttribute;
 	});
@@ -1130,4 +1149,228 @@ function getHeadingElementIcon(
 		case "p":
 			return paragraph;
 	}
+}
+
+export function useHasChildren(clientId: string) {
+	const { hasChildren } = useSelect(
+		(select) => {
+			const { getBlocks } = select(blockEditorStore) as {
+				getBlocks: (rootClientId?: string) => (BlockInstanceAsObject & {
+					clientId: string;
+					isValid: boolean;
+					originalContent: string;
+					validationIssues: unknown[];
+				})[];
+			};
+
+			const innerBlocks = getBlocks(clientId);
+
+			return {
+				hasChildren: innerBlocks.length > 0,
+			};
+		},
+		[clientId],
+	);
+	return hasChildren;
+}
+
+export function VariationSelect<
+	InterpretedAttributes extends Record<string, unknown>,
+>({
+	clientId,
+	blockInfo,
+	variations,
+	allowSkip,
+}: {
+	clientId: string;
+	blockInfo: { name: string; icon: JSX.Element };
+	variations: BlockVariations<InterpretedAttributes>;
+	allowSkip?: boolean;
+}) {
+	const { replaceInnerBlocks, updateBlockAttributes } = useDispatch(
+		blockEditorStore,
+	) as unknown as {
+		replaceInnerBlocks: (
+			clientId: string,
+			blocksToReplaceWith: WordPressBlockInstance[],
+			updateSelection?: boolean,
+		) => void;
+		updateBlockAttributes: <
+			Attributes extends Record<string, unknown> = Record<string, unknown>,
+		>(
+			clientIds: string | string[],
+			attributes: Partial<Attributes>,
+			uniqueByBlock?: boolean,
+		) => void;
+	};
+
+	return (
+		<Placeholder
+			icon={blockInfo.icon}
+			label={blockInfo.name}
+			instructions="Please choose a variation to start with:"
+		>
+			{/*
+			 * Disable reason: The `list` ARIA role is redundant but
+			 * Safari+VoiceOver won't announce the list otherwise.
+			 */
+			/* eslint-disable jsx-a11y/no-redundant-roles -- see above */}
+			<ul
+				className="block-editor-block-variation-picker__variations"
+				role="list"
+				aria-label={__("Block variations")}
+			>
+				{/* eslint-enable jsx-a11y/no-redundant-roles */}
+				{variations.map((variation) => {
+					return (
+						<li key={variation.name}>
+							<Button
+								__next40pxDefaultSize
+								variant="tertiary"
+								className="block-editor-block-variation-picker__variation"
+								icon={
+									"string" === typeof variation.icon ? (
+										<WPMenuIcon iconString={variation.icon} />
+									) : (
+										variation.icon
+									)
+								}
+								iconSize={48}
+								onClick={() => {
+									if (variation.attributes) {
+										updateBlockAttributes(clientId, variation.attributes);
+									}
+									if (variation.innerBlocks) {
+										replaceInnerBlocks(
+											clientId,
+											createBlocksFromInnerBlocksTemplate(
+												variation.innerBlocks,
+											),
+											false,
+										);
+									}
+								}}
+							></Button>
+							<span className="block-editor-block-variation-picker__variation-label">
+								{variation.title}
+							</span>
+						</li>
+					);
+				})}
+			</ul>
+			{allowSkip && (
+				<div className="block-editor-block-variation-picker__skip">
+					<Button
+						__next40pxDefaultSize
+						variant="link"
+						onClick={() => {
+							replaceInnerBlocks(clientId, [], false);
+							updateBlockAttributes(clientId, {
+								hasDismissedVariationsSelector: true,
+							});
+						}}
+					>
+						{__("Skip")}
+					</Button>
+				</div>
+			)}
+		</Placeholder>
+	);
+}
+
+/**
+ * AttachmentImage
+ *
+ * This component is used to display an image from the media library.
+ * It's meant as a JS companion to the PHP function `wp_get_attachment_image()`.
+ *
+ * @link https://www.briancoords.com/getting-wordpress-media-library-images-in-javascript/
+ *
+ * @param {object} props
+ * @param {number} props.imageId The ID of the image to display.
+ * @param {string} props.className Optional class name to apply to the image.
+ * @param {string} props.size The size of the image to display. Defaults to 'full'.
+ * @returns {*} React JSX
+ */
+export function AttachmentImage({
+	imageId,
+	className = "",
+	size = "full",
+}: {
+	imageId: number;
+	className?: string;
+	size?: string;
+}) {
+	type WPImage = {
+		id: number;
+		source_url: string;
+		alt_text: string;
+		author: number;
+		caption: {
+			raw: string;
+			rendered: string;
+		};
+		class_list: string[];
+		media_details: {
+			width: number;
+			height: number;
+			sizes?: Record<
+				string,
+				{
+					source_url: string;
+					width: number;
+					height: number;
+				}
+			>;
+		};
+	};
+
+	const image = useSelect(
+		(
+			select: (store: typeof coreStore) => {
+				getEntityRecord: (
+					kind: "postType",
+					name: "attachment",
+					id: number,
+				) => WPImage | undefined;
+			},
+		) =>
+			typeof imageId === "number" && imageId > 0
+				? select(coreStore).getEntityRecord?.("postType", "attachment", imageId)
+				: undefined,
+		[imageId],
+	);
+
+	if (!image) {
+		return null;
+	}
+
+	const imageAttributes = () => {
+		const attributes = {
+			src: image.source_url,
+			className: `attachment-${size} size-${size} ${className}`,
+			width: image.media_details.width,
+			height: image.media_details.height,
+			srcSet: "",
+		};
+		if (image.media_details?.sizes?.[size]) {
+			attributes.src = image.media_details.sizes[size].source_url;
+			attributes.width = image.media_details.sizes[size].width;
+			attributes.height = image.media_details.sizes[size].height;
+		}
+
+		attributes.srcSet = Object.entries(image.media_details.sizes ?? {})
+			.map(([_key, value]) => {
+				return `${value.source_url} ${value.width}w`;
+			})
+			.join(", ");
+
+		return attributes;
+	};
+
+	return (
+		<>
+			<img {...imageAttributes()} alt={image.alt_text || ""} />
+		</>
+	);
 }

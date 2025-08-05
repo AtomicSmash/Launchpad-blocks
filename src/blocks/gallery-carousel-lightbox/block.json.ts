@@ -8,7 +8,7 @@ import { supports } from "./supports";
 export const blockJson = {
 	apiVersion: 3,
 	name: "launchpad-blocks/gallery-carousel-lightbox",
-	title: "Gallery carousel lightbox",
+	title: "Lightbox",
 	category: "theme",
 	description: "",
 	textdomain: "launchpad-blocks",

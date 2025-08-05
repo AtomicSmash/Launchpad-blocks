@@ -22,8 +22,13 @@ import { useState } from "react";
 import { slugifyHTML } from "@launchpadBlocks/helpers";
 import {
 	getInnerBlocksByName,
+	useHasChildren,
 	useUniqueBlockId,
+	VariationSelect,
 } from "@launchpadBlocks/helpers.editor";
+import { Icon } from "@launchpadBlocks/svgs";
+import blockJson from "./block.json";
+import { variations } from "./variations";
 
 export type BlockEditProps = CreateBlockEditProps<
 	InterpretedAttributes,
@@ -103,6 +108,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 		titleLevel,
 		shouldShowTabSectionTitle,
 		initiallySelectedTab,
+		hasDismissedVariationsSelector,
 	} = attributes;
 	const [selectedTitleLevel, setSelectedTitleLevel] = useState(titleLevel);
 	const childTabPanelBlocks = useSelect(
@@ -133,6 +139,8 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(blockProps);
 
 	const TitleTag = `h${titleLevel}` as const;
+
+	const hasChildren = useHasChildren(clientId);
 
 	return (
 		<>
@@ -265,7 +273,23 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 							: "Add a label for screen readers for this tabs group..."
 					}
 				/>
-				{children}
+				<div className="wp-block-launchpad-blocks-tabs-content-wrapper">
+					{hasChildren || hasDismissedVariationsSelector ? (
+						children
+					) : (
+						<div>
+							<VariationSelect<InterpretedAttributes>
+								clientId={clientId}
+								blockInfo={{
+									name: blockJson.title,
+									icon: <Icon isEditorMode={true} iconName="tabs" />,
+								}}
+								variations={variations}
+								allowSkip={true}
+							/>
+						</div>
+					)}
+				</div>
 			</div>
 		</>
 	);

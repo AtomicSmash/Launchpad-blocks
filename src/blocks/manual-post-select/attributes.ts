@@ -6,6 +6,10 @@ import type {
 } from "@atomicsmash/blocks-helpers";
 
 export const attributes = {
+	hasDismissedVariationsSelector: {
+		type: "boolean",
+		default: false,
+	},
 	namespace: {
 		type: "string",
 	},

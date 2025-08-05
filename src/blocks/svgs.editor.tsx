@@ -44,6 +44,9 @@ export const iconMetaData = {
 	"banner-zone": {
 		title: "Banner zone",
 	},
+	"break-image-out": {
+		title: "Break image out of container",
+	},
 	carousel: {
 		title: "Carousel",
 	},
@@ -63,7 +66,7 @@ export const iconMetaData = {
 		title: "Gallery carousel",
 	},
 	"gallery-carousel-lightbox": {
-		title: "Gallery carousel lightbox",
+		title: "Lightbox",
 	},
 	icon: {
 		title: "Icon",
@@ -76,6 +79,21 @@ export const iconMetaData = {
 	},
 	"list-item": {
 		title: "List item",
+	},
+	"media-and-text-heading-and-text": {
+		title: "Heading and text",
+	},
+	"media-and-text-heading-text-buttons": {
+		title: "Heading, text and button",
+	},
+	"media-and-text-intro-heading-and-text": {
+		title: "Intro, heading and text",
+	},
+	"media-and-text-intro-heading-text-buttons": {
+		title: "Intro, heading, text and button",
+	},
+	"media-and-text-just-text": {
+		title: "Text",
 	},
 	navigation: {
 		title: "Navigation",
@@ -120,6 +138,9 @@ export const iconMetaData = {
 	},
 	"logo-banner": {
 		title: "Logo banner",
+	},
+	"vertical-tabs": {
+		title: "Vertical tabs",
 	},
 } as const satisfies IconMetaData;
 export type IconNames = keyof typeof iconMetaData;

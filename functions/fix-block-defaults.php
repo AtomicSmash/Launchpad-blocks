@@ -10,10 +10,12 @@ namespace LaunchpadBlocks\Fix;
  *
  * Realistically this should be handled by WP so this may not be needed in the future.
  *
- * @param \WP_Block $block The instance of the WP_Block class that represents the block being rendered.
- * @param array     $attributes The array of attributes for this block.
+ * @param \WP_Block           $block The instance of the WP_Block class that represents the block being rendered.
+ * @param array<string,mixed> $attributes The array of attributes for this block.
+ *
+ * @return array{class:string}
  */
-function default_attributes( \WP_Block $block, array $attributes ) {
+function default_attributes( \WP_Block $block, array $attributes ): array {
 	$block_attributes_definition = $block->block_type->attributes;
 	$block_supports_definition = $block->block_type->supports;
 	$fixed_attributes = array(

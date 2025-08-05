@@ -10,7 +10,11 @@ import {
 import { Slot } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useEffect } from "react";
-import { getInnerBlocksByName } from "@launchpadBlocks/helpers.editor";
+import {
+	getInnerBlocksByName,
+	useLayoutStyles,
+} from "@launchpadBlocks/helpers.editor";
+import { supports } from "./supports";
 
 type BlockInstance = {
 	clientId: string;
@@ -30,10 +34,21 @@ export type BlockEditProps = CreateBlockEditProps<
 export function Edit({
 	clientId,
 	context,
+	attributes,
 	attributes: { selectedTab },
 	setAttributes,
 }: BlockEditProps) {
-	const blockProps = useBlockProps();
+	const { layout, style } = attributes;
+	const { className: layoutClassName, style: layoutStyle } = useLayoutStyles(
+		layout,
+		supports,
+		style,
+	);
+
+	const blockProps = useBlockProps({
+		className: layoutClassName,
+		style: layoutStyle,
+	});
 
 	const { tabGroupClientId, tabPanelGroup } = useSelect(
 		(select) => {

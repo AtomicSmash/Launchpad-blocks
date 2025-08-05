@@ -14,7 +14,7 @@ use WP_Block_Type_Registry;
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function register_block() {
+function register_block(): void {
 	\register_block_type( __DIR__ . '/block.json' );
 }
 \add_action( 'init', __NAMESPACE__ . '\\register_block' );

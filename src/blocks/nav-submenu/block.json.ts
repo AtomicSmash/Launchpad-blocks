@@ -13,6 +13,7 @@ export const blockJson = {
 	description: "A sub menu dropdown for the navigation block.",
 	allowedBlocks: ["launchpad-blocks/nav-list"],
 	parent: ["launchpad-blocks/nav-list"],
+	ancestor: ["launchpad-blocks/navigation"],
 	textdomain: "launchpad-blocks",
 	keywords: ["menu", "nav", "links"],
 	editorScript: "file:./index.tsx",

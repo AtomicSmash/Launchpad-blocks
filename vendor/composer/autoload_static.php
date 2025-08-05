@@ -4,12 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita2e00d94909ac118b584496d03042d3c
+class ComposerStaticInit8d3ae8f963baeed41377fd945abdef0a
 {
     public static $prefixLengthsPsr4 = array (
         'L' => 
         array (
             'LaunchpadBlocks\\' => 16,
+        ),
+        'A' => 
+        array (
+            'AtomicSmash\\CompilerHelpers\\' => 28,
         ),
     );
 
@@ -18,18 +22,24 @@ class ComposerStaticInita2e00d94909ac118b584496d03042d3c
         array (
             0 => __DIR__ . '/../..' . '/classes',
         ),
+        'AtomicSmash\\CompilerHelpers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/atomicsmash/compiler-helpers/classes',
+        ),
     );
 
     public static $classMap = array (
+        'AtomicSmash\\CompilerHelpers\\Assets' => __DIR__ . '/..' . '/atomicsmash/compiler-helpers/classes/Assets.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'LaunchpadBlocks\\Assets' => __DIR__ . '/../..' . '/classes/Assets.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita2e00d94909ac118b584496d03042d3c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita2e00d94909ac118b584496d03042d3c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita2e00d94909ac118b584496d03042d3c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8d3ae8f963baeed41377fd945abdef0a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8d3ae8f963baeed41377fd945abdef0a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit8d3ae8f963baeed41377fd945abdef0a::$classMap;
 
         }, null, ClassLoader::class);
     }

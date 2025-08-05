@@ -1,0 +1,49 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/nav-links-group",
+  "title": "Nav links group",
+  "category": "theme",
+  "description": "A simple list of links, often found in the footer or sidebar of a page.",
+  "allowedBlocks": [
+    "launchpad-blocks/nav-list"
+  ],
+  "textdomain": "launchpad",
+  "editorScript": [
+    "file:./index.b71bd7c8d544bb3f2c13.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.aafee21cdf5572712b85.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "keywords": [
+    "menu",
+    "links"
+  ],
+  "attributes": {
+    "headerElement": {
+      "type": "string",
+      "enum": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
+      "default": "h2"
+    },
+    "headerContent": {
+      "type": "string"
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "supports": {},
+  "example": {}
+}

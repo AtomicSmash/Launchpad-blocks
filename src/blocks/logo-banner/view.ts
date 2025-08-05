@@ -146,26 +146,24 @@ class ScrollingLogoBanner {
 			const imageBlocks =
 				this.imagesContainer.querySelectorAll(".wp-block-image");
 			const initiallyVisibleItems: Element[] = [];
-			if (!this.initiallyVisibleImagesObserver) {
-				this.initiallyVisibleImagesObserver = new IntersectionObserver(
-					(entries, _observer) => {
-						if (imageBlocks.length !== entries.length) {
-							return;
+			this.initiallyVisibleImagesObserver ??= new IntersectionObserver(
+				(entries, _observer) => {
+					if (imageBlocks.length !== entries.length) {
+						return;
+					}
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							initiallyVisibleItems.push(entry.target);
 						}
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								initiallyVisibleItems.push(entry.target);
-							}
-						});
-						// Disconnect after getting the items.
-						this.initiallyVisibleImagesObserver!.disconnect();
-						resolve(initiallyVisibleItems);
-					},
-					{
-						root: this.imagesContainer,
-					},
-				);
-			}
+					});
+					// Disconnect after getting the items.
+					this.initiallyVisibleImagesObserver!.disconnect();
+					resolve(initiallyVisibleItems);
+				},
+				{
+					root: this.imagesContainer,
+				},
+			);
 
 			for (const imageBlock of imageBlocks) {
 				this.initiallyVisibleImagesObserver.observe(imageBlock);

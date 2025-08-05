@@ -5,9 +5,17 @@ import {
 	useInnerBlocksProps,
 	store as blockEditorStore,
 	InspectorAdvancedControls,
+	BlockControls,
+	InnerBlocks,
 } from "@wordpress/block-editor";
-import { TextControl } from "@wordpress/components";
+import {
+	TextControl,
+	ToolbarButton,
+	ToolbarGroup,
+} from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
+import { lineDashed, alignJustify } from "@wordpress/icons";
 import { useEffect } from "react";
 
 export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
@@ -23,6 +31,7 @@ export function Edit({
 	attributes: {
 		isNestedInAnotherNavLink: isNestedInAnotherNavLinkAttribute,
 		ariaLabel,
+		linkOrientation,
 	},
 	setAttributes,
 }: BlockEditProps) {
@@ -41,8 +50,11 @@ export function Edit({
 		},
 		[clientId],
 	);
+
 	const blockProps = useBlockProps({
 		"data-navigation-nav-list": true,
+		className:
+			linkOrientation === "horizontal" ? "is-horizontal" : "is-vertical",
 	});
 	const innerBlocksProps = useInnerBlocksProps(
 		{
@@ -50,6 +62,8 @@ export function Edit({
 		},
 		{
 			orientation: isNestedInAnotherNavLink ? "vertical" : "horizontal",
+			templateLock: false,
+			renderAppender: InnerBlocks.ButtonBlockAppender,
 		},
 	);
 	useEffect(() => {
@@ -63,15 +77,34 @@ export function Edit({
 		setAttributes,
 	]);
 
-	if (isNestedInAnotherNavLink) {
-		return (
-			<div {...blockProps}>
-				<ul {...innerBlocksProps}></ul>
-			</div>
-		);
-	}
+	const NavListElement = isNestedInAnotherNavLink ? "div" : "nav";
+
 	return (
 		<>
+			<BlockControls>
+				<ToolbarGroup>
+					<ToolbarButton
+						icon={lineDashed}
+						label={__("Align links horizontally", "launchpad-blocks")}
+						isPressed={linkOrientation === "horizontal"}
+						onClick={() => {
+							setAttributes({
+								linkOrientation: "horizontal",
+							});
+						}}
+					/>
+					<ToolbarButton
+						icon={alignJustify}
+						label={__("Align links vertically", "launchpad-blocks")}
+						isPressed={linkOrientation === "vertical"}
+						onClick={() => {
+							setAttributes({
+								linkOrientation: "vertical",
+							});
+						}}
+					/>
+				</ToolbarGroup>
+			</BlockControls>
 			<InspectorAdvancedControls>
 				<TextControl
 					label="Screen reader label"
@@ -86,9 +119,9 @@ export function Edit({
 					}}
 				/>
 			</InspectorAdvancedControls>
-			<nav {...blockProps}>
-				<ul {...innerBlocksProps}></ul>
-			</nav>
+			<NavListElement {...blockProps}>
+				<ul {...innerBlocksProps} />
+			</NavListElement>
 		</>
 	);
 }

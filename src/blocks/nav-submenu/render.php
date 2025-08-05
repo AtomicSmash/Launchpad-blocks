@@ -24,6 +24,9 @@ $content = $content;
  */
 $block = $block;
 
+global $wp;
+$current_url = trailingslashit( home_url( $wp->request ) );
+
 $nav_submenu_dropdown_icon_function = apply_filters(
 	'launchpad_blocks_nav_submenu_dropdown_icon',
 	function ( $attributes ) {
@@ -31,13 +34,15 @@ $nav_submenu_dropdown_icon_function = apply_filters(
 	}
 );
 
+$has_current_menu_item_as_child = \LaunchpadBlocks\Blocks\Custom\NavigationSubMenu\has_current_menu_item_as_child( $block, $current_url );
+
 ?>
 <li 
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			'class' => 'navigation-list-item',
+			'class' => 'navigation-list-item' . ( $has_current_menu_item_as_child ? ' has-current-menu-item-as-child' : '' ),
 			'data-navigation-sub-menu' => '',
 		)
 	)

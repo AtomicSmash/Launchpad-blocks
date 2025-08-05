@@ -13,7 +13,7 @@ export const blockJson = {
 		"launchpad-blocks/gallery-carousel-lightbox",
 		"launchpad-blocks/carousel-slides",
 	],
-	title: "Gallery carousel",
+	title: "Gallery with lightbox",
 	category: "theme",
 	description: "",
 	textdomain: "launchpad-blocks",

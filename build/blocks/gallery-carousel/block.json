@@ -5,7 +5,7 @@
     "launchpad-blocks/gallery-carousel-lightbox",
     "launchpad-blocks/carousel-slides"
   ],
-  "title": "Gallery carousel",
+  "title": "Gallery with lightbox",
   "category": "theme",
   "description": "",
   "textdomain": "launchpad-blocks",
@@ -13,10 +13,10 @@
     "lightbox"
   ],
   "editorScript": [
-    "file:./index.892fe98e8ea26fcfca8b.js"
+    "file:./index.5b88a33d6d0e346922aa.js"
   ],
   "viewScript": [
-    "file:./view.9e73e03eb215018025a8.js"
+    "file:./view.b90c83d7548230ac8fa1.js"
   ],
   "style": [
     "file:./style.a93d314249dc409bfb3e.css"

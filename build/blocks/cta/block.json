@@ -1,0 +1,80 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/cta",
+  "title": "Call to action",
+  "category": "theme",
+  "description": "A call to action block to encourage users to perform an action.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.75d60ef5c15df0f90683.js"
+  ],
+  "viewScript": [
+    "file:./view.546d0445329c8d9fc5d8.js"
+  ],
+  "style": [
+    "file:./style.9e6355b90f5be616e62f.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "shouldShowImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "imageId": {
+      "type": "integer",
+      "default": 0
+    },
+    "imagePosition": {
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left"
+    },
+    "headerElement": {
+      "type": "string",
+      "enum": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
+      "default": "h2"
+    },
+    "headerContent": {
+      "type": "string",
+      "default": ""
+    },
+    "textContent": {
+      "type": "string",
+      "default": ""
+    },
+    "buttons": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "label": "",
+          "href": "",
+          "target": "_self"
+        }
+      ]
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "example": {},
+  "supports": {
+    "align": [
+      "wide"
+    ],
+    "color": true
+  }
+}

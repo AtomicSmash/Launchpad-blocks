@@ -1,0 +1,41 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+.wp-block-launchpad-blocks-numbered-columns {
+	counter-reset: list-items;
+	display: grid;
+	gap: var(--wp--preset--spacing--2);
+	grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+	list-style: none;
+	padding: 0;
+
+	.numbered-columns-list-item {
+		counter-increment: list-items;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		&::before {
+			--size: 1.25em;
+
+			border-radius: 100%;
+			content: counter(list-items);
+			display: block;
+			font-size: 3rem;
+			line-height: var(--size);
+			font-weight: 900;
+			height: var(--size);
+			text-align: center;
+			width: var(--size);
+			background-color: var(--wp--preset--color--accent);
+			color: var(--wp--preset--color--accent-text);
+		}
+	}
+
+	.numbered-columns-list-item-heading,
+	.numbered-columns-list-item-text {
+		margin-block: 0;
+	}
+}

@@ -10,6 +10,9 @@
   "parent": [
     "launchpad-blocks/nav-list"
   ],
+  "ancestor": [
+    "launchpad-blocks/navigation"
+  ],
   "textdomain": "launchpad-blocks",
   "keywords": [
     "menu",
@@ -17,10 +20,10 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.8ba9e9a36490c7286a6a.js"
+    "file:./index.0eb79e3138c32e38167f.js"
   ],
   "style": [
-    "file:./style.6bd74d44d8362052176c.css"
+    "file:./style.e8d6850dcb88e1a90555.css"
   ],
   "editorStyle": [
     "file:./editor-style.902b93fe302bc506009e.css"

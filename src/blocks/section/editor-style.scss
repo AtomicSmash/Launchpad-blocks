@@ -1,0 +1,31 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+.wp-block-launchpad-blocks-section {
+	> .block-list-appender:nth-child(2) {
+		align-self: center;
+		line-height: inherit;
+		list-style: none;
+		position: relative;
+		right: auto;
+	}
+
+	&:not(.is-selected) {
+		> .block-list-appender:nth-child(2) {
+			pointer-events: none;
+
+			.block-editor-inserter {
+				opacity: 0;
+			}
+
+			&::after {
+				border: 1px dashed;
+				inset: 0;
+				content: "";
+				pointer-events: none;
+				position: absolute;
+			}
+		}
+	}
+}

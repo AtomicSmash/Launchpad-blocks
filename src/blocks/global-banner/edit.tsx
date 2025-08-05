@@ -7,7 +7,8 @@ import {
 	useInnerBlocksProps,
 } from "@wordpress/block-editor";
 import { Panel, PanelBody, ToggleControl } from "@wordpress/components";
-import { useDispatch } from "@wordpress/data";
+import { store as coreStore } from "@wordpress/core-data";
+import { useDispatch, useSelect } from "@wordpress/data";
 import { applyFilters } from "@wordpress/hooks";
 import { useLayoutStyles } from "@launchpadBlocks/helpers.editor";
 import { Icon } from "@launchpadBlocks/svgs";
@@ -68,6 +69,17 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 		),
 	) as (props: { className?: string; isEditorMode: boolean }) => JSX.Element;
 
+	const siteURL = useSelect(
+		(select) =>
+			(
+				select(coreStore) as unknown as {
+					getSite: () => { url: string } | undefined;
+				}
+			).getSite()?.url,
+		[],
+	);
+	const globalBannerLink = `${siteURL ?? ""}/wp-admin/themes.php?page=global-banner`;
+
 	return (
 		<>
 			<InspectorControls>
@@ -92,6 +104,19 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 						</button>
 					) : null}
 				</div>
+			</div>
+			<div className="global-banner-edit-instructions">
+				<p>
+					After saving your changes,{" "}
+					<a href={globalBannerLink} target="_blank" rel="noreferrer">
+						click here to select which banners appear globally.
+					</a>
+				</p>
+				<p>
+					You can select these banners at a later point in the WordPress
+					backend, from the sidebar, under the &quot;Appearance&quot; menu in
+					the &quot;Global Banner&quot; section.
+				</p>
 			</div>
 		</>
 	);

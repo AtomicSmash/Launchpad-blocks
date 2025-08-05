@@ -1,5 +1,5 @@
 export const fancyListFixtures = {
-	largeText: `<!-- wp:launchpad-blocks/fancy-list {"markerType":"icon","markerColour":"#D23636","markerInnerColour":"#FEFFFE","fontSize":"heading-2"} -->
+	largeText: `<!-- wp:launchpad-blocks/fancy-list {"markerType":"icon","markerColour":"#D23636","markerInnerColour":"#FEFFFE","fontSize":"t-2"} -->
 <!-- wp:launchpad-blocks/fancy-list-item {"iconName":"plus","library":"launchpad-blocks","textContent":"Test"} /-->
 
 <!-- wp:launchpad-blocks/fancy-list-item {"iconName":"minus","library":"launchpad-blocks","textContent":"Test"} /-->

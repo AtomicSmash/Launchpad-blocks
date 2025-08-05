@@ -38,6 +38,13 @@ class Navigation {
 			throw new Error("Unable to find the navigation element.");
 		}
 		this.navigation = navigation;
+		if (
+			this.navigation.parentElement!.classList.contains(
+				"wp-block-template-part",
+			)
+		) {
+			this.navigation.parentElement!.replaceWith(this.navigation);
+		}
 		const navigationParent = this.navigation.parentElement;
 		if (!navigationParent) {
 			throw new Error(

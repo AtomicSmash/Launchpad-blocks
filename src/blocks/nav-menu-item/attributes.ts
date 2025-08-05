@@ -5,6 +5,15 @@ import type {
 } from "@atomicsmash/blocks-helpers";
 
 export const attributes = {
+	linkId: {
+		type: "number",
+	},
+	linkKind: {
+		type: "string",
+	},
+	linkType: {
+		type: "string",
+	},
 	linkHref: {
 		type: "string",
 	},

@@ -4,28 +4,28 @@
   "title": "Nav list",
   "category": "theme",
   "description": "The collection of the actual menu items for your navigation.",
+  "parent": [
+    "launchpad-blocks/navigation",
+    "launchpad-blocks/nav-submenu",
+    "launchpad-blocks/nav-links-group"
+  ],
   "allowedBlocks": [
     "launchpad-blocks/nav-submenu",
     "launchpad-blocks/nav-menu-item"
   ],
-  "parent": [
-    "launchpad-blocks/navigation",
-    "launchpad-blocks/nav-submenu"
-  ],
   "textdomain": "launchpad-blocks",
   "keywords": [
     "menu",
-    "nav",
     "links"
   ],
   "editorScript": [
-    "file:./index.297a66c2aef28b93424e.js"
+    "file:./index.c8c6b99738e94ebc408d.js"
   ],
   "style": [
-    "file:./style.9ea98ec5df90fcae0fbf.css"
+    "file:./style.36fefef31327ca3bb4c5.css"
   ],
   "editorStyle": [
-    "file:./editor-style.9a78aab58769514159d3.css"
+    "file:./editor-style.229604b4e7f0c77106bd.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -36,6 +36,14 @@
     "ariaLabel": {
       "type": "string",
       "default": "Primary navigation"
+    },
+    "linkOrientation": {
+      "type": "string",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal"
     }
   },
   "supports": {},

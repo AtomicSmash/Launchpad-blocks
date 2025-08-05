@@ -6,23 +6,25 @@
   "description": "",
   "textdomain": "launchpad-blocks",
   "allowedBlocks": [
-    "launchpad-blocks/carousel-thumbnails"
+    "launchpad-blocks/carousel-thumbnails",
+    "launchpad-blocks/carousel-dots",
+    "launchpad-blocks/carousel-slide-count"
   ],
   "parent": [
     "launchpad-blocks/carousel"
   ],
   "keywords": [],
   "editorScript": [
-    "file:./index.5c5daede8e8864ee7866.js"
+    "file:./index.935febd80446a46c830e.js"
   ],
   "viewScript": [
-    "file:./view.61da9882363f510867e3.js"
+    "file:./view.884065eed8731afd4728.js"
   ],
   "style": [
-    "file:./style.9140162811a9677bd0b5.css"
+    "file:./style.864a3bc7e668bd0c99c8.css"
   ],
   "editorStyle": [
-    "file:./editor-style.9a78aab58769514159d3.css"
+    "file:./editor-style.96637f65df76b1d2f29c.css"
   ],
   "render": "file:./render.php",
   "styles": [

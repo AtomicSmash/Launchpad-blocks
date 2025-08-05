@@ -11,7 +11,7 @@
 	font-size: 1em;
 	font-weight: 400;
 	line-height: 1.2;
-	font-family: system-ui;
+	font-family: var(--Typography-Font-families-body);
 }
 
 /*
@@ -20,10 +20,10 @@ The double selector is a editor specific specificity hack, which when using our 
 */
 .wp-block-launchpad-blocks-accordion.wp-block-launchpad-blocks-accordion
 	> :is(h2, h3, h4, h5, h6, p) {
-	font-family: system-ui;
-	font-size: inherit;
-	font-weight: inherit;
-	line-height: inherit;
+	font-family: var(--Typography-Font-families-body);
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 1.2;
 	margin: 0;
 	text-transform: none;
 }

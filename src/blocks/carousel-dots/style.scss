@@ -1,0 +1,29 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+.wp-block-launchpad-blocks-carousel-dots {
+	--dot-size: 1rem;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, var(--dot-size));
+	justify-content: center;
+	gap: calc(var(--dot-size) / 2);
+
+	.carousel-dot-button {
+		width: var(--dot-size);
+		height: var(--dot-size);
+		background-color: var(--wp--preset--color--primary);
+
+		&.is-selected {
+			background-color: var(--wp--preset--color--accent);
+		}
+	}
+}
+
+.carousel-navigation-inner-area
+	> .wp-block-launchpad-blocks-carousel-dots:only-child {
+	height: 100%;
+	align-content: center;
+}

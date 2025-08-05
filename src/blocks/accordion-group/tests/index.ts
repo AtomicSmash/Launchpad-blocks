@@ -1,104 +1,44 @@
+import type { Page, PlaywrightTestConfig } from "@playwright/test";
+import {
+	generateProjectsForAllBrowsers,
+	slugify,
+} from "@atomicsmash/test-utils";
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-import { test, expect, type Page } from "@playwright/test";
+import { devices } from "@playwright/test";
 import { CURRENT_WORDPRESS_VERSION } from "@tests/playwright-utils";
 
-export const contentPersistLocation = `${process.cwd()}/tests/.tmp/accordions-page-info.json`;
-
-const accordionTests = async function ({ page }) {
-	for (const version of ["v1", "v2", "v3"]) {
-		// Go to accordion testing page
-		await page.goto(
-			await WordPressAdminInteraction.getFrontEndURL(
-				contentPersistLocation,
-				`accordion-${version}-test-page`,
-			),
-		);
-
-		const accordionGroups = page.locator(
-			"css=[data-launchpad-accordion-group]",
-		);
-
-		await expect(accordionGroups).toHaveCount(2);
-
-		for (const accordionGroup of await accordionGroups.all()) {
-			const shouldAllowMultiple =
-				(await accordionGroup.getAttribute("data-is-multiple")) === "true";
-
-			const firstAccordionTrigger = accordionGroup.getByRole("button", {
-				name: "Accordion that is open by default",
-				exact: true,
-			});
-
-			const firstAccordionPanel = accordionGroup.getByRole("region", {
-				name: "Accordion that is open by default",
-				exact: true,
-			});
-
-			const secondAccordionTrigger = accordionGroup.getByRole("button", {
-				name: "Accordion that is open by default if multiple accordions allowed",
-				exact: true,
-			});
-
-			const secondAccordionPanel = accordionGroup.getByRole("region", {
-				name: "Accordion that is open by default if multiple accordions allowed",
-				exact: true,
-			});
-
-			const thirdAccordionPanel = accordionGroup.getByRole("region", {
-				name: "Accordion that is closed by default",
-				exact: true,
-			});
-
-			// Check initial state
-			await expect(firstAccordionPanel).toBeVisible();
-
-			await expect(secondAccordionPanel).toBeVisible({
-				visible: shouldAllowMultiple,
-			});
-
-			await expect(thirdAccordionPanel).not.toBeVisible();
-
-			// Check clicking accordions opens/closes them.
-
-			await firstAccordionTrigger.click({
-				noWaitAfter: true,
-			});
-			// Without these delays after clicks, this test will occasionally fail
-			// This is likely due to click events happening too fast, or the animation
-			// interfering with the test.
-			await page.waitForTimeout(500);
-			await expect(firstAccordionPanel).not.toBeVisible();
-
-			await firstAccordionTrigger.click({
-				noWaitAfter: true,
-			});
-			await page.waitForTimeout(500);
-			await expect(firstAccordionPanel).toBeVisible();
-
-			// Check multiple accordions is applying correctly.
-
-			await secondAccordionTrigger.click({
-				noWaitAfter: true,
-			});
-			await page.waitForTimeout(500);
-
-			await expect(secondAccordionPanel).toBeVisible({
-				visible: !shouldAllowMultiple,
-			});
-			await expect(firstAccordionPanel).toBeVisible({
-				visible: shouldAllowMultiple,
-			});
-		}
-	}
-} satisfies Parameters<typeof test>[2];
-
-export const blockTestInfo = {
-	blockName: "Accordion",
-	tests: accordionTests,
-	contentPersistLocation,
-	lighthouseTestsPage: "accordion-v3-test-page",
-	visualTestsPage: "accordion-v3-test-page",
-};
+export const contentPersistLocation = `${process.cwd()}/tests/.tmp/accordion-page-info.json`;
+export const blockName = "Accordion";
+export const projects = [
+	{
+		name: `${blockName} setup`,
+		testDir: import.meta.dirname,
+		testMatch: /setup\.test\.ts/,
+		teardown: `${blockName} teardown`,
+		use: {
+			...devices["Desktop Chrome"],
+			// Use prepared auth state.
+			storageState: "tests/.tmp/admin.auth.json",
+		},
+		dependencies: ["Admin login"],
+	},
+	{
+		name: `${blockName} teardown`,
+		testDir: import.meta.dirname,
+		testMatch: /teardown\.test\.ts/,
+		use: {
+			...devices["Desktop Chrome"],
+			// Use prepared auth state.
+			storageState: "tests/.tmp/admin.auth.json",
+		},
+	},
+	...generateProjectsForAllBrowsers({
+		name: `${slugify(blockName)}_tests`,
+		testDir: import.meta.dirname,
+		testMatch: /main\.test\.ts/,
+		dependencies: [`${blockName} setup`],
+	}),
+] satisfies PlaywrightTestConfig["projects"];
 
 export async function doTearDown(page: Page) {
 	const adminHelper = new WordPressAdminInteraction(

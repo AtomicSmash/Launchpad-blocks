@@ -1,0 +1,10 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+// Same as only child when also accounting for block appender.
+.carousel-navigation-inner-area
+	> .wp-block-launchpad-blocks-carousel-dots:first-child:nth-last-child(2) {
+	height: 100%;
+	align-content: center;
+}

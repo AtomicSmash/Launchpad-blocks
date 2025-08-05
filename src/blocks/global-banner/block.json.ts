@@ -14,6 +14,7 @@ export const blockJson = {
 	editorScript: "file:./index.tsx",
 	viewScript: "file:./view.ts",
 	style: "file:./style.scss",
+	editorStyle: "file:./editor-style.scss",
 	render: "file:./render.php",
 	attributes,
 	supports,

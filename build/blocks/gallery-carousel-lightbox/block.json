@@ -1,16 +1,16 @@
 {
   "apiVersion": 3,
   "name": "launchpad-blocks/gallery-carousel-lightbox",
-  "title": "Gallery carousel lightbox",
+  "title": "Lightbox",
   "category": "theme",
   "description": "",
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.1bb432d7ee6999defa57.js"
+    "file:./index.74c5cb5930a81b74ba6b.js"
   ],
   "viewScript": [
-    "file:./view.8c01a179c04b8ac72283.js"
+    "file:./view.a3ea22828fc9e5e93c67.js"
   ],
   "style": [
     "file:./style.2b83dad730919b5aa80a.css"

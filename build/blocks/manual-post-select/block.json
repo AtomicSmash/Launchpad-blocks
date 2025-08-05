@@ -7,7 +7,7 @@
   "textdomain": "launchpad",
   "keywords": [],
   "editorScript": [
-    "file:./index.3d5540459c0e2c1b6935.js"
+    "file:./index.7afa5ac7d8378c773018.js"
   ],
   "editorStyle": [
     "file:./editor-style.fd8f66484ec7d6017750.css"
@@ -17,6 +17,10 @@
   ],
   "render": "file:./render.php",
   "attributes": {
+    "hasDismissedVariationsSelector": {
+      "type": "boolean",
+      "default": false
+    },
     "namespace": {
       "type": "string"
     },

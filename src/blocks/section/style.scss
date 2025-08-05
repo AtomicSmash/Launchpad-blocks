@@ -1,0 +1,22 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+.wp-block-launchpad-blocks-section {
+	padding-block: var(--wp--preset--spacing--10);
+
+	&.is-style-primary {
+		background-color: var(--wp--preset--color--primary);
+		color: var(--wp--preset--color--primary-text);
+	}
+
+	&.is-style-secondary {
+		background-color: var(--wp--preset--color--secondary);
+		color: var(--wp--preset--color--secondary-text);
+	}
+
+	&.is-style-accent {
+		background-color: var(--wp--preset--color--accent);
+		color: var(--wp--preset--color--accent-text);
+	}
+}

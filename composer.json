@@ -6,5 +6,8 @@
 		"psr-4": {
 			"LaunchpadBlocks\\": "classes/"
 		}
+	},
+	"require": {
+		"atomicsmash/compiler-helpers": "^0.1.2"
 	}
 }

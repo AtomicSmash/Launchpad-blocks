@@ -1,0 +1,94 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/media-and-text",
+  "title": "Breakout Media and Text",
+  "category": "formatting",
+  "description": "A media and text block where the media can be screen width.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [
+    "50/50",
+    "image",
+    "list",
+    "formatting",
+    "layout",
+    "breakout"
+  ],
+  "editorScript": [
+    "file:./index.6497f723a9772a7b4a74.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.635eb0d3106d649d859c.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "mediaPosition": {
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left"
+    },
+    "imageId": {
+      "type": "integer",
+      "default": 0
+    },
+    "shouldBreakOutMedia": {
+      "type": "boolean",
+      "default": false
+    },
+    "hasBackground": {
+      "type": "boolean",
+      "default": false
+    },
+    "shouldChildBlocksBeLocked": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "example": {
+    "attributes": {
+      "mediaPosition": "left",
+      "imageId": 0,
+      "shouldBreakOutMedia": true,
+      "hasBackground": true,
+      "shouldChildBlocksBeLocked": true
+    },
+    "innerBlocks": [
+      {
+        "name": "core/paragraph",
+        "attributes": {
+          "className": "wp-block-launchpad-blocks-media-and-text__intro",
+          "content": "Part 6"
+        }
+      },
+      {
+        "name": "core/heading",
+        "attributes": {
+          "content": "The Hunchback Trout"
+        }
+      },
+      {
+        "name": "core/paragraph",
+        "attributes": {
+          "content": "The creek was made narrow by little green trees that grew too close together. The creek was like 12, 845 telephone booths in a row with high Victorian ceilings and all the doors taken off and all the backs of the booths knocked out. Sometimes when I went fishing in there, I felt just like a telephone repairman, even though I did not look like one. I was only a kid covered with fishing tackle, but in some strange way by going in there and catching a few trout, I kept the telephones in service. I was an asset to society."
+        }
+      },
+      {
+        "name": "core/button",
+        "attributes": {
+          "text": "Read more"
+        }
+      }
+    ]
+  },
+  "supports": {}
+}

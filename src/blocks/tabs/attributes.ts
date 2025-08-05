@@ -26,6 +26,10 @@ export const attributes = {
 		type: "string",
 		default: "",
 	},
+	hasDismissedVariationsSelector: {
+		type: "boolean",
+		default: false,
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

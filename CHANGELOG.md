@@ -1,5 +1,51 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.0.0-beta.40
+
+### Major Changes
+
+- 9e8a2d1: update variables used in launchpad blocks including carousel, accordion, media and text block
+- c7a9cad: split out other variables into variables.scss
+- c7a9cad: refactor typography into mixins and add mixins helper
+- 396b084: Switch to the new compiler
+- c7a9cad: update variables in block test fixtures and attributes
+- c7a9cad: setup base variables for colours, spacing and typography
+- c7a9cad: remove typography font sizes from theme.json in aid of block styles
+- c7a9cad: Add block styles for headings and paragraphs
+
+### Minor Changes
+
+- 6f2ea15: Add numbered columns block
+- 7681dc6: Add variation selector when adding a new manual post select block onto the page
+- 9f7b942: Added new horizontal and vertical variations to tabs block
+- 989f635: Add button support to blocks in php
+- 2c17780: Add carousel dots block
+- 94ddb83: Add nav links group block for showing static link lists
+- 0bf631f: Resolved bug with icon block where the preview was too large
+- 7ee4a9a: Update WordPress version
+- ec1c154: Add Section block
+- 94a7670: Added a clarifying note to the banner builder so that it is clear where to select the global banners when creating a new banner
+- cc958c0: Add slide count block
+- f2fe4bb: Add class if child is current menu item
+- 1fd48f4: Add class if menu item is current page
+
+### Patch Changes
+
+- 4127b9a: fix navigation block js to remove block template part div
+- 94ddb83: Fix infinite loop bug if blocks with uniqueIds are used within template parts.
+- 5b09b2d: Prevent double menu insert buttons for submenu in main navigation block
+- 2c17780: Fix block appender for inside carousel navigation arrows
+- 0529998: add breakout media and text block
+- 5a96173: Add aria labels for thumbnail buttons
+- 989f635: Fix the block markup generation in blocks in php
+- f07f275: Prevent submenu being available in nav links group
+- 57fadce: Use carousel images as thumbnail previews
+- 018cf7e: Update coding standards and fix linting errors
+- 1cc1dbd: Update deps
+- abdc021: rename gallery with lightbox blocks, tests and icons
+- 018cf7e: Update dependencies
+- 989f635: Fix php types for generate banner id in global banner
+
 ## 1.0.0-beta.39
 
 ### Minor Changes
@@ -249,7 +295,6 @@
 ### Patch Changes
 
 - de4aa26: Minor Launchpad fixes
-
   1. Update's the accordion block to fix content font size when a different font size is selected for the header.
   2. Update's the accordion block to fix padding when a larger font size is selected
 

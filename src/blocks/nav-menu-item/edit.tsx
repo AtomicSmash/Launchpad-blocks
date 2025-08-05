@@ -3,7 +3,7 @@ import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
 import {
 	useBlockProps,
 	RichText,
-	__experimentalLinkControl as LinkControl,
+	LinkControl,
 	BlockControls,
 } from "@wordpress/block-editor";
 import { Popover, ToolbarGroup, ToolbarButton } from "@wordpress/components";
@@ -85,6 +85,9 @@ export function Edit({
 							showInitialSuggestions
 							onChange={(nextValue) => {
 								setAttributes({
+									linkId: nextValue.id,
+									linkKind: nextValue.kind,
+									linkType: nextValue.type,
 									linkHref: nextValue.url,
 									linkText: nextValue.title,
 									linkTarget: nextValue.opensInNewTab ? "_blank" : "_self",
@@ -93,8 +96,11 @@ export function Edit({
 							}}
 							onRemove={() => {
 								setAttributes({
-									linkHref: "",
-									linkText: "",
+									linkId: undefined,
+									linkKind: undefined,
+									linkType: undefined,
+									linkHref: undefined,
+									linkText: undefined,
 								});
 							}}
 						/>

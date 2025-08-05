@@ -14,7 +14,7 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.3a9fc11d311f092406c2.js"
+    "file:./index.c0a50aac13cf20bc078c.js"
   ],
   "style": [
     "file:./style.6af02fec6b1cfcf47bb8.css"
@@ -24,6 +24,15 @@
   ],
   "render": "file:./render.php",
   "attributes": {
+    "linkId": {
+      "type": "number"
+    },
+    "linkKind": {
+      "type": "string"
+    },
+    "linkType": {
+      "type": "string"
+    },
     "linkHref": {
       "type": "string"
     },

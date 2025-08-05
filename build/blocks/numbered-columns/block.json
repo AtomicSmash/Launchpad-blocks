@@ -1,0 +1,73 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/numbered-columns",
+  "title": "Numbered columns",
+  "category": "theme",
+  "description": "A block that allows adding text content into numbered columns.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [
+    "list"
+  ],
+  "editorScript": [
+    "file:./index.3fe7a6da45e81f550229.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.9d8b39f95ebc643d9aaa.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "columns": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "heading": "",
+          "text": ""
+        }
+      ]
+    },
+    "headerElement": {
+      "type": "string",
+      "enum": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
+      "default": "h2"
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "example": {
+    "attributes": {
+      "columns": [
+        {
+          "id": 1,
+          "heading": "Step one",
+          "text": "Build the numbered columns block."
+        },
+        {
+          "id": 2,
+          "heading": "Step two",
+          "text": "Add automated tests for the numbered columns block to make sure it doesn't break."
+        },
+        {
+          "id": 3,
+          "heading": "Step three",
+          "text": "Add example content for the numbered columns block so it shows a nice preview."
+        }
+      ]
+    },
+    "viewportWidth": 900
+  },
+  "supports": {}
+}

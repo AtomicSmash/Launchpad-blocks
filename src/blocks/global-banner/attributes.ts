@@ -18,7 +18,7 @@ export const attributes = {
 	},
 	backgroundColor: {
 		type: "string",
-		default: "bright-grey",
+		default: "elevation-high",
 	},
 	textColor: {
 		type: "string",

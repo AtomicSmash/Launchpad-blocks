@@ -13,7 +13,11 @@ export const blockJson = {
 	category: "theme",
 	description: "",
 	textdomain: "launchpad-blocks",
-	allowedBlocks: ["launchpad-blocks/carousel-thumbnails"],
+	allowedBlocks: [
+		"launchpad-blocks/carousel-thumbnails",
+		"launchpad-blocks/carousel-dots",
+		"launchpad-blocks/carousel-slide-count",
+	],
 	parent: ["launchpad-blocks/carousel"],
 	keywords: [],
 	editorScript: "file:./index.tsx",

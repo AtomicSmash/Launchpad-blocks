@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'LaunchpadBlocks\\' => array($baseDir . '/classes'),
+    'AtomicSmash\\CompilerHelpers\\' => array($vendorDir . '/atomicsmash/compiler-helpers/classes'),
 );

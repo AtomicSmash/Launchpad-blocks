@@ -14,12 +14,12 @@
 		top: 50%;
 		transform: translateY(-50%);
 		width: 100%;
-		padding: 0 1rem;
+		padding: 0 var(--wp--preset--spacing--2);
 	}
 
 	.carousel-navigation-button {
 		flex: 0 0 auto;
-		padding: 0.5rem;
+		padding: var(--wp--preset--spacing--1);
 		display: flex;
 		align-items: center;
 		background-color: var(--background-colour, transparent);
@@ -37,5 +37,9 @@
 	.carousel-navigation-inner-area {
 		flex: 1 0 1px;
 		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1rem;
 	}
 }

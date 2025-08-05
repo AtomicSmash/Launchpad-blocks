@@ -48,7 +48,7 @@ echo wp_kses_data(
 	foreach ( $block->context['launchpad-blocks/carouselImages'] as $index => $image ) {
 		$is_selected = 0 === $index;
 		?>
-		<button type="button" class="reset carousel-thumbnail-button<?php echo esc_attr( $is_selected ? ' is-selected' : '' ); ?>" data-carousel-slide="<?php echo esc_html( $index ); ?>">
+		<button type="button" class="reset carousel-thumbnail-button<?php echo esc_attr( $is_selected ? ' is-selected' : '' ); ?>" data-carousel-slide="<?php echo esc_html( $index ); ?>" aria-label="Jump to slide <?php echo esc_html( $index + 1 ); ?>">
 			<?php
 			echo wp_get_attachment_image(
 				$image['id'],

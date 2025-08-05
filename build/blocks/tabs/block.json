@@ -6,13 +6,13 @@
   "description": "Multiple sections of content collated together where only one is shown at a time.",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.bf3518b219087bc69353.js"
+    "file:./index.7ccbf697ce4fcf35bb81.js"
   ],
   "viewScript": [
-    "file:./view.92affe7d6cc4dd66e967.js"
+    "file:./view.ab97b24143e0ce896369.js"
   ],
   "style": [
-    "file:./style.e6b81fe5df95ec195a7e.css"
+    "file:./style.07ba8bba90fda900e8dc.css"
   ],
   "editorStyle": [
     "file:./editor-style.5bad094a17ad1b701732.css"
@@ -46,6 +46,10 @@
     "initiallySelectedTab": {
       "type": "string",
       "default": ""
+    },
+    "hasDismissedVariationsSelector": {
+      "type": "boolean",
+      "default": false
     }
   },
   "providesContext": {
@@ -110,17 +114,6 @@
               "tab": {
                 "id": "tab_3_trigger",
                 "label": "Tab 3"
-              }
-            },
-            "innerBlocks": []
-          },
-          {
-            "name": "launchpad-blocks/tab-panel",
-            "attributes": {
-              "id": "tab_4",
-              "tab": {
-                "id": "tab_4_trigger",
-                "label": "Tab 4"
               }
             },
             "innerBlocks": []

@@ -1,0 +1,45 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/carousel-slide-count",
+  "title": "Carousel slide count",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "parent": [
+    "launchpad-blocks/carousel"
+  ],
+  "editorScript": [
+    "file:./index.80527841c462165ca395.js"
+  ],
+  "viewScript": [
+    "file:./view.973a21268cad360fc6f7.js"
+  ],
+  "style": [
+    "file:./style.72d6ef9227eac45a8766.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.bf7bf5fc9d80251bbcd0.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "prefix": {
+      "type": "string"
+    },
+    "betweenText": {
+      "type": "string",
+      "default": "/"
+    },
+    "suffix": {
+      "type": "string"
+    }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "launchpad-blocks/carouselImages"
+  ],
+  "example": {
+    "viewportWidth": 1200
+  },
+  "supports": {}
+}

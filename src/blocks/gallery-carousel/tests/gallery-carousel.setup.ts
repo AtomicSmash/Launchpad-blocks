@@ -5,7 +5,7 @@ import { CURRENT_WORDPRESS_VERSION } from "@tests/playwright-utils";
 import { galleryCarousel } from "./fixture";
 import { contentPersistLocation, doTearDown } from "./index";
 
-setup("Gallery carousel test setup", async ({ page }) => {
+setup("Gallery with lightbox test setup", async ({ page }) => {
 	setup.setTimeout(60000);
 	if (existsSync(contentPersistLocation)) {
 		await doTearDown(page);
@@ -19,7 +19,7 @@ setup("Gallery carousel test setup", async ({ page }) => {
 	await adminHelper.createPostsViaBlocksEditor([
 		{
 			postIdentifier: "gallery-carousel-test-page",
-			title: "Gallery carousel tests",
+			title: "Gallery with lightbox tests",
 			postType: "page",
 		},
 	]);

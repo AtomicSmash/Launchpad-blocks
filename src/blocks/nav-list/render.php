@@ -31,6 +31,7 @@ $block_wrapper_attributes = (
 			array(
 				'data-navigation-nav-list' => true,
 				...( ! $attributes['isNestedInAnotherNavLink'] ? array( 'aria-label' => $attributes['ariaLabel'] ) : array() ),
+				'class' => 'horizontal' === $attributes['linkOrientation'] ? 'is-horizontal' : 'is-vertical',
 			),
 		)
 	)

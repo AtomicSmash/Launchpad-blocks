@@ -34,10 +34,22 @@ export function Edit({
 		className: "menu-group-list-item has-children",
 		"data-state": isDropdownShown ? "open" : "collapsed",
 	});
-	const innerBlocksProps = useInnerBlocksProps({
-		className: "menu-group-list-item-submenu",
-		hidden: isDropdownShown ? false : true,
-	});
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			className: "menu-group-list-item-submenu",
+			hidden: isDropdownShown ? false : true,
+		},
+		{
+			template: [
+				[
+					"launchpad-blocks/nav-list",
+					{ linkOrientation: "vertical" },
+					[["launchpad-blocks/nav-menu-item"]],
+				],
+			],
+			renderAppender: () => null,
+		},
+	);
 
 	const isInnerBlockSelected = useSelect(
 		(select) =>

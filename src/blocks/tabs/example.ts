@@ -53,17 +53,6 @@ export const example = {
 					},
 					innerBlocks: [],
 				},
-				{
-					name: "launchpad-blocks/tab-panel",
-					attributes: {
-						id: "tab_4",
-						tab: {
-							id: "tab_4_trigger",
-							label: "Tab 4",
-						},
-					},
-					innerBlocks: [],
-				},
 			],
 		},
 	],

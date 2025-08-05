@@ -13,6 +13,11 @@ export const attributes = {
 		type: "string",
 		default: "Primary navigation",
 	},
+	linkOrientation: {
+		type: "string",
+		enum: ["horizontal", "vertical"],
+		default: "horizontal",
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

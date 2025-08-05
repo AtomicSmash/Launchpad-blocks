@@ -46,5 +46,7 @@ echo wp_kses_data(
 		echo wp_kses_post( sprintf( '<' . $title_tag . ' id="' . $title_id . '" class="tab-title">%s</' . $title_tag . '>', $attributes['title'] ) );
 	}
 	?>
-	<?php echo wp_kses_post( $content ); ?>
+	<div class="wp-block-launchpad-blocks-tabs-content-wrapper">
+		<?php echo wp_kses_post( $content ); ?>
+	</div>
 </div>

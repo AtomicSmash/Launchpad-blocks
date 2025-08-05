@@ -1,0 +1,88 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/section",
+  "title": "Section",
+  "category": "theme",
+  "description": "This is a layout block used to set a section of a page.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.4b9b40f4a682619b5cd4.js"
+  ],
+  "style": [
+    "file:./style.3f62816005ed134abf02.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.1493e590e927a170bf8f.css"
+  ],
+  "render": "file:./render.php",
+  "styles": [
+    {
+      "name": "primary",
+      "label": "Primary"
+    },
+    {
+      "name": "secondary",
+      "label": "Secondary"
+    },
+    {
+      "name": "accent",
+      "label": "Accent"
+    }
+  ],
+  "attributes": {
+    "headerElement": {
+      "type": "string",
+      "enum": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
+      "default": "h2"
+    },
+    "headerContent": {
+      "type": "string"
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "padding": {
+          "top": "var:preset|spacing|10",
+          "bottom": "var:preset|spacing|10"
+        }
+      }
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "example": {
+    "viewportWidth": 1600,
+    "attributes": {
+      "headerContent": "Starry night"
+    },
+    "innerBlocks": [
+      {
+        "name": "core/image",
+        "attributes": {
+          "id": 1,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1920px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+        }
+      }
+    ]
+  },
+  "supports": {
+    "layout": {
+      "default": {
+        "type": "constrained"
+      }
+    },
+    "spacing": {
+      "padding": [
+        "vertical"
+      ]
+    }
+  }
+}

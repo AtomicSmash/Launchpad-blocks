@@ -14,7 +14,7 @@ use WP_Block_Type_Registry;
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function register_block() {
+function register_block(): void {
 	\register_block_type( __DIR__ . '/block.json' );
 }
 \add_action( 'init', __NAMESPACE__ . '\\register_block' );
@@ -23,10 +23,12 @@ function register_block() {
  * We only want to use this block on a single post type, so we need to
  * hide it for all other post types.
  *
- * @param array                    $allowed_block_types The currently allowed block types.
+ * @param array<string>|bool       $allowed_block_types The currently allowed block types.
  * @param \WP_Block_Editor_Context $editor_context The current block editor context.
+ *
+ * @return array<string>|bool
  */
-function disable_this_block_for_most_post_types( $allowed_block_types, $editor_context ) {
+function disable_this_block_for_most_post_types( array|bool $allowed_block_types, \WP_Block_Editor_Context $editor_context ): array|bool {
 	if ( isset( $editor_context->post ) && 'global-banner' === $editor_context->post->post_type ) {
 		return $allowed_block_types;
 	}
@@ -55,9 +57,9 @@ add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\\disable_this_block_for
  * if the "reset cookie" toggle is selected.
  * Note: cookie_reset field requires using acf/save_post hook.
  *
- * @param int $post_id Post ID.
+ * @param int|string $post_id Post ID.
  */
-function generate_banner_id( $post_id ) {
+function generate_banner_id( int|string $post_id ): void {
 	if ( wp_is_post_autosave( $post_id ) || wp_is_post_revision( $post_id ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 		return;
 	}

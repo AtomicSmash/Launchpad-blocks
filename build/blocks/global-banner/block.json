@@ -5,13 +5,16 @@
   "category": "theme",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.6f6f817b3bfe21c05257.js"
+    "file:./index.b3e0d3a0184820ec1fe0.js"
   ],
   "viewScript": [
-    "file:./view.5310d53a8184214aee33.js"
+    "file:./view.1e99099b976899e34a2c.js"
   ],
   "style": [
     "file:./style.433d348bfc9d5a9c8ac5.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9b975c6721445a962155.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -28,7 +31,7 @@
     },
     "backgroundColor": {
       "type": "string",
-      "default": "bright-grey"
+      "default": "elevation-high"
     },
     "textColor": {
       "type": "string",

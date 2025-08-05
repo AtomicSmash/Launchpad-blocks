@@ -8,6 +8,7 @@ import {
 	useInnerBlocksProps,
 	RichText,
 	InspectorControls,
+	InnerBlocks,
 } from "@wordpress/block-editor";
 import {
 	Panel,
@@ -36,6 +37,7 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 		iconColour,
 		prevIcon,
 		nextIcon,
+		className,
 	} = attributes;
 	const blockProps = useBlockProps({
 		style: {
@@ -45,6 +47,9 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 	});
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(blockProps, {
 		orientation: "horizontal",
+		renderAppender: className?.includes("is-style-overlay")
+			? () => null
+			: InnerBlocks.ButtonBlockAppender,
 	});
 	const iconLibraries = getIcons();
 
