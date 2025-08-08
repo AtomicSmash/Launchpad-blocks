@@ -68,10 +68,7 @@
 .wp-block-launchpad-blocks-media-and-text__intro {
 	@include mixins.typography-style-eyebrow;
 
-	color: var(--wp--preset--color--meta-colour, #a4a4a4);
-	font-family: var(--typography-font-families-body);
 	font-style: normal;
-	font-weight: 700;
 	text-transform: uppercase;
 }
 

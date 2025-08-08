@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.1.1
+
+### Patch Changes
+
+- 9c21aae: Add missing typography variables for font family, colour and font-weight
+
 ## 1.1.0
 
 ### Minor Changes
