@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.1.2
+
+### Patch Changes
+
+- 0f00b29: Move typography variables to the parent only stylesheet
+
 ## 1.1.1
 
 ### Patch Changes
