@@ -359,12 +359,28 @@ function handle_default_block_comment_generation( array $output, string $name, a
 			$block_comment .= '<img class="wp-block-cover__image-background wp-image-' . $attributes['id'] . '" alt="' . $attributes['alt'] . '" src="' . $attributes['url'] . '" data-object-fit="cover"/>';
 			$block_comment .= '<div class="wp-block-cover__inner-container">' . join( '', $inner_blocks ) . '</div></div><!-- /wp:%1$s -->';
 			break;
+		case 'buttons':
+			$markup_attributes = $attributes;
+			$markup_attributes['class'] = 'wp-block-buttons';
+			$block_comment = '<!-- wp:%1$s %2$s --><div ' . get_block_markup_attributes_as_string( $markup_attributes ) . '>' . join( '', $inner_blocks ) . '</div><!-- /wp:%1$s -->';
+			if ( isset( $attributes['className'] ) ) {
+				$attributes = array(
+					'className' => $attributes['className'],
+				);
+			} else {
+				$attributes = array();
+			}
+			break;
 		case 'button':
 			$markup_attributes = $attributes;
 			unset( $markup_attributes['text'] );
 			unset( $markup_attributes['url'] );
-			$markup_attributes['class'] = 'wp-block-button';
-			$block_comment = '<!-- wp:%1$s --><div ' . get_block_markup_attributes_as_string( $markup_attributes ) . '><a class="wp-block-button__link wp-element-button" href="' . $attributes['url'] . '">' . $attributes['text'] . '</a></div><!-- /wp:%1$s -->';
+			if ( isset( $attributes['className'] ) ) {
+				$markup_attributes['class'] = 'wp-block-button ' . $attributes['className'];
+			} else {
+				$markup_attributes['class'] = 'wp-block-button';
+			}
+			$block_comment = '<!-- wp:%1$s %2$s --><div ' . get_block_markup_attributes_as_string( $markup_attributes ) . '><a class="wp-block-button__link wp-element-button" href="' . $attributes['url'] . '">' . $attributes['text'] . '</a></div><!-- /wp:%1$s -->';
 			if ( isset( $attributes['className'] ) ) {
 				$attributes = array(
 					'className' => $attributes['className'],

@@ -1,5 +1,16 @@
 # @atomicsmash/launchpad-blocks
 
+## 1.2.0
+
+### Minor Changes
+
+- 4ef96c1: Add buttons block to blocks in php
+
+### Patch Changes
+
+- b71f277: Fix buttons case in blocks in php
+- 3e604c0: Fix icon clipping in fancy list
+
 ## 1.1.2
 
 ### Patch Changes
