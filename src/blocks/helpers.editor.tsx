@@ -135,8 +135,7 @@ export function useLayoutStyles<const Supports extends BlockSupports>(
 	if (
 		layout === undefined &&
 		typeof supports.layout === "object" &&
-		supports.layout !== null &&
-		supports.layout?.default
+		supports?.layout?.default
 	) {
 		// @ts-expect-error -- This is actually fine
 		layout = supports.layout.default;
