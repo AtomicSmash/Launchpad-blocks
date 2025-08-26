@@ -1,0 +1,87 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/carousel-content-slides",
+  "title": "Carousel content slides",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "parent": [
+    "launchpad-blocks/carousel"
+  ],
+  "editorScript": [
+    "file:./index.7d162ba357ac3a159de2.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.7c20378fc2acfb102c5d.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.9a78aab58769514159d3.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "template": {
+      "type": "array",
+      "default": [
+        {
+          "name": "launchpad-blocks/carousel-content-slide",
+          "innerBlocks": [
+            {
+              "name": "launchpad-blocks/carousel-content-slide-content",
+              "innerBlocks": [
+                {
+                  "name": "core/heading",
+                  "attributes": {
+                    "placeholder": "Your template"
+                  },
+                  "innerBlocks": []
+                },
+                {
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "placeholder": "To change this template, select the Carousel Content Slides block and click \"Edit Template\" in the sidebar."
+                  },
+                  "innerBlocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "tempInnerBlocksStorage": {
+      "type": "array",
+      "default": []
+    },
+    "shouldLockChildSlidesToTemplate": {
+      "type": "boolean",
+      "default": false
+    },
+    "hasDismissedVariationsSelector": {
+      "type": "boolean",
+      "default": false
+    },
+    "isInTemplateEditMode": {
+      "type": "boolean",
+      "default": false
+    },
+    "aspectRatio": {
+      "type": "string",
+      "default": "auto"
+    }
+  },
+  "providesContext": {
+    "launchpad-blocks/template": "template",
+    "launchpad-blocks/isInTemplateEditMode": "isInTemplateEditMode",
+    "launchpad-blocks/shouldLockChildSlidesToTemplate": "shouldLockChildSlidesToTemplate"
+  },
+  "usesContext": [],
+  "supports": {
+    "color": {
+      "link": true
+    }
+  }
+}

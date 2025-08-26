@@ -7,7 +7,7 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.4b9b40f4a682619b5cd4.js"
+    "file:./index.633aa5334a42bba1b9a6.js"
   ],
   "style": [
     "file:./style.f2af629c2e5e6391b6a5.css"
@@ -16,20 +16,6 @@
     "file:./editor-style.1493e590e927a170bf8f.css"
   ],
   "render": "file:./render.php",
-  "styles": [
-    {
-      "name": "primary",
-      "label": "Primary"
-    },
-    {
-      "name": "secondary",
-      "label": "Secondary"
-    },
-    {
-      "name": "accent",
-      "label": "Accent"
-    }
-  ],
   "attributes": {
     "headerElement": {
       "type": "string",
@@ -54,6 +40,15 @@
           "bottom": "var:preset|spacing|10"
         }
       }
+    },
+    "textAlign": {
+      "type": "string",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ],
+      "default": "left"
     }
   },
   "providesContext": {},
@@ -74,6 +69,7 @@
     ]
   },
   "supports": {
+    "align": false,
     "layout": {
       "default": {
         "type": "constrained"
@@ -83,6 +79,9 @@
       "padding": [
         "vertical"
       ]
+    },
+    "color": {
+      "text": false
     }
   }
 }

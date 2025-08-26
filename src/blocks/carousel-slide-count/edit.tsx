@@ -2,6 +2,8 @@ import type { InterpretedAttributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useLayoutStyles } from "@launchpadBlocks/helpers.editor";
+import { supports } from "./supports";
 
 export type BlockEditProps = CreateBlockEditProps<
 	InterpretedAttributes,
@@ -9,9 +11,28 @@ export type BlockEditProps = CreateBlockEditProps<
 >;
 
 export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
-	const blockProps = useBlockProps();
-	const { prefix, betweenText, suffix } = attributes;
+	const { prefix, betweenText, suffix, layout, style } = attributes;
+	const { className: layoutClassName, style: layoutStyle } = useLayoutStyles(
+		layout,
+		supports,
+		style,
+	);
+	const blockProps = useBlockProps({
+		className: layoutClassName,
+		style: layoutStyle,
+	});
+	const currentlySelectedSlide =
+		context["launchpad-blocks/currentlySelectedSlide"];
 
+	const slides =
+		context["launchpad-blocks/carouselSlides"] !== undefined &&
+		context["launchpad-blocks/carouselSlides"].length > 0
+			? context["launchpad-blocks/carouselSlides"].map((slide, index) => ({
+					id: (slide.attributes?.id as number | undefined) ?? index,
+				}))
+			: context["launchpad-blocks/carouselImages"].map((image) => ({
+					id: image.id,
+				}));
 	return (
 		<>
 			<div {...blockProps}>
@@ -24,7 +45,7 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 						setAttributes({ prefix: newText });
 					}}
 				/>
-				<span>1</span>{" "}
+				<span>{currentlySelectedSlide + 1}</span>{" "}
 				<RichText
 					tagName="span"
 					placeholder="betweenText"
@@ -34,7 +55,7 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 						setAttributes({ betweenText: newText });
 					}}
 				/>
-				<span>{context["launchpad-blocks/carouselImages"].length}</span>
+				<span>{slides.length}</span>
 				<RichText
 					tagName="span"
 					placeholder="suffix"

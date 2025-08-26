@@ -217,6 +217,7 @@ export function IconSelectControl({
 			</PanelHeader>
 			<PanelBody>
 				<SearchControl
+					__nextHasNoMarginBottom
 					label="Search icons"
 					value={searchKeyword}
 					onChange={(newSearchKeyword) => {

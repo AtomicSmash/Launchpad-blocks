@@ -1,6 +1,7 @@
 import type { Supports } from "./supports";
 import type {
 	BlockAttributes,
+	BlockInstanceAsObject,
 	InterpretAttributes,
 } from "@atomicsmash/blocks-helpers";
 
@@ -16,6 +17,10 @@ export const attributes = {
 	shouldLinkSlidesToLightbox: {
 		type: "boolean",
 		default: true,
+	},
+	slides: {
+		type: "array",
+		default: [] as BlockInstanceAsObject[],
 	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;

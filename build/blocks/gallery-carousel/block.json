@@ -13,10 +13,10 @@
     "lightbox"
   ],
   "editorScript": [
-    "file:./index.5b88a33d6d0e346922aa.js"
+    "file:./index.ffe6a40e7aa0cd44f676.js"
   ],
   "viewScript": [
-    "file:./view.b90c83d7548230ac8fa1.js"
+    "file:./view.a2d898a1ca4f4dba0b9a.js"
   ],
   "style": [
     "file:./style.a93d314249dc409bfb3e.css"
@@ -37,10 +37,15 @@
     "shouldLinkSlidesToLightbox": {
       "type": "boolean",
       "default": true
+    },
+    "slides": {
+      "type": "array",
+      "default": []
     }
   },
   "providesContext": {
     "launchpad-blocks/carouselImages": "images",
+    "launchpad-blocks/carouselSlides": "slides",
     "launchpad-blocks/shouldLinkSlidesToLightbox": "shouldLinkSlidesToLightbox"
   },
   "usesContext": [],

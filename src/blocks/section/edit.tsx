@@ -12,6 +12,8 @@ import {
 	RichText,
 	store as blockEditorStore,
 	InnerBlocks,
+	// @ts-expect-error -- missing type in package
+	AlignmentControl,
 } from "@wordpress/block-editor";
 import { ToolbarGroup } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
@@ -30,7 +32,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 		ref,
 		className: "alignfull has-background",
 	});
-	const { headerElement, headerContent } = attributes;
+	const { headerElement, headerContent, textAlign } = attributes;
 
 	const { hasInnerBlocks } = useSelect(
 		(select) => {
@@ -68,6 +70,12 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 							setAttributes({ headerElement: newHeadingLevel });
 						}}
 					/>
+					<AlignmentControl
+						value={textAlign}
+						onChange={(nextAlign: typeof textAlign) => {
+							setAttributes({ textAlign: nextAlign });
+						}}
+					/>
 				</ToolbarGroup>
 			</BlockControls>
 			<section {...innerBlocksProps}>
@@ -78,6 +86,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 					}}
 					value={headerContent}
 					placeholder={"Add section heading..."}
+					className={`has-text-align-${textAlign}`}
 				/>
 				{children}
 			</section>

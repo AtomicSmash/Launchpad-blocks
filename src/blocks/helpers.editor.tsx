@@ -5,6 +5,7 @@ import type {
 	InterpretAttributes,
 	BlockVariations,
 	BlockInstanceAsObject,
+	BlockInstanceAsArray,
 } from "@atomicsmash/blocks-helpers";
 import type { BlockInstance as WordPressBlockInstance } from "@wordpress/blocks";
 import type { Taxonomy } from "@wordpress/core-data";
@@ -847,8 +848,8 @@ export function AspectRatioSelector({
 }: {
 	ratioValue: string;
 	ratioOnChange: (newAspectRatio: string) => void;
-	imageFitValue: "contain" | "cover";
-	imageFitOnChange: (newImageFitValue: "contain" | "cover") => void;
+	imageFitValue?: "contain" | "cover";
+	imageFitOnChange?: (newImageFitValue: "contain" | "cover") => void;
 }) {
 	const [defaultRatios, themeRatios, shouldShowDefaultRatios] = useSettings(
 		"dimensions.aspectRatios.default",
@@ -924,7 +925,7 @@ export function AspectRatioSelector({
 					value={ratioValue}
 				/>
 			) : null}
-			{ratioValue !== "auto" ? (
+			{ratioValue !== "auto" && imageFitOnChange !== undefined ? (
 				<ToggleGroupControl
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
@@ -1372,4 +1373,27 @@ export function AttachmentImage({
 			<img {...imageAttributes()} alt={image.alt_text || ""} />
 		</>
 	);
+}
+
+export function convertBlockObjectToArray(
+	innerBlocksTemplateObject: BlockInstanceAsObject,
+) {
+	const templateAsArray: BlockInstanceAsArray = [
+		innerBlocksTemplateObject.name,
+	];
+	if (innerBlocksTemplateObject.attributes) {
+		templateAsArray.push(innerBlocksTemplateObject.attributes);
+	} else {
+		templateAsArray.push({});
+	}
+	if (innerBlocksTemplateObject.innerBlocks) {
+		templateAsArray.push(
+			innerBlocksTemplateObject.innerBlocks.map((innerBlocksTemplateObject) => {
+				return convertBlockObjectToArray(innerBlocksTemplateObject);
+			}),
+		);
+	} else {
+		templateAsArray.push([]);
+	}
+	return templateAsArray;
 }

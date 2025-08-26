@@ -40,7 +40,7 @@ $has_next_icon = isset( $attributes['nextIcon'] ) && $attributes['nextIcon']['ic
 $icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
 
 ?>
-<div 
+<div
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
@@ -53,23 +53,25 @@ echo wp_kses_data(
 );
 ?>
 >
-	<button class="carousel-navigation-button" data-carousel-prev-slide aria-label="<?php echo esc_attr( $attributes['prevText'] ); ?>">
-		<?php
-		echo $has_prev_icon ? wp_kses_post( $icon_renderers[ $attributes['prevIcon']['library'] ]( $attributes['prevIcon']['iconName'], array( 'class' => 'carousel-navigation-button-icon' ) ) ) : '';
-		if ( $attributes['shouldShowTextVisually'] ) {
-			echo wp_kses_post( $attributes['prevVisualText'] );
-		}
-		?>
-	</button>
-	<div class="carousel-navigation-inner-area">
-		<?php echo wp_kses_post( $content ); ?>
+	<div class="carousel-navigation-arrows-container">
+		<button class="carousel-navigation-button" data-carousel-prev-slide aria-label="<?php echo esc_attr( $attributes['prevText'] ); ?>">
+			<?php
+			echo $has_prev_icon ? wp_kses_post( $icon_renderers[ $attributes['prevIcon']['library'] ]( $attributes['prevIcon']['iconName'], array( 'class' => 'carousel-navigation-button-icon' ) ) ) : '';
+			if ( $attributes['shouldShowTextVisually'] ) {
+				echo wp_kses_post( $attributes['prevVisualText'] );
+			}
+			?>
+		</button>
+		<div class="carousel-navigation-inner-area">
+			<?php echo wp_kses_post( $content ); ?>
+		</div>
+		<button class="carousel-navigation-button" data-carousel-next-slide aria-label="<?php echo esc_attr( $attributes['nextText'] ); ?>">
+			<?php
+			if ( $attributes['shouldShowTextVisually'] ) {
+				echo wp_kses_post( $attributes['nextVisualText'] );
+			}
+			echo $has_next_icon ? wp_kses_post( $icon_renderers[ $attributes['nextIcon']['library'] ]( $attributes['nextIcon']['iconName'], array( 'class' => 'carousel-navigation-button-icon' ) ) ) : '';
+			?>
+		</button>
 	</div>
-	<button class="carousel-navigation-button" data-carousel-next-slide aria-label="<?php echo esc_attr( $attributes['nextText'] ); ?>">
-		<?php
-		if ( $attributes['shouldShowTextVisually'] ) {
-			echo wp_kses_post( $attributes['nextVisualText'] );
-		}
-		echo $has_next_icon ? wp_kses_post( $icon_renderers[ $attributes['nextIcon']['library'] ]( $attributes['nextIcon']['iconName'], array( 'class' => 'carousel-navigation-button-icon' ) ) ) : '';
-		?>
-	</button>
 </div>

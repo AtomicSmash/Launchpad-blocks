@@ -10,7 +10,7 @@
     "launchpad-blocks/carousel"
   ],
   "editorScript": [
-    "file:./index.0225f99cdee0d1651811.js"
+    "file:./index.b34cbcfdf8e03d2ea924.js"
   ],
   "viewScript": [
     "file:./view.ce3911e3414d8a838457.js"
@@ -25,7 +25,9 @@
   "attributes": {},
   "providesContext": {},
   "usesContext": [
-    "launchpad-blocks/carouselImages"
+    "launchpad-blocks/carouselImages",
+    "launchpad-blocks/carouselSlides",
+    "launchpad-blocks/currentlySelectedSlide"
   ],
   "example": {
     "viewportWidth": 1200

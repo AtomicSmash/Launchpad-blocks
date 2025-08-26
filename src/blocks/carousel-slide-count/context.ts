@@ -24,6 +24,8 @@ type OtherBlocksInterpretedProvidesContext = CarouselInterpretedProvidesContext;
 
 export const usesContext = [
 	"launchpad-blocks/carouselImages",
+	"launchpad-blocks/carouselSlides",
+	"launchpad-blocks/currentlySelectedSlide",
 ] as const satisfies BlockUsesContext<OtherBlocksInterpretedProvidesContext>;
 export type UsesContext = typeof usesContext;
 export type InterpretedUsedContext = InterpretUsedContext<

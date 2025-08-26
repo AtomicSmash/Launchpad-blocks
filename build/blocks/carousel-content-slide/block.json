@@ -1,0 +1,61 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/carousel-content-slide",
+  "title": "Carousel content slide",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "parent": [
+    "launchpad-blocks/carousel-content-slides"
+  ],
+  "editorScript": [
+    "file:./index.96b1f71483db2a4e6d26.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.6f265616ccf3eef59186.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.6e22afcf2557e083ae23.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "backgroundOrOverlayColour": {
+      "type": "string"
+    },
+    "overlayOpacity": {
+      "type": "number",
+      "default": 50
+    }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "launchpad-blocks/template",
+    "launchpad-blocks/shouldLockChildSlidesToTemplate",
+    "launchpad-blocks/currentlySelectedSlide",
+    "launchpad-blocks/isInTemplateEditMode"
+  ],
+  "supports": {
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "spacing": {
+      "padding": [
+        "vertical"
+      ]
+    },
+    "layout": {
+      "default": {
+        "type": "flex",
+        "justifyContent": "center"
+      },
+      "allowCustomContentAndWideSize": false,
+      "allowOrientation": false,
+      "allowJustification": false
+    }
+  }
+}

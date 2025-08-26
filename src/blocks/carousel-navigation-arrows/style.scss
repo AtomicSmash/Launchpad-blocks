@@ -5,16 +5,18 @@
 .wp-block-launchpad-blocks-carousel-navigation-arrows {
 	--border-radius: 4px;
 
-	display: flex;
-	align-items: stretch;
-	gap: 0.5rem;
+	&.alignfull {
+		padding: 0;
 
-	&.is-style-overlay {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 100%;
-		padding: 0 var(--wp--preset--spacing--2);
+		.carousel-navigation-arrows-container {
+			max-width: none;
+		}
+	}
+
+	.carousel-navigation-arrows-container {
+		display: flex;
+		gap: 0.5rem;
+		align-items: stretch;
 	}
 
 	.carousel-navigation-button {
@@ -27,6 +29,7 @@
 		border: none;
 		border-radius: var(--border-radius);
 		cursor: pointer;
+		pointer-events: auto;
 
 		.carousel-navigation-button-icon {
 			height: 2rem;
@@ -41,5 +44,22 @@
 		flex-direction: column;
 		align-items: stretch;
 		gap: 1rem;
+	}
+
+	&.is-style-overlay {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+		z-index: 5;
+		pointer-events: none;
+
+		.carousel-navigation-inner-area > * {
+			display: none;
+		}
+
+		.carousel-navigation-arrows-container {
+			padding: 0 var(--wp--preset--spacing--2);
+		}
 	}
 }

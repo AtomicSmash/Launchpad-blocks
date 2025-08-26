@@ -5,7 +5,8 @@
 .wp-block-launchpad-blocks-carousel {
 	position: relative;
 
-	.wp-block-launchpad-blocks-carousel-slides {
+	.wp-block-launchpad-blocks-carousel-slides,
+	.wp-block-launchpad-blocks-carousel-content-slides {
 		display: flex;
 		align-items: center;
 		flex-wrap: nowrap;

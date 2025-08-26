@@ -6,17 +6,17 @@
   "description": "",
   "textdomain": "launchpad-blocks",
   "keywords": [],
-  "parent": [
+  "ancestor": [
     "launchpad-blocks/carousel"
   ],
   "editorScript": [
-    "file:./index.80527841c462165ca395.js"
+    "file:./index.d2064ee87e7b22b56257.js"
   ],
   "viewScript": [
     "file:./view.973a21268cad360fc6f7.js"
   ],
   "style": [
-    "file:./style.72d6ef9227eac45a8766.css"
+    "file:./style.ded912d67c2b663dc988.css"
   ],
   "editorStyle": [
     "file:./editor-style.bf7bf5fc9d80251bbcd0.css"
@@ -24,22 +24,37 @@
   "render": "file:./render.php",
   "attributes": {
     "prefix": {
-      "type": "string"
+      "type": "string",
+      "role": "content"
     },
     "betweenText": {
       "type": "string",
-      "default": "/"
+      "default": "/",
+      "role": "content"
     },
     "suffix": {
-      "type": "string"
+      "type": "string",
+      "role": "content"
     }
   },
   "providesContext": {},
   "usesContext": [
-    "launchpad-blocks/carouselImages"
+    "launchpad-blocks/carouselImages",
+    "launchpad-blocks/carouselSlides",
+    "launchpad-blocks/currentlySelectedSlide"
   ],
   "example": {
     "viewportWidth": 1200
   },
-  "supports": {}
+  "supports": {
+    "align": true,
+    "layout": {
+      "default": {
+        "type": "flex",
+        "flexWrap": "wrap",
+        "justifyContent": "left"
+      },
+      "allowOrientation": false
+    }
+  }
 }

@@ -15,13 +15,13 @@
   ],
   "keywords": [],
   "editorScript": [
-    "file:./index.935febd80446a46c830e.js"
+    "file:./index.2b5432fa7fca40a5ba1b.js"
   ],
   "viewScript": [
     "file:./view.884065eed8731afd4728.js"
   ],
   "style": [
-    "file:./style.864a3bc7e668bd0c99c8.css"
+    "file:./style.3006cb02ceba3f306e52.css"
   ],
   "editorStyle": [
     "file:./editor-style.96637f65df76b1d2f29c.css"
@@ -83,7 +83,19 @@
     }
   },
   "providesContext": {},
-  "usesContext": [],
+  "usesContext": [
+    "launchpad-blocks/currentlySelectedSlide",
+    "launchpad-blocks/carouselSlides",
+    "launchpad-blocks/carouselImages"
+  ],
   "example": {},
-  "supports": {}
+  "supports": {
+    "align": true,
+    "layout": {
+      "default": {
+        "type": "constrained"
+      },
+      "allowCustomContentAndWideSize": false
+    }
+  }
 }

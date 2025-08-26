@@ -1,4 +1,5 @@
 import type { InterpretedAttributes } from "./attributes";
+import type { InterpretedProvidesContext as CarouselInterpretedProvidesContext } from "../carousel";
 import type {
 	BlockProvidesContext,
 	BlockUsesContext,
@@ -19,10 +20,13 @@ export type InterpretedProvidesContext = InterpretProvidesContext<
 // For blocks that don't output provides context types (e.g. core blocks),
 // you should manually build the type to define what you expect the context
 // to be.
-type OtherBlocksInterpretedProvidesContext = Record<string, never>;
+type OtherBlocksInterpretedProvidesContext = CarouselInterpretedProvidesContext;
 
-export const usesContext =
-	[] as const satisfies BlockUsesContext<OtherBlocksInterpretedProvidesContext>;
+export const usesContext = [
+	"launchpad-blocks/currentlySelectedSlide",
+	"launchpad-blocks/carouselSlides",
+	"launchpad-blocks/carouselImages",
+] as const satisfies BlockUsesContext<OtherBlocksInterpretedProvidesContext>;
 export type UsesContext = typeof usesContext;
 export type InterpretedUsedContext = InterpretUsedContext<
 	UsesContext,

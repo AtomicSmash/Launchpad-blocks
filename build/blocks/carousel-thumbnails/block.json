@@ -16,7 +16,7 @@
     "file:./view.b26f9503ad29f6609f57.js"
   ],
   "style": [
-    "file:./style.613a764c057c5e46b6be.css"
+    "file:./style.b4fb1813e39973e915de.css"
   ],
   "editorStyle": [
     "file:./editor-style.9a78aab58769514159d3.css"
@@ -51,6 +51,12 @@
     "viewportWidth": 1200
   },
   "supports": {
-    "lock": false
+    "lock": false,
+    "layout": {
+      "default": {
+        "type": "constrained"
+      },
+      "allowCustomContentAndWideSize": false
+    }
   }
 }

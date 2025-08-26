@@ -9,7 +9,9 @@ import type {
 
 export const providesContext = {
 	"launchpad-blocks/carouselImages": "images",
+	"launchpad-blocks/carouselSlides": "slides",
 	"launchpad-blocks/shouldLinkSlidesToLightbox": "shouldLinkSlidesToLightbox",
+	"launchpad-blocks/currentlySelectedSlide": "currentlySelectedSlide",
 } as const satisfies BlockProvidesContext<InterpretedAttributes>;
 export type ProvidesContext = typeof providesContext;
 export type InterpretedProvidesContext = InterpretProvidesContext<
@@ -28,6 +30,7 @@ type OtherBlocksInterpretedProvidesContext =
 
 export const usesContext = [
 	"launchpad-blocks/carouselImages",
+	"launchpad-blocks/carouselSlides",
 ] as const satisfies BlockUsesContext<OtherBlocksInterpretedProvidesContext>;
 export type UsesContext = typeof usesContext;
 export type InterpretedUsedContext = InterpretUsedContext<

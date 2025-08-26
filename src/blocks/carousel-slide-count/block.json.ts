@@ -14,7 +14,7 @@ export const blockJson = {
 	description: "",
 	textdomain: "launchpad-blocks",
 	keywords: [],
-	parent: ["launchpad-blocks/carousel"],
+	ancestor: ["launchpad-blocks/carousel"],
 	editorScript: "file:./index.tsx",
 	viewScript: "file:./view.ts",
 	style: "file:./style.scss",

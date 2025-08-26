@@ -4,10 +4,8 @@
  */
 
 .wp-block-launchpad-blocks-carousel-slide-count {
-	display: flex;
-	justify-content: center;
-	gap: 1ch; // 1 character width to emulate a space
-	flex-wrap: wrap;
+	gap: 1ch !important; // 1 character width to emulate a space
+	color: inherit;
 }
 
 .carousel-navigation-inner-area

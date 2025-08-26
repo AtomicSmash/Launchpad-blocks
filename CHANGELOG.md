@@ -1,5 +1,22 @@
 # @atomicsmash/launchpad-blocks
 
+## 2.0.0
+
+### Major Changes
+
+- 94f52b4: Remove block styles from section block in favour of colour select
+
+### Minor Changes
+
+- 653f584: Add new block for creating block slides (Carousel content slides)
+- 653f584: Add align option for carousels
+- f7b66e4: Add text align control for title
+- 653f584: Make carousel nav arrows and dots work in the editor for content carousel
+
+### Patch Changes
+
+- 653f584: Fix slide count alignment
+
 ## 1.2.1
 
 ### Patch Changes

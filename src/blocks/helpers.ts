@@ -117,6 +117,12 @@ export function objectArraysAreEqual(
 	}
 	for (let $i = 0; $i < array1.length; $i++) {
 		const isObjectEqual = Object.entries(array1[$i]!).every(([key, value]) => {
+			if (Array.isArray(value)) {
+				return objectArraysAreEqual(
+					value,
+					array2[$i]?.[key] as Record<string, unknown>[],
+				);
+			}
 			return array2[$i]?.[key] === value;
 		});
 		if (!isObjectEqual) {

@@ -248,6 +248,11 @@ export function Edit({
 			>(parentCarousel.clientId, {
 				images: imageAttribute,
 			});
+			updateBlockAttributes<
+				CarouselInterpretedAttributes | GalleryCarouselInterpretedAttributes
+			>(parentCarousel.clientId, {
+				slides: innerBlockImages,
+			});
 		}
 	}, [
 		innerBlockImages,

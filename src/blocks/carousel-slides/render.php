@@ -39,7 +39,7 @@ if ( isset( $attributes['captionBackground'] ) ) {
 }
 
 ?>
-<ul 
+<ul
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
@@ -79,6 +79,9 @@ foreach ( $carousel_images as $carousel_image ) :
 			echo wp_kses_post( $carousel_image );
 		}
 		++$i;
-	endforeach;
+		?>
+	</li>
+	<?php
+endforeach;
 ?>
 </ul>

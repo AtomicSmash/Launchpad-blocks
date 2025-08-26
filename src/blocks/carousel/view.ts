@@ -12,6 +12,8 @@ export class Carousel {
 	public slideCount: number;
 	public currentSlide: number;
 	public loop: boolean;
+	private debounceResizeTimeout: undefined | ReturnType<typeof setTimeout> =
+		undefined;
 
 	constructor(carousel: HTMLDivElement) {
 		this.carousel = carousel;
@@ -32,12 +34,8 @@ export class Carousel {
 		}
 		this.carouselSlides = slides;
 		this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
-		this.slideCount = slides.querySelectorAll(".wp-block-image").length;
-		const slideWidth =
-			this.carouselSlides.querySelector(".wp-block-image")?.clientWidth;
-		if (!slideWidth) {
-			throw new Error("Unable to get the slide width for the carousel.");
-		}
+		const { slideCount, slideWidth } = this.getSlideWidth();
+		this.slideCount = slideCount;
 		this.slideWidth = slideWidth;
 		// Do actions already registered at this point
 		doAction("launchpadBlocks.carousel.registerFunctionality", this);
@@ -56,10 +54,32 @@ export class Carousel {
 				}
 			},
 		);
+		window.addEventListener("resize", () => {
+			clearTimeout(this.debounceResizeTimeout);
+			this.debounceResizeTimeout = setTimeout(() => {
+				this.carouselSlides.style.width = "";
+				this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
+				const { slideCount, slideWidth } = this.getSlideWidth();
+				this.slideCount = slideCount;
+				this.slideWidth = slideWidth;
+				this.goToSlide(this.currentSlide, true, true);
+			}, 100);
+		});
 	}
 
-	goToSlide(slideNumber: number, instant = false) {
-		if (this.currentSlide === slideNumber) {
+	getSlideWidth() {
+		const slideCount =
+			this.carouselSlides.querySelectorAll(":scope > *").length;
+		const slideWidth =
+			this.carouselSlides.querySelector(":scope > *")?.clientWidth;
+		if (!slideWidth) {
+			throw new Error("Unable to get the slide width for the carousel.");
+		}
+		return { slideCount, slideWidth };
+	}
+
+	goToSlide(slideNumber: number, instant = false, force = false) {
+		if (this.currentSlide === slideNumber && !force) {
 			return;
 		}
 		if (slideNumber < 0) {

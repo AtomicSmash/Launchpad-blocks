@@ -27,7 +27,7 @@ export function Edit({
 	setAttributes,
 	context,
 }: BlockEditProps) {
-	const { shouldLoop, images } = attributes;
+	const { shouldLoop, images, slides } = attributes;
 	const blockProps = useBlockProps({
 		"data-launchpad-carousel": "",
 		"data-loop": shouldLoop ? "true" : "false",
@@ -59,16 +59,31 @@ export function Edit({
 	);
 
 	useEffect(() => {
-		if (
-			shouldGetSlidesFromContext &&
-			context["launchpad-blocks/carouselImages"] !== undefined &&
-			!objectArraysAreEqual(context["launchpad-blocks/carouselImages"], images)
-		) {
-			setAttributes({
-				images: context["launchpad-blocks/carouselImages"],
-			});
+		if (shouldGetSlidesFromContext) {
+			if (
+				context["launchpad-blocks/carouselImages"] !== undefined &&
+				!objectArraysAreEqual(
+					context["launchpad-blocks/carouselImages"],
+					images,
+				)
+			) {
+				setAttributes({
+					images: context["launchpad-blocks/carouselImages"],
+				});
+			}
+			if (
+				context["launchpad-blocks/carouselSlides"] !== undefined &&
+				!objectArraysAreEqual(
+					context["launchpad-blocks/carouselSlides"],
+					slides,
+				)
+			) {
+				setAttributes({
+					slides: context["launchpad-blocks/carouselSlides"],
+				});
+			}
 		}
-	}, [context, images, setAttributes, shouldGetSlidesFromContext]);
+	}, [context, images, slides, setAttributes, shouldGetSlidesFromContext]);
 
 	return (
 		<>

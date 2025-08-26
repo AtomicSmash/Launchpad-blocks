@@ -7,13 +7,16 @@ import type {
 export const attributes = {
 	prefix: {
 		type: "string",
+		role: "content",
 	},
 	betweenText: {
 		type: "string",
 		default: "/",
+		role: "content",
 	},
 	suffix: {
 		type: "string",
+		role: "content",
 	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;

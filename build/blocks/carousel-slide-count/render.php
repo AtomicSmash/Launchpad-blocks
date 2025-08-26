@@ -24,9 +24,15 @@ $content = $content;
  */
 $block = $block;
 
+$slides = array();
+if ( isset( $block->context['launchpad-blocks/carouselSlides'] ) && count( $block->context['launchpad-blocks/carouselSlides'] ) > 0 ) {
+	$slides = $block->context['launchpad-blocks/carouselSlides'];
+} else {
+	$slides = $block->context['launchpad-blocks/carouselImages'];
+}
 
 ?>
-<div 
+<div
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
@@ -57,7 +63,7 @@ echo wp_kses_data(
 		<?php
 	endif;
 	?>
-	<?php echo esc_html( count( $block->context['launchpad-blocks/carouselImages'] ) ); ?>
+	<?php echo esc_html( count( $slides ) ); ?>
 	<?php
 	if ( isset( $attributes['suffix'] ) && ! empty( $attributes['suffix'] ) ) :
 		?>

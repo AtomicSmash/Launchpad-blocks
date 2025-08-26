@@ -1,0 +1,30 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+.wp-block-launchpad-blocks-carousel-content-slide-content {
+	width: 100%;
+	max-width: var(--wp--style--global--content-size);
+
+	&.wp-block-launchpad-blocks-carousel-content-slide-content {
+		padding-inline: 1rem;
+	}
+}
+
+.wp-block-launchpad-blocks-carousel {
+	&:has(
+			.wp-block-launchpad-blocks-carousel-navigation-arrows.is-style-overlay
+				.carousel-navigation-button:not(.has-text)
+		)
+		.wp-block-launchpad-blocks-carousel-content-slide-content {
+		/* nav arrows padding + nav arrow button padding + nav arrow svg + nav arrows gap */
+		padding-inline: calc(
+			var(--wp--preset--spacing--2) + (var(--wp--preset--spacing--1) * 2) +
+				2rem + 0.5rem
+		);
+	}
+
+	&.alignfull .wp-block-launchpad-blocks-carousel-content-slide-content {
+		max-width: none;
+	}
+}

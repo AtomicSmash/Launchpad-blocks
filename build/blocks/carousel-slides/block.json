@@ -1,7 +1,7 @@
 {
   "apiVersion": 3,
   "name": "launchpad-blocks/carousel-slides",
-  "title": "Carousel slides",
+  "title": "Carousel image slides",
   "category": "theme",
   "description": "",
   "textdomain": "launchpad-blocks",
@@ -14,7 +14,7 @@
     "core/image"
   ],
   "editorScript": [
-    "file:./index.7ffdb37ab740c76770ef.js"
+    "file:./index.40f9ba036c3caed9113d.js"
   ],
   "viewScript": [
     "file:./view.31d6cfe0d16ae931b73c.js"

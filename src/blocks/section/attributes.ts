@@ -22,6 +22,11 @@ export const attributes = {
 			},
 		},
 	},
+	textAlign: {
+		type: "string",
+		enum: ["left", "center", "right"],
+		default: "left",
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

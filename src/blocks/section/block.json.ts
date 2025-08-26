@@ -19,20 +19,6 @@ export const blockJson = {
 	style: "file:./style.scss",
 	editorStyle: "file:./editor-style.scss",
 	render: "file:./render.php",
-	styles: [
-		{
-			name: "primary",
-			label: "Primary",
-		},
-		{
-			name: "secondary",
-			label: "Secondary",
-		},
-		{
-			name: "accent",
-			label: "Accent",
-		},
-	],
 	attributes,
 	providesContext,
 	usesContext,

@@ -26,7 +26,7 @@ $block = $block;
 
 $heading_level = isset( $attributes['headerElement'] ) ? $attributes['headerElement'] : 'h2';
 ?>
-<div <?php echo wp_kses_data( get_block_wrapper_attributes( array( 'class' => 'alignfull' ) ) ); ?>>
+<section <?php echo wp_kses_data( get_block_wrapper_attributes( array( 'class' => 'alignfull' ) ) ); ?>>
 	<<?php echo esc_html( $heading_level ); ?>><?php echo wp_kses_post( $attributes['headerContent'] ); ?></<?php echo esc_html( $heading_level ); ?>>
 	<?php echo wp_kses_post( $content ); ?>
-</div>
+</section>

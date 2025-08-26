@@ -1,0 +1,48 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/carousel-content-slide-content",
+  "title": "Carousel content slide content",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "parent": [
+    "launchpad-blocks/carousel-content-slide"
+  ],
+  "editorScript": [
+    "file:./index.ab0bfa20b655d3ae25e1.js"
+  ],
+  "viewScript": [
+    "file:./view.31d6cfe0d16ae931b73c.js"
+  ],
+  "style": [
+    "file:./style.707edbd7ccd8636f4828.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.6e22afcf2557e083ae23.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {},
+  "providesContext": {},
+  "usesContext": [
+    "launchpad-blocks/template",
+    "launchpad-blocks/shouldLockChildSlidesToTemplate",
+    "launchpad-blocks/currentlySelectedSlide",
+    "launchpad-blocks/isInTemplateEditMode"
+  ],
+  "supports": {
+    "layout": {
+      "default": {
+        "type": "constrained"
+      },
+      "allowCustomContentAndWideSize": false,
+      "allowJustification": false
+    },
+    "spacing": {
+      "padding": [
+        "left",
+        "right"
+      ]
+    }
+  }
+}

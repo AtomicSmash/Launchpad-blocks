@@ -9,6 +9,7 @@ import {
 	RichText,
 	InspectorControls,
 	InnerBlocks,
+	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import {
 	Panel,
@@ -16,6 +17,7 @@ import {
 	TextControl,
 	ToggleControl,
 } from "@wordpress/components";
+import { useDispatch, useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 import { ColourSelectControl } from "../helpers.editor";
 import { IconSelectControl, getIcons } from "../svgs.editor";
@@ -26,7 +28,12 @@ export type BlockEditProps = CreateBlockEditProps<
 	InterpretedUsedContext
 >;
 
-export function Edit({ attributes, setAttributes }: BlockEditProps) {
+export function Edit({
+	clientId,
+	attributes,
+	setAttributes,
+	context,
+}: BlockEditProps) {
 	const {
 		prevText,
 		nextText,
@@ -39,6 +46,48 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 		nextIcon,
 		className,
 	} = attributes;
+	const currentlySelectedSlide =
+		context["launchpad-blocks/currentlySelectedSlide"];
+	const slideCount =
+		context["launchpad-blocks/carouselSlides"] !== undefined &&
+		context["launchpad-blocks/carouselSlides"].length > 0
+			? context["launchpad-blocks/carouselSlides"].length
+			: context["launchpad-blocks/carouselImages"].length;
+
+	const { updateBlockAttributes } = useDispatch(
+		blockEditorStore,
+	) as unknown as {
+		updateBlockAttributes: <
+			Attributes extends Record<string, unknown> = Record<string, unknown>,
+		>(
+			clientIds: string | string[],
+			attributes: Partial<Attributes>,
+			uniqueByBlock?: boolean,
+		) => void;
+	};
+
+	const { parentCarouselClientId } = useSelect(
+		(select) => {
+			const { getBlockParentsByBlockName } = select(blockEditorStore) as {
+				getBlockParentsByBlockName: (
+					clientId: string,
+					blockName: string,
+				) => string[];
+				hasSelectedInnerBlock: (clientId: string, deep: boolean) => boolean;
+				getBlockOrder: (rootClientId?: string) => string[];
+			};
+
+			const parentCarouselClientId = getBlockParentsByBlockName(
+				clientId,
+				"launchpad-blocks/carousel",
+			).at(-1);
+			return {
+				parentCarouselClientId,
+			};
+		},
+		[clientId],
+	);
+
 	const blockProps = useBlockProps({
 		style: {
 			"--background-colour": backgroundColour,
@@ -141,39 +190,65 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 				/>
 			</InspectorControls>
 			<div {...innerBlocksProps}>
-				<button className="carousel-navigation-button">
-					{iconLibraries[prevIcon.library]?.renderIcon(prevIcon.iconName, {
-						className: "carousel-navigation-button-icon",
-					})}
-					{shouldShowTextVisually ? (
-						<RichText
-							identifier="prevVisualText"
-							tagName={"span"}
-							onChange={(newTextContent) => {
-								setAttributes({ prevVisualText: newTextContent });
-							}}
-							value={prevVisualText}
-							placeholder={__("Previous", "launchpad-blocks")}
-						/>
-					) : null}
-				</button>
-				<div className="carousel-navigation-inner-area">{children}</div>
-				<button className="carousel-navigation-button">
-					{shouldShowTextVisually ? (
-						<RichText
-							identifier="nextVisualText"
-							tagName={"span"}
-							onChange={(newTextContent) => {
-								setAttributes({ nextVisualText: newTextContent });
-							}}
-							value={nextVisualText}
-							placeholder={__("Next", "launchpad-blocks")}
-						/>
-					) : null}
-					{iconLibraries[nextIcon.library]?.renderIcon(nextIcon.iconName, {
-						className: "carousel-navigation-button-icon",
-					})}
-				</button>
+				<div className="carousel-navigation-arrows-container">
+					<button
+						className={`carousel-navigation-button${shouldShowTextVisually ? " has-text" : ""}`}
+						onClick={() => {
+							if (parentCarouselClientId) {
+								updateBlockAttributes(parentCarouselClientId, {
+									currentlySelectedSlide:
+										currentlySelectedSlide > 0
+											? currentlySelectedSlide - 1
+											: slideCount - 1,
+								});
+							}
+						}}
+					>
+						{iconLibraries[prevIcon.library]?.renderIcon(prevIcon.iconName, {
+							className: "carousel-navigation-button-icon",
+						})}
+						{shouldShowTextVisually ? (
+							<RichText
+								identifier="prevVisualText"
+								tagName={"span"}
+								onChange={(newTextContent) => {
+									setAttributes({ prevVisualText: newTextContent });
+								}}
+								value={prevVisualText}
+								placeholder={__("Previous", "launchpad-blocks")}
+							/>
+						) : null}
+					</button>
+					<div className="carousel-navigation-inner-area">{children}</div>
+					<button
+						className={`carousel-navigation-button${shouldShowTextVisually ? " has-text" : ""}`}
+						onClick={() => {
+							if (parentCarouselClientId) {
+								updateBlockAttributes(parentCarouselClientId, {
+									currentlySelectedSlide:
+										currentlySelectedSlide < slideCount - 1
+											? currentlySelectedSlide + 1
+											: 0,
+								});
+							}
+						}}
+					>
+						{shouldShowTextVisually ? (
+							<RichText
+								identifier="nextVisualText"
+								tagName={"span"}
+								onChange={(newTextContent) => {
+									setAttributes({ nextVisualText: newTextContent });
+								}}
+								value={nextVisualText}
+								placeholder={__("Next", "launchpad-blocks")}
+							/>
+						) : null}
+						{iconLibraries[nextIcon.library]?.renderIcon(nextIcon.iconName, {
+							className: "carousel-navigation-button-icon",
+						})}
+					</button>
+				</div>
 			</div>
 		</>
 	);
