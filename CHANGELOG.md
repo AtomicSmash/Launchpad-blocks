@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 2.0.1
+
+### Patch Changes
+
+- bed6b0f: Fix carousels that have slide gaps
+
 ## 2.0.0
 
 ### Major Changes

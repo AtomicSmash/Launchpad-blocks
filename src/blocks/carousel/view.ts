@@ -1,5 +1,6 @@
 import domReady from "@wordpress/dom-ready";
 import { doAction, addAction } from "@wordpress/hooks";
+import { getPixelNumber } from "@launchpadBlocks/helpers";
 
 /**
  * The following JavaScript is loaded on the front end of the site when your block is present.
@@ -9,6 +10,7 @@ export class Carousel {
 	public carouselLiveRegion: HTMLDivElement;
 	public carouselSlides: HTMLUListElement;
 	public slideWidth: number;
+	public slideGap: number;
 	public slideCount: number;
 	public currentSlide: number;
 	public loop: boolean;
@@ -34,8 +36,9 @@ export class Carousel {
 		}
 		this.carouselSlides = slides;
 		this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
-		const { slideCount, slideWidth } = this.getSlideWidth();
+		const { slideCount, slideWidth, slideGap } = this.getSlideInfo();
 		this.slideCount = slideCount;
+		this.slideGap = slideGap;
 		this.slideWidth = slideWidth;
 		// Do actions already registered at this point
 		doAction("launchpadBlocks.carousel.registerFunctionality", this);
@@ -59,23 +62,28 @@ export class Carousel {
 			this.debounceResizeTimeout = setTimeout(() => {
 				this.carouselSlides.style.width = "";
 				this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
-				const { slideCount, slideWidth } = this.getSlideWidth();
+				const { slideCount, slideWidth, slideGap } = this.getSlideInfo();
 				this.slideCount = slideCount;
+				this.slideGap = slideGap;
 				this.slideWidth = slideWidth;
 				this.goToSlide(this.currentSlide, true, true);
 			}, 100);
 		});
 	}
 
-	getSlideWidth() {
+	getSlideInfo() {
 		const slideCount =
 			this.carouselSlides.querySelectorAll(":scope > *").length;
 		const slideWidth =
 			this.carouselSlides.querySelector(":scope > *")?.clientWidth;
+		const slideGapPx = window
+			.getComputedStyle(this.carouselSlides)
+			.getPropertyValue("column-gap");
+		const slideGap = getPixelNumber(slideGapPx === "" ? "0px" : slideGapPx);
 		if (!slideWidth) {
 			throw new Error("Unable to get the slide width for the carousel.");
 		}
-		return { slideCount, slideWidth };
+		return { slideCount, slideWidth, slideGap };
 	}
 
 	goToSlide(slideNumber: number, instant = false, force = false) {
@@ -91,7 +99,7 @@ export class Carousel {
 			);
 		}
 		const currentScrollPosition = this.carouselSlides.scrollLeft;
-		const newScrollPosition = slideNumber * this.slideWidth;
+		const newScrollPosition = slideNumber * (this.slideWidth + this.slideGap);
 		this.currentSlide = slideNumber;
 		this.carouselSlides.scrollBy({
 			left: newScrollPosition - currentScrollPosition,
