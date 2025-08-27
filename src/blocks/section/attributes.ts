@@ -27,6 +27,11 @@ export const attributes = {
 		enum: ["left", "center", "right"],
 		default: "left",
 	},
+	stretchTitle: {
+		type: "string",
+		enum: ["none", "wide", "full"],
+		default: "none",
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

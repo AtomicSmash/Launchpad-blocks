@@ -7,7 +7,7 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.633aa5334a42bba1b9a6.js"
+    "file:./index.58613fbca715c7e563a4.js"
   ],
   "style": [
     "file:./style.f2af629c2e5e6391b6a5.css"
@@ -49,6 +49,15 @@
         "right"
       ],
       "default": "left"
+    },
+    "stretchTitle": {
+      "type": "string",
+      "enum": [
+        "none",
+        "wide",
+        "full"
+      ],
+      "default": "none"
     }
   },
   "providesContext": {},

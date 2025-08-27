@@ -1,5 +1,17 @@
 # @atomicsmash/launchpad-blocks
 
+## 2.1.0
+
+### Minor Changes
+
+- 643bc5a: Add option to stretch section title
+
+### Patch Changes
+
+- 7126eb2: Fix section title alignment on frontend
+- cbf894d: Hide manual post select variations from inserter
+- 55085c2: add icon for heading and paragraph variation in carousel content slides
+
 ## 2.0.1
 
 ### Patch Changes

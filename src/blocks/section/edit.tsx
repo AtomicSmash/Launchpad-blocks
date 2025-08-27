@@ -17,6 +17,8 @@ import {
 } from "@wordpress/block-editor";
 import { ToolbarGroup } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
+import { alignNone, stretchWide, stretchFullWidth } from "@wordpress/icons";
 import { useRef } from "react";
 import { HeadingLevelSelect } from "../helpers.editor";
 import { attributes as definedAttributeOptions } from "./attributes";
@@ -32,7 +34,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 		ref,
 		className: "alignfull has-background",
 	});
-	const { headerElement, headerContent, textAlign } = attributes;
+	const { headerElement, headerContent, textAlign, stretchTitle } = attributes;
 
 	const { hasInnerBlocks } = useSelect(
 		(select) => {
@@ -76,6 +78,31 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 							setAttributes({ textAlign: nextAlign });
 						}}
 					/>
+					<AlignmentControl
+						value={stretchTitle}
+						onChange={(nextStretch: typeof stretchTitle) => {
+							setAttributes({ stretchTitle: nextStretch });
+						}}
+						alignmentControls={[
+							{
+								icon: alignNone,
+								title: __("Don't stretch title", "launchpad-blocks"),
+								align: "none",
+							},
+							{
+								icon: stretchWide,
+								title: __("Stretch title wide", "launchpad-blocks"),
+								align: "wide",
+							},
+							{
+								icon: stretchFullWidth,
+								title: __("Stretch title full", "launchpad-blocks"),
+								align: "full",
+							},
+						]}
+						label={__("Stretch title", "launchpad-blocks")}
+						description={__("Change title stretching", "launchpad-blocks")}
+					/>
 				</ToolbarGroup>
 			</BlockControls>
 			<section {...innerBlocksProps}>
@@ -86,7 +113,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 					}}
 					value={headerContent}
 					placeholder={"Add section heading..."}
-					className={`has-text-align-${textAlign}`}
+					className={`${stretchTitle !== "none" ? `align${stretchTitle}` : ""} has-text-align-${textAlign}`}
 				/>
 				{children}
 			</section>

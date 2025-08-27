@@ -12,6 +12,7 @@ export const variations = [
 		innerBlocks: [["core/post-title"]],
 		isDefault: false,
 		icon: title,
+		scope: ["block"],
 	},
 	{
 		name: "title-and-excerpt",
@@ -19,6 +20,7 @@ export const variations = [
 		innerBlocks: [["core/post-title"], ["core/post-excerpt"]],
 		isDefault: false,
 		icon: postExcerpt,
+		scope: ["block"],
 	},
 	{
 		name: "simple-card",
@@ -30,5 +32,6 @@ export const variations = [
 		],
 		isDefault: false,
 		icon: postFeaturedImage,
+		scope: ["block"],
 	},
 ] as const satisfies BlockVariations<InterpretedAttributes>;
