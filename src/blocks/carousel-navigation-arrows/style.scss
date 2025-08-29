@@ -7,16 +7,13 @@
 
 	&.alignfull {
 		padding: 0;
-
-		.carousel-navigation-arrows-container {
-			max-width: none;
-		}
 	}
 
 	.carousel-navigation-arrows-container {
 		display: flex;
 		gap: 0.5rem;
 		align-items: stretch;
+		max-width: inherit;
 	}
 
 	.carousel-navigation-button {

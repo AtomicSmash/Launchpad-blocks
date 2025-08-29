@@ -10,6 +10,7 @@ export const variations = [
 		name: "heading-and-paragraph",
 		title: "Heading and paragraph",
 		icon: title,
+		scope: ["block"],
 		innerBlocks: [
 			[
 				"launchpad-blocks/carousel-content-slide",

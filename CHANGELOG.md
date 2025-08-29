@@ -1,5 +1,14 @@
 # @atomicsmash/launchpad-blocks
 
+## 2.1.1
+
+### Patch Changes
+
+- f49ecaa: Add dots and slide count to carousel allowed blocks list
+- 0cb6d14: Hide carousel content slides variation in block inserter
+- cf3d28c: Add missing block icons
+- ef9f091: Fix carousel nav arrows alignment
+
 ## 2.1.0
 
 ### Minor Changes

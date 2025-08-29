@@ -142,6 +142,21 @@ export const iconMetaData = {
 	"vertical-tabs": {
 		title: "Vertical tabs",
 	},
+	"carousel-dots": {
+		title: "Carousel dots",
+	},
+	"carousel-slide-count": {
+		title: "Carousel slide count",
+	},
+	cta: {
+		title: "CTA",
+	},
+	"numbered-columns": {
+		title: "Numbered columns",
+	},
+	"section-with-title": {
+		title: "Section",
+	},
 } as const satisfies IconMetaData;
 export type IconNames = keyof typeof iconMetaData;
 

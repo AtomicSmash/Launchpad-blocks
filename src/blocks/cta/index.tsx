@@ -3,7 +3,7 @@ import type { InterpretedUsedContext } from "./context";
 import type { Supports } from "./supports";
 import { registerBlockType, registerBlockVariation } from "@wordpress/blocks";
 import { registerLaunchpadBlocksCollection } from "@launchpadBlocks/helpers.editor";
-// import { Icon } from "@launchpadBlocks/svgs";
+import { Icon } from "@launchpadBlocks/svgs";
 import blockMetaData from "./block.json";
 import { deprecated } from "./deprecation";
 import { Edit } from "./edit";
@@ -16,7 +16,7 @@ export { type InterpretedProvidesContext } from "./context";
 registerBlockType<Supports, Attributes, InterpretedUsedContext>(
 	blockMetaData.name,
 	{
-		// icon: <Icon iconName="" />,
+		icon: <Icon iconName="cta" />,
 		deprecated,
 		edit: Edit,
 		save: save({ hasInnerBlocks: true }),
