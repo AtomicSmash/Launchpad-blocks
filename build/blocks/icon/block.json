@@ -7,21 +7,23 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.fb023f4e8858925339c1.js"
+    "file:./index.62169c5ba4691d06981e.js"
   ],
   "style": [
     "file:./style.16400670a8ac45695969.css"
   ],
   "editorStyle": [
-    "file:./editor-style.d51fcb63511781a0f508.css"
+    "file:./editor-style.9220f13003367413ec27.css"
   ],
   "render": "file:./render.php",
   "attributes": {
     "iconName": {
-      "type": "string"
+      "type": "string",
+      "role": "content"
     },
     "library": {
-      "type": "string"
+      "type": "string",
+      "role": "content"
     },
     "size": {
       "type": "string",

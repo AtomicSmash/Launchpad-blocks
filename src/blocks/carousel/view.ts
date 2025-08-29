@@ -79,7 +79,9 @@ export class Carousel {
 		const slideGapPx = window
 			.getComputedStyle(this.carouselSlides)
 			.getPropertyValue("column-gap");
-		const slideGap = getPixelNumber(slideGapPx === "" ? "0px" : slideGapPx);
+		const slideGap = getPixelNumber(
+			!slideGapPx.endsWith("px") ? "0px" : slideGapPx,
+		);
 		if (!slideWidth) {
 			throw new Error("Unable to get the slide width for the carousel.");
 		}

@@ -2,7 +2,7 @@
  * The following styles get applied inside the editor only.
  */
 
- // The block preview when adding the icon block was the incorrect size
+// The block preview when adding the icon block was the incorrect size
 .block-editor-block-preview__content-iframe.block-editor-iframe__html {
 	div[aria-hidden="true"]:has(
 			+ .is-root-container.block-editor-block-list__layout
@@ -18,4 +18,8 @@
 		top: 0;
 		left: 0;
 	}
+}
+
+.sidebar_width {
+	width: 280px;
 }

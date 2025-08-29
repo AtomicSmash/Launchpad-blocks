@@ -7,9 +7,11 @@ import type {
 export const attributes = {
 	iconName: {
 		type: "string",
+		role: "content",
 	},
 	library: {
 		type: "string",
+		role: "content",
 	},
 	size: {
 		type: "string",

@@ -1,5 +1,12 @@
 # @atomicsmash/launchpad-blocks
 
+## 2.1.2
+
+### Patch Changes
+
+- 68cf66b: Fix carousels with no gap js
+- 547e03c: Add way to edit icon in contentOnly editing mode
+
 ## 2.1.1
 
 ### Patch Changes
