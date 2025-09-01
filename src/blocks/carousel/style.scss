@@ -13,6 +13,7 @@
 		overflow: hidden;
 		scroll-behavior: smooth;
 		aspect-ratio: var(--slide-aspect-ratio);
+		margin: 0;
 
 		> * {
 			flex: 0 0 100%;

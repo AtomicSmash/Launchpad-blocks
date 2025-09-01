@@ -18,15 +18,17 @@ addAction(
 				"launchpadBlocks.carousel.updateActiveSlide",
 				"launchpadBlocks.carousel.slideCount",
 				() => {
-					const currentSlideSpan = slideCountContainer.querySelector(
+					const currentSlideSpans = carouselElement.querySelectorAll(
 						"[data-current-slide-number]",
 					);
-					if (!currentSlideSpan) {
+					if (!currentSlideSpans.length) {
 						throw new Error(
 							"Unable to find the current slide number for slide count.",
 						);
 					}
-					currentSlideSpan.innerHTML = `${Carousel.currentSlide + 1}`;
+					currentSlideSpans.forEach((span) => {
+						span.innerHTML = `${Carousel.currentSlide + 1}`;
+					});
 				},
 			);
 		}

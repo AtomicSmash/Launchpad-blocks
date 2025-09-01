@@ -1,5 +1,12 @@
 # @atomicsmash/launchpad-blocks
 
+## 2.1.3
+
+### Patch Changes
+
+- 6e329dd: Fix added margin on slides element of carousel in some cases
+- 041b2cc: Fix slide count block front end when multiple blocks are present
+
 ## 2.1.2
 
 ### Patch Changes
