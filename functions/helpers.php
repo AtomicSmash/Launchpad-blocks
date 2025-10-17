@@ -14,6 +14,8 @@ namespace LaunchpadBlocks\Helpers;
  * @param array<string,string|bool> $attributes The HTML attributes to add to the SVG element.
  */
 function icon( string $icon_name, array $attributes = array() ): string {
+	$assets = new \LaunchpadBlocks\Assets();
+	$icon_sprite = $assets->get_cached_asset( 'icons/sprite.svg' );
 	$attrs = join(
 		' ',
 		array_map(
@@ -27,7 +29,7 @@ function icon( string $icon_name, array $attributes = array() ): string {
 		)
 	);
 
-	$result = '<svg xmlns="http://www.w3.org/2000/svg" ' . $attrs . '><use href="' . get_home_url( null, '/wp-content/plugins/launchpad-blocks/build/icons/sprite.svg' ) . '#' . $icon_name . '"></use></svg>';
+	$result = '<svg xmlns="http://www.w3.org/2000/svg" ' . $attrs . '><use href="' . $icon_sprite['source'] . '#' . $icon_name . '"></use></svg>';
 	return $result;
 }
 

@@ -6,16 +6,16 @@
   "description": "Multiple sections of content collated together where only one is shown at a time.",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.7ccbf697ce4fcf35bb81.js"
+    "file:./index.e97fb24480a23a2e8283.js"
   ],
   "viewScript": [
-    "file:./view.ab97b24143e0ce896369.js"
+    "file:./view.cbc752db1dfed12b9a5b.js"
   ],
   "style": [
-    "file:./style.07ba8bba90fda900e8dc.css"
+    "file:./style.85987d2fb13ceed6aed6.css"
   ],
   "editorStyle": [
-    "file:./editor-style.5bad094a17ad1b701732.css"
+    "file:./editor-style.023d5602640eab89685c.css"
   ],
   "render": "file:./render.php",
   "attributes": {

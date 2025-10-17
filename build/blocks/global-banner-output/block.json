@@ -6,10 +6,10 @@
   "description": "An output block for the selected global banners.",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.f80fdeafcbc958e0999e.js"
+    "file:./index.f6c2625ec34b63cb51b1.js"
   ],
   "editorStyle": [
-    "file:./editor-style.30b30d7e8796d2542a66.css"
+    "file:./editor-style.c5d19c91d23f7911fa45.css"
   ],
   "render": "file:./render.php",
   "attributes": {},

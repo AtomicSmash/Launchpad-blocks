@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 2.1.4
+
+### Patch Changes
+
+- 69af947: Use fingerprinted file names for SVGs for cachebusting
+
 ## 2.1.3
 
 ### Patch Changes

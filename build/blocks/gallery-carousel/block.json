@@ -13,16 +13,16 @@
     "lightbox"
   ],
   "editorScript": [
-    "file:./index.ffe6a40e7aa0cd44f676.js"
+    "file:./index.a623ced068c571af8790.js"
   ],
   "viewScript": [
-    "file:./view.ba19077206a05d96dcac.js"
+    "file:./view.94544363002f7c909ba5.js"
   ],
   "style": [
-    "file:./style.a93d314249dc409bfb3e.css"
+    "file:./style.f01f216d67532d72c114.css"
   ],
   "editorStyle": [
-    "file:./editor-style.9a78aab58769514159d3.css"
+    "file:./editor-style.31d6cfe0d16ae931b73c.css"
   ],
   "render": "file:./render.php",
   "attributes": {

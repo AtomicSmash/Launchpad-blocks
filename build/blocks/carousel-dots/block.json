@@ -10,16 +10,16 @@
     "launchpad-blocks/carousel"
   ],
   "editorScript": [
-    "file:./index.5fffbfd94a99b51c23b7.js"
+    "file:./index.6c3725fd6b107c9f4f6b.js"
   ],
   "viewScript": [
-    "file:./view.ce3911e3414d8a838457.js"
+    "file:./view.f79fd4dc8af3b2dbc895.js"
   ],
   "style": [
-    "file:./style.6aec5fd6eec4eb11f4ea.css"
+    "file:./style.6bda0fc7987b5b81e21f.css"
   ],
   "editorStyle": [
-    "file:./editor-style.e26b58015390c391b84c.css"
+    "file:./editor-style.ead2d9fb3d920d058ac2.css"
   ],
   "render": "file:./render.php",
   "attributes": {},

@@ -7,13 +7,13 @@
   "textdomain": "launchpad",
   "keywords": [],
   "editorScript": [
-    "file:./index.7af21211e2aba6f0ef4f.js"
+    "file:./index.7682782437a1409f0cbe.js"
   ],
   "editorStyle": [
-    "file:./editor-style.fd8f66484ec7d6017750.css"
+    "file:./editor-style.7366b8d6169ef631eab0.css"
   ],
   "style": [
-    "file:./style.9e4280ac02dbbbccdeb5.css"
+    "file:./style.33919140da05edb963f4.css"
   ],
   "render": "file:./render.php",
   "attributes": {

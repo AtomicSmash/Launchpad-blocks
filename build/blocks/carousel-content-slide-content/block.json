@@ -10,16 +10,16 @@
     "launchpad-blocks/carousel-content-slide"
   ],
   "editorScript": [
-    "file:./index.ab0bfa20b655d3ae25e1.js"
+    "file:./index.d6386515b7a742a309e8.js"
   ],
   "viewScript": [
-    "file:./view.31d6cfe0d16ae931b73c.js"
+    "file:./view.535e66f2928c2639ca1b.js"
   ],
   "style": [
-    "file:./style.707edbd7ccd8636f4828.css"
+    "file:./style.1df1082cf44e529cfffd.css"
   ],
   "editorStyle": [
-    "file:./editor-style.6e22afcf2557e083ae23.css"
+    "file:./editor-style.605363ef331fad07a440.css"
   ],
   "render": "file:./render.php",
   "attributes": {},

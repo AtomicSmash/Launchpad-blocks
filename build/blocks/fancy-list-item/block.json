@@ -13,16 +13,16 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.71096c82ed892c635754.js"
+    "file:./index.b6bf392d3e83ba6d2d95.js"
   ],
   "viewScript": [
-    "file:./view.31d6cfe0d16ae931b73c.js"
+    "file:./view.535e66f2928c2639ca1b.js"
   ],
   "style": [
-    "file:./style.4497205344a1e7649cfc.css"
+    "file:./style.df6743bc60dbce0f3cc6.css"
   ],
   "editorStyle": [
-    "file:./editor-style.9a78aab58769514159d3.css"
+    "file:./editor-style.31d6cfe0d16ae931b73c.css"
   ],
   "render": "file:./render.php",
   "attributes": {

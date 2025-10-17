@@ -14,16 +14,16 @@
     "breakout"
   ],
   "editorScript": [
-    "file:./index.6497f723a9772a7b4a74.js"
+    "file:./index.b67bf74a5beca30b63b2.js"
   ],
   "viewScript": [
-    "file:./view.31d6cfe0d16ae931b73c.js"
+    "file:./view.535e66f2928c2639ca1b.js"
   ],
   "style": [
-    "file:./style.879a19364cb56eae0321.css"
+    "file:./style.78075df58780809f7e57.css"
   ],
   "editorStyle": [
-    "file:./editor-style.9a78aab58769514159d3.css"
+    "file:./editor-style.31d6cfe0d16ae931b73c.css"
   ],
   "render": "file:./render.php",
   "attributes": {

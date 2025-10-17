@@ -14,16 +14,16 @@
     "core/image"
   ],
   "editorScript": [
-    "file:./index.40f9ba036c3caed9113d.js"
+    "file:./index.d8fee0c315cf266702d5.js"
   ],
   "viewScript": [
-    "file:./view.31d6cfe0d16ae931b73c.js"
+    "file:./view.535e66f2928c2639ca1b.js"
   ],
   "style": [
-    "file:./style.402d73de921a5d5fea94.css"
+    "file:./style.18ba581fb91e58f5b76d.css"
   ],
   "editorStyle": [
-    "file:./editor-style.3ec794d066c23b46b0e9.css"
+    "file:./editor-style.b90559dd7064f42f7ac7.css"
   ],
   "render": "file:./render.php",
   "attributes": {

@@ -18,16 +18,16 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.102a366e84788761813b.js"
+    "file:./index.02796618e00edd6a9306.js"
   ],
   "viewScript": [
-    "file:./view.39550ebacf6b65bdf01d.js"
+    "file:./view.f3f1b670d7dbf4f9b99f.js"
   ],
   "style": [
-    "file:./style.278341290d3771b65e7d.css"
+    "file:./style.1fd6a1e5f4af08d89964.css"
   ],
   "editorStyle": [
-    "file:./editor-style.9a78aab58769514159d3.css"
+    "file:./editor-style.31d6cfe0d16ae931b73c.css"
   ],
   "render": "file:./render.php",
   "attributes": {

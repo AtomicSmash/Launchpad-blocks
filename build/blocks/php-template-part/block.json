@@ -1,0 +1,36 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/php-template-part",
+  "title": "PHP Template part",
+  "category": "theme",
+  "description": "Get one of the existing php template parts in the blocks editor.",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.8dffc0be8f6e93593cd5.js"
+  ],
+  "viewScript": [
+    "file:./view.535e66f2928c2639ca1b.js"
+  ],
+  "style": [
+    "file:./style.31d6cfe0d16ae931b73c.css"
+  ],
+  "editorStyle": [
+    "file:./editor-styles.31d6cfe0d16ae931b73c.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "templatePartSlug": {
+      "type": "string"
+    },
+    "templatePartName": {
+      "type": "string"
+    }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "postId"
+  ],
+  "example": {},
+  "supports": {}
+}

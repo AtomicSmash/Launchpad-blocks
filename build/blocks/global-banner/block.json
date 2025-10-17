@@ -5,16 +5,16 @@
   "category": "theme",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.ffe6f9a5178f13267319.js"
+    "file:./index.8af7776ecbb8663577a9.js"
   ],
   "viewScript": [
-    "file:./view.1e99099b976899e34a2c.js"
+    "file:./view.d8b08951ee51c7294e8d.js"
   ],
   "style": [
-    "file:./style.433d348bfc9d5a9c8ac5.css"
+    "file:./style.68dcf1afcca9bc5c8b8c.css"
   ],
   "editorStyle": [
-    "file:./editor-style.b11cd58ddaf6f2028adb.css"
+    "file:./editor-style.3ef71a7877433fc70558.css"
   ],
   "render": "file:./render.php",
   "attributes": {

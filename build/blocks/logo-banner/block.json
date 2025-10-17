@@ -7,16 +7,16 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.83d64722e61942b8ac1e.js"
+    "file:./index.b749ff875162061a9b70.js"
   ],
   "viewScript": [
-    "file:./view.81e4f5880f9e49810750.js"
+    "file:./view.9dcacc883e6416067d79.js"
   ],
   "style": [
-    "file:./style.1f7e7a6f94face79d7b9.css"
+    "file:./style.d2e5d0e4d5580e2419d1.css"
   ],
   "editorStyle": [
-    "file:./editor-style.75b2b31374dcd7fef648.css"
+    "file:./editor-style.a80025175149dfe06681.css"
   ],
   "render": "file:./render.php",
   "attributes": {

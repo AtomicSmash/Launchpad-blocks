@@ -34,7 +34,7 @@ import {
 	VariationSelect,
 } from "@launchpadBlocks/helpers.editor";
 import { Icon } from "@launchpadBlocks/svgs";
-import { blockJson } from "./block.json";
+import blockJson from "./block.json";
 import { variations } from "./variations";
 
 export type BlockEditProps = CreateBlockEditProps<

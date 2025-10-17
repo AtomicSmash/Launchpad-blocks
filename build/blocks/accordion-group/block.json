@@ -9,13 +9,13 @@
     "accordion"
   ],
   "editorScript": [
-    "file:./index.b138f02a01a850d7c4c1.js"
+    "file:./index.0e6bccf881b9d1a32284.js"
   ],
   "viewScript": [
-    "file:./view.1ac8aacee1221394c4ae.js"
+    "file:./view.f666f5da98d0501d5f3f.js"
   ],
   "editorStyle": [
-    "file:./editor-style.2119d51f7f028e869c81.css"
+    "file:./editor-style.09ce301a320437c54e81.css"
   ],
   "render": "file:./render.php",
   "attributes": {
