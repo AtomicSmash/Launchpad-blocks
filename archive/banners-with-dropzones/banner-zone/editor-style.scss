@@ -1,0 +1,18 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+.wp-block-cloudcall-blocks-banner-zone {
+	background: repeating-linear-gradient(
+		45deg,
+		#ddd,
+		#ddd 10px,
+		#eee 10px,
+		#eee 20px
+	);
+	padding: var(--wp--preset--spacing--2);
+	margin-top: 0;
+
+	> p {
+		margin: 0;
+	}
+}
