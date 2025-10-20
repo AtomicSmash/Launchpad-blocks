@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 2.1.5
+
+### Patch Changes
+
+- eceacb0: Update deps
+
 ## 2.1.4
 
 ### Patch Changes
