@@ -1,5 +1,46 @@
 # @atomicsmash/launchpad-blocks
 
+## 3.0.1
+
+### Patch Changes
+
+- a42959b: Add button with icon line which was missing from changelog
+
+## 3.0.0
+
+### Major Changes
+
+- ce0b44c: Make submenus also shrink to fit if they take up more space than is available after shifting
+- ce0b44c: Don't show navigation sub blocks if empty / not linked
+- ce0b44c: Refactor sub menus to make them more useful for mega navs and allow more generic content
+- ce0b44c: Change default submenu icon and add padding between icon and text
+
+### Minor Changes
+
+- ce0b44c: Make submenu icon editable in admin
+- 75bb6ae: Make it possible to use a nav list anywhere
+- e6b0acd: added heading with icon block
+- 09521c1: added button with icon block
+- ce0b44c: Add nav links group as a possible sub-block of a nav list
+- c46386e: Add align support to logo banner
+- ce0b44c: Add ability to switch icon to the right side for submenus
+- ce0b44c: Move submenu editing into a lightbox for a smoother UX
+- ce0b44c: Make nav links group title optionally linkable
+
+### Patch Changes
+
+- ce0b44c: Closer match link styling for blocks in the editor
+- ce0b44c: Make nav list appender a more reasonable size
+- ce0b44c: Automatically set nested submenu nav lists to vertical, and prevent changes
+- 888d3ee: Update deps
+- 2c18e89: Fix toolbar button labels
+
+## 2.1.6
+
+### Patch Changes
+
+- 8a7bae3: Fix SVGs by using full non-relative paths
+
 ## 2.1.5
 
 ### Patch Changes

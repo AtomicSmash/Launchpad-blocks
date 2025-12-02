@@ -1,3 +1,5 @@
+import type { BlockInstanceAsObject } from "@atomicsmash/blocks-helpers";
+
 /**
  * Get the pixel number value from a string.
  * @param pixelValue A string which might contain a value like `8px`.
@@ -131,3 +133,12 @@ export function objectArraysAreEqual(
 	}
 	return true;
 }
+
+export type UseSelectWithBlockEditorStore = {
+	getBlockParentsByBlockName: (clientId: string, blockName: string) => string[];
+	hasSelectedInnerBlock: (clientId: string, deep: boolean) => boolean;
+	getBlockOrder: (rootClientId?: string) => string[];
+	getBlocks: (
+		clientId?: string,
+	) => (BlockInstanceAsObject & { clientId: string })[];
+};

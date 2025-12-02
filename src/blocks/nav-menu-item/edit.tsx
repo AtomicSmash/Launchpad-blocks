@@ -62,7 +62,7 @@ export function Edit({
 				{linkHref ? (
 					<RichText
 						tagName="span"
-						className="menu-group-list-item-link"
+						className={`menu-group-list-item-link${linkHref ? ` hyperlink` : ""}`}
 						onChange={(newLinkText) => {
 							setAttributes({ linkText: newLinkText });
 						}}

@@ -1397,3 +1397,34 @@ export function convertBlockObjectToArray(
 	}
 	return templateAsArray;
 }
+
+export function useIframeResize(
+	getElementToResizeItTo: () => HTMLElement | null,
+) {
+	const editorRoot = useRef<HTMLDivElement | null>(null);
+	editorRoot.current =
+		document
+			.querySelector<HTMLIFrameElement>('iframe[name="editor-canvas"]')
+			?.contentWindow?.document.querySelector<HTMLDivElement>(
+				".is-root-container",
+			) ?? null;
+
+	return function resizeIframe() {
+		setTimeout(() => {
+			if (editorRoot.current) {
+				const elementToResizeItTo = getElementToResizeItTo();
+				const elementHeight = elementToResizeItTo?.scrollHeight ?? 0;
+				if (elementHeight) {
+					const currentStyle = editorRoot.current.style;
+					currentStyle.minHeight = "";
+					editorRoot.current.setAttribute(
+						"style",
+						`${currentStyle.cssText}min-height: ${elementHeight}px !important`,
+					);
+				} else {
+					editorRoot.current.style.minHeight = "";
+				}
+			}
+		}, 1);
+	};
+}

@@ -20,37 +20,69 @@
 	align-items: center;
 	margin: 0;
 	white-space: nowrap;
+	gap: 0.5rem;
 }
 
 .menu-group-list-item-submenu {
+	--column-gap: 1rem;
+	--padding: 1rem;
+
 	position: absolute;
-	background-color: var(--wp--preset--color--rich-white);
+	background-color: #eee;
 	z-index: var(--wp--custom--z-index--navigation-popover);
-	width: 14rem;
-	overflow: hidden;
 	opacity: 0;
 	transition:
 		opacity var(--navigation-menu-open-close-timing) ease-in-out,
 		height var(--navigation-menu-open-close-timing) ease-in-out;
-	padding: var(--wp--preset--spacing--2);
+	padding: var(--padding);
 
 	&[data-state="open"] {
 		opacity: 1;
 	}
+}
 
+.wp-block-launchpad-blocks-navigation[data-is-menu-collapsed="expanded"]
 	.menu-group-list-item-submenu {
-		position: absolute;
-		left: 12rem;
-		top: 0;
-		transition:
-			opacity var(--navigation-menu-open-close-timing) ease-in-out,
-			height var(--navigation-menu-open-close-timing) ease-in-out,
-			left var(--navigation-menu-open-close-timing) ease-in-out;
-		opacity: 1;
-		min-height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--column-gap);
+	width: calc(
+		((var(--column-count) - 1) * var(--column-gap)) +
+			(var(--column-count) * var(--column-width)) + (2 * var(--padding))
+	);
 
-		&[data-state="open"] {
-			left: 0;
+	.submenu-arrow {
+		position: absolute;
+		width: 1rem;
+		height: 1rem;
+		aspect-ratio: 1;
+		background: inherit;
+	}
+
+	> :not(.submenu-arrow) {
+		flex: 0 0 var(--column-width);
+	}
+
+	.wp-block-launchpad-blocks-nav-submenu[data-state="open"]
+		> .menu-group-list-item-submenu {
+		height: 0;
+	}
+}
+
+.wp-block-launchpad-blocks-nav-submenu .wp-block-launchpad-blocks-nav-submenu {
+	.menu-group-list-item-submenu {
+		position: static;
+		padding: 0;
+		height: 0;
+		overflow: hidden;
+		width: 100%;
+
+		.submenu-arrow {
+			display: none;
+		}
+
+		> * {
+			padding: 0.5rem;
 		}
 	}
 }
@@ -66,9 +98,18 @@
 	left: 100%;
 	top: 0;
 	min-height: 100%;
+	max-height: calc(
+		100vh - (var(--header-height) + var(--wp-admin--admin-bar--height)) - 1rem
+	);
+	overflow: hidden auto;
 
 	&[data-state="open"] {
 		left: 0;
+	}
+
+	&:has(.menu-group-list-item-submenu[data-state="open"]) {
+		// Don't allow scrolling parents if a child is open.
+		overflow: hidden;
 	}
 }
 
@@ -76,7 +117,7 @@
 .wp-block-launchpad-blocks-navigation[data-is-menu-collapsed="expanded"]
 	.wp-block-launchpad-blocks-nav-list
 	.wp-block-launchpad-blocks-nav-list // Not a mistake, we're targeting nested nav lists
-	.sub-menu-label-arrow {
+	.menu-group-list-item-submenu-button[data-state="closed"] .sub-menu-label-arrow {
 	transform: rotate(-90deg);
 }
 
@@ -95,4 +136,17 @@
 
 .menu-group-list-item {
 	list-style: none; // Fix preview styles
+}
+
+.submenu-popover.submenu-popover {
+	z-index: 999;
+}
+
+.menu-group-list-item-submenu .navigation-nav-list > .block-list-appender {
+	position: absolute;
+	right: 0;
+}
+
+.menu-group-list-item-submenu .navigation-nav-list {
+	height: 100%;
 }

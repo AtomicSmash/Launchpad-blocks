@@ -9,13 +9,13 @@
   ],
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.326beab873e3f9f8c757.js"
+    "file:./index.0a612f9125ca320d06d5.js"
   ],
   "viewScript": [
     "file:./view.535e66f2928c2639ca1b.js"
   ],
   "style": [
-    "file:./style.6f73f24ea4c6d727a1af.css"
+    "file:./style.694c8b8912aa4f397e59.css"
   ],
   "editorStyle": [
     "file:./editor-style.31d6cfe0d16ae931b73c.css"
@@ -40,6 +40,26 @@
     },
     "headerContent": {
       "type": "string"
+    },
+    "linkId": {
+      "type": "number"
+    },
+    "linkKind": {
+      "type": "string"
+    },
+    "linkType": {
+      "type": "string"
+    },
+    "linkHref": {
+      "type": "string"
+    },
+    "linkTarget": {
+      "type": "string",
+      "enum": [
+        "_self",
+        "_blank"
+      ],
+      "default": "_self"
     }
   },
   "providesContext": {},

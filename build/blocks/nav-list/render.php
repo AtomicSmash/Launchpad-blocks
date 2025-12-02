@@ -24,6 +24,10 @@ $content = $content;
  */
 $block = $block;
 
+if ( ! \LaunchpadBlocks\Blocks\Custom\NavigationList\is_shown( $block ) ) {
+	return;
+}
+
 $block_wrapper_attributes = (
 	get_block_wrapper_attributes(
 		array_merge(
@@ -42,8 +46,6 @@ if ( $attributes['isNestedInAnotherNavLink'] ) {
 	echo '<nav ' . wp_kses_data( $block_wrapper_attributes ) . '>';
 }
 ?>
-
-
 	<ul class="navigation-nav-list">
 		<?php echo wp_kses_post( $content ); ?>
 	</ul>

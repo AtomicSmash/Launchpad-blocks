@@ -2,6 +2,7 @@ import type { Attributes } from "./attributes";
 import type { Supports } from "./supports";
 import type { BlockMetaData } from "@atomicsmash/blocks-helpers";
 import { attributes } from "./attributes";
+import { providesContext, usesContext } from "./context";
 import { example } from "./example";
 import { supports } from "./supports";
 
@@ -11,7 +12,7 @@ export const blockJson = {
 	title: "Nav sub menu",
 	category: "theme",
 	description: "A sub menu dropdown for the navigation block.",
-	allowedBlocks: ["launchpad-blocks/nav-list"],
+	allowedBlocks: ["launchpad-blocks/nav-list", "core/group"],
 	parent: ["launchpad-blocks/nav-list"],
 	ancestor: ["launchpad-blocks/navigation"],
 	textdomain: "launchpad-blocks",
@@ -23,5 +24,7 @@ export const blockJson = {
 	attributes,
 	supports,
 	example,
+	providesContext,
+	usesContext,
 } satisfies BlockMetaData<Supports, Attributes>;
 export default blockJson;

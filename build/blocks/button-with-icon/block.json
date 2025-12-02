@@ -1,0 +1,86 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/button-with-icon",
+  "title": "Button with icon",
+  "ancestor": [
+    "core/buttons"
+  ],
+  "category": "theme",
+  "description": "A button with selectable icon",
+  "textdomain": "launchpad-blocks",
+  "keywords": [
+    "button",
+    "link",
+    "icon"
+  ],
+  "editorScript": [
+    "file:./index.c93c3dc03d154de69f90.js"
+  ],
+  "viewScript": [
+    "file:./view.535e66f2928c2639ca1b.js"
+  ],
+  "style": [
+    "file:./style.569480f32bde53db40eb.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.58c0cc8e13cc7e34acc2.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "iconName": {
+      "type": "string",
+      "role": "content"
+    },
+    "library": {
+      "type": "string",
+      "role": "content"
+    },
+    "size": {
+      "type": "string",
+      "default": "1rem"
+    },
+    "iconPosition": {
+      "type": "string",
+      "enum": [
+        "start",
+        "end"
+      ],
+      "default": "start"
+    },
+    "linkId": {
+      "type": "number"
+    },
+    "linkKind": {
+      "type": "string"
+    },
+    "linkType": {
+      "type": "string"
+    },
+    "linkHref": {
+      "type": "string"
+    },
+    "linkTarget": {
+      "type": "string",
+      "enum": [
+        "_self",
+        "_blank"
+      ],
+      "default": "_self"
+    },
+    "linkText": {
+      "type": "string"
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "example": {
+    "attributes": {
+      "library": "launchpad-blocks",
+      "iconName": "button-with-icon",
+      "size": "1rem",
+      "iconPosition": "start",
+      "linkText": "button"
+    }
+  },
+  "supports": {}
+}

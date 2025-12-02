@@ -1,4 +1,5 @@
 import type { InterpretedAttributes } from "./attributes";
+import type { InterpretedUsedContext } from "./context";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
 import {
 	useBlockProps,
@@ -18,7 +19,10 @@ import { __ } from "@wordpress/i18n";
 import { lineDashed, alignJustify } from "@wordpress/icons";
 import { useEffect } from "react";
 
-export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
+export type BlockEditProps = CreateBlockEditProps<
+	InterpretedAttributes,
+	InterpretedUsedContext
+>;
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -33,6 +37,7 @@ export function Edit({
 		ariaLabel,
 		linkOrientation,
 	},
+	context: { "launchpad-blocks/isInSubMenu": isInSubMenu },
 	setAttributes,
 }: BlockEditProps) {
 	const isNestedInAnotherNavLink = useSelect(
@@ -63,7 +68,7 @@ export function Edit({
 		{
 			orientation: isNestedInAnotherNavLink ? "vertical" : "horizontal",
 			templateLock: false,
-			renderAppender: InnerBlocks.ButtonBlockAppender,
+			renderAppender: isInSubMenu ? undefined : InnerBlocks.ButtonBlockAppender,
 		},
 	);
 	useEffect(() => {
@@ -77,33 +82,41 @@ export function Edit({
 		setAttributes,
 	]);
 
+	useEffect(() => {
+		if (isInSubMenu && linkOrientation !== "vertical") {
+			setAttributes({ linkOrientation: "vertical" });
+		}
+	}, [clientId, isInSubMenu, linkOrientation, setAttributes]);
+
 	const NavListElement = isNestedInAnotherNavLink ? "div" : "nav";
 
 	return (
 		<>
 			<BlockControls>
-				<ToolbarGroup>
-					<ToolbarButton
-						icon={lineDashed}
-						label={__("Align links horizontally", "launchpad-blocks")}
-						isPressed={linkOrientation === "horizontal"}
-						onClick={() => {
-							setAttributes({
-								linkOrientation: "horizontal",
-							});
-						}}
-					/>
-					<ToolbarButton
-						icon={alignJustify}
-						label={__("Align links vertically", "launchpad-blocks")}
-						isPressed={linkOrientation === "vertical"}
-						onClick={() => {
-							setAttributes({
-								linkOrientation: "vertical",
-							});
-						}}
-					/>
-				</ToolbarGroup>
+				{!isInSubMenu ? (
+					<ToolbarGroup>
+						<ToolbarButton
+							icon={lineDashed}
+							label={__("Align links horizontally", "launchpad-blocks")}
+							isPressed={linkOrientation === "horizontal"}
+							onClick={() => {
+								setAttributes({
+									linkOrientation: "horizontal",
+								});
+							}}
+						/>
+						<ToolbarButton
+							icon={alignJustify}
+							label={__("Align links vertically", "launchpad-blocks")}
+							isPressed={linkOrientation === "vertical"}
+							onClick={() => {
+								setAttributes({
+									linkOrientation: "vertical",
+								});
+							}}
+						/>
+					</ToolbarGroup>
+				) : null}
 			</BlockControls>
 			<InspectorAdvancedControls>
 				<TextControl

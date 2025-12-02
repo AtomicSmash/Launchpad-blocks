@@ -5,7 +5,8 @@
   "category": "theme",
   "description": "A sub menu dropdown for the navigation block.",
   "allowedBlocks": [
-    "launchpad-blocks/nav-list"
+    "launchpad-blocks/nav-list",
+    "core/group"
   ],
   "parent": [
     "launchpad-blocks/nav-list"
@@ -20,13 +21,13 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.a53af7685f92ca51accc.js"
+    "file:./index.24d1727cf843328a3119.js"
   ],
   "style": [
-    "file:./style.d4309dcb7824134e2a85.css"
+    "file:./style.56104d9460ccbad83033.css"
   ],
   "editorStyle": [
-    "file:./editor-style.2340631c1d8da27b6d7f.css"
+    "file:./editor-style.c49b31f7b8f66b8052b4.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -36,6 +37,38 @@
     "subMenuId": {
       "type": "string",
       "default": ""
+    },
+    "columnCount": {
+      "type": "number",
+      "default": 1
+    },
+    "columnWidth": {
+      "type": "number",
+      "default": 14
+    },
+    "isInSubMenu": {
+      "type": "boolean",
+      "default": true
+    },
+    "isDropdownShown": {
+      "type": "boolean",
+      "default": false,
+      "role": "local"
+    },
+    "icon": {
+      "type": "object",
+      "default": {
+        "iconName": "chevron-down",
+        "library": "launchpad-blocks"
+      }
+    },
+    "iconLocation": {
+      "type": "string",
+      "default": "end",
+      "enum": [
+        "start",
+        "end"
+      ]
     }
   },
   "supports": {},
@@ -54,5 +87,9 @@
         "innerBlocks": []
       }
     ]
-  }
+  },
+  "providesContext": {
+    "launchpad-blocks/isInSubMenu": "isInSubMenu"
+  },
+  "usesContext": []
 }

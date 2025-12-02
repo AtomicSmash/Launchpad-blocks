@@ -23,6 +23,10 @@ function register_block(): void {
  * @param array<string,mixed> $attributes The link's attributes.
  */
 function is_active( array $attributes ): bool {
+	if ( ! isset( $attributes['linkHref'] ) ) {
+		return false;
+	}
+
 	$kind = empty( $attributes['linkKind'] ) ? 'post_type' : str_replace( '-', '_', $attributes['linkKind'] );
 	$is_active = ! empty( $attributes['linkId'] ) && get_queried_object_id() === (int) $attributes['linkId'] && ! empty( get_queried_object()->$kind );
 	if ( is_post_type_archive() && ! empty( $attributes['linkHref'] ) ) {
@@ -43,4 +47,16 @@ function is_active( array $attributes ): bool {
 	 * @param array<string,mixed> $attributes The link's attributes.
 	 */
 	return apply_filters( 'launchpad_blocks_nav_menu_item_is_active', $is_active, $attributes );
+}
+
+/**
+ * A function to determine if the block produces any output.
+ *
+ * @param array<string,mixed> $attributes The link's attributes.
+ */
+function is_shown( array $attributes ): bool {
+	if ( ( ( $attributes['linkText'] ?? '' ) === '' ) || ( ( $attributes['linkHref'] ?? '' ) === '' ) ) {
+		return false;
+	}
+	return true;
 }

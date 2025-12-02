@@ -7,6 +7,8 @@ import {
 	shift,
 	limitShift,
 	offset,
+	size,
+	arrow,
 } from "@floating-ui/dom";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
@@ -253,6 +255,7 @@ class NavigationSubMenu {
 	private subMenuIsChild: boolean;
 	private trigger: HTMLButtonElement;
 	private subMenuContent: HTMLDivElement;
+	private subMenuArrow: HTMLDivElement;
 	private backButton: HTMLButtonElement | null = null;
 	private closeTimeout: NodeJS.Timeout | null = null;
 	private cleanup: (() => void) | null = null;
@@ -280,6 +283,14 @@ class NavigationSubMenu {
 		}
 		this.subMenuContent = subMenuContent;
 
+		const subMenuArrow = this.subMenuContent.querySelector<HTMLDivElement>(
+			`:scope > div[data-navigation-sub-menu-arrow]`,
+		);
+		if (!subMenuArrow) {
+			throw new Error("Unable to determine the sub menu's arrow.");
+		}
+		this.subMenuArrow = subMenuArrow;
+
 		this.maybeAddBackButton();
 
 		this.trigger.addEventListener("click", () => {
@@ -293,7 +304,7 @@ class NavigationSubMenu {
 		});
 	}
 	private maybeAddBackButton() {
-		if (this.subMenuIsChild || this.parentNavigation.isMenuCollapsed()) {
+		if (this.parentNavigation.isMenuCollapsed()) {
 			const backButton = document.createElement("button");
 			backButton.type = "button";
 			backButton.classList.add("reset", "back-button");
@@ -336,26 +347,23 @@ class NavigationSubMenu {
 		if (!this.isSubMenuShown()) {
 			return;
 		}
-		if (!this.parentNavigation.isMenuCollapsed() && !switching) {
+		if (
+			!this.parentNavigation.isMenuCollapsed() &&
+			!this.subMenuIsChild &&
+			!switching
+		) {
 			this.parentNavigation.hasOpenSubMenu = false;
 			document.body.classList.remove("sub-menu-is-open");
+		}
+
+		if (this.parentNavigation.isMenuCollapsed() || this.subMenuIsChild) {
+			this.subMenuContent.style.height = "";
 		}
 
 		this.subMenu.dataset.state = "closed";
 		this.trigger.dataset.state = "closed";
 		this.trigger.setAttribute("aria-expanded", "false");
 		this.subMenuContent.dataset.state = "closed";
-		if (this.subMenuIsChild) {
-			const parentSubMenu = this.subMenu.closest<HTMLElement>(
-				".menu-group-list-item-submenu",
-			)!;
-			parentSubMenu.style.height = `${this.parentSubMenuHeight}px`;
-			if (this.parentNavigation.isMenuCollapsed()) {
-				this.parentNavigation.navigationContent.querySelector<HTMLElement>(
-					":scope > .wp-block-launchpad-blocks-nav-list",
-				)!.style.height = `${this.parentSubMenuHeight}px`;
-			}
-		}
 		if (this.parentNavigation.isMenuCollapsed() && !this.subMenuIsChild) {
 			this.parentNavigation.navigationContent.querySelector<HTMLElement>(
 				":scope > .wp-block-launchpad-blocks-nav-list",
@@ -369,7 +377,11 @@ class NavigationSubMenu {
 		);
 		this.closeTimeout = setTimeout(() => {
 			this.subMenuContent.hidden = true;
-			if (!this.parentNavigation.isMenuCollapsed() && !switching) {
+			if (
+				!this.parentNavigation.isMenuCollapsed() &&
+				!this.subMenuIsChild &&
+				!switching
+			) {
 				this.parentNavigation.overlay.hidden = true;
 			}
 			if (this.cleanup) {
@@ -410,12 +422,8 @@ class NavigationSubMenu {
 			if (!this.parentNavigation.isMenuCollapsed()) {
 				document.body.classList.add("sub-menu-is-open");
 			}
-			if (this.subMenuIsChild) {
-				const parentSubMenu = this.subMenu.closest<HTMLElement>(
-					".menu-group-list-item-submenu",
-				)!;
-				this.parentSubMenuHeight = parentSubMenu.clientHeight;
-				parentSubMenu.style.height = `${this.subMenuContent.clientHeight}px`;
+			if (this.parentNavigation.isMenuCollapsed() || this.subMenuIsChild) {
+				this.subMenuContent.style.height = `${this.subMenuContent.scrollHeight}px`;
 			}
 			if (this.parentNavigation.isMenuCollapsed()) {
 				this.parentNavigation.navigationContent.querySelector<HTMLElement>(
@@ -439,21 +447,56 @@ class NavigationSubMenu {
 		}
 	}
 	public updatePopOutPosition() {
+		// Get half the arrow box's hypotenuse length
+		const floatingOffset =
+			Math.sqrt(2 * this.subMenuArrow.offsetWidth ** 2) / 2;
 		computePosition(this.trigger, this.subMenuContent, {
 			placement: "bottom-start",
 			middleware: [
-				offset(16),
+				offset(floatingOffset),
 				shift({
 					limiter: limitShift(),
 				}),
+				size({
+					apply({ availableWidth, availableHeight, elements }) {
+						// Change styles, e.g.
+						Object.assign(elements.floating.style, {
+							maxWidth: `${Math.max(0, availableWidth)}px`,
+							maxHeight: `${Math.max(0, availableHeight)}px`,
+						});
+					},
+				}),
+				arrow({ element: this.subMenuArrow }),
 			],
 		})
-			.then(({ x, y, placement }) => {
+			.then(({ x, y, placement, middlewareData }) => {
 				if (!placement) {
 					throw new Error("Error finding placement or middleware data.");
 				}
 				this.subMenuContent.style.left = `${x}px`;
 				this.subMenuContent.style.top = `${y}px`;
+				const side = placement.split("-")[0] as
+					| "top"
+					| "bottom"
+					| "left"
+					| "right";
+
+				const staticSide = {
+					top: "bottom",
+					right: "left",
+					bottom: "top",
+					left: "right",
+				}[side] as "top" | "bottom" | "left" | "right";
+
+				if (middlewareData.arrow) {
+					const { x, y } = middlewareData.arrow;
+
+					this.subMenuArrow.style.left = x != null ? `${x}px` : "";
+					this.subMenuArrow.style.top = y != null ? `${y}px` : "";
+					this.subMenuArrow.style[staticSide] =
+						`-${this.subMenuArrow.offsetWidth / 2}px`;
+					this.subMenuArrow.style.transform = `rotate(45deg)`;
+				}
 			})
 			.catch(() => this.closeSubMenu());
 	}

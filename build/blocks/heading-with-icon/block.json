@@ -1,0 +1,78 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/heading-with-icon",
+  "title": "Heading with icon",
+  "category": "theme",
+  "description": "Select an icon to display inline with a heading",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.edab9b9a71afa68b885a.js"
+  ],
+  "viewScript": [
+    "file:./view.535e66f2928c2639ca1b.js"
+  ],
+  "style": [
+    "file:./style.26404f07182a01b75ed7.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.31d6cfe0d16ae931b73c.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "iconName": {
+      "type": "string",
+      "role": "content"
+    },
+    "library": {
+      "type": "string",
+      "role": "content"
+    },
+    "size": {
+      "type": "string",
+      "default": "2rem"
+    },
+    "headerElement": {
+      "type": "string",
+      "enum": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
+      "default": "h2"
+    },
+    "headerContent": {
+      "type": "string"
+    },
+    "headerStyle": {
+      "type": "string",
+      "enum": [
+        "",
+        "t-1",
+        "t-2",
+        "t-3",
+        "t-4",
+        "t-5",
+        "t-6"
+      ],
+      "default": ""
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "example": {
+    "viewportWidth": 280,
+    "attributes": {
+      "library": "launchpad-blocks",
+      "iconName": "heading-with-icon",
+      "size": "2rem",
+      "headerContent": "Heading",
+      "headerElement": "h2",
+      "headerStyle": ""
+    }
+  },
+  "supports": {}
+}

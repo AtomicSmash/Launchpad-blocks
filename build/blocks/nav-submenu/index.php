@@ -27,11 +27,11 @@ function register_block(): void {
  */
 function has_current_menu_item_as_child( \WP_Block $block, string $current_url ): bool {
 	$result = false;
-	
+
 	foreach ( $block->inner_blocks as $inner_block ) {
 		if ( array_search( $inner_block->parsed_block['blockName'], array( 'launchpad-blocks/nav-submenu', 'launchpad-blocks/nav-list' ), true ) !== false ) {
 			$result = has_current_menu_item_as_child( $inner_block, $current_url );
-		} else {
+		} elseif ( array_search( $inner_block->parsed_block['blockName'], array( 'launchpad-blocks/nav-menu-item' ), true ) !== false ) {
 			$result = \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_active( $inner_block->parsed_block['attrs'] );
 		}
 		if ( $result ) {
@@ -39,4 +39,16 @@ function has_current_menu_item_as_child( \WP_Block $block, string $current_url )
 		}
 	}
 	return $result;
+}
+
+/**
+ * A function to determine if the block produces any output.
+ *
+ * @param array<string,mixed> $attributes The link's attributes.
+ */
+function is_shown( array $attributes ): bool {
+	if ( ( $attributes['linkText'] ?? '' ) === '' ) {
+		return false;
+	}
+	return true;
 }

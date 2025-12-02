@@ -18,16 +18,16 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.95b8a72007d45721afac.js"
+    "file:./index.cacc4a8d3aac2abab00a.js"
   ],
   "viewScript": [
-    "file:./view.1df041bf06c9d691f75b.js"
+    "file:./view.2026731eff22be10e33e.js"
   ],
   "style": [
     "file:./style.1fd6a1e5f4af08d89964.css"
   ],
   "editorStyle": [
-    "file:./editor-style.31d6cfe0d16ae931b73c.css"
+    "file:./editor-style.5a6b155834ec580c5eed.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -105,5 +105,7 @@
         ]
       }
     ]
-  }
+  },
+  "providesContext": {},
+  "usesContext": []
 }

@@ -1,0 +1,34 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+.wp-block-launchpad-blocks-button-with-icon {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	border: 2px solid var(--wp--preset--color--button);
+	background-color: var(--wp--preset--color--button);
+	color: var(--wp--preset--color--button-text);
+	text-decoration: none;
+	padding: var(--wp--preset--spacing--2);
+	border-radius: var(--wp--custom--radius--rounded);
+	cursor: pointer;
+
+	&:hover,
+	&:focus-visible {
+		background-color: var(--wp--preset--color--button-hover);
+		border-color: var(--wp--preset--color--button-hover);
+		color: var(--wp--preset--color--button-hover-text);
+		text-decoration: underline;
+	}
+
+	.icon {
+		width: var(--icon-size, 1rem);
+		height: var(--icon-size, 1rem);
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

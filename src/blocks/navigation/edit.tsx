@@ -1,9 +1,14 @@
 import type { InterpretedAttributes } from "./attributes";
+import type { InterpretedUsedContext } from "./context";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
 import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
+import { __ } from "@wordpress/i18n";
 import { useEffect } from "react";
 
-export type BlockEditProps = CreateBlockEditProps<InterpretedAttributes>;
+export type BlockEditProps = CreateBlockEditProps<
+	InterpretedAttributes,
+	InterpretedUsedContext
+>;
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -21,6 +26,7 @@ export function Edit({
 		"data-launchpad-navigation": true,
 		"data-nav-id": navId,
 		"data-state": "closed",
+		"data-is-menu-collapsed": "expanded",
 	});
 	const innerBlocksProps = useInnerBlocksProps(
 		{
@@ -32,15 +38,19 @@ export function Edit({
 			orientation: "horizontal",
 		},
 	);
+
 	useEffect(() => {
 		if (navIdAttribute !== navId) {
 			setAttributes({ navId: `nav-${clientId}` });
 		}
 	}, [clientId, navIdAttribute, navId, setAttributes]);
+
 	return (
-		<div {...blockProps}>
-			<div {...innerBlocksProps}></div>
-		</div>
+		<>
+			<div {...blockProps}>
+				<div {...innerBlocksProps}></div>
+			</div>
+		</>
 	);
 }
 Edit.displayName = "NavigationEdit";

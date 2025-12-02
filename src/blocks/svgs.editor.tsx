@@ -7,6 +7,7 @@ import {
 	SearchControl,
 } from "@wordpress/components";
 import { applyFilters } from "@wordpress/hooks";
+import { __ } from "@wordpress/i18n";
 import {
 	Icon as WordPressIcon,
 	chevronDown,
@@ -47,6 +48,9 @@ export const iconMetaData = {
 	"break-image-out": {
 		title: "Break image out of container",
 	},
+	"button-with-icon": {
+		title: "Button with Icon",
+	},
 	carousel: {
 		title: "Carousel",
 	},
@@ -67,6 +71,9 @@ export const iconMetaData = {
 	},
 	"gallery-carousel-lightbox": {
 		title: "Lightbox",
+	},
+	"heading-with-icon": {
+		title: "Heading with icon",
 	},
 	icon: {
 		title: "Icon",
@@ -156,6 +163,22 @@ export const iconMetaData = {
 	},
 	"section-with-title": {
 		title: "Section",
+	},
+	"chevron-down": {
+		title: __("Chevron down", "launchpad-blocks"),
+		makeAvailableToUser: true,
+	},
+	"chevron-left": {
+		title: __("Chevron left", "launchpad-blocks"),
+		makeAvailableToUser: true,
+	},
+	"chevron-right": {
+		title: __("Chevron right", "launchpad-blocks"),
+		makeAvailableToUser: true,
+	},
+	"chevron-up": {
+		title: __("Chevron up", "launchpad-blocks"),
+		makeAvailableToUser: true,
 	},
 } as const satisfies IconMetaData;
 export type IconNames = keyof typeof iconMetaData;

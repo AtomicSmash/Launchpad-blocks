@@ -1,0 +1,1 @@
+(function(n,e){if(typeof exports=="object"&&typeof module=="object")module.exports=e();else if(typeof define=="function"&&define.amd)define([],e);else{var t=e();for(var i in t)(typeof exports=="object"?exports:n)[i]=t[i]}})(globalThis,()=>(()=>{"use strict";var o={};return o})());

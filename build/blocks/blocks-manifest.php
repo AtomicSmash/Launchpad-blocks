@@ -15,7 +15,7 @@
 			'accordion'
 		),
 		'editorScript' => array(
-			'file:./index.6bf5da43161765355d49.js'
+			'file:./index.ebcfbd69bfeb29090cf0.js'
 		),
 		'style' => array(
 			'file:./style.95c9d1fcd1af6b61f16c.css'
@@ -96,7 +96,7 @@
 			'accordion'
 		),
 		'editorScript' => array(
-			'file:./index.9b1cc4c9142488b5937f.js'
+			'file:./index.9913866ba3e8da59a666.js'
 		),
 		'viewScript' => array(
 			'file:./view.f666f5da98d0501d5f3f.js'
@@ -207,6 +207,98 @@
 			'launchpad-blocks/accordion'
 		)
 	),
+	'blocks/button-with-icon' => array(
+		'apiVersion' => 3,
+		'name' => 'launchpad-blocks/button-with-icon',
+		'title' => 'Button with icon',
+		'ancestor' => array(
+			'core/buttons'
+		),
+		'category' => 'theme',
+		'description' => 'A button with selectable icon',
+		'textdomain' => 'launchpad-blocks',
+		'keywords' => array(
+			'button',
+			'link',
+			'icon'
+		),
+		'editorScript' => array(
+			'file:./index.c93c3dc03d154de69f90.js'
+		),
+		'viewScript' => array(
+			'file:./view.535e66f2928c2639ca1b.js'
+		),
+		'style' => array(
+			'file:./style.569480f32bde53db40eb.css'
+		),
+		'editorStyle' => array(
+			'file:./editor-style.58c0cc8e13cc7e34acc2.css'
+		),
+		'render' => 'file:./render.php',
+		'attributes' => array(
+			'iconName' => array(
+				'type' => 'string',
+				'role' => 'content'
+			),
+			'library' => array(
+				'type' => 'string',
+				'role' => 'content'
+			),
+			'size' => array(
+				'type' => 'string',
+				'default' => '1rem'
+			),
+			'iconPosition' => array(
+				'type' => 'string',
+				'enum' => array(
+					'start',
+					'end'
+				),
+				'default' => 'start'
+			),
+			'linkId' => array(
+				'type' => 'number'
+			),
+			'linkKind' => array(
+				'type' => 'string'
+			),
+			'linkType' => array(
+				'type' => 'string'
+			),
+			'linkHref' => array(
+				'type' => 'string'
+			),
+			'linkTarget' => array(
+				'type' => 'string',
+				'enum' => array(
+					'_self',
+					'_blank'
+				),
+				'default' => '_self'
+			),
+			'linkText' => array(
+				'type' => 'string'
+			)
+		),
+		'providesContext' => array(
+			
+		),
+		'usesContext' => array(
+			
+		),
+		'example' => array(
+			'attributes' => array(
+				'library' => 'launchpad-blocks',
+				'iconName' => 'button-with-icon',
+				'size' => '1rem',
+				'iconPosition' => 'start',
+				'linkText' => 'button'
+			)
+		),
+		'supports' => array(
+			
+		)
+	),
 	'blocks/carousel' => array(
 		'apiVersion' => 3,
 		'name' => 'launchpad-blocks/carousel',
@@ -226,7 +318,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.cbfac1df47a3dc04ba7e.js'
+			'file:./index.80b42aad51f00aff1dc9.js'
 		),
 		'viewScript' => array(
 			'file:./view.fdb379d21610131f1233.js'
@@ -293,7 +385,7 @@
 			'launchpad-blocks/carousel-content-slides'
 		),
 		'editorScript' => array(
-			'file:./index.f739189609e4c6b3bbdf.js'
+			'file:./index.f454450a693357567043.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -358,7 +450,7 @@
 			'launchpad-blocks/carousel-content-slide'
 		),
 		'editorScript' => array(
-			'file:./index.3d4b32a30718d3b36c1a.js'
+			'file:./index.47312e34d2f29728396b.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -412,7 +504,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.a44815886dbd5e3f5c67.js'
+			'file:./index.1a08c4890817de1a402c.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -509,7 +601,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.4b279368e77632e8bf6c.js'
+			'file:./index.52e7fe9791057b9599d5.js'
 		),
 		'viewScript' => array(
 			'file:./view.f79fd4dc8af3b2dbc895.js'
@@ -558,7 +650,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.3b2e440beae16eae242c.js'
+			'file:./index.cef839f0b8f104c55d30.js'
 		),
 		'viewScript' => array(
 			'file:./view.57e326316144c457f1cd.js'
@@ -660,7 +752,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.63b4bdb03baedd0d40f1.js'
+			'file:./index.12f54bcf1eb00bee13b4.js'
 		),
 		'viewScript' => array(
 			'file:./view.ed89522ff0b434518027.js'
@@ -728,7 +820,7 @@
 			'core/image'
 		),
 		'editorScript' => array(
-			'file:./index.8d3ac9b9fb237d169206.js'
+			'file:./index.23e99867ab64a7cd4d1f.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -792,7 +884,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.928d1318a8613e4096e7.js'
+			'file:./index.5766fc35b9d26d50e4db.js'
 		),
 		'viewScript' => array(
 			'file:./view.80f828b99f83ea1fb1ff.js'
@@ -855,7 +947,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.c899fef4271649e3de82.js'
+			'file:./index.3c3f7a5f148444a0499f.js'
 		),
 		'viewScript' => array(
 			'file:./view.139c705a34fbf4502c08.js'
@@ -946,7 +1038,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.8de4b49354149d1d9a22.js'
+			'file:./index.cf0ea403d770d920182d.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -1057,7 +1149,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.3a965bbe82472a429dd0.js'
+			'file:./index.85a17a09f837b55f115a.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -1106,7 +1198,7 @@
 			'lightbox'
 		),
 		'editorScript' => array(
-			'file:./index.24136b2beb2ce028c9bc.js'
+			'file:./index.d2264a47f5f2c2477d97.js'
 		),
 		'viewScript' => array(
 			'file:./view.94544363002f7c909ba5.js'
@@ -1293,7 +1385,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.70e603371d8158a5d35a.js'
+			'file:./index.aa150e8e2199ee177519.js'
 		),
 		'viewScript' => array(
 			'file:./view.53eb97090dda2c394aa4.js'
@@ -1331,7 +1423,7 @@
 		'category' => 'theme',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.d51f73570eb044c0f489.js'
+			'file:./index.b51889dcbf344b1ea4a8.js'
 		),
 		'viewScript' => array(
 			'file:./view.d8b08951ee51c7294e8d.js'
@@ -1390,7 +1482,7 @@
 		'description' => 'An output block for the selected global banners.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.7b5657fc189a34963f7d.js'
+			'file:./index.044fa446bb4d75f73cc5.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.c5d19c91d23f7911fa45.css'
@@ -1406,6 +1498,92 @@
 			
 		)
 	),
+	'blocks/heading-with-icon' => array(
+		'apiVersion' => 3,
+		'name' => 'launchpad-blocks/heading-with-icon',
+		'title' => 'Heading with icon',
+		'category' => 'theme',
+		'description' => 'Select an icon to display inline with a heading',
+		'textdomain' => 'launchpad-blocks',
+		'keywords' => array(
+			
+		),
+		'editorScript' => array(
+			'file:./index.edab9b9a71afa68b885a.js'
+		),
+		'viewScript' => array(
+			'file:./view.535e66f2928c2639ca1b.js'
+		),
+		'style' => array(
+			'file:./style.26404f07182a01b75ed7.css'
+		),
+		'editorStyle' => array(
+			'file:./editor-style.31d6cfe0d16ae931b73c.css'
+		),
+		'render' => 'file:./render.php',
+		'attributes' => array(
+			'iconName' => array(
+				'type' => 'string',
+				'role' => 'content'
+			),
+			'library' => array(
+				'type' => 'string',
+				'role' => 'content'
+			),
+			'size' => array(
+				'type' => 'string',
+				'default' => '2rem'
+			),
+			'headerElement' => array(
+				'type' => 'string',
+				'enum' => array(
+					'h2',
+					'h3',
+					'h4',
+					'h5',
+					'h6',
+					'p'
+				),
+				'default' => 'h2'
+			),
+			'headerContent' => array(
+				'type' => 'string'
+			),
+			'headerStyle' => array(
+				'type' => 'string',
+				'enum' => array(
+					'',
+					't-1',
+					't-2',
+					't-3',
+					't-4',
+					't-5',
+					't-6'
+				),
+				'default' => ''
+			)
+		),
+		'providesContext' => array(
+			
+		),
+		'usesContext' => array(
+			
+		),
+		'example' => array(
+			'viewportWidth' => 280,
+			'attributes' => array(
+				'library' => 'launchpad-blocks',
+				'iconName' => 'heading-with-icon',
+				'size' => '2rem',
+				'headerContent' => 'Heading',
+				'headerElement' => 'h2',
+				'headerStyle' => ''
+			)
+		),
+		'supports' => array(
+			
+		)
+	),
 	'blocks/icon' => array(
 		'apiVersion' => 3,
 		'name' => 'launchpad-blocks/icon',
@@ -1417,7 +1595,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.eadc2e4dc764428326d2.js'
+			'file:./index.4ed5fb37ffbb71862204.js'
 		),
 		'style' => array(
 			'file:./style.882d6e08e1cd7fcaee37.css'
@@ -1463,7 +1641,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.eb02d1ddd3836238daf1.js'
+			'file:./index.b051206c6b72d5e0962a.js'
 		),
 		'viewScript' => array(
 			'file:./view.9dcacc883e6416067d79.js'
@@ -1499,7 +1677,10 @@
 			
 		),
 		'supports' => array(
-			
+			'align' => array(
+				'wide',
+				'full'
+			)
 		)
 	),
 	'blocks/manual-post-select' => array(
@@ -1513,7 +1694,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.e2f3cd01a51ac0f3c4e9.js'
+			'file:./index.0e905d5bb6bfa587fc42.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.7366b8d6169ef631eab0.css'
@@ -1680,7 +1861,7 @@
 			'breakout'
 		),
 		'editorScript' => array(
-			'file:./index.5ce27d209520787d3fb4.js'
+			'file:./index.deef496ab61f03cc9150.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -1775,13 +1956,13 @@
 		),
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.326beab873e3f9f8c757.js'
+			'file:./index.0a612f9125ca320d06d5.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
 		),
 		'style' => array(
-			'file:./style.6f73f24ea4c6d727a1af.css'
+			'file:./style.694c8b8912aa4f397e59.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.31d6cfe0d16ae931b73c.css'
@@ -1806,6 +1987,26 @@
 			),
 			'headerContent' => array(
 				'type' => 'string'
+			),
+			'linkId' => array(
+				'type' => 'number'
+			),
+			'linkKind' => array(
+				'type' => 'string'
+			),
+			'linkType' => array(
+				'type' => 'string'
+			),
+			'linkHref' => array(
+				'type' => 'string'
+			),
+			'linkTarget' => array(
+				'type' => 'string',
+				'enum' => array(
+					'_self',
+					'_blank'
+				),
+				'default' => '_self'
 			)
 		),
 		'providesContext' => array(
@@ -1827,14 +2028,10 @@
 		'title' => 'Nav list',
 		'category' => 'theme',
 		'description' => 'The collection of the actual menu items for your navigation.',
-		'parent' => array(
-			'launchpad-blocks/navigation',
-			'launchpad-blocks/nav-submenu',
-			'launchpad-blocks/nav-links-group'
-		),
 		'allowedBlocks' => array(
 			'launchpad-blocks/nav-submenu',
-			'launchpad-blocks/nav-menu-item'
+			'launchpad-blocks/nav-menu-item',
+			'launchpad-blocks/nav-links-group'
 		),
 		'textdomain' => 'launchpad-blocks',
 		'keywords' => array(
@@ -1842,13 +2039,13 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.ad2cc6bfefb0de51faea.js'
+			'file:./index.3ac98402e3f918fe5f3d.js'
 		),
 		'style' => array(
-			'file:./style.ef4b9ec04f73d9153777.css'
+			'file:./style.b1634d87d5a403979357.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-style.ed718c9f2894b14eaeeb.css'
+			'file:./editor-style.83862dc77f89be8749a2.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -1929,6 +2126,12 @@
 					)
 				)
 			)
+		),
+		'providesContext' => array(
+			
+		),
+		'usesContext' => array(
+			'launchpad-blocks/isInSubMenu'
 		)
 	),
 	'blocks/nav-menu-item' => array(
@@ -1947,7 +2150,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.de94a0e47b029dc472aa.js'
+			'file:./index.7097abb519504dbbcfa0.js'
 		),
 		'style' => array(
 			'file:./style.72a02fd4e3d760daa3d1.css'
@@ -1999,7 +2202,8 @@
 		'category' => 'theme',
 		'description' => 'A sub menu dropdown for the navigation block.',
 		'allowedBlocks' => array(
-			'launchpad-blocks/nav-list'
+			'launchpad-blocks/nav-list',
+			'core/group'
 		),
 		'parent' => array(
 			'launchpad-blocks/nav-list'
@@ -2014,13 +2218,13 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.a53af7685f92ca51accc.js'
+			'file:./index.24d1727cf843328a3119.js'
 		),
 		'style' => array(
-			'file:./style.d4309dcb7824134e2a85.css'
+			'file:./style.56104d9460ccbad83033.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-style.2340631c1d8da27b6d7f.css'
+			'file:./editor-style.c49b31f7b8f66b8052b4.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2030,6 +2234,38 @@
 			'subMenuId' => array(
 				'type' => 'string',
 				'default' => ''
+			),
+			'columnCount' => array(
+				'type' => 'number',
+				'default' => 1
+			),
+			'columnWidth' => array(
+				'type' => 'number',
+				'default' => 14
+			),
+			'isInSubMenu' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'isDropdownShown' => array(
+				'type' => 'boolean',
+				'default' => false,
+				'role' => 'local'
+			),
+			'icon' => array(
+				'type' => 'object',
+				'default' => array(
+					'iconName' => 'chevron-down',
+					'library' => 'launchpad-blocks'
+				)
+			),
+			'iconLocation' => array(
+				'type' => 'string',
+				'default' => 'end',
+				'enum' => array(
+					'start',
+					'end'
+				)
 			)
 		),
 		'supports' => array(
@@ -2052,6 +2288,12 @@
 					)
 				)
 			)
+		),
+		'providesContext' => array(
+			'launchpad-blocks/isInSubMenu' => 'isInSubMenu'
+		),
+		'usesContext' => array(
+			
 		)
 	),
 	'blocks/navigation' => array(
@@ -2074,16 +2316,16 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.95b8a72007d45721afac.js'
+			'file:./index.cacc4a8d3aac2abab00a.js'
 		),
 		'viewScript' => array(
-			'file:./view.1df041bf06c9d691f75b.js'
+			'file:./view.2026731eff22be10e33e.js'
 		),
 		'style' => array(
 			'file:./style.1fd6a1e5f4af08d89964.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-style.31d6cfe0d16ae931b73c.css'
+			'file:./editor-style.5a6b155834ec580c5eed.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2167,6 +2409,12 @@
 					)
 				)
 			)
+		),
+		'providesContext' => array(
+			
+		),
+		'usesContext' => array(
+			
 		)
 	),
 	'blocks/numbered-columns' => array(
@@ -2180,7 +2428,7 @@
 			'list'
 		),
 		'editorScript' => array(
-			'file:./index.4d82e0eedb7d2464f5fc.js'
+			'file:./index.f632ffb1c1a49a0c02c7.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2259,7 +2507,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.8c14c091b0d9e9baad6f.js'
+			'file:./index.2fa73dace0fded4c79fd.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2303,7 +2551,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.dfd43b9d31b45b801657.js'
+			'file:./index.3abd90c6b8e571f104a4.js'
 		),
 		'style' => array(
 			'file:./style.a7d60064631b1da5e27a.css'
@@ -2408,7 +2656,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.9ef2626a3c81075c3b52.js'
+			'file:./index.321cfd07525eec590532.js'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2450,7 +2698,7 @@
 		'description' => 'The panel of content associated with a tab in a Tabs block.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.92c88b42a60b3be74cc4.js'
+			'file:./index.01e4faab7cf88685e669.js'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2501,7 +2749,7 @@
 		'description' => 'A container block for individual tab panels.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.9906a80e679445b17eeb.js'
+			'file:./index.204c72798d134876d4bc.js'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2525,7 +2773,7 @@
 		'description' => 'Multiple sections of content collated together where only one is shown at a time.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.3b23d57e63d68ed9ae20.js'
+			'file:./index.12542c87e63fc5c7bc34.js'
 		),
 		'viewScript' => array(
 			'file:./view.cbc752db1dfed12b9a5b.js'

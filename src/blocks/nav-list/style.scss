@@ -11,18 +11,18 @@ nav.wp-block-launchpad-blocks-nav-list {
 
 .navigation-nav-list {
 	padding: 0;
-	display: flex;
 	list-style: none;
 	margin: 0;
 	gap: var(--wp--style--block-gap);
 }
 
+.is-horizontal > .navigation-nav-list {
+	display: flex;
+	align-items: center;
+}
+
 .wp-block-launchpad-blocks-navigation[data-is-menu-collapsed="collapsed"]
 	nav.wp-block-launchpad-blocks-nav-list
-	> .navigation-nav-list,
-.menu-group-list-item-submenu
-	> .wp-block-launchpad-blocks-nav-list
-	> .navigation-nav-list,
-.wp-block-launchpad-blocks-nav-list.is-vertical > .navigation-nav-list {
-	flex-direction: column;
+	> .navigation-nav-list {
+	display: block;
 }

@@ -24,6 +24,10 @@ $content = $content;
  */
 $block = $block;
 
+if ( ! \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_shown( $attributes ) ) {
+	return;
+}
+
 $is_active = \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_active( $attributes );
 
 ?>

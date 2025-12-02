@@ -4,14 +4,10 @@
   "title": "Nav list",
   "category": "theme",
   "description": "The collection of the actual menu items for your navigation.",
-  "parent": [
-    "launchpad-blocks/navigation",
-    "launchpad-blocks/nav-submenu",
-    "launchpad-blocks/nav-links-group"
-  ],
   "allowedBlocks": [
     "launchpad-blocks/nav-submenu",
-    "launchpad-blocks/nav-menu-item"
+    "launchpad-blocks/nav-menu-item",
+    "launchpad-blocks/nav-links-group"
   ],
   "textdomain": "launchpad-blocks",
   "keywords": [
@@ -19,13 +15,13 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.ad2cc6bfefb0de51faea.js"
+    "file:./index.3ac98402e3f918fe5f3d.js"
   ],
   "style": [
-    "file:./style.ef4b9ec04f73d9153777.css"
+    "file:./style.b1634d87d5a403979357.css"
   ],
   "editorStyle": [
-    "file:./editor-style.ed718c9f2894b14eaeeb.css"
+    "file:./editor-style.83862dc77f89be8749a2.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -100,5 +96,9 @@
         }
       }
     ]
-  }
+  },
+  "providesContext": {},
+  "usesContext": [
+    "launchpad-blocks/isInSubMenu"
+  ]
 }

@@ -13,6 +13,23 @@ export const attributes = {
 	headerContent: {
 		type: "string",
 	},
+	linkId: {
+		type: "number",
+	},
+	linkKind: {
+		type: "string",
+	},
+	linkType: {
+		type: "string",
+	},
+	linkHref: {
+		type: "string",
+	},
+	linkTarget: {
+		type: "string",
+		enum: ["_self", "_blank"],
+		default: "_self",
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;
