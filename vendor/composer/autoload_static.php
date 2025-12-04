@@ -7,22 +7,22 @@ namespace Composer\Autoload;
 class ComposerStaticInit8d3ae8f963baeed41377fd945abdef0a
 {
     public static $prefixLengthsPsr4 = array (
-        'L' => 
+        'L' =>
         array (
             'LaunchpadBlocks\\' => 16,
         ),
-        'A' => 
+        'A' =>
         array (
             'AtomicSmash\\CompilerHelpers\\' => 28,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'LaunchpadBlocks\\' => 
+        'LaunchpadBlocks\\' =>
         array (
             0 => __DIR__ . '/../..' . '/classes',
         ),
-        'AtomicSmash\\CompilerHelpers\\' => 
+        'AtomicSmash\\CompilerHelpers\\' =>
         array (
             0 => __DIR__ . '/..' . '/atomicsmash/compiler-helpers/classes',
         ),
