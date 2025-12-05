@@ -10,6 +10,7 @@ import {
 	size,
 	arrow,
 } from "@floating-ui/dom";
+import { applyFilters } from "@wordpress/hooks";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
 import {
@@ -249,6 +250,7 @@ class Navigation {
 	}
 }
 
+const SHIFT_PADDING_DEFAULT = 0;
 class NavigationSubMenu {
 	private parentNavigation: Navigation;
 	private subMenu: HTMLLIElement;
@@ -260,6 +262,14 @@ class NavigationSubMenu {
 	private closeTimeout: NodeJS.Timeout | null = null;
 	private cleanup: (() => void) | null = null;
 	public parentSubMenuHeight = 0;
+	private shiftPadding:
+		| number
+		| Partial<{
+				top: number;
+				right: number;
+				bottom: number;
+				left: number;
+		  }> = SHIFT_PADDING_DEFAULT;
 
 	constructor(subMenu: HTMLLIElement, parentNavigation: Navigation) {
 		this.subMenu = subMenu;
@@ -290,6 +300,14 @@ class NavigationSubMenu {
 			throw new Error("Unable to determine the sub menu's arrow.");
 		}
 		this.subMenuArrow = subMenuArrow;
+
+		const shiftPaddingFilteredValue = applyFilters(
+			"launchpadBlocks.Navigation.SubmenuShiftPadding",
+			SHIFT_PADDING_DEFAULT,
+		);
+		if (isValidShiftPaddingValue(shiftPaddingFilteredValue)) {
+			this.shiftPadding = shiftPaddingFilteredValue;
+		}
 
 		this.maybeAddBackButton();
 
@@ -450,11 +468,13 @@ class NavigationSubMenu {
 		// Get half the arrow box's hypotenuse length
 		const floatingOffset =
 			Math.sqrt(2 * this.subMenuArrow.offsetWidth ** 2) / 2;
+
 		computePosition(this.trigger, this.subMenuContent, {
 			placement: "bottom-start",
 			middleware: [
 				offset(floatingOffset),
 				shift({
+					padding: this.shiftPadding,
 					limiter: limitShift(),
 				}),
 				size({
@@ -500,6 +520,64 @@ class NavigationSubMenu {
 			})
 			.catch(() => this.closeSubMenu());
 	}
+}
+
+function isValidShiftPaddingValue(value: unknown): value is
+	| number
+	| Partial<{
+			top: number;
+			right: number;
+			bottom: number;
+			left: number;
+	  }> {
+	if (typeof value === "number") {
+		return true;
+	}
+	if (typeof value === "object" && value !== null) {
+		const { top, bottom, right, left, ...rest } = {
+			top: undefined,
+			bottom: undefined,
+			right: undefined,
+			left: undefined,
+			...value,
+		};
+		if (Object.keys(rest).length > 0) {
+			console.error(
+				`The shift padding object must only contain top, bottom, left and right keys. Found: ${Object.keys(rest).join(",")}`,
+			);
+			return false;
+		}
+		if (
+			top === undefined &&
+			bottom === undefined &&
+			right === undefined &&
+			left === undefined
+		) {
+			console.error(
+				"Shift padding object must have at least one top, bottom, left or right key with a number. Found none.",
+			);
+			return false;
+		}
+		if (top !== undefined && typeof top !== "number") {
+			console.error("Shift padding's top key must be a number.");
+			return false;
+		}
+		if (bottom !== undefined && typeof bottom !== "number") {
+			console.error("Shift padding's bottom key must be a number.");
+			return false;
+		}
+		if (right !== undefined && typeof right !== "number") {
+			console.error("Shift padding's right key must be a number.");
+			return false;
+		}
+		if (left !== undefined && typeof left !== "number") {
+			console.error("Shift padding's left key must be a number.");
+			return false;
+		}
+		return true;
+	}
+	console.error("Shift padding value must be a number or an object.");
+	return false;
 }
 
 /**

@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 3.1.0
+
+### Minor Changes
+
+- c8dc029: Add filter for defining a shift padding for sub menus floating dropdowns
+
 ## 3.0.3
 
 ### Patch Changes

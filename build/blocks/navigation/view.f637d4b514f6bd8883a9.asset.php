@@ -2,7 +2,8 @@
 	'dependencies' => array(
 		'react',
 		'react-dom',
-		'react-jsx-runtime'
+		'react-jsx-runtime',
+		'wp-hooks'
 	),
-	'version' => 'df9249ae3b120e3ca83f'
+	'version' => 'f637d4b514f6bd8883a9'
 );

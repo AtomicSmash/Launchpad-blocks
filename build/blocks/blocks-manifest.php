@@ -2319,7 +2319,7 @@
 			'file:./index.677c852290f0ad2e2068.js'
 		),
 		'viewScript' => array(
-			'file:./view.df9249ae3b120e3ca83f.js'
+			'file:./view.f637d4b514f6bd8883a9.js'
 		),
 		'style' => array(
 			'file:./style.1fd6a1e5f4af08d89964.css'
