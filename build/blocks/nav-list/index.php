@@ -37,7 +37,7 @@ function is_shown( \WP_Block $block ): bool {
 				}
 				break;
 			case 'launchpad-blocks/nav-links-group':
-				if ( ! \LaunchpadBlocks\Blocks\Custom\NavLinksGroup\is_shown( $inner_block ) ) {
+				if ( \LaunchpadBlocks\Blocks\Custom\NavLinksGroup\is_shown( $inner_block ) ) {
 					return true;
 				}
 				break;

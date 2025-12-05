@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 3.0.3
+
+### Patch Changes
+
+- ba6d18e: Fix nav lists with only nav links groups in it so they show
+
 ## 3.0.2
 
 ### Patch Changes
