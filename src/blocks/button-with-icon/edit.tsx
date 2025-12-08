@@ -136,7 +136,6 @@ export function Edit({
 				)}
 				<RichText
 					tagName="span"
-					className="menu-group-list-item-link"
 					onChange={(newLinkText) => {
 						setAttributes({ linkText: newLinkText });
 					}}

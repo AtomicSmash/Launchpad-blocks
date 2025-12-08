@@ -223,7 +223,7 @@
 			'icon'
 		),
 		'editorScript' => array(
-			'file:./index.5a665ca15ea5249c31c4.js'
+			'file:./index.50f85c3184a71972a3b8.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2150,7 +2150,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.969d226b4c92b46d36f4.js'
+			'file:./index.ac3d223d80b26c7e90ab.js'
 		),
 		'style' => array(
 			'file:./style.72a02fd4e3d760daa3d1.css'

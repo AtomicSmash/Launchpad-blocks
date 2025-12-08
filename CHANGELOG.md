@@ -1,5 +1,12 @@
 # @atomicsmash/launchpad-blocks
 
+## 3.1.1
+
+### Patch Changes
+
+- dd1cb24: Remove editor class from button with icon text
+- a44d66b: Fix editor class for navigation menu items
+
 ## 3.1.0
 
 ### Minor Changes
