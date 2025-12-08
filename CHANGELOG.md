@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 3.1.2
+
+### Patch Changes
+
+- dcda9b9: Prevent icon size from changing if text is long and crushes it
+
 ## 3.1.1
 
 ### Patch Changes
