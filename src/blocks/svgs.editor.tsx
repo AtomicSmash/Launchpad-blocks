@@ -10,8 +10,8 @@ import { applyFilters } from "@wordpress/hooks";
 import { __ } from "@wordpress/i18n";
 import {
 	Icon as WordPressIcon,
-	chevronDown,
 	chevronUp,
+	chevronDown,
 } from "@wordpress/icons";
 import { useEffect, useState } from "react";
 import { Icon } from "./svgs";

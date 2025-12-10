@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 4.0.0
+
+### Major Changes
+
+- 6c6c1a7: Add support for WP 6.9
+
 ## 3.1.2
 
 ### Patch Changes

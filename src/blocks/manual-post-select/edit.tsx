@@ -4,7 +4,10 @@ import type {
 	CreateBlockEditProps,
 	BlockInstanceAsObject,
 } from "@atomicsmash/blocks-helpers";
-import type { TaxonomyTerm } from "@launchpadBlocks/helpers.editor";
+import type {
+	TaxonomyTerm,
+	CoreStoreType,
+} from "@launchpadBlocks/helpers.editor";
 import type { Post, Page, User, Taxonomy } from "@wordpress/core-data";
 import type { ComponentPropsWithoutRef, Reducer } from "react";
 import { DatePHP } from "@atomicsmash/date-php";
@@ -322,7 +325,7 @@ function SelectedPostsList({
 		(select) => {
 			const selectedPostsObjects: (Page<"view"> | Post<"view">)[] = [];
 			for (const selectedPost of selectedPosts) {
-				const postData = select(coreStore).getEntityRecord<
+				const postData = (select(coreStore) as CoreStoreType).getEntityRecord<
 					Page<"view"> | Post<"view">
 				>("postType", selectedPost.postType, selectedPost.id);
 				if (postData !== undefined) {
@@ -433,7 +436,7 @@ function useInefficientlyGetPostsByQuery({
 			});
 
 			for (const postType of postTypes) {
-				const postData = select(coreStore)
+				const postData = (select(coreStore) as CoreStoreType)
 					.getEntityRecords<Page<"view"> | Post<"view">>("postType", postType, {
 						context: "view",
 						status,
@@ -1128,7 +1131,7 @@ function PostsInnerBlocks({
 		(select) => {
 			const selectedPostsObjects: (Page<"view"> | Post<"view">)[] = [];
 			for (const selectedPost of selectedPosts) {
-				const postData = select(coreStore).getEntityRecord<
+				const postData = (select(coreStore) as CoreStoreType).getEntityRecord<
 					Page<"view"> | Post<"view">
 				>("postType", selectedPost.postType, selectedPost.id);
 				if (postData !== undefined) {

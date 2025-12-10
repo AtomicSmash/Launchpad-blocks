@@ -32,6 +32,7 @@ import {
 	AspectRatioSelector,
 	convertBlockObjectToArray,
 	VariationSelect,
+	type NoticesStoreType,
 } from "@launchpadBlocks/helpers.editor";
 import { Icon } from "@launchpadBlocks/svgs";
 import blockJson from "./block.json";
@@ -64,7 +65,9 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 		unlockPostSaving: (lockName: string) => void;
 		unlockPostAutosaving: (lockName: string) => void;
 	};
-	const { createNotice, removeNotice } = useDispatch(noticesStore);
+	const { createNotice, removeNotice } = useDispatch(
+		noticesStore,
+	) as NoticesStoreType;
 	const { replaceInnerBlocks, updateBlockAttributes } = useDispatch(
 		blockEditorStore,
 	) as unknown as {

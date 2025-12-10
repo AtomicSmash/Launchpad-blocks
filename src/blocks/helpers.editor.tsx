@@ -53,6 +53,39 @@ import {
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { ASCircleLogo } from "@launchpadBlocks/svgs";
 
+export type CoreStoreType = {
+	getEntityRecord: <EntityRecord>(
+		kind: string,
+		name: string,
+		key?: string | number,
+		query?: Record<string, unknown>,
+	) => EntityRecord | undefined;
+	getEntityRecords: <EntityRecord>(
+		kind: string,
+		name: string,
+		query?: Record<string, unknown>,
+	) => EntityRecord[] | null;
+};
+
+export type NoticesStoreType = {
+	createNotice: (
+		status: string | undefined,
+		content: string,
+		options?: {
+			context?: string;
+			id?: string;
+			isDismissible?: boolean;
+			type?: string;
+			speak?: boolean;
+			actions?: { label: string; url?: string; onClick?: () => void }[];
+			icon?: string;
+			explicitDismiss?: boolean;
+			onDismiss?: () => void;
+		},
+	) => Promise<void>;
+	removeNotice: (id: string, context?: string) => Promise<void>;
+};
+
 export function registerLaunchpadBlocksCollection() {
 	registerBlockCollection("launchpad-blocks", {
 		title: "Launchpad blocks",
@@ -302,7 +335,7 @@ export type TaxonomyTerm = {
  */
 export const usePostTypes = () => {
 	const { postTypes, taxonomies } = useSelect((select) => {
-		const { getEntityRecords } = select(coreStore);
+		const { getEntityRecords } = select(coreStore) as CoreStoreType;
 		const excludedPostTypes = ["attachment"];
 		const filteredPostTypes = getEntityRecords<PostType>("root", "postType", {
 			per_page: -1,
