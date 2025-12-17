@@ -32,4 +32,16 @@
 			height: 100%;
 		}
 	}
+
+	&.is-style-outline {
+		background-color: transparent !important;
+		border-color: var(--wp--preset--color--button);
+		color: var(--wp--preset--color--button);
+
+		&:hover,
+		&:focus-visible {
+			background-color: var(--wp--preset--color--button) !important;
+			color: var(--wp--preset--color--button-text);
+		}
+	}
 }

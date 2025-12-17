@@ -33,7 +33,13 @@ export type BlockEditProps = CreateBlockEditProps<
 export function Edit({
 	clientId,
 	isSelected,
-	attributes: {
+	attributes,
+	setAttributes,
+	mergeBlocks,
+	onReplace,
+	onRemove,
+}: BlockEditProps) {
+	const {
 		linkText,
 		linkHref,
 		linkTarget,
@@ -41,9 +47,7 @@ export function Edit({
 		library,
 		size,
 		iconPosition,
-	},
-	setAttributes,
-}: BlockEditProps) {
+	} = attributes;
 	const [shouldShowLinkPopover, setShouldShowLinkPopover] = useState(false);
 
 	useEffect(() => {
@@ -135,6 +139,7 @@ export function Edit({
 					</div>
 				)}
 				<RichText
+					identifier="linkText"
 					tagName="span"
 					onChange={(newLinkText) => {
 						setAttributes({ linkText: newLinkText });
@@ -142,6 +147,9 @@ export function Edit({
 					allowedFormats={["core/bold", "core/italic"]}
 					value={linkText}
 					placeholder={"Add text..."}
+					onMerge={mergeBlocks}
+					onReplace={onReplace}
+					onRemove={onRemove}
 				/>
 				{iconPosition === "end" && (
 					<div className="icon">

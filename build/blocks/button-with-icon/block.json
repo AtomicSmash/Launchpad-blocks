@@ -14,18 +14,29 @@
     "icon"
   ],
   "editorScript": [
-    "file:./index.50f85c3184a71972a3b8.js"
+    "file:./index.e13e879d075c96c0da8b.js"
   ],
   "viewScript": [
     "file:./view.535e66f2928c2639ca1b.js"
   ],
   "style": [
-    "file:./style.b4d93b7c2da4ae0021ce.css"
+    "file:./style.695a3d5c2968a7b0959a.css"
   ],
   "editorStyle": [
     "file:./editor-style.58c0cc8e13cc7e34acc2.css"
   ],
   "render": "file:./render.php",
+  "styles": [
+    {
+      "name": "fill",
+      "label": "Fill",
+      "isDefault": true
+    },
+    {
+      "name": "outline",
+      "label": "Outline"
+    }
+  ],
   "attributes": {
     "iconName": {
       "type": "string",
@@ -82,5 +93,7 @@
       "linkText": "button"
     }
   },
-  "supports": {}
+  "supports": {
+    "splitting": true
+  }
 }

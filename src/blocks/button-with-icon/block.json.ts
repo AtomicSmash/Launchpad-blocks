@@ -20,6 +20,17 @@ export const blockJson = {
 	style: "file:./style.scss",
 	editorStyle: "file:./editor-style.scss",
 	render: "file:./render.php",
+	styles: [
+		{
+			name: "fill",
+			label: "Fill",
+			isDefault: true,
+		},
+		{
+			name: "outline",
+			label: "Outline",
+		},
+	],
 	attributes,
 	providesContext,
 	usesContext,

@@ -1,5 +1,16 @@
 # @atomicsmash/launchpad-blocks
 
+## 4.1.0
+
+### Minor Changes
+
+- a34e8bf: Add support for splitting to buttons with icon
+- 1fda403: Add outline style support for buttons with icons
+
+### Patch Changes
+
+- d34d015: Adjust full menu width after all styles are loaded in Navigation block js
+
 ## 4.0.0
 
 ### Major Changes

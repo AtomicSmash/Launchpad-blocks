@@ -223,18 +223,29 @@
 			'icon'
 		),
 		'editorScript' => array(
-			'file:./index.50f85c3184a71972a3b8.js'
+			'file:./index.e13e879d075c96c0da8b.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
 		),
 		'style' => array(
-			'file:./style.b4d93b7c2da4ae0021ce.css'
+			'file:./style.695a3d5c2968a7b0959a.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.58c0cc8e13cc7e34acc2.css'
 		),
 		'render' => 'file:./render.php',
+		'styles' => array(
+			array(
+				'name' => 'fill',
+				'label' => 'Fill',
+				'isDefault' => true
+			),
+			array(
+				'name' => 'outline',
+				'label' => 'Outline'
+			)
+		),
 		'attributes' => array(
 			'iconName' => array(
 				'type' => 'string',
@@ -296,7 +307,7 @@
 			)
 		),
 		'supports' => array(
-			
+			'splitting' => true
 		)
 	),
 	'blocks/carousel' => array(
@@ -2319,7 +2330,7 @@
 			'file:./index.677c852290f0ad2e2068.js'
 		),
 		'viewScript' => array(
-			'file:./view.f637d4b514f6bd8883a9.js'
+			'file:./view.1e1e6f3b30bf28b73736.js'
 		),
 		'style' => array(
 			'file:./style.1fd6a1e5f4af08d89964.css'

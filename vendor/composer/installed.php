@@ -3,7 +3,7 @@
         'name' => 'atomicsmash/launchpad-blocks',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0997ecb0553d11d7085027bd40c5f74d51f3f498',
+        'reference' => '4e3eabfb971236c5a832d72d0ca50439c01230f8',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'atomicsmash/launchpad-blocks' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0997ecb0553d11d7085027bd40c5f74d51f3f498',
+            'reference' => '4e3eabfb971236c5a832d72d0ca50439c01230f8',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -88,6 +88,15 @@ class Navigation {
 				}
 			});
 		}
+		window.addEventListener("load", () => {
+			const initialFullMenuWidth = this.fullMenuWidth;
+			this.fullMenuWidth = this.navigationContent.scrollWidth;
+			console.log({ initialFullMenuWidth, fullMenuWidth: this.fullMenuWidth });
+			if (initialFullMenuWidth !== this.fullMenuWidth) {
+				this.closeAllSubMenus();
+				this.recalculateIfContentIsCollapsed();
+			}
+		});
 		window.addEventListener("resize", () => {
 			clearTimeout(this.debounceResizeTimeout);
 			this.debounceResizeTimeout = setTimeout(() => {
