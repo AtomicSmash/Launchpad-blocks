@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 4.1.1
+
+### Patch Changes
+
+- c4e56ac: Set template lock on the fancy list to false to make it easier to use the list as a locked innerblocks template
+
 ## 4.1.0
 
 ### Minor Changes

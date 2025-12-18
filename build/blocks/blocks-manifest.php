@@ -1049,7 +1049,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.82ceaff67859c466cf8b.js'
+			'file:./index.0424962b722ff6cbadf8.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
