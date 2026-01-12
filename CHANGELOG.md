@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 4.2.0
+
+### Minor Changes
+
+- c639f25: Add basic support for php template part args
+
 ## 4.1.1
 
 ### Patch Changes

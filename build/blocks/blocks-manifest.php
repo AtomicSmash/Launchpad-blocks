@@ -2518,7 +2518,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.9d4fd7ddfc895f2d3efb.js'
+			'file:./index.cf9e9b593874e2ac9b60.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2527,7 +2527,7 @@
 			'file:./style.31d6cfe0d16ae931b73c.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-styles.31d6cfe0d16ae931b73c.css'
+			'file:./editor-styles.dd0702b8761f67b40713.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2536,6 +2536,12 @@
 			),
 			'templatePartName' => array(
 				'type' => 'string'
+			),
+			'args' => array(
+				'type' => 'object',
+				'default' => array(
+					
+				)
 			)
 		),
 		'providesContext' => array(

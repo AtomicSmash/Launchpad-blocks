@@ -11,6 +11,16 @@ export const attributes = {
 	templatePartName: {
 		type: "string",
 	},
+	args: {
+		type: "object",
+		default: {} as Record<string, AllValuesWithTypes>,
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;
+export type AllValuesWithTypes =
+	| { type: "string"; value: string }
+	| { type: "boolean"; value: string }
+	| { type: "number"; value: string }
+	| { type: "array"; value: AllValuesWithTypes[] }
+	| { type: "object"; value: Record<string, AllValuesWithTypes> };

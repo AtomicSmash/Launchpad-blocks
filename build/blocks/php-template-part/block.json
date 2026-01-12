@@ -7,7 +7,7 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.9d4fd7ddfc895f2d3efb.js"
+    "file:./index.cf9e9b593874e2ac9b60.js"
   ],
   "viewScript": [
     "file:./view.535e66f2928c2639ca1b.js"
@@ -16,7 +16,7 @@
     "file:./style.31d6cfe0d16ae931b73c.css"
   ],
   "editorStyle": [
-    "file:./editor-styles.31d6cfe0d16ae931b73c.css"
+    "file:./editor-styles.dd0702b8761f67b40713.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -25,6 +25,10 @@
     },
     "templatePartName": {
       "type": "string"
+    },
+    "args": {
+      "type": "object",
+      "default": {}
     }
   },
   "providesContext": {},

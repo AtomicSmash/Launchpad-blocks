@@ -1,3 +1,12 @@
 /**
  * The following styles get applied inside the editor only.
  */
+.object-values,
+.array-values {
+	.object-values,
+	.array-values {
+		border-inline-start: 2px solid;
+		padding-inline-start: 4px;
+		margin-inline-start: 2px;
+	}
+}

@@ -24,8 +24,10 @@ $content = $content;
  */
 $block = $block;
 
+$args = \LaunchpadBlocks\Blocks\Custom\PHPTemplatePart\translate_object_with_field_types( $attributes['args'] );
+
 if ( isset( $attributes['templatePartSlug'] ) ) {
-	$template_found = get_template_part( $attributes['templatePartSlug'], isset( $attributes['templatePartName'] ) && ! empty( $attributes['templatePartName'] ) ? $attributes['templatePartName'] : null );
+	$template_found = get_template_part( $attributes['templatePartSlug'], isset( $attributes['templatePartName'] ) && ! empty( $attributes['templatePartName'] ) ? $attributes['templatePartName'] : null, $args );
 	if ( false === $template_found ) {
 		echo 'Template not found. Please check the template slug in the sidebar.';
 	}
