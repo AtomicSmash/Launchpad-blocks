@@ -223,7 +223,7 @@
 			'icon'
 		),
 		'editorScript' => array(
-			'file:./index.e13e879d075c96c0da8b.js'
+			'file:./index.07b6c10bbc44ac70275c.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -289,6 +289,9 @@
 			),
 			'linkText' => array(
 				'type' => 'string'
+			),
+			'anchor' => array(
+				'type' => 'string'
 			)
 		),
 		'providesContext' => array(
@@ -307,6 +310,7 @@
 			)
 		),
 		'supports' => array(
+			'anchor' => true,
 			'splitting' => true
 		)
 	),

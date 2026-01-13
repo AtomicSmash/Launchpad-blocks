@@ -42,6 +42,7 @@ export const attributes = {
 	linkText: {
 		type: "string",
 	},
+	anchor: { type: "string" },
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

@@ -42,19 +42,20 @@ if ( isset( $attributes['library'], $attributes['iconName'] ) ) {
 		wp_kses_post( $icon_renderers[ $attributes['library'] ]( $attributes['iconName'] ) ) .
 	'</div>';
 }
-
+$block_wrapper_attributes = get_block_wrapper_attributes(
+	array(
+		...$default_attributes,
+		'class' => ( ! empty( $default_attributes['class'] ) ? $default_attributes['class'] : '' ) . ( $is_active ? ' is-active' : '' ),
+		'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+		'id' => $attributes['anchor'] ?? null,
+	)
+);
 ?>
 <?php if ( $is_link ) : ?>
 <a
 	<?php
 	echo wp_kses_data(
-		get_block_wrapper_attributes(
-			array(
-				...$default_attributes,
-				'class' => $is_active ? ' is-active' : '',
-				'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
-			)
-		)
+		$block_wrapper_attributes
 	);
 	?>
 		href="<?php echo esc_attr( $attributes['linkHref'] ?? '' ); ?>"
@@ -83,12 +84,7 @@ if ( isset( $attributes['library'], $attributes['iconName'] ) ) {
 <button
 	<?php
 	echo wp_kses_data(
-		get_block_wrapper_attributes(
-			array(
-				...$default_attributes,
-				'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
-			)
-		)
+		$block_wrapper_attributes
 	);
 	?>
 			>

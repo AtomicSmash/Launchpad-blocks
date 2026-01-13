@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 4.3.0
+
+### Minor Changes
+
+- 362f1a9: Add anchor support to buttons with icon block
+
 ## 4.2.0
 
 ### Minor Changes

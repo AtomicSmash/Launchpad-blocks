@@ -14,7 +14,7 @@
     "icon"
   ],
   "editorScript": [
-    "file:./index.e13e879d075c96c0da8b.js"
+    "file:./index.07b6c10bbc44ac70275c.js"
   ],
   "viewScript": [
     "file:./view.535e66f2928c2639ca1b.js"
@@ -80,6 +80,9 @@
     },
     "linkText": {
       "type": "string"
+    },
+    "anchor": {
+      "type": "string"
     }
   },
   "providesContext": {},
@@ -94,6 +97,7 @@
     }
   },
   "supports": {
+    "anchor": true,
     "splitting": true
   }
 }
