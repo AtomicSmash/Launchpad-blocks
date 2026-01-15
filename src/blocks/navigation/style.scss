@@ -21,6 +21,10 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--wp--style--block-gap);
+
+		&.checking-menu-width {
+			visibility: hidden;
+		}
 	}
 
 	&[data-is-menu-collapsed="expanded"] .navigation-content-toggle {
@@ -50,7 +54,7 @@
 			opacity: 0;
 		}
 
-		.navigation-content {
+		.navigation-content:not(.checking-menu-width) {
 			position: fixed;
 			top: calc(
 				var(--wp-admin--admin-bar--height, 0px) + var(--header-height, 0px)

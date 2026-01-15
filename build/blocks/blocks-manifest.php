@@ -2334,10 +2334,10 @@
 			'file:./index.677c852290f0ad2e2068.js'
 		),
 		'viewScript' => array(
-			'file:./view.1e1e6f3b30bf28b73736.js'
+			'file:./view.295c1662aaef56d07a2b.js'
 		),
 		'style' => array(
-			'file:./style.1fd6a1e5f4af08d89964.css'
+			'file:./style.9160924f1b7f7deccc8f.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.5a6b155834ec580c5eed.css'

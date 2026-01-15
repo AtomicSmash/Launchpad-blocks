@@ -90,8 +90,13 @@ class Navigation {
 		}
 		window.addEventListener("load", () => {
 			const initialFullMenuWidth = this.fullMenuWidth;
+			const isCurrentlyHidden = this.navigationContent.hidden;
+			this.navigationContent.classList.add("checking-menu-width");
+			this.navigationContent.hidden = false;
 			this.fullMenuWidth = this.navigationContent.scrollWidth;
-			console.log({ initialFullMenuWidth, fullMenuWidth: this.fullMenuWidth });
+			this.navigationContent.hidden = isCurrentlyHidden;
+			this.navigationContent.classList.remove("checking-menu-width");
+
 			if (initialFullMenuWidth !== this.fullMenuWidth) {
 				this.closeAllSubMenus();
 				this.recalculateIfContentIsCollapsed();

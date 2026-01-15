@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 4.3.1
+
+### Patch Changes
+
+- 23e7be3: Fix mobile menu not collapsing in some cases
+
 ## 4.3.0
 
 ### Minor Changes

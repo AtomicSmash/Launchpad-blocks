@@ -5,5 +5,5 @@
 		'react-jsx-runtime',
 		'wp-hooks'
 	),
-	'version' => '1e1e6f3b30bf28b73736'
+	'version' => '295c1662aaef56d07a2b'
 );
