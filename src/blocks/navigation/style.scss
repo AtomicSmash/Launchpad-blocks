@@ -72,6 +72,8 @@
 			flex-direction: column;
 			padding-inline: var(--wp--style--root--padding-left)
 				var(--wp--style--root--padding-right);
+			overflow-y: auto;
+			padding-block-end: 1rem;
 		}
 	}
 }

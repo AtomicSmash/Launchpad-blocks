@@ -2337,7 +2337,7 @@
 			'file:./view.295c1662aaef56d07a2b.js'
 		),
 		'style' => array(
-			'file:./style.9160924f1b7f7deccc8f.css'
+			'file:./style.9deffd965f24960b83d9.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.5a6b155834ec580c5eed.css'

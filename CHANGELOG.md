@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 4.3.2
+
+### Patch Changes
+
+- 2d33d13: Fix mobile menu scrolling
+
 ## 4.3.1
 
 ### Patch Changes
