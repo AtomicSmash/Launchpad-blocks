@@ -229,7 +229,7 @@
 			'file:./view.535e66f2928c2639ca1b.js'
 		),
 		'style' => array(
-			'file:./style.695a3d5c2968a7b0959a.css'
+			'file:./style.fec5300d5e1484ae140d.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.58c0cc8e13cc7e34acc2.css'

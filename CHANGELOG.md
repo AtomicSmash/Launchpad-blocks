@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 5.0.0
+
+### Major Changes
+
+- 3d0e212: Fix outline button default styles
+
 ## 4.3.2
 
 ### Patch Changes
