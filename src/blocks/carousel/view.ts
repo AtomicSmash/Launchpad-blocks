@@ -12,6 +12,7 @@ export class Carousel {
 	public slideWidth: number;
 	public slideGap: number;
 	public slideCount: number;
+	public fullSlidesShownInViewport: number;
 	public currentSlide: number;
 	public loop: boolean;
 	private debounceResizeTimeout: undefined | ReturnType<typeof setTimeout> =
@@ -36,10 +37,12 @@ export class Carousel {
 		}
 		this.carouselSlides = slides;
 		this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
-		const { slideCount, slideWidth, slideGap } = this.getSlideInfo();
+		const { slideCount, slideWidth, slideGap, fullSlidesShownInViewport } =
+			this.getSlideInfo();
 		this.slideCount = slideCount;
 		this.slideGap = slideGap;
 		this.slideWidth = slideWidth;
+		this.fullSlidesShownInViewport = fullSlidesShownInViewport;
 		// Do actions already registered at this point
 		doAction("launchpadBlocks.carousel.registerFunctionality", this);
 		// Do new actions as they get registered
@@ -62,10 +65,12 @@ export class Carousel {
 			this.debounceResizeTimeout = setTimeout(() => {
 				this.carouselSlides.style.width = "";
 				this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
-				const { slideCount, slideWidth, slideGap } = this.getSlideInfo();
+				const { slideCount, slideWidth, slideGap, fullSlidesShownInViewport } =
+					this.getSlideInfo();
 				this.slideCount = slideCount;
 				this.slideGap = slideGap;
 				this.slideWidth = slideWidth;
+				this.fullSlidesShownInViewport = fullSlidesShownInViewport;
 				this.goToSlide(this.currentSlide, true, true);
 			}, 100);
 		});
@@ -85,7 +90,10 @@ export class Carousel {
 		if (!slideWidth) {
 			throw new Error("Unable to get the slide width for the carousel.");
 		}
-		return { slideCount, slideWidth, slideGap };
+		const fullSlidesShownInViewport = Math.floor(
+			this.carouselSlides.clientWidth / slideWidth,
+		);
+		return { slideCount, slideWidth, slideGap, fullSlidesShownInViewport };
 	}
 
 	goToSlide(slideNumber: number, instant = false, force = false) {
@@ -117,14 +125,14 @@ export class Carousel {
 			if (!this.loop) {
 				return;
 			}
-			prevSlide = this.slideCount - 1;
+			prevSlide = this.slideCount - (this.fullSlidesShownInViewport - 1) - 1;
 		}
 		this.goToSlide(prevSlide, instant);
 	}
 
 	goToNextSlide(instant = false) {
 		let nextSlide = this.currentSlide + 1;
-		if (nextSlide >= this.slideCount) {
+		if (nextSlide >= this.slideCount - (this.fullSlidesShownInViewport - 1)) {
 			if (!this.loop) {
 				return;
 			}

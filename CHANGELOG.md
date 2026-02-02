@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 5.0.1
+
+### Patch Changes
+
+- ce228e0: In carousel block, handle next and previous time correctly for carousels with more than one slide shown at once.
+
 ## 5.0.0
 
 ### Major Changes
