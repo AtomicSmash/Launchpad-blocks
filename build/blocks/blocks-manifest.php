@@ -1656,7 +1656,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.61d1c5132791e25cf3d1.js'
+			'file:./index.4f8f844de1b951e7cf51.js'
 		),
 		'viewScript' => array(
 			'file:./view.9dcacc883e6416067d79.js'
@@ -2522,7 +2522,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.cf9e9b593874e2ac9b60.js'
+			'file:./index.de34cb95fdf7d95148a5.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2558,7 +2558,10 @@
 			
 		),
 		'supports' => array(
-			
+			'align' => array(
+				'wide',
+				'full'
+			)
 		)
 	),
 	'blocks/section' => array(

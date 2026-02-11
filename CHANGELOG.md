@@ -1,5 +1,15 @@
 # @atomicsmash/launchpad-blocks
 
+## 5.1.0
+
+### Minor Changes
+
+- 9b614ee: Add align support to PHP template part block
+
+### Patch Changes
+
+- 0dce91e: Fix logo banner media toolbar label
+
 ## 5.0.1
 
 ### Patch Changes

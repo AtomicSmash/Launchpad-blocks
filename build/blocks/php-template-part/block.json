@@ -7,7 +7,7 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.cf9e9b593874e2ac9b60.js"
+    "file:./index.de34cb95fdf7d95148a5.js"
   ],
   "viewScript": [
     "file:./view.535e66f2928c2639ca1b.js"
@@ -36,5 +36,10 @@
     "postId"
   ],
   "example": {},
-  "supports": {}
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ]
+  }
 }
