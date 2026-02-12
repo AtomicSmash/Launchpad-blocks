@@ -10,3 +10,14 @@
 		margin-inline-start: 2px;
 	}
 }
+
+.dynamic-tag {
+	display: inline-block;
+	background: #eee;
+	padding: 0.25rem;
+	margin-inline-end: 0.25rem;
+
+	&:hover {
+		background: #ddd;
+	}
+}

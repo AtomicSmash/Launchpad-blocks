@@ -2522,7 +2522,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.de34cb95fdf7d95148a5.js'
+			'file:./index.ae756b4d411a87d25976.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2531,7 +2531,7 @@
 			'file:./style.31d6cfe0d16ae931b73c.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-styles.dd0702b8761f67b40713.css'
+			'file:./editor-styles.f3af54260428fee338a8.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2545,6 +2545,15 @@
 				'type' => 'object',
 				'default' => array(
 					
+				)
+			),
+			'supportedDynamicTags' => array(
+				'type' => 'array',
+				'default' => array(
+					array(
+						'label' => 'Post type',
+						'tag' => '{{postType}}'
+					)
 				)
 			)
 		),

@@ -26,8 +26,23 @@ $block = $block;
 
 $args = \LaunchpadBlocks\Blocks\Custom\PHPTemplatePart\translate_object_with_field_types( $attributes['args'] );
 
-if ( isset( $attributes['templatePartSlug'] ) ) {
-	$template_found = get_template_part( $attributes['templatePartSlug'], isset( $attributes['templatePartName'] ) && ! empty( $attributes['templatePartName'] ) ? $attributes['templatePartName'] : null, $args );
+$template_part_slug = $attributes['templatePartSlug'];
+$template_part_name = isset( $attributes['templatePartName'] ) && ! empty( $attributes['templatePartName'] ) ? $attributes['templatePartName'] : null;
+
+if ( isset( $attributes['supportedDynamicTags'] ) && count( $attributes['supportedDynamicTags'] ) ) {
+	$supported_dynamic_tags = apply_filters( 'launchpad_blocks_php_template_part_block_supported_dynamic_tags', $attributes['supportedDynamicTags'] );
+	foreach ( $supported_dynamic_tags as $dynamic_tag_info ) {
+		$dynamic_tag = $dynamic_tag_info['tag'];
+		$value = $dynamic_tag_info['value'];
+		$template_part_slug = str_replace( $dynamic_tag, $value, $template_part_slug );
+		if ( $template_part_name ) {
+			$template_part_name = str_replace( $dynamic_tag, $value, $template_part_name );
+		}
+	}
+}
+
+if ( isset( $template_part_slug ) ) {
+	$template_found = get_template_part( $template_part_slug, $template_part_name, $args );
 	if ( false === $template_found ) {
 		echo 'Template not found. Please check the template slug in the sidebar.';
 	}

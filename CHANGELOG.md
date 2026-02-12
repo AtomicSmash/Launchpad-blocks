@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 5.2.0
+
+### Minor Changes
+
+- 9118b84: Add dynamic tags support to php template part block
+
 ## 5.1.0
 
 ### Minor Changes

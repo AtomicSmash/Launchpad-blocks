@@ -7,7 +7,7 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.de34cb95fdf7d95148a5.js"
+    "file:./index.ae756b4d411a87d25976.js"
   ],
   "viewScript": [
     "file:./view.535e66f2928c2639ca1b.js"
@@ -16,7 +16,7 @@
     "file:./style.31d6cfe0d16ae931b73c.css"
   ],
   "editorStyle": [
-    "file:./editor-styles.dd0702b8761f67b40713.css"
+    "file:./editor-styles.f3af54260428fee338a8.css"
   ],
   "render": "file:./render.php",
   "attributes": {
@@ -29,6 +29,15 @@
     "args": {
       "type": "object",
       "default": {}
+    },
+    "supportedDynamicTags": {
+      "type": "array",
+      "default": [
+        {
+          "label": "Post type",
+          "tag": "{{postType}}"
+        }
+      ]
     }
   },
   "providesContext": {},

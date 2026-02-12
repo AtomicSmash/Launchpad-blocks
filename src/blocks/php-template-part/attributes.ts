@@ -15,6 +15,10 @@ export const attributes = {
 		type: "object",
 		default: {} as Record<string, AllValuesWithTypes>,
 	},
+	supportedDynamicTags: {
+		type: "array",
+		default: [{ label: "Post type", tag: "{{postType}}" }],
+	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

@@ -116,3 +116,22 @@ function translate_array_with_field_types( array $array_to_translate ): array {
 	}
 	return $new_array;
 }
+
+/**
+ * Add default values for supported dynamic tags.
+ *
+ * @param array<mixed> $supported_dynamic_tags The supported dynamic tags to filter.
+ *
+ * @return array<mixed>
+ */
+function add_default_supported_dynamic_tags( array $supported_dynamic_tags ): array {
+	foreach ( $supported_dynamic_tags as $index => $dynamic_tag ) {
+		switch ( $dynamic_tag['tag'] ) {
+			case '{{postType}}':
+				$supported_dynamic_tags[ $index ]['value'] = get_post_type();
+				break;
+		}
+	}
+	return $supported_dynamic_tags;
+}
+add_filter( 'launchpad_blocks_php_template_part_block_supported_dynamic_tags', __NAMESPACE__ . '\\add_default_supported_dynamic_tags', 1 );

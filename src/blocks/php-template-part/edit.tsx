@@ -147,9 +147,40 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 		templatePartSlug,
 		templatePartName,
 		args: argsWithFieldTypes,
+		supportedDynamicTags,
 	} = attributes;
 
 	const args = translateObjectWithFieldTypes(argsWithFieldTypes);
+
+	function DynamicTags({
+		attributeToUpdate,
+	}: {
+		attributeToUpdate: "templatePartSlug" | "templatePartName";
+	}) {
+		return (
+			<p>
+				Dynamic parts available (click to add):{" "}
+				{supportedDynamicTags.map(({ label, tag }) => {
+					return (
+						<button
+							key={tag}
+							type="button"
+							className="reset dynamic-tag"
+							onClick={() => {
+								setAttributes({
+									[attributeToUpdate]:
+										(attributes[attributeToUpdate] ?? "") + tag,
+								});
+							}}
+						>
+							{label}
+						</button>
+					);
+				})}
+			</p>
+		);
+	}
+
 	return (
 		<>
 			<InspectorControls>
@@ -159,7 +190,12 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
 							label={"Slug"}
-							help={"The slug name for the generic template."}
+							help={
+								<>
+									<p>The slug name for the generic template.</p>
+									<DynamicTags attributeToUpdate={"templatePartSlug"} />
+								</>
+							}
 							onChange={(newText) => {
 								setAttributes({
 									templatePartSlug: newText,
@@ -171,7 +207,12 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
 							label={"Name"}
-							help={"The name of the specialized template."}
+							help={
+								<>
+									<p>The name of the specialized template.</p>
+									<DynamicTags attributeToUpdate={"templatePartName"} />
+								</>
+							}
 							onChange={(newText) => {
 								setAttributes({
 									templatePartName: newText,
