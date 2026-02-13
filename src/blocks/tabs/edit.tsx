@@ -174,6 +174,8 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 							idAttribute={tabsGroupId}
 						/>
 						<SelectControl
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
 							label="Initially selected tab"
 							help="If there's no url parameter, which tab should be open when a page is loaded? Defaults to the first tab."
 							value={initiallySelectedTab}
@@ -195,6 +197,7 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 							]}
 						/>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							checked={shouldShowTabSectionTitle}
 							label={"Show tabs section title visually"}
 							help={

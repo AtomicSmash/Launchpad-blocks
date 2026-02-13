@@ -47,7 +47,6 @@ export function Edit({
 			).getFormatTypes(),
 		[],
 	).map((formatType) => formatType.name);
-	console.log({ allFormatTypes });
 
 	return (
 		<>

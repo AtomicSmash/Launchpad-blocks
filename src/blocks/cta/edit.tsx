@@ -198,6 +198,7 @@ export function Edit({
 				<Panel>
 					<PanelBody>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							checked={shouldShowImage}
 							label={"Should this CTA have an image?"}
 							onChange={(newChecked) => {

@@ -334,50 +334,74 @@ export type TaxonomyTerm = {
  * UsePostTypes hook
  */
 export const usePostTypes = () => {
-	const { postTypes, taxonomies } = useSelect((select) => {
-		const { getEntityRecords } = select(coreStore) as CoreStoreType;
-		const excludedPostTypes = ["attachment"];
-		const filteredPostTypes = getEntityRecords<PostType>("root", "postType", {
+	const query1 = useMemo(
+		() => ({
 			per_page: -1,
-		})?.filter(
-			({ viewable, slug }) => viewable && !excludedPostTypes.includes(slug),
-		);
-		if (!filteredPostTypes || filteredPostTypes.length === 0) {
-			return { postTypes: filteredPostTypes, taxonomies: undefined };
-		}
-		const mappedTaxonomies: Record<
-			PostType["slug"],
-			(Taxonomy<"edit"> & { terms: TaxonomyTerm[] | null })[] | undefined
-		> = {};
-		const excludedTaxonomies: string[] = [];
-		for (const postType of filteredPostTypes) {
-			const filteredTaxonomies = getEntityRecords<Taxonomy<"edit">>(
+		}),
+		[],
+	);
+	const query2 = useMemo(
+		() => ({ per_page: -1, orderby: "name", context: "edit" }),
+		[],
+	);
+	// This object must be created outside of the useSelect to avoid re-render issues.
+	const taxonomyTerms = useMemo(
+		() => ({}) as Record<string, TaxonomyTerm[] | null>,
+		[],
+	);
+	const { postTypes, taxonomies } = useSelect(
+		(select) => {
+			const { getEntityRecords } = select(coreStore) as CoreStoreType;
+			const postTypes = getEntityRecords<PostType>("root", "postType", query1);
+			const taxonomies = getEntityRecords<Taxonomy<"edit">>(
 				"root",
 				"taxonomy",
-				{ per_page: -1, orderby: "name", context: "edit" },
-			)?.filter(
-				({ types, slug }) =>
-					types.includes(postType.slug) && !excludedTaxonomies.includes(slug),
+				query2,
 			);
-			if (!filteredTaxonomies) continue;
-			mappedTaxonomies[postType.slug] = filteredTaxonomies.map((taxonomy) => {
-				const filteredTaxonomyTerms = getEntityRecords<TaxonomyTerm>(
+			if (!taxonomies) {
+				return { postTypes, taxonomies };
+			}
+			for (const taxonomy of taxonomies) {
+				taxonomyTerms[taxonomy.slug] = getEntityRecords<TaxonomyTerm>(
 					"taxonomy",
 					taxonomy.slug,
 				);
-				return { ...taxonomy, terms: filteredTaxonomyTerms };
-			});
-		}
+			}
+			return { postTypes, taxonomies };
+		},
+		[query1, query2, taxonomyTerms],
+	);
 
-		return { postTypes: filteredPostTypes, taxonomies: mappedTaxonomies };
-	}, []);
-
+	const excludedPostTypes = ["attachment"];
+	const excludedTaxonomies: string[] = [];
+	const filteredPostTypes = postTypes?.filter(
+		({ viewable, slug }) => viewable && !excludedPostTypes.includes(slug),
+	);
+	if (!filteredPostTypes || filteredPostTypes.length === 0) {
+		return { postTypes: filteredPostTypes, taxonomies: undefined };
+	}
+	const mappedTaxonomies: Record<
+		PostType["slug"],
+		(Taxonomy<"edit"> & { terms: TaxonomyTerm[] | null })[] | undefined
+	> = {};
+	for (const postType of filteredPostTypes) {
+		const filteredTaxonomies = taxonomies?.filter(
+			({ types, slug }) =>
+				types.includes(postType.slug) && !excludedTaxonomies.includes(slug),
+		);
+		if (!filteredTaxonomies) continue;
+		mappedTaxonomies[postType.slug] = filteredTaxonomies.map((taxonomy) => {
+			const filteredTaxonomyTerms = taxonomyTerms?.[taxonomy.slug] ?? null;
+			return { ...taxonomy, terms: filteredTaxonomyTerms };
+		});
+	}
 	return {
-		filteredPostTypes: postTypes,
+		filteredPostTypes: filteredPostTypes,
 		mappedTaxonomies:
-			taxonomies === undefined || Object.values(taxonomies).length === 0
+			mappedTaxonomies === undefined ||
+			Object.values(mappedTaxonomies).length === 0
 				? undefined
-				: taxonomies,
+				: mappedTaxonomies,
 	};
 };
 
@@ -950,6 +974,8 @@ export function AspectRatioSelector({
 			/>
 			{aspectRatioSelectValue === "custom" ? (
 				<TextControl
+					__next40pxDefaultSize
+					__nextHasNoMarginBottom
 					label={__("Custom aspect ratio", "launchpad-blocks")}
 					help={__(
 						"Please enter a custom aspect ratio in the format `width/height`.",
@@ -1084,6 +1110,8 @@ export function useUniqueBlockId<
 					useState<string>(idAttribute);
 				return (
 					<TextControl
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
 						label={label}
 						help={
 							typeof help === "function"

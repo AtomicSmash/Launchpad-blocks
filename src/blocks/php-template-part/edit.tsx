@@ -158,7 +158,7 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 		attributeToUpdate: "templatePartSlug" | "templatePartName";
 	}) {
 		return (
-			<p>
+			<span>
 				Dynamic parts available (click to add):{" "}
 				{supportedDynamicTags.map(({ label, tag }) => {
 					return (
@@ -177,7 +177,7 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 						</button>
 					);
 				})}
-			</p>
+			</span>
 		);
 	}
 
@@ -192,7 +192,8 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 							label={"Slug"}
 							help={
 								<>
-									<p>The slug name for the generic template.</p>
+									The slug name for the generic template.
+									<br />
 									<DynamicTags attributeToUpdate={"templatePartSlug"} />
 								</>
 							}
@@ -209,7 +210,8 @@ export function Edit({ attributes, setAttributes, context }: BlockEditProps) {
 							label={"Name"}
 							help={
 								<>
-									<p>The name of the specialized template.</p>
+									The name of the specialized template.
+									<br />
 									<DynamicTags attributeToUpdate={"templatePartName"} />
 								</>
 							}

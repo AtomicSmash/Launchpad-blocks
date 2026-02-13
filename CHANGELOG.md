@@ -1,5 +1,14 @@
 # @atomicsmash/launchpad-blocks
 
+## 5.2.1
+
+### Patch Changes
+
+- 07561f9: Fix HTML validation bug in php template part
+- dcfc345: Get wp components ready for future versions
+- bfb0679: Remove debugging console log from fancy list
+- a66f5c6: Fix performance issues with manual post select and the usePostTypes hook
+
 ## 5.2.0
 
 ### Minor Changes

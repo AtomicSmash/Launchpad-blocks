@@ -51,6 +51,8 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 				<Panel>
 					<PanelBody title="Heading style">
 						<SelectControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
 							label="Heading style"
 							help="Override default heading style"
 							value={headerStyle}

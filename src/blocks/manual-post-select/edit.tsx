@@ -34,7 +34,7 @@ import { useInstanceId } from "@wordpress/compose";
 import { store as coreStore } from "@wordpress/core-data";
 import { useSelect, useSuspenseSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
-import { useReducer, useState, useEffect, Suspense } from "react";
+import { useReducer, useState, useEffect, Suspense, useMemo } from "react";
 import {
 	usePostTypes,
 	CustomMultipleSelectList,
@@ -166,6 +166,7 @@ export function Edit({
 				<Panel>
 					<PanelBody title="Output">
 						<BaseControl
+							__nextHasNoMarginBottom
 							id="posts-to-show-number-input"
 							label="Posts to show"
 							help="Select the number of posts to display on the page."
@@ -186,6 +187,7 @@ export function Edit({
 							/>
 						</BaseControl>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							checked={shouldFillRemainingSpots}
 							label={"Fill remaining slots automatically"}
 							onChange={(newShouldFillRemainingSpots) => {
@@ -200,6 +202,7 @@ export function Edit({
 					<PanelBody title="Select posts">
 						{shouldFillRemainingSpots ? (
 							<ToggleControl
+								__nextHasNoMarginBottom
 								checked={shouldInheritFromAutoPostsQuery}
 								label={"Use same query as the Query section"}
 								onChange={(newShouldInheritFromAutoPostsQuery) => {
@@ -218,6 +221,7 @@ export function Edit({
 							/>
 						) : null}
 						<BaseControl
+							__nextHasNoMarginBottom
 							id={useInstanceId(BaseControl, "custom-multiple-select-list-id-")}
 							label={"Search results"}
 						>
@@ -244,6 +248,7 @@ export function Edit({
 							</Suspense>
 						</BaseControl>
 						<BaseControl
+							__nextHasNoMarginBottom
 							id={useInstanceId(BaseControl, "draggable-list-id-")}
 							label={"Selected posts"}
 							help={
@@ -265,6 +270,7 @@ export function Edit({
 					<Panel>
 						<PanelBody title="Query">
 							<ToggleControl
+								__nextHasNoMarginBottom
 								checked={shouldExcludeCurrentPost}
 								label={"Exclude current post from query"}
 								onChange={(newShouldExcludeCurrentPost) => {
@@ -379,9 +385,50 @@ function useInefficientlyGetPostsByQuery({
 		? (filteredPostTypes ?? []).map((postType) => postType.slug)
 		: postTypes;
 
-	const queriedPostsDataResult = useSuspenseSelect(
-		(select) => {
-			const queriedPostsData: ({
+	const query = useMemo(
+		() => ({
+			context: "view",
+			status,
+			per_page: postCountToRetrieve,
+			exclude,
+			search: search ? search : undefined,
+			orderby: search ? "relevance" : order.by,
+			order: search ? "asc" : order.direction,
+			tax_relation: taxonomyAndTermInfo.relationship,
+			...Object.values(taxonomyAndTermInfo.taxonomies).reduce<
+				Record<
+					string,
+					| {
+							operator: InterpretedAttributes["taxonomyAndTermInfoAutoPostsQuery"]["taxonomies"][number]["operator"];
+							terms: number[];
+					  }
+					| undefined
+				>
+			>((taxonomiesOutput, taxonomyAndTermInfoSingle) => {
+				const { operator, restBase, terms } = taxonomyAndTermInfoSingle;
+				taxonomiesOutput[restBase] = {
+					operator,
+					terms: terms.map((term) => term.id),
+				};
+				return taxonomiesOutput;
+			}, {}),
+		}),
+		[
+			exclude,
+			order.by,
+			order.direction,
+			postCountToRetrieve,
+			search,
+			status,
+			taxonomyAndTermInfo.relationship,
+			taxonomyAndTermInfo.taxonomies,
+		],
+	);
+
+	const queriedPostsData = useMemo(() => {
+		return {} as Record<
+			string,
+			({
 				authorName: string;
 			} & Pick<
 				Post<"view"> | Page<"view">,
@@ -396,10 +443,17 @@ function useInefficientlyGetPostsByQuery({
 				| "slug"
 				| "status"
 				| "type"
-			>)[] = [];
+			>)[]
+		>;
+	}, []);
+
+	const queriedPostsDataByPostType = useSuspenseSelect(
+		(select) => {
+			// Clear object before adding data to counteract useMemo.
+			for (const key in queriedPostsData) delete queriedPostsData[key];
 
 			if (postCountToRetrieve === 0) {
-				return [];
+				return queriedPostsData;
 			}
 
 			const authors = (
@@ -437,33 +491,9 @@ function useInefficientlyGetPostsByQuery({
 
 			for (const postType of postTypes) {
 				const postData = (select(coreStore) as CoreStoreType)
-					.getEntityRecords<Page<"view"> | Post<"view">>("postType", postType, {
-						context: "view",
-						status,
-						per_page: postCountToRetrieve,
-						exclude,
-						search: search ? search : undefined,
-						orderby: search ? "relevance" : order.by,
-						order: search ? "asc" : order.direction,
-						tax_relation: taxonomyAndTermInfo.relationship,
-						...Object.values(taxonomyAndTermInfo.taxonomies).reduce<
-							Record<
-								string,
-								| {
-										operator: InterpretedAttributes["taxonomyAndTermInfoAutoPostsQuery"]["taxonomies"][number]["operator"];
-										terms: number[];
-								  }
-								| undefined
-							>
-						>((taxonomiesOutput, taxonomyAndTermInfoSingle) => {
-							const { operator, restBase, terms } = taxonomyAndTermInfoSingle;
-							taxonomiesOutput[restBase] = {
-								operator,
-								terms: terms.map((term) => term.id),
-							};
-							return taxonomiesOutput;
-						}, {}),
-					})
+					.getEntityRecords<
+						Page<"view"> | Post<"view">
+					>("postType", postType, query)
 					?.map((post) => {
 						return {
 							id: post.id,
@@ -483,11 +513,22 @@ function useInefficientlyGetPostsByQuery({
 						};
 					});
 				if (postData) {
-					queriedPostsData.push(...postData);
+					queriedPostsData[postType] = postData;
 				}
 			}
 
-			const sortedQueriedPostsData = queriedPostsData.sort((a, b) => {
+			return queriedPostsData;
+		},
+		[postCountToRetrieve, postTypes, query, queriedPostsData],
+	);
+
+	const unsortedQueriedPostsDataResult = Object.values(
+		queriedPostsDataByPostType,
+	).flat();
+
+	const sortedQueriedPostsData = useMemo(() => {
+		const sortedQueriedPostsData = unsortedQueriedPostsDataResult.sort(
+			(a, b) => {
 				switch (order.by) {
 					case "author": {
 						return a.author - b.author;
@@ -604,25 +645,15 @@ function useInefficientlyGetPostsByQuery({
 							`Order by value not supported. Value: ${order.by as string}`,
 						);
 				}
-			});
+			},
+		);
 
-			return order.direction === "asc"
-				? sortedQueriedPostsData
-				: sortedQueriedPostsData.reverse();
-		},
-		[
-			postCountToRetrieve,
-			order.direction,
-			order.by,
-			postTypes,
-			status,
-			exclude,
-			search,
-			taxonomyAndTermInfo,
-		],
-	);
+		return order.direction === "asc"
+			? sortedQueriedPostsData
+			: sortedQueriedPostsData.reverse();
+	}, [order.by, order.direction, unsortedQueriedPostsDataResult]);
 
-	return queriedPostsDataResult;
+	return sortedQueriedPostsData;
 }
 
 function QueryChangeControls({
@@ -645,6 +676,7 @@ function QueryChangeControls({
 		<>
 			{filteredPostTypes !== undefined ? (
 				<BaseControl
+					__nextHasNoMarginBottom
 					label={"Post Type"}
 					id={`custom-multiple-select-list-post-types-${type === "ManualSelectSearch" ? "manual-select-search" : "auto-posts-query"}`}
 				>
@@ -736,6 +768,7 @@ function QueryChangeControls({
 				type={type}
 			/>
 			<SearchControl
+				__nextHasNoMarginBottom
 				label="Search"
 				hideLabelFromVision={false}
 				help="Type your search term in the box above"
@@ -748,6 +781,7 @@ function QueryChangeControls({
 				}}
 			/>
 			<BaseControl
+				__nextHasNoMarginBottom
 				id={`order-select-${type === "ManualSelectSearch" ? "manual-select-search" : "auto-posts-query"}`}
 				label={`Order ${type === "ManualSelectSearch" ? "of search results" : "of posts"}`}
 			>
@@ -772,6 +806,8 @@ function QueryChangeControls({
 				) : (
 					<>
 						<SelectControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
 							label="Order by"
 							value={order.by}
 							options={(
@@ -790,6 +826,8 @@ function QueryChangeControls({
 						/>
 						<div style={{ marginTop: "-1rem" }}>
 							<SelectControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
 								label="Direction"
 								multiple={false}
 								value={order.direction}
