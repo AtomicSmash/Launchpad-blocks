@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 5.2.2
+
+### Patch Changes
+
+- a28b4cb: Only recalculate navigation menu size on horizontal width changes
+
 ## 5.2.1
 
 ### Patch Changes

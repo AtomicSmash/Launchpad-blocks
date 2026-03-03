@@ -32,6 +32,7 @@ class Navigation {
 		undefined;
 	public hasOpenSubMenu = false;
 	public navListHeight = 0;
+	private windowWidth: number | null = null;
 
 	constructor() {
 		const navigation = document.querySelector<HTMLDivElement>(
@@ -98,14 +99,12 @@ class Navigation {
 			this.navigationContent.classList.remove("checking-menu-width");
 
 			if (initialFullMenuWidth !== this.fullMenuWidth) {
-				this.closeAllSubMenus();
 				this.recalculateIfContentIsCollapsed();
 			}
 		});
 		window.addEventListener("resize", () => {
 			clearTimeout(this.debounceResizeTimeout);
 			this.debounceResizeTimeout = setTimeout(() => {
-				this.closeAllSubMenus();
 				this.recalculateIfContentIsCollapsed();
 			}, 100);
 		});
@@ -229,7 +228,12 @@ class Navigation {
 		return availableSpace;
 	}
 	public recalculateIfContentIsCollapsed() {
+		if (this.windowWidth !== null && this.windowWidth === window.innerWidth) {
+			return;
+		}
+		this.windowWidth = window.innerWidth;
 		this.closeCollapsedMenu();
+		this.closeAllSubMenus();
 		this.navigation.classList.add("menu-js-loading");
 		const availableMenuSpace = this.getAvailableMenuSpace();
 		const shouldCollapseMenu = this.fullMenuWidth >= availableMenuSpace;

@@ -2334,7 +2334,7 @@
 			'file:./index.136f589152a8aba9ef3b.js'
 		),
 		'viewScript' => array(
-			'file:./view.295c1662aaef56d07a2b.js'
+			'file:./view.623aa06284054eea81f9.js'
 		),
 		'style' => array(
 			'file:./style.9deffd965f24960b83d9.css'
