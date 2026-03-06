@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 6.1.0
+
+### Minor Changes
+
+- 876ff64: Add touch swipe gestures to carousels
+
 ## 6.0.0
 
 ### Major Changes

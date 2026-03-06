@@ -94,6 +94,109 @@ export class Carousel {
 				doAction("launchpadBlocks.carousel.resize", this);
 			}, 100);
 		});
+		const touchPointCache: Touch[] = [];
+		let actionToTake: "prev-slide" | "next-slide" | null = null;
+		// Add touch swiping functionality
+		this.carouselSlides.addEventListener("touchstart", (event) => {
+			// If the user makes simultaneous touches, the browser will fire a
+			// separate touchstart event for each touch point. Thus if there are
+			// three simultaneous touches, the first touchstart event will have
+			// targetTouches length of one, the second event will have a length
+			// of two, and so on.
+			event.preventDefault();
+
+			// Only process if it's a single finger swipe
+			if (event.targetTouches.length === 1) {
+				touchPointCache.push(event.targetTouches[0]!);
+			}
+		});
+		this.carouselSlides.addEventListener("touchmove", (event) => {
+			// If the user makes simultaneous touches, the browser will fire a
+			// separate touchstart event for each touch point. Thus if there are
+			// three simultaneous touches, the first touchstart event will have
+			// targetTouches length of one, the second event will have a length
+			// of two, and so on.
+			event.preventDefault();
+
+			if (
+				event.targetTouches.length === 1 &&
+				event.changedTouches.length === 1
+			) {
+				const touchPointOriginalPosition = touchPointCache[0];
+				if (!touchPointOriginalPosition) {
+					console.error("Failed to get original touch position.");
+					return;
+				}
+				const touchPointNewPosition = event.changedTouches.item(0);
+				if (!touchPointNewPosition) {
+					console.error("Failed to get new touch position.");
+					return;
+				}
+
+				const SWIPE_THRESHOLD = this.slideWidth / 10;
+				const difference =
+					touchPointOriginalPosition.clientX - touchPointNewPosition.clientX;
+				if (difference < -1 * SWIPE_THRESHOLD) {
+					// Swiped left to right more than threshold
+					actionToTake = "prev-slide";
+					if (this.currentSlide === 0) {
+						// first carousel image can't scroll because there's nothing to scroll to.
+						(this.carouselSlides.children[0] as HTMLLIElement).style.transform =
+							`translateX(${SWIPE_THRESHOLD}px)`;
+					} else {
+						this.carouselSlides.scrollTo({
+							left: this.currentSlide * this.slideWidth - SWIPE_THRESHOLD,
+						});
+					}
+				} else if (difference > SWIPE_THRESHOLD) {
+					// Swiped right to left more than threshold
+					actionToTake = "next-slide";
+					if (this.currentSlide === this.slideCount - 1) {
+						// Final carousel image can't scroll because there's nothing to scroll to.
+						(
+							this.carouselSlides.children[this.slideCount - 1] as HTMLLIElement
+						).style.transform = `translateX(-${SWIPE_THRESHOLD}px)`;
+						this.carouselSlides.scrollTo({
+							left: this.carouselSlides.scrollWidth,
+						});
+					} else {
+						this.carouselSlides.scrollTo({
+							left: this.currentSlide * this.slideWidth + SWIPE_THRESHOLD,
+						});
+					}
+				} else {
+					// Swiped less than threshold
+					actionToTake = null;
+					(this.carouselSlides.children[0] as HTMLLIElement).style.transform =
+						"";
+					(
+						this.carouselSlides.children[this.slideCount - 1] as HTMLLIElement
+					).style.transform = "";
+					this.carouselSlides.scrollTo({
+						left: this.currentSlide * this.slideWidth,
+					});
+				}
+			}
+		});
+		this.carouselSlides.addEventListener("touchend", (event) => {
+			// If the user makes simultaneous touches, the browser will fire a
+			// separate touchstart event for each touch point. Thus if there are
+			// three simultaneous touches, the first touchstart event will have
+			// targetTouches length of one, the second event will have a length
+			// of two, and so on.
+			event.preventDefault();
+
+			if (event.targetTouches.length === 0) {
+				touchPointCache.length = 0;
+
+				if (actionToTake === "prev-slide") {
+					this.goToPreviousSlide();
+				}
+				if (actionToTake === "next-slide") {
+					this.goToNextSlide();
+				}
+			}
+		});
 	}
 
 	showOrHideControls() {
