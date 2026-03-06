@@ -8,7 +8,5 @@ export const example = {
 		iconName: "heading-with-icon",
 		size: "2rem",
 		headerContent: "Heading",
-		headerElement: "h2",
-		headerStyle: "",
 	},
 } satisfies BlockExample<InterpretedAttributes>;

@@ -25,10 +25,8 @@ export const attributes = {
 	headerContent: {
 		type: "string",
 	},
-	headerStyle: {
+	iconColour: {
 		type: "string",
-		enum: ["", "t-1", "t-2", "t-3", "t-4", "t-5", "t-6"],
-		default: "",
 	},
 } as const satisfies BlockAttributes;
 export type Attributes = typeof attributes;

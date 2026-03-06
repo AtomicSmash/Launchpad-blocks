@@ -7,20 +7,21 @@ import {
 	useInnerBlocksProps,
 	store as blockEditorStore,
 	InspectorControls,
-	useSettings,
 } from "@wordpress/block-editor";
 import { RangeControl, Panel, PanelBody } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 import { useEffect } from "react";
-import { ColourSelectControl } from "@launchpadBlocks/helpers.editor";
+import {
+	ColourSelectControl,
+	useColourPalette,
+} from "@launchpadBlocks/helpers.editor";
 import { attributes as attributesDefinition } from "./attributes";
 
 export type BlockEditProps = CreateBlockEditProps<
 	InterpretedAttributes,
 	InterpretedUsedContext
 >;
-type Colours = { name: string; slug: string; color: string }[];
 
 export function Edit({
 	clientId,
@@ -89,48 +90,7 @@ export function Edit({
 		) => void;
 	};
 
-	const [userPalette, themePalette, defaultPalette, shouldShowDefaultPalette] =
-		useSettings(
-			"color.palette.custom",
-			"color.palette.theme",
-			"color.palette.default",
-			"color.defaultPalette",
-		) as [
-			Colours | undefined,
-			Colours | undefined,
-			Colours | undefined,
-			boolean,
-			boolean,
-		];
-	const allPalettes: Record<
-		Colours[number]["slug"],
-		{ name: Colours[number]["name"]; color: Colours[number]["color"] }
-	> = {};
-	if (shouldShowDefaultPalette && defaultPalette && defaultPalette.length > 0) {
-		for (const color of defaultPalette) {
-			allPalettes[color.slug] = {
-				color: color.color,
-				name: color.name,
-			};
-		}
-	}
-	if (themePalette && themePalette?.length > 0) {
-		for (const color of themePalette) {
-			allPalettes[color.slug] = {
-				color: color.color,
-				name: color.name,
-			};
-		}
-	}
-
-	if (userPalette && userPalette?.length > 0) {
-		for (const color of userPalette) {
-			allPalettes[color.slug] = {
-				color: color.color,
-				name: color.name,
-			};
-		}
-	}
+	const { allPalettes } = useColourPalette();
 
 	const backgroundOrOverlaySlug = Object.keys(allPalettes).find(
 		(paletteSlug) =>

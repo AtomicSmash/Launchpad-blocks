@@ -1,6 +1,31 @@
 import domReady from "@wordpress/dom-ready";
-import { doAction, addAction } from "@wordpress/hooks";
+import { doAction, addAction, applyFilters } from "@wordpress/hooks";
 import { getPixelNumber } from "@launchpadBlocks/helpers";
+
+addAction(
+	"launchpadBlocks.carousel.resize",
+	"launchpadBlocks.carousel.defaultResizeActions",
+	(Carousel: CarouselInstance) => {
+		Carousel.carouselSlides.style.width = ""; // Reset width for next line
+		Carousel.carouselSlides.style.width = `${Carousel.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
+		const { slideCount, slideWidth, slideGap, fullSlidesShownInViewport } =
+			Carousel.getSlideInfo();
+		Carousel.slideCount = slideCount;
+		Carousel.slideGap = slideGap;
+		Carousel.slideWidth = slideWidth;
+		Carousel.fullSlidesShownInViewport = fullSlidesShownInViewport;
+		Carousel.goToSlide(Carousel.currentSlide, true, true);
+	},
+	10,
+);
+addAction(
+	"launchpadBlocks.carousel.resize",
+	"launchpadBlocks.carousel.hideControlsIfNotNeeded",
+	(Carousel: CarouselInstance) => {
+		Carousel.showOrHideControls();
+	},
+	70, // Run this action after most other actions
+);
 
 /**
  * The following JavaScript is loaded on the front end of the site when your block is present.
@@ -17,6 +42,7 @@ export class Carousel {
 	public loop: boolean;
 	private debounceResizeTimeout: undefined | ReturnType<typeof setTimeout> =
 		undefined;
+	public controls: HTMLElement[] = [];
 
 	constructor(carousel: HTMLDivElement) {
 		this.carousel = carousel;
@@ -57,23 +83,34 @@ export class Carousel {
 			) => {
 				if (hookName === "launchpadBlocks.carousel.registerFunctionality") {
 					callback(this);
+					this.showOrHideControls();
 				}
 			},
 		);
+		this.showOrHideControls();
 		window.addEventListener("resize", () => {
 			clearTimeout(this.debounceResizeTimeout);
 			this.debounceResizeTimeout = setTimeout(() => {
-				this.carouselSlides.style.width = "";
-				this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
-				const { slideCount, slideWidth, slideGap, fullSlidesShownInViewport } =
-					this.getSlideInfo();
-				this.slideCount = slideCount;
-				this.slideGap = slideGap;
-				this.slideWidth = slideWidth;
-				this.fullSlidesShownInViewport = fullSlidesShownInViewport;
-				this.goToSlide(this.currentSlide, true, true);
+				doAction("launchpadBlocks.carousel.resize", this);
 			}, 100);
 		});
+	}
+
+	showOrHideControls() {
+		for (const control of this.controls) {
+			const shouldHideControl = applyFilters(
+				"launchpadBlocks.carousel.shouldHideControl",
+				this.slideCount <= this.fullSlidesShownInViewport,
+				this,
+				control,
+			);
+			if (typeof shouldHideControl !== "boolean") {
+				throw new Error(
+					`Returned value of launchpadBlocks.carousel.shouldHideControl filter should be boolean, received ${typeof shouldHideControl}`,
+				);
+			}
+			control.hidden = shouldHideControl;
+		}
 	}
 
 	getSlideInfo() {

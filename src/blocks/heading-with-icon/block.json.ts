@@ -24,5 +24,36 @@ export const blockJson = {
 	usesContext,
 	example,
 	supports,
+	styles: [
+		{
+			name: "default",
+			label: "Default",
+			isDefault: true,
+		},
+		{
+			name: "t-1",
+			label: "T1",
+		},
+		{
+			name: "t-2",
+			label: "T2",
+		},
+		{
+			name: "t-3",
+			label: "T3",
+		},
+		{
+			name: "t-4",
+			label: "T4",
+		},
+		{
+			name: "t-5",
+			label: "T5",
+		},
+		{
+			name: "t-6",
+			label: "T6",
+		},
+	],
 } satisfies BlockMetaData<Supports, Attributes>;
 export default blockJson;

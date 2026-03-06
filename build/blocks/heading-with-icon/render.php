@@ -27,14 +27,24 @@ $block = $block;
 $wrapper_style = array(
 	'--icon-size' => isset( $attributes['size'] ) ? $attributes['size'] : '2rem',
 );
+if ( isset( $attributes['iconColour'] ) ) {
+	$wrapper_style['--icon-colour'] = $attributes['iconColour'];
+}
+
+$block_classes = isset( $block->parsed_block['attrs']['className'] ) && $block->parsed_block['attrs']['className'];
+
+$active_style_class_name = '';
+if ( $block_classes ) {
+	foreach ( explode( ' ', $block_classes ) as $class_name ) {
+		if ( ! str_starts_with( $class_name, 'is-style' ) ) {
+			continue;
+		}
+		$active_style_class_name = $class_name;
+	}
+}
 
 $icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
 
-$header_style = '';
-
-if ( $attributes['headerStyle'] ) {
-	$header_style = 'is-style-' . $attributes['headerStyle'];
-}
 
 ?>
 <div
@@ -56,7 +66,7 @@ echo wp_kses_data(
 		}
 		?>
 	</div>
-	<<?php echo esc_html( $attributes['headerElement'] ); ?> class="<?php echo esc_html( $header_style ); ?>">
+	<<?php echo esc_html( $attributes['headerElement'] ); ?> class="<?php echo esc_attr( $active_style_class_name ); ?>">
 	<?php echo wp_kses_post( $attributes['headerContent'] ); ?></<?php echo esc_html( $attributes['headerElement'] ); ?>>
 	<?php echo wp_kses_post( $content ); ?>
 </div>

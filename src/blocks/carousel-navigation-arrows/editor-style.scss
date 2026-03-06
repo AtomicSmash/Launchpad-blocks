@@ -9,10 +9,8 @@
 	position: relative;
 	right: auto;
 	width: 100%;
-}
 
-.wp-block-launchpad-blocks-carousel:not(.has-child-selected, .is-selected) {
-	.block-list-appender {
+	&:empty {
 		display: none;
 	}
 }

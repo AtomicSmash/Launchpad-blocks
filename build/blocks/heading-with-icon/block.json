@@ -7,13 +7,13 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.7f88e575c3d1dd4a53e2.js"
+    "file:./index.489c11803d30f8c3704d.js"
   ],
   "viewScript": [
     "file:./view.535e66f2928c2639ca1b.js"
   ],
   "style": [
-    "file:./style.26404f07182a01b75ed7.css"
+    "file:./style.305471dc35fdfc2c3e14.css"
   ],
   "editorStyle": [
     "file:./editor-style.31d6cfe0d16ae931b73c.css"
@@ -47,18 +47,8 @@
     "headerContent": {
       "type": "string"
     },
-    "headerStyle": {
-      "type": "string",
-      "enum": [
-        "",
-        "t-1",
-        "t-2",
-        "t-3",
-        "t-4",
-        "t-5",
-        "t-6"
-      ],
-      "default": ""
+    "iconColour": {
+      "type": "string"
     }
   },
   "providesContext": {},
@@ -69,10 +59,39 @@
       "library": "launchpad-blocks",
       "iconName": "heading-with-icon",
       "size": "2rem",
-      "headerContent": "Heading",
-      "headerElement": "h2",
-      "headerStyle": ""
+      "headerContent": "Heading"
     }
   },
-  "supports": {}
+  "supports": {},
+  "styles": [
+    {
+      "name": "default",
+      "label": "Default",
+      "isDefault": true
+    },
+    {
+      "name": "t-1",
+      "label": "T1"
+    },
+    {
+      "name": "t-2",
+      "label": "T2"
+    },
+    {
+      "name": "t-3",
+      "label": "T3"
+    },
+    {
+      "name": "t-4",
+      "label": "T4"
+    },
+    {
+      "name": "t-5",
+      "label": "T5"
+    },
+    {
+      "name": "t-6",
+      "label": "T6"
+    }
+  ]
 }

@@ -10,6 +10,7 @@
 	.icon {
 		width: var(--icon-size, 2rem);
 		height: var(--icon-size, 2rem);
+		color: var(--icon-colour, inherit);
 
 		svg {
 			width: 100%;

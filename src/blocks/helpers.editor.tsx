@@ -703,6 +703,53 @@ export const orderByValues = {
 export type OrderByOptions = keyof typeof orderByValues;
 
 type Colours = { name: string; slug: string; color: string }[];
+
+export function useColourPalette() {
+	const [userPalette, themePalette, defaultPalette, shouldShowDefaultPalette] =
+		useSettings(
+			"color.palette.custom",
+			"color.palette.theme",
+			"color.palette.default",
+			"color.defaultPalette",
+		) as [
+			Colours | undefined,
+			Colours | undefined,
+			Colours | undefined,
+			boolean,
+			boolean,
+		];
+	const allPalettes: Record<
+		Colours[number]["slug"],
+		{ name: Colours[number]["name"]; color: Colours[number]["color"] }
+	> = {};
+	if (shouldShowDefaultPalette && defaultPalette && defaultPalette.length > 0) {
+		for (const color of defaultPalette) {
+			allPalettes[color.slug] = {
+				color: color.color,
+				name: color.name,
+			};
+		}
+	}
+	if (themePalette && themePalette?.length > 0) {
+		for (const color of themePalette) {
+			allPalettes[color.slug] = {
+				color: color.color,
+				name: color.name,
+			};
+		}
+	}
+
+	if (userPalette && userPalette?.length > 0) {
+		for (const color of userPalette) {
+			allPalettes[color.slug] = {
+				color: color.color,
+				name: color.name,
+			};
+		}
+	}
+	return { userPalette, themePalette, defaultPalette, allPalettes };
+}
+
 export function ColourSelectControl<
 	const Supports extends BlockSupports,
 	const Attributes extends BlockAttributes,

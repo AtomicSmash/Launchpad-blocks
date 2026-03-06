@@ -1,5 +1,23 @@
 # @atomicsmash/launchpad-blocks
 
+## 6.0.0
+
+### Major Changes
+
+- dad143e: Hide carousel control blocks all slides are shown by default
+
+### Minor Changes
+
+- dad143e: Add launchpadBlocks.carousel.resize hook to carousel block to allow devs to add functionality on resize
+- 0cc7186: Add useColourPalette hook for easier retrieval of defined colour palettes
+- dad143e: Add ability to filter whether a block should be shown or not with launchpadBlocks.carousel.shouldHideControl.
+- 5e2caa4: Add setting to change icon colour for heading with icon block
+
+### Patch Changes
+
+- 5e2caa4: Refactor heading style control for heading with icon block
+- 1985a0f: Only show appender in carousel navigation arrows if it's selected
+
 ## 5.2.2
 
 ### Patch Changes

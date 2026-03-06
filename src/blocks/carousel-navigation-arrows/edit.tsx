@@ -33,6 +33,7 @@ export function Edit({
 	attributes,
 	setAttributes,
 	context,
+	isSelected,
 }: BlockEditProps) {
 	const {
 		prevText,
@@ -53,6 +54,16 @@ export function Edit({
 		context["launchpad-blocks/carouselSlides"].length > 0
 			? context["launchpad-blocks/carouselSlides"].length
 			: context["launchpad-blocks/carouselImages"].length;
+
+	const isInnerBlockSelected = useSelect(
+		(select) =>
+			(
+				select(blockEditorStore) as {
+					hasSelectedInnerBlock: (clientId: string, deep: boolean) => boolean;
+				}
+			).hasSelectedInnerBlock(clientId, true),
+		[clientId],
+	);
 
 	const { updateBlockAttributes } = useDispatch(
 		blockEditorStore,
@@ -94,11 +105,14 @@ export function Edit({
 			"--icon-colour": iconColour,
 		} as CSSProperties,
 	});
+	const shouldAllowInnerBlocks =
+		!className?.includes("is-style-overlay") &&
+		(isSelected || isInnerBlockSelected);
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(blockProps, {
 		orientation: "horizontal",
-		renderAppender: className?.includes("is-style-overlay")
-			? () => null
-			: InnerBlocks.ButtonBlockAppender,
+		renderAppender: shouldAllowInnerBlocks
+			? InnerBlocks.ButtonBlockAppender
+			: () => null,
 	});
 	const iconLibraries = getIcons();
 
