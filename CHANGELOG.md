@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 6.1.2
+
+### Patch Changes
+
+- 8f78a34: Fix touch events loading when not needed and not loading when needed
+
 ## 6.1.1
 
 ### Patch Changes

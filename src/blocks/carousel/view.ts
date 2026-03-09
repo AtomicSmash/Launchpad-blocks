@@ -102,6 +102,19 @@ export class Carousel {
 
 	addOrRemoveTouchEvents() {
 		if (this.slideCount <= this.fullSlidesShownInViewport) {
+			this.carouselSlides.removeEventListener(
+				"touchstart",
+				this.handleTouchStart.bind(this),
+			);
+			this.carouselSlides.removeEventListener(
+				"touchmove",
+				this.handleTouchMove.bind(this),
+			);
+			this.carouselSlides.removeEventListener(
+				"touchend",
+				this.handleTouchEnd.bind(this),
+			);
+		} else {
 			this.touchPointCache = [];
 			this.touchActionToTake = null;
 			this.carouselSlides.addEventListener(
@@ -113,19 +126,6 @@ export class Carousel {
 				this.handleTouchMove.bind(this),
 			);
 			this.carouselSlides.addEventListener(
-				"touchend",
-				this.handleTouchEnd.bind(this),
-			);
-		} else {
-			this.carouselSlides.removeEventListener(
-				"touchstart",
-				this.handleTouchStart.bind(this),
-			);
-			this.carouselSlides.removeEventListener(
-				"touchmove",
-				this.handleTouchMove.bind(this),
-			);
-			this.carouselSlides.removeEventListener(
 				"touchend",
 				this.handleTouchEnd.bind(this),
 			);
