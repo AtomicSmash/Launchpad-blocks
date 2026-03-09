@@ -3,5 +3,5 @@
 		'wp-dom-ready',
 		'wp-hooks'
 	),
-	'version' => '9e80e364de8e86a0d327'
+	'version' => '20ffa1f7bbd17e1ac7ac'
 );

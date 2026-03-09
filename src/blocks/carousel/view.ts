@@ -7,7 +7,7 @@ addAction(
 	"launchpadBlocks.carousel.defaultResizeActions",
 	(Carousel: CarouselInstance) => {
 		Carousel.carouselSlides.style.width = ""; // Reset width for next line
-		Carousel.carouselSlides.style.width = `${Carousel.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
+		Carousel.carouselSlides.style.width = `${Carousel.carouselSlides.getBoundingClientRect().width}px`; // Fix subpixel rendering issue
 		const { slideCount, slideWidth, slideGap, fullSlidesShownInViewport } =
 			Carousel.getSlideInfo();
 		Carousel.slideCount = slideCount;
@@ -15,6 +15,7 @@ addAction(
 		Carousel.slideWidth = slideWidth;
 		Carousel.fullSlidesShownInViewport = fullSlidesShownInViewport;
 		Carousel.goToSlide(Carousel.currentSlide, true, true);
+		Carousel.addOrRemoveTouchEvents();
 	},
 	10,
 );
@@ -43,6 +44,8 @@ export class Carousel {
 	private debounceResizeTimeout: undefined | ReturnType<typeof setTimeout> =
 		undefined;
 	public controls: HTMLElement[] = [];
+	private touchPointCache: Touch[] = [];
+	private touchActionToTake: "prev-slide" | "next-slide" | null = null;
 
 	constructor(carousel: HTMLDivElement) {
 		this.carousel = carousel;
@@ -62,7 +65,7 @@ export class Carousel {
 			throw new Error("Carousels must have a slides element.");
 		}
 		this.carouselSlides = slides;
-		this.carouselSlides.style.width = `${this.carouselSlides.clientWidth}px`; // Fix subpixel rendering issue
+		this.carouselSlides.style.width = `${this.carouselSlides.getBoundingClientRect().width}px`; // Fix subpixel rendering issue
 		const { slideCount, slideWidth, slideGap, fullSlidesShownInViewport } =
 			this.getSlideInfo();
 		this.slideCount = slideCount;
@@ -88,115 +91,149 @@ export class Carousel {
 			},
 		);
 		this.showOrHideControls();
+		this.addOrRemoveTouchEvents();
 		window.addEventListener("resize", () => {
 			clearTimeout(this.debounceResizeTimeout);
 			this.debounceResizeTimeout = setTimeout(() => {
 				doAction("launchpadBlocks.carousel.resize", this);
 			}, 100);
 		});
-		const touchPointCache: Touch[] = [];
-		let actionToTake: "prev-slide" | "next-slide" | null = null;
-		// Add touch swiping functionality
-		this.carouselSlides.addEventListener("touchstart", (event) => {
-			// If the user makes simultaneous touches, the browser will fire a
-			// separate touchstart event for each touch point. Thus if there are
-			// three simultaneous touches, the first touchstart event will have
-			// targetTouches length of one, the second event will have a length
-			// of two, and so on.
-			event.preventDefault();
+	}
 
-			// Only process if it's a single finger swipe
-			if (event.targetTouches.length === 1) {
-				touchPointCache.push(event.targetTouches[0]!);
+	addOrRemoveTouchEvents() {
+		if (this.slideCount <= this.fullSlidesShownInViewport) {
+			this.touchPointCache = [];
+			this.touchActionToTake = null;
+			this.carouselSlides.addEventListener(
+				"touchstart",
+				this.handleTouchStart.bind(this),
+			);
+			this.carouselSlides.addEventListener(
+				"touchmove",
+				this.handleTouchMove.bind(this),
+			);
+			this.carouselSlides.addEventListener(
+				"touchend",
+				this.handleTouchEnd.bind(this),
+			);
+		} else {
+			this.carouselSlides.removeEventListener(
+				"touchstart",
+				this.handleTouchStart.bind(this),
+			);
+			this.carouselSlides.removeEventListener(
+				"touchmove",
+				this.handleTouchMove.bind(this),
+			);
+			this.carouselSlides.removeEventListener(
+				"touchend",
+				this.handleTouchEnd.bind(this),
+			);
+		}
+	}
+
+	handleTouchStart(event: TouchEvent) {
+		// If the user makes simultaneous touches, the browser will fire a
+		// separate touchstart event for each touch point. Thus if there are
+		// three simultaneous touches, the first touchstart event will have
+		// targetTouches length of one, the second event will have a length
+		// of two, and so on.
+		event.preventDefault();
+
+		// Only process if it's a single finger swipe
+		if (event.targetTouches.length === 1) {
+			this.touchPointCache.push(event.targetTouches[0]!);
+		}
+	}
+
+	handleTouchMove(event: TouchEvent) {
+		// If the user makes simultaneous touches, the browser will fire a
+		// separate touchstart event for each touch point. Thus if there are
+		// three simultaneous touches, the first touchstart event will have
+		// targetTouches length of one, the second event will have a length
+		// of two, and so on.
+		event.preventDefault();
+
+		if (event.targetTouches.length === 1 && event.changedTouches.length === 1) {
+			const touchPointOriginalPosition = this.touchPointCache[0];
+			if (!touchPointOriginalPosition) {
+				console.error("Failed to get original touch position.");
+				return;
 			}
-		});
-		this.carouselSlides.addEventListener("touchmove", (event) => {
-			// If the user makes simultaneous touches, the browser will fire a
-			// separate touchstart event for each touch point. Thus if there are
-			// three simultaneous touches, the first touchstart event will have
-			// targetTouches length of one, the second event will have a length
-			// of two, and so on.
-			event.preventDefault();
+			const touchPointNewPosition = event.changedTouches.item(0);
+			if (!touchPointNewPosition) {
+				console.error("Failed to get new touch position.");
+				return;
+			}
 
-			if (
-				event.targetTouches.length === 1 &&
-				event.changedTouches.length === 1
-			) {
-				const touchPointOriginalPosition = touchPointCache[0];
-				if (!touchPointOriginalPosition) {
-					console.error("Failed to get original touch position.");
-					return;
-				}
-				const touchPointNewPosition = event.changedTouches.item(0);
-				if (!touchPointNewPosition) {
-					console.error("Failed to get new touch position.");
-					return;
-				}
-
-				const SWIPE_THRESHOLD = this.slideWidth / 10;
-				const difference =
-					touchPointOriginalPosition.clientX - touchPointNewPosition.clientX;
-				if (difference < -1 * SWIPE_THRESHOLD) {
-					// Swiped left to right more than threshold
-					actionToTake = "prev-slide";
-					if (this.currentSlide === 0) {
-						// first carousel image can't scroll because there's nothing to scroll to.
-						(this.carouselSlides.children[0] as HTMLLIElement).style.transform =
-							`translateX(${SWIPE_THRESHOLD}px)`;
-					} else {
-						this.carouselSlides.scrollTo({
-							left: this.currentSlide * this.slideWidth - SWIPE_THRESHOLD,
-						});
+			const SWIPE_THRESHOLD = this.slideWidth / 10;
+			const difference =
+				touchPointOriginalPosition.clientX - touchPointNewPosition.clientX;
+			if (difference < -1 * SWIPE_THRESHOLD) {
+				// Swiped left to right more than threshold
+				this.touchActionToTake = "prev-slide";
+				Array.from(this.carouselSlides.children).forEach((element) => {
+					if (element instanceof HTMLElement) {
+						// Transform all slides to account for multiple slides being shown at once.
+						element.style.transform = `translateX(${SWIPE_THRESHOLD}px)`;
 					}
-				} else if (difference > SWIPE_THRESHOLD) {
-					// Swiped right to left more than threshold
-					actionToTake = "next-slide";
-					if (this.currentSlide === this.slideCount - 1) {
-						// Final carousel image can't scroll because there's nothing to scroll to.
-						(
-							this.carouselSlides.children[this.slideCount - 1] as HTMLLIElement
-						).style.transform = `translateX(-${SWIPE_THRESHOLD}px)`;
-						this.carouselSlides.scrollTo({
-							left: this.carouselSlides.scrollWidth,
-						});
-					} else {
-						this.carouselSlides.scrollTo({
-							left: this.currentSlide * this.slideWidth + SWIPE_THRESHOLD,
-						});
+				});
+			} else if (difference > SWIPE_THRESHOLD) {
+				// Swiped right to left more than threshold
+				this.touchActionToTake = "next-slide";
+				Array.from(this.carouselSlides.children).forEach((element, index) => {
+					if (element instanceof HTMLElement) {
+						// Transform all slides to account for multiple slides being shown at once.
+						element.style.transform = `translateX(-${SWIPE_THRESHOLD}px)`;
+						if (
+							this.currentSlide === this.slideCount - 1 &&
+							index === this.carouselSlides.children.length - 1
+						) {
+							// The final item in a carousel acts differently, if you just translate it like the others,
+							// it shortens the container and doesn't show a space, so needs additional declarations.
+							element.style.flexBasis = `calc(${this.slideWidth}px + ${SWIPE_THRESHOLD}px)`;
+							element.style.paddingRight = `${SWIPE_THRESHOLD}px`;
+						}
 					}
-				} else {
-					// Swiped less than threshold
-					actionToTake = null;
-					(this.carouselSlides.children[0] as HTMLLIElement).style.transform =
-						"";
-					(
-						this.carouselSlides.children[this.slideCount - 1] as HTMLLIElement
-					).style.transform = "";
-					this.carouselSlides.scrollTo({
-						left: this.currentSlide * this.slideWidth,
-					});
-				}
+				});
+			} else {
+				// Swiped less than threshold
+				this.touchActionToTake = null;
+				Array.from(this.carouselSlides.children).forEach((element) => {
+					if (element instanceof HTMLElement) {
+						// Reset translation
+						element.style.transform = "";
+					}
+				});
 			}
-		});
-		this.carouselSlides.addEventListener("touchend", (event) => {
-			// If the user makes simultaneous touches, the browser will fire a
-			// separate touchstart event for each touch point. Thus if there are
-			// three simultaneous touches, the first touchstart event will have
-			// targetTouches length of one, the second event will have a length
-			// of two, and so on.
-			event.preventDefault();
+		}
+	}
 
-			if (event.targetTouches.length === 0) {
-				touchPointCache.length = 0;
+	handleTouchEnd(event: TouchEvent) {
+		// If the user makes simultaneous touches, the browser will fire a
+		// separate touchstart event for each touch point. Thus if there are
+		// three simultaneous touches, the first touchstart event will have
+		// targetTouches length of one, the second event will have a length
+		// of two, and so on.
+		event.preventDefault();
 
-				if (actionToTake === "prev-slide") {
-					this.goToPreviousSlide();
+		if (event.targetTouches.length === 0) {
+			this.touchPointCache.length = 0;
+
+			Array.from(this.carouselSlides.children).forEach((element) => {
+				if (element instanceof HTMLElement) {
+					// Reset translation
+					element.style.transform = "";
 				}
-				if (actionToTake === "next-slide") {
-					this.goToNextSlide();
-				}
+			});
+			if (this.touchActionToTake === "prev-slide") {
+				this.goToPreviousSlide();
 			}
-		});
+			if (this.touchActionToTake === "next-slide") {
+				this.goToNextSlide();
+			}
+			this.touchActionToTake = null;
+		}
 	}
 
 	showOrHideControls() {
@@ -219,8 +256,9 @@ export class Carousel {
 	getSlideInfo() {
 		const slideCount =
 			this.carouselSlides.querySelectorAll(":scope > *").length;
-		const slideWidth =
-			this.carouselSlides.querySelector(":scope > *")?.clientWidth;
+		const slideWidth = this.carouselSlides
+			.querySelector(":scope > *")
+			?.getBoundingClientRect().width;
 		const slideGapPx = window
 			.getComputedStyle(this.carouselSlides)
 			.getPropertyValue("column-gap");
@@ -230,9 +268,24 @@ export class Carousel {
 		if (!slideWidth) {
 			throw new Error("Unable to get the slide width for the carousel.");
 		}
-		const fullSlidesShownInViewport = Math.floor(
-			this.carouselSlides.clientWidth / slideWidth,
-		);
+		let fullSlidesShownInViewport = 0;
+		let availableSpace = this.carouselSlides.getBoundingClientRect().width;
+		for (let i = 0; i <= slideCount; i++) {
+			if (i !== 0) {
+				availableSpace = availableSpace - slideGap;
+			}
+			availableSpace = availableSpace - slideWidth;
+			if (availableSpace < 0) {
+				break;
+			}
+			fullSlidesShownInViewport++;
+		}
+		console.log({
+			fullSlidesShownInViewport,
+			slideWidth,
+			slideGap,
+			containerWidth: this.carouselSlides.getBoundingClientRect().width,
+		});
 		return { slideCount, slideWidth, slideGap, fullSlidesShownInViewport };
 	}
 

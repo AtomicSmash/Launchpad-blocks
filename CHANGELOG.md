@@ -1,5 +1,16 @@
 # @atomicsmash/launchpad-blocks
 
+## 6.1.1
+
+### Patch Changes
+
+- 1862d71: Only load touch events if the carousel needs them
+- 5f47db8: Fix slide swipe indication when multiple slides are shown at once
+- 778e459: Fix issue with end slides not resetting position after slide change
+- 19ff3ee: Account for slide gaps in full slides shown calculation
+- 19ff3ee: Use a more precise measurement for slide width and container width
+- 8bfc1fb: reset action to take after slide to prevent clicks advancing slides
+
 ## 6.1.0
 
 ### Minor Changes
