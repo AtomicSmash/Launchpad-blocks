@@ -280,12 +280,6 @@ export class Carousel {
 			}
 			fullSlidesShownInViewport++;
 		}
-		console.log({
-			fullSlidesShownInViewport,
-			slideWidth,
-			slideGap,
-			containerWidth: this.carouselSlides.getBoundingClientRect().width,
-		});
 		return { slideCount, slideWidth, slideGap, fullSlidesShownInViewport };
 	}
 

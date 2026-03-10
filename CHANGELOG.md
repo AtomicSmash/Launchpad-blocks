@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 6.1.3
+
+### Patch Changes
+
+- 306ad6e: Remove debugging console.log
+
 ## 6.1.2
 
 ### Patch Changes
