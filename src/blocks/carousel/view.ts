@@ -133,13 +133,6 @@ export class Carousel {
 	}
 
 	handleTouchStart(event: TouchEvent) {
-		// If the user makes simultaneous touches, the browser will fire a
-		// separate touchstart event for each touch point. Thus if there are
-		// three simultaneous touches, the first touchstart event will have
-		// targetTouches length of one, the second event will have a length
-		// of two, and so on.
-		event.preventDefault();
-
 		// Only process if it's a single finger swipe
 		if (event.targetTouches.length === 1) {
 			this.touchPointCache.push(event.targetTouches[0]!);
@@ -147,13 +140,6 @@ export class Carousel {
 	}
 
 	handleTouchMove(event: TouchEvent) {
-		// If the user makes simultaneous touches, the browser will fire a
-		// separate touchstart event for each touch point. Thus if there are
-		// three simultaneous touches, the first touchstart event will have
-		// targetTouches length of one, the second event will have a length
-		// of two, and so on.
-		event.preventDefault();
-
 		if (event.targetTouches.length === 1 && event.changedTouches.length === 1) {
 			const touchPointOriginalPosition = this.touchPointCache[0];
 			if (!touchPointOriginalPosition) {
@@ -210,13 +196,6 @@ export class Carousel {
 	}
 
 	handleTouchEnd(event: TouchEvent) {
-		// If the user makes simultaneous touches, the browser will fire a
-		// separate touchstart event for each touch point. Thus if there are
-		// three simultaneous touches, the first touchstart event will have
-		// targetTouches length of one, the second event will have a length
-		// of two, and so on.
-		event.preventDefault();
-
 		if (event.targetTouches.length === 0) {
 			this.touchPointCache.length = 0;
 

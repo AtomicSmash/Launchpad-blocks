@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 6.1.4
+
+### Patch Changes
+
+- 926f326: Prevent carousel from blocking touch inputs other than swipe (like tap)
+
 ## 6.1.3
 
 ### Patch Changes
