@@ -11,10 +11,25 @@
 		width: var(--icon-size, 2rem);
 		height: var(--icon-size, 2rem);
 		color: var(--icon-colour, inherit);
+		display: flex;
 
 		svg {
 			width: 100%;
 			height: 100%;
+		}
+	}
+
+	&#{&} {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin: 0;
+			font: inherit;
+			letter-spacing: inherit;
+			color: inherit;
 		}
 	}
 }

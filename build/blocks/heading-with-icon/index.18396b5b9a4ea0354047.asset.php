@@ -10,8 +10,7 @@
 		'wp-element',
 		'wp-hooks',
 		'wp-i18n',
-		'wp-primitives',
-		'wp-token-list'
+		'wp-primitives'
 	),
-	'version' => '489c11803d30f8c3704d'
+	'version' => '18396b5b9a4ea0354047'
 );

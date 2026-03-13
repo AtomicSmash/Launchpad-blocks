@@ -1,5 +1,15 @@
 # @atomicsmash/launchpad-blocks
 
+## 7.0.0
+
+### Major Changes
+
+- 60b000b: [heading with icon] Inherit font styles instead of passing down class
+
+### Patch Changes
+
+- b5b3340: [heading with icon] Align the icon with the heading correctly
+
 ## 6.1.4
 
 ### Patch Changes

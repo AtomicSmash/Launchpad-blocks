@@ -1524,13 +1524,13 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.489c11803d30f8c3704d.js'
+			'file:./index.18396b5b9a4ea0354047.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
 		),
 		'style' => array(
-			'file:./style.305471dc35fdfc2c3e14.css'
+			'file:./style.6cf3f921a9286ef80a62.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.31d6cfe0d16ae931b73c.css'
