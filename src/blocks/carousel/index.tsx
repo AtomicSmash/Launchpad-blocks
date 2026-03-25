@@ -1,4 +1,4 @@
-import type { Attributes } from "./attributes";
+import type { Attributes, InterpretedAttributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
 import type { Supports } from "./supports";
 import { registerBlockType, registerBlockVariation } from "@wordpress/blocks";
@@ -31,5 +31,5 @@ registerLaunchpadBlocksCollection();
  * We register block registrations using the JS function so we can support JSX for icons and functions for isActive.
  */
 variations.forEach((variation) => {
-	registerBlockVariation(blockMetaData.name, variation);
+	registerBlockVariation<InterpretedAttributes>(blockMetaData.name, variation);
 });

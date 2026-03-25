@@ -13,7 +13,7 @@ class GalleryCarousel {
 		this.carousel = carousel;
 
 		const lightbox = carousel.querySelector<HTMLDialogElement>(
-			"dialog[data-lightbox]",
+			"dialog[data-launchpad-lightbox]",
 		);
 		if (!lightbox) {
 			return;

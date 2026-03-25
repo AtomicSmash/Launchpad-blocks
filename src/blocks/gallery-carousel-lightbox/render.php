@@ -32,13 +32,13 @@ $lightbox_close_icon_function = apply_filters(
 );
 
 ?>
-<dialog 
+<dialog
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
 			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
-			'data-lightbox' => '',
+			'data-launchpad-lightbox' => '',
 		)
 	)
 );

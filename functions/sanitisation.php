@@ -68,6 +68,7 @@ add_filter(
 			'class' => true,
 			'style' => true,
 			'data-*' => true,
+			'id' => true,
 		);
 		return $tags;
 	},

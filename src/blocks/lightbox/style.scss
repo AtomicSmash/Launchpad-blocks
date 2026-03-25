@@ -1,0 +1,72 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+:where(button.reset) {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+.wp-block-launchpad-blocks-lightbox {
+	opacity: 0;
+	transition:
+		opacity 0.4s ease-in-out,
+		overlay 0.4s ease-out allow-discrete,
+		display 0.4s ease-out allow-discrete;
+	margin: 0;
+	border: 0;
+	height: 100%;
+	width: 100%;
+	max-width: none;
+	max-height: none;
+	place-items: center;
+
+	&::backdrop {
+		background-color: transparent;
+		transition:
+			display 0.7s allow-discrete,
+			overlay 0.7s allow-discrete,
+			background-color 0.7s;
+	}
+
+	// Using [open] instead of :open for browser compat. Future syntax would be :open.
+	&[open] {
+		display: grid;
+		opacity: 1;
+
+		@starting-style {
+			opacity: 0;
+		}
+
+		&::backdrop {
+			background-color: inherit;
+
+			@starting-style {
+				background-color: transparent;
+			}
+		}
+	}
+
+	.lightbox-close-button {
+		width: 2rem;
+		height: 2rem;
+		margin-inline: auto 0;
+		display: block;
+		margin-block-end: 1rem;
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	> * {
+		max-width: max(80%, 350px);
+	}
+}

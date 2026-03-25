@@ -74,7 +74,7 @@ foreach ( $carousel_images as $carousel_image ) :
 	<li>
 		<?php
 		if ( $block->context['launchpad-blocks/shouldLinkSlidesToLightbox'] ) {
-			echo wp_kses_post( '<button type="button" class="reset" data-lightbox-open-button data-jump-to-slide="' . $i . '" aria-label="Open lightbox at slide ' . ( $i + 1 ) . '">' . $carousel_image . '</button>' );
+			echo wp_kses_post( '<button type="button" class="reset lightbox-trigger-button" data-lightbox-open-button data-jump-to-slide="' . $i . '" aria-label="Open lightbox at slide ' . ( $i + 1 ) . '">' . $carousel_image . '</button>' );
 		} else {
 			echo wp_kses_post( $carousel_image );
 		}

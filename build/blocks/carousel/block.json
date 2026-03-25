@@ -11,20 +11,21 @@
     "launchpad-blocks/carousel-thumbnails",
     "launchpad-blocks/carousel-navigation-arrows",
     "launchpad-blocks/carousel-dots",
-    "launchpad-blocks/carousel-slide-count"
+    "launchpad-blocks/carousel-slide-count",
+    "launchpad-blocks/lightbox"
   ],
   "keywords": [],
   "editorScript": [
-    "file:./index.6dd60b6f91deef47d15a.js"
+    "file:./index.7c2c0a57bcfe4de84c59.js"
   ],
   "viewScript": [
-    "file:./view.b925ca50480ae46e2af2.js"
+    "file:./view.e8ed4fdadb16310cb687.js"
   ],
   "style": [
-    "file:./style.fc4cbcf00e66d7349912.css"
+    "file:./style.5937b3f73d5b5467699f.css"
   ],
   "editorStyle": [
-    "file:./editor-style.31d6cfe0d16ae931b73c.css"
+    "file:./editor-style.0a5bdf3918ad24a387e1.css"
   ],
   "render": "file:./render.php",
   "attributes": {

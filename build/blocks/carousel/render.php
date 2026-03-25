@@ -25,7 +25,7 @@ $content = $content;
 $block = $block;
 
 ?>
-<div 
+<div
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
@@ -33,6 +33,7 @@ echo wp_kses_data(
 			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
 			'data-launchpad-carousel' => '',
 			'data-loop' => $attributes['shouldLoop'] ? 'true' : 'false',
+			'data-has-lightbox' => $attributes['shouldLinkSlidesToLightbox'] ? 'true' : 'false',
 		)
 	)
 );

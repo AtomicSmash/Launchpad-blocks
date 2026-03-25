@@ -1,5 +1,17 @@
 # @atomicsmash/launchpad-blocks
 
+## 8.0.0
+
+### Major Changes
+
+- e0ce6aa: Remove public carousel block variations in favour of guided selection UI
+- 8b2bf48: Change specificity of gallery with lightbox styling for lightbox close button so it only targets the gallery carousel block
+- 8b2bf48: Change data attribute for gallery lightbox from data-lightbox to data-launchpad-lightbox to avoid conflicts
+
+### Minor Changes
+
+- 8b2bf48: Add new carousel with lightbox variations
+
 ## 7.0.0
 
 ### Major Changes

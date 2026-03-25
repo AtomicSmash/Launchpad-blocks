@@ -223,7 +223,7 @@
 			'icon'
 		),
 		'editorScript' => array(
-			'file:./index.37feb2a3ecb6f78725ae.js'
+			'file:./index.324885c9f6363f5d19ca.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -327,22 +327,23 @@
 			'launchpad-blocks/carousel-thumbnails',
 			'launchpad-blocks/carousel-navigation-arrows',
 			'launchpad-blocks/carousel-dots',
-			'launchpad-blocks/carousel-slide-count'
+			'launchpad-blocks/carousel-slide-count',
+			'launchpad-blocks/lightbox'
 		),
 		'keywords' => array(
 			
 		),
 		'editorScript' => array(
-			'file:./index.6dd60b6f91deef47d15a.js'
+			'file:./index.7c2c0a57bcfe4de84c59.js'
 		),
 		'viewScript' => array(
-			'file:./view.b925ca50480ae46e2af2.js'
+			'file:./view.e8ed4fdadb16310cb687.js'
 		),
 		'style' => array(
-			'file:./style.fc4cbcf00e66d7349912.css'
+			'file:./style.5937b3f73d5b5467699f.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-style.31d6cfe0d16ae931b73c.css'
+			'file:./editor-style.0a5bdf3918ad24a387e1.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -665,7 +666,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.6e264e4d8aae9f484e49.js'
+			'file:./index.5b1d368afb952f394fa8.js'
 		),
 		'viewScript' => array(
 			'file:./view.d0200a7733dc820c05b0.js'
@@ -1164,7 +1165,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.b452d8f2b1f162e5d672.js'
+			'file:./index.643e122b97df4247a9c6.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -1216,7 +1217,7 @@
 			'file:./index.8e1afaea89a8d68fecc5.js'
 		),
 		'viewScript' => array(
-			'file:./view.4f3369543da36ee2e0b8.js'
+			'file:./view.5eba0c9d88efe1efc95b.js'
 		),
 		'style' => array(
 			'file:./style.f01f216d67532d72c114.css'
@@ -1400,13 +1401,13 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.4d6f20b5167d82083d27.js'
+			'file:./index.22ca94e22a77f77780f8.js'
 		),
 		'viewScript' => array(
-			'file:./view.395c56406b1edefd4d81.js'
+			'file:./view.76dd51c1e01173229ac2.js'
 		),
 		'style' => array(
-			'file:./style.bbe6a4b0549fe713dd9a.css'
+			'file:./style.8c6ad91f9ad9a0f3b034.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.6d12dae4699a963e1ebb.css'
@@ -1524,7 +1525,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.18396b5b9a4ea0354047.js'
+			'file:./index.a2055141f4998576ee2e.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -1629,7 +1630,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.926018614e3621096d6a.js'
+			'file:./index.66d5cb8202135a48d9ee.js'
 		),
 		'style' => array(
 			'file:./style.882d6e08e1cd7fcaee37.css'
@@ -1662,6 +1663,59 @@
 				'iconName' => 'accordion-arrow',
 				'size' => '2rem'
 			)
+		)
+	),
+	'blocks/lightbox' => array(
+		'apiVersion' => 3,
+		'name' => 'launchpad-blocks/lightbox',
+		'title' => 'Lightbox',
+		'category' => 'theme',
+		'description' => '',
+		'textdomain' => 'launchpad-blocks',
+		'keywords' => array(
+			
+		),
+		'editorScript' => array(
+			'file:./index.15de9aa301af9945bc69.js'
+		),
+		'style' => array(
+			'file:./style.3a8e74bf47469dcc4724.css'
+		),
+		'editorStyle' => array(
+			'file:./editor-style.5bb7b6c4c1e0bd81f2bd.css'
+		),
+		'render' => 'file:./render.php',
+		'attributes' => array(
+			'iconName' => array(
+				'type' => 'string',
+				'role' => 'content',
+				'default' => 'menu-close-icon'
+			),
+			'library' => array(
+				'type' => 'string',
+				'role' => 'content',
+				'default' => 'launchpad-blocks'
+			),
+			'backgroundColor' => array(
+				'type' => 'string',
+				'default' => 'white'
+			)
+		),
+		'providesContext' => array(
+			
+		),
+		'usesContext' => array(
+			
+		),
+		'supports' => array(
+			'color' => array(
+				'background' => true,
+				'text' => false
+			)
+		),
+		'parent' => array(
+			'launchpad-blocks/carousel',
+			'launchpad-blocks/gallery-carousel'
 		)
 	),
 	'blocks/logo-banner' => array(
@@ -2252,7 +2306,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.f2b4cc1703bae889042f.js'
+			'file:./index.9ed139b2535ccae7afbb.js'
 		),
 		'style' => array(
 			'file:./style.56104d9460ccbad83033.css'

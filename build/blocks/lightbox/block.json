@@ -1,0 +1,47 @@
+{
+  "apiVersion": 3,
+  "name": "launchpad-blocks/lightbox",
+  "title": "Lightbox",
+  "category": "theme",
+  "description": "",
+  "textdomain": "launchpad-blocks",
+  "keywords": [],
+  "editorScript": [
+    "file:./index.15de9aa301af9945bc69.js"
+  ],
+  "style": [
+    "file:./style.3a8e74bf47469dcc4724.css"
+  ],
+  "editorStyle": [
+    "file:./editor-style.5bb7b6c4c1e0bd81f2bd.css"
+  ],
+  "render": "file:./render.php",
+  "attributes": {
+    "iconName": {
+      "type": "string",
+      "role": "content",
+      "default": "menu-close-icon"
+    },
+    "library": {
+      "type": "string",
+      "role": "content",
+      "default": "launchpad-blocks"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "white"
+    }
+  },
+  "providesContext": {},
+  "usesContext": [],
+  "supports": {
+    "color": {
+      "background": true,
+      "text": false
+    }
+  },
+  "parent": [
+    "launchpad-blocks/carousel",
+    "launchpad-blocks/gallery-carousel"
+  ]
+}

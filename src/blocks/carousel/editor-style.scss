@@ -1,3 +1,41 @@
 /**
  * The following styles get applied inside the editor only.
  */
+
+.block-editor-block-variation-picker__variations
+	> li:has(.block-editor-block-variation-picker__variation--wide) {
+	flex-direction: row;
+	flex: 1 0 min(100%, 18rem);
+}
+
+.block-editor-block-variation-picker__variation--wide {
+	display: flex;
+	gap: 0.5rem;
+	color: #1e1e1e !important;
+	padding: 0.25rem !important;
+	height: auto !important;
+	width: 100%;
+	justify-content: flex-start !important;
+
+	&#{&} {
+		svg {
+			fill: #949494 !important;
+			color: #949494 !important;
+		}
+
+		&:hover {
+			background-color: #eee !important;
+
+			svg {
+				fill: inherit !important;
+				color: inherit !important;
+			}
+		}
+	}
+}
+
+.block-editor-block-variation-picker__variation-text-group {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}

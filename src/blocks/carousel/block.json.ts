@@ -19,6 +19,7 @@ export const blockJson = {
 		"launchpad-blocks/carousel-navigation-arrows",
 		"launchpad-blocks/carousel-dots",
 		"launchpad-blocks/carousel-slide-count",
+		"launchpad-blocks/lightbox",
 	],
 	keywords: [],
 	editorScript: "file:./index.tsx",

@@ -1,6 +1,7 @@
 import domReady from "@wordpress/dom-ready";
 import { doAction, addAction, applyFilters } from "@wordpress/hooks";
 import { getPixelNumber } from "@launchpadBlocks/helpers";
+import { Lightbox } from "@launchpadBlocks/lightbox/view";
 
 addAction(
 	"launchpadBlocks.carousel.resize",
@@ -41,6 +42,7 @@ export class Carousel {
 	public fullSlidesShownInViewport: number;
 	public currentSlide: number;
 	public loop: boolean;
+	public hasLightbox: boolean;
 	private debounceResizeTimeout: undefined | ReturnType<typeof setTimeout> =
 		undefined;
 	public controls: HTMLElement[] = [];
@@ -50,6 +52,7 @@ export class Carousel {
 	constructor(carousel: HTMLDivElement) {
 		this.carousel = carousel;
 		this.loop = this.carousel.dataset.loop === "true";
+		this.hasLightbox = this.carousel.dataset.hasLightbox === "true";
 		this.currentSlide = 0;
 		const carouselLiveRegion = carousel.querySelector<HTMLDivElement>(
 			"div[data-carousel-live-region]",
@@ -92,6 +95,7 @@ export class Carousel {
 		);
 		this.showOrHideControls();
 		this.addOrRemoveTouchEvents();
+		this.initLightbox();
 		window.addEventListener("resize", () => {
 			clearTimeout(this.debounceResizeTimeout);
 			this.debounceResizeTimeout = setTimeout(() => {
@@ -306,6 +310,41 @@ export class Carousel {
 		}
 		this.goToSlide(nextSlide, instant);
 	}
+
+	initLightbox() {
+		if (!this.hasLightbox) {
+			return;
+		}
+		const lightboxElement = this.carousel.querySelector<HTMLDialogElement>(
+			"dialog[data-launchpad-lightbox]",
+		);
+		if (!lightboxElement) {
+			console.error(
+				"Failed to find the lightbox on the carousel. Lightbox functionality unavailable.",
+			);
+			return;
+		}
+		const lightbox = new Lightbox(lightboxElement);
+		const carouselElement = lightboxElement.querySelector<HTMLDivElement>(
+			"[data-launchpad-carousel]",
+		);
+		if (carouselElement) {
+			this.carouselSlides
+				.querySelectorAll<HTMLButtonElement>(
+					"button[data-lightbox-open-button]",
+				)
+				.forEach((button) => {
+					button.addEventListener("click", (event) => {
+						if (event.target instanceof HTMLAnchorElement) {
+							return;
+						}
+						lightbox.open();
+						const carousel = new Carousel(carouselElement);
+						carousel.goToSlide(Number(button.dataset.jumpToSlide), true);
+					});
+				});
+		}
+	}
 }
 
 export type CarouselInstance = InstanceType<typeof Carousel>;
@@ -315,7 +354,7 @@ domReady(() => {
 		"[data-launchpad-carousel]",
 	);
 	for (const carousel of carousels) {
-		if (carousel.parentElement?.dataset.lightbox === "") {
+		if (carousel.parentElement?.dataset.launchpadLightbox === "") {
 			// Don't try and initialise carousels in lightboxes, they're hidden on load so it won't work.
 			continue;
 		}

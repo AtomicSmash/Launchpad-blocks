@@ -35,7 +35,7 @@ export function Edit({ clientId, isSelected }: BlockEditProps) {
 
 	const blockProps = useBlockProps({
 		hidden: !isLightboxOpen,
-		"data-lightbox": "",
+		"data-launchpad-lightbox": "",
 	});
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(blockProps, {
 		template: [

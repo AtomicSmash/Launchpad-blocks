@@ -180,6 +180,9 @@ export const iconMetaData = {
 		title: __("Chevron up", "launchpad-blocks"),
 		makeAvailableToUser: true,
 	},
+	lightbox: {
+		title: __("Lightbox", "launchpad-blocks"),
+	},
 } as const satisfies IconMetaData;
 export type IconNames = keyof typeof iconMetaData;
 
