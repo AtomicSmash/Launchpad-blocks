@@ -4,6 +4,10 @@
 
 export class Lightbox {
 	public lightbox: HTMLDialogElement;
+	public linkedInstances: Record<
+		string,
+		InstanceType<abstract new (...args: unknown[]) => unknown>
+	> = {};
 
 	constructor(lightbox: HTMLDialogElement) {
 		this.lightbox = lightbox;

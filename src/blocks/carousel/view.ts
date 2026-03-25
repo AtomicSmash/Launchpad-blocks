@@ -97,6 +97,14 @@ export class Carousel {
 		this.addOrRemoveTouchEvents();
 		this.initLightbox();
 		window.addEventListener("resize", () => {
+			if (
+				carousel.parentElement?.dataset.launchpadLightbox === "" &&
+				carousel.parentElement instanceof HTMLDialogElement &&
+				!carousel.parentElement.open
+			) {
+				// Don't try and resize carousels in closed lightboxes, they're hidden so it won't work.
+				return;
+			}
 			clearTimeout(this.debounceResizeTimeout);
 			this.debounceResizeTimeout = setTimeout(() => {
 				doAction("launchpadBlocks.carousel.resize", this);
@@ -339,7 +347,13 @@ export class Carousel {
 							return;
 						}
 						lightbox.open();
-						const carousel = new Carousel(carouselElement);
+						if (!("carousel" in lightbox.linkedInstances)) {
+							const carousel = new Carousel(carouselElement);
+							lightbox.linkedInstances.carousel = carousel;
+						}
+						const carousel = lightbox.linkedInstances
+							.carousel as CarouselInstance;
+						doAction("launchpadBlocks.carousel.resize", carousel); // Run resize in case screen was resized while it was closed.
 						carousel.goToSlide(Number(button.dataset.jumpToSlide), true);
 					});
 				});

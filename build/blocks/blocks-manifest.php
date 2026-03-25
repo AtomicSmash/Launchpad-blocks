@@ -337,10 +337,10 @@
 			'file:./index.7c2c0a57bcfe4de84c59.js'
 		),
 		'viewScript' => array(
-			'file:./view.e8ed4fdadb16310cb687.js'
+			'file:./view.d2d4612ccc9ebb8bf652.js'
 		),
 		'style' => array(
-			'file:./style.5937b3f73d5b5467699f.css'
+			'file:./style.6a7215f459d869705e87.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.0a5bdf3918ad24a387e1.css'
@@ -1217,7 +1217,7 @@
 			'file:./index.8e1afaea89a8d68fecc5.js'
 		),
 		'viewScript' => array(
-			'file:./view.5eba0c9d88efe1efc95b.js'
+			'file:./view.2f0214fe842297536e16.js'
 		),
 		'style' => array(
 			'file:./style.f01f216d67532d72c114.css'
@@ -1404,7 +1404,7 @@
 			'file:./index.22ca94e22a77f77780f8.js'
 		),
 		'viewScript' => array(
-			'file:./view.76dd51c1e01173229ac2.js'
+			'file:./view.74d1b54b3842529ab35d.js'
 		),
 		'style' => array(
 			'file:./style.8c6ad91f9ad9a0f3b034.css'

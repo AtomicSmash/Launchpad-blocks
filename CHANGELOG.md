@@ -1,5 +1,16 @@
 # @atomicsmash/launchpad-blocks
 
+## 8.1.0
+
+### Minor Changes
+
+- 3cf09ab: Add way to link classes of child code to lightbox for future reference/use
+
+### Patch Changes
+
+- 3cf09ab: Prevent carousel resizing in a closed lightbox which threw a fatal error, resize on open of lightbox to catch up if needed.
+- c343b94: Match lightbox trigger buttons height to parent element so images fit correctly in carousel
+
 ## 8.0.0
 
 ### Major Changes
