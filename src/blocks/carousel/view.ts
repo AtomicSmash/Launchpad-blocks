@@ -347,14 +347,16 @@ export class Carousel {
 							return;
 						}
 						lightbox.open();
-						if (!("carousel" in lightbox.linkedInstances)) {
-							const carousel = new Carousel(carouselElement);
-							lightbox.linkedInstances.carousel = carousel;
-						}
-						const carousel = lightbox.linkedInstances
-							.carousel as CarouselInstance;
-						doAction("launchpadBlocks.carousel.resize", carousel); // Run resize in case screen was resized while it was closed.
-						carousel.goToSlide(Number(button.dataset.jumpToSlide), true);
+						window.setTimeout(() => {
+							if (!("carousel" in lightbox.linkedInstances)) {
+								const carousel = new Carousel(carouselElement);
+								lightbox.linkedInstances.carousel = carousel;
+							}
+							const carousel = lightbox.linkedInstances
+								.carousel as CarouselInstance;
+							doAction("launchpadBlocks.carousel.resize", carousel); // Run resize in case screen was resized while it was closed.
+							carousel.goToSlide(Number(button.dataset.jumpToSlide), true);
+						}, 100);
 					});
 				});
 		}

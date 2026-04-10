@@ -13,7 +13,7 @@
 .wp-block-launchpad-blocks-lightbox {
 	opacity: 0;
 	transition:
-		opacity 0.4s ease-in-out,
+		opacity 0.3s ease-in-out 0.1s,
 		overlay 0.4s ease-out allow-discrete,
 		display 0.4s ease-out allow-discrete;
 	margin: 0;
@@ -23,6 +23,10 @@
 	max-width: none;
 	max-height: none;
 	place-items: center;
+
+	// Technically these two are added by user agent stylesheets, and therefore feel redundant, however this fixes some animations on safari.
+	position: fixed;
+	inset: 0;
 
 	&::backdrop {
 		background-color: transparent;

@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 8.1.1
+
+### Patch Changes
+
+- 76cb2ca: Fix carousel not initialising correctly within the lightbox in safari
+
 ## 8.1.0
 
 ### Minor Changes
