@@ -7,6 +7,7 @@ import type {
 import type {
 	TaxonomyTerm,
 	CoreStoreType,
+	NoticesStoreType,
 } from "@launchpadBlocks/helpers.editor";
 import type { Post, Page, User, Taxonomy } from "@wordpress/core-data";
 import type { ComponentPropsWithoutRef, Reducer } from "react";
@@ -32,8 +33,9 @@ import {
 } from "@wordpress/components";
 import { useInstanceId } from "@wordpress/compose";
 import { store as coreStore } from "@wordpress/core-data";
-import { useSelect, useSuspenseSelect } from "@wordpress/data";
-import { __ } from "@wordpress/i18n";
+import { useSelect, useSuspenseSelect, useDispatch } from "@wordpress/data";
+import { __, sprintf } from "@wordpress/i18n";
+import { store as noticesStore } from "@wordpress/notices";
 import { useReducer, useState, useEffect, Suspense, useMemo } from "react";
 import {
 	usePostTypes,
@@ -89,7 +91,58 @@ export function Edit({
 		layout,
 		shouldExcludeCurrentPost,
 		hasDismissedVariationsSelector,
+		metadata,
 	} = attributes;
+	const { createNotice, removeNotice } = useDispatch(
+		noticesStore,
+	) as NoticesStoreType;
+	const postsWithError = useSuspenseSelect(
+		(select) => {
+			const postsWithError: typeof selectedPosts = [];
+			const { getEntityRecord } = select(coreStore) as CoreStoreType;
+			for (const selectedPost of selectedPosts) {
+				try {
+					getEntityRecord<Page<"view"> | Post<"view">>(
+						"postType",
+						selectedPost.postType,
+						selectedPost.id,
+					);
+				} catch (error) {
+					if (error instanceof Response && !error.ok) {
+						postsWithError.push(selectedPost);
+					}
+				}
+			}
+
+			return postsWithError;
+		},
+		[selectedPosts],
+	);
+
+	if (postsWithError.length) {
+		createNotice(
+			"error",
+			sprintf(
+				// translators: %1$s: The amount of erroneous posts in the list, %2$s: The block name.
+				__(
+					`%1$s of your selected posts in %2$s is missing. It may have been deleted. Please remove it from the selected posts list in the block settings in the sidebar.`,
+					"launchpad-blocks",
+				),
+				`${postsWithError.length}`,
+				metadata?.name ?? blockJson.title,
+			),
+			{
+				explicitDismiss: true,
+				id: `failed-to-find-post-${clientId}`,
+			},
+		).catch(() => {
+			/* Do nothing */
+		});
+	} else {
+		removeNotice(`failed-to-find-post-${clientId}`).catch(() => {
+			/* Do nothing */
+		});
+	}
 
 	let timeout: NodeJS.Timeout;
 
@@ -289,13 +342,20 @@ export function Edit({
 				) : null}
 			</InspectorControls>
 			{hasChildren || hasDismissedVariationsSelector ? (
-				<Suspense fallback="Loading...">
-					<PostsInnerBlocks
-						clientId={clientId}
-						attributes={attributes}
-						context={context}
-					/>
-				</Suspense>
+				postsWithError.length ? (
+					<div {...blockProps}>
+						Failed to load posts due to list issue. Please resolve this list
+						issue to render the block.
+					</div>
+				) : (
+					<Suspense fallback="Loading...">
+						<PostsInnerBlocks
+							clientId={clientId}
+							attributes={attributes}
+							context={context}
+						/>
+					</Suspense>
+				)
 			) : (
 				<div {...blockProps}>
 					<VariationSelect
@@ -329,33 +389,51 @@ function SelectedPostsList({
 
 	const selectedPostsData = useSuspenseSelect(
 		(select) => {
-			const selectedPostsObjects: (Page<"view"> | Post<"view">)[] = [];
+			const selectedPostsObjects: {
+				id: number;
+				postType: string;
+				title: string;
+				icon?: string | undefined;
+			}[] = [];
+			const postTypeIcons: Record<string, string | undefined> = {};
 			for (const selectedPost of selectedPosts) {
-				const postData = (select(coreStore) as CoreStoreType).getEntityRecord<
-					Page<"view"> | Post<"view">
-				>("postType", selectedPost.postType, selectedPost.id);
-				if (postData !== undefined) {
-					selectedPostsObjects.push(postData);
+				try {
+					const postData = (select(coreStore) as CoreStoreType).getEntityRecord<
+						Page<"view"> | Post<"view">
+					>("postType", selectedPost.postType, selectedPost.id);
+					if (postData !== undefined) {
+						postTypeIcons[postData.type] ??=
+							filteredPostTypes?.find(
+								(postType) => postType.slug === postData.type,
+							)?.icon ?? undefined;
+						const icon = postTypeIcons[postData.type];
+						selectedPostsObjects.push({
+							id: postData.id,
+							postType: postData.type,
+							title: postData.title.rendered ?? "",
+							icon: icon,
+						});
+					}
+				} catch {
+					selectedPostsObjects.push({
+						id: Number(selectedPost.id),
+						postType: selectedPost.postType,
+						title: `MISSING (id:${selectedPost.id}, type:${selectedPost.postType})`,
+						icon: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%23cc1818'%3E%3Cpath d='m40-120 440-760 440 760H40Zm138-80h604L480-720 178-200Zm330.5-51.5Q520-263 520-280t-11.5-28.5Q497-320 480-320t-28.5 11.5Q440-297 440-280t11.5 28.5Q463-240 480-240t28.5-11.5ZM440-360h80v-200h-80v200Zm40-100Z'/%3E%3C/svg%3E`,
+					});
 				}
 			}
 
 			return selectedPostsObjects;
 		},
-		[selectedPosts],
+		[filteredPostTypes, selectedPosts],
 	);
 
 	return (
 		<DraggableList
-			list={selectedPosts.map((selectedPost) => ({
+			list={selectedPostsData.map((selectedPost) => ({
 				...selectedPost,
-				title:
-					selectedPostsData.find(
-						(foundPost) => foundPost.id === Number(selectedPost.id),
-					)?.title.rendered ?? "",
-				icon:
-					filteredPostTypes?.find(
-						(postType) => postType.slug === selectedPost.postType,
-					)?.icon ?? undefined,
+				id: `${selectedPost.id}`,
 			}))}
 			updateListCallback={updateSelectedPosts}
 		/>
@@ -1169,11 +1247,16 @@ function PostsInnerBlocks({
 		(select) => {
 			const selectedPostsObjects: (Page<"view"> | Post<"view">)[] = [];
 			for (const selectedPost of selectedPosts) {
-				const postData = (select(coreStore) as CoreStoreType).getEntityRecord<
-					Page<"view"> | Post<"view">
-				>("postType", selectedPost.postType, selectedPost.id);
-				if (postData !== undefined) {
-					selectedPostsObjects.push(postData);
+				try {
+					const postData = (select(coreStore) as CoreStoreType).getEntityRecord<
+						Page<"view"> | Post<"view">
+					>("postType", selectedPost.postType, selectedPost.id);
+					if (postData !== undefined) {
+						selectedPostsObjects.push(postData);
+					}
+				} catch {
+					// Posts won't render if there's an error with the list.
+					continue;
 				}
 			}
 

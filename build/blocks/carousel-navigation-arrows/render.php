@@ -54,7 +54,7 @@ echo wp_kses_data(
 ?>
 >
 	<div class="carousel-navigation-arrows-container">
-		<button class="carousel-navigation-button" data-carousel-prev-slide aria-label="<?php echo esc_attr( $attributes['prevText'] ); ?>">
+		<button class="carousel-navigation-button<?php echo esc_attr( $attributes['shouldShowTextVisually'] ? ' has-text' : '' ); ?>" data-carousel-prev-slide aria-label="<?php echo esc_attr( $attributes['prevText'] ); ?>">
 			<?php
 			echo $has_prev_icon ? wp_kses_post( $icon_renderers[ $attributes['prevIcon']['library'] ]( $attributes['prevIcon']['iconName'], array( 'class' => 'carousel-navigation-button-icon' ) ) ) : '';
 			if ( $attributes['shouldShowTextVisually'] ) {
@@ -65,7 +65,7 @@ echo wp_kses_data(
 		<div class="carousel-navigation-inner-area">
 			<?php echo wp_kses_post( $content ); ?>
 		</div>
-		<button class="carousel-navigation-button" data-carousel-next-slide aria-label="<?php echo esc_attr( $attributes['nextText'] ); ?>">
+		<button class="carousel-navigation-button<?php echo esc_attr( $attributes['shouldShowTextVisually'] ? ' has-text' : '' ); ?>" data-carousel-next-slide aria-label="<?php echo esc_attr( $attributes['nextText'] ); ?>">
 			<?php
 			if ( $attributes['shouldShowTextVisually'] ) {
 				echo wp_kses_post( $attributes['nextVisualText'] );

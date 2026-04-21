@@ -6,7 +6,7 @@
   "description": "Multiple sections of content collated together where only one is shown at a time.",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.14f8dd0416cdb8d64d6d.js"
+    "file:./index.a91258915ca7ff998a4a.js"
   ],
   "viewScript": [
     "file:./view.cbc752db1dfed12b9a5b.js"

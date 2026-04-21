@@ -625,8 +625,8 @@ export function CustomMultipleSelectList<
 	);
 }
 
-function isSVGData(string: string): string is `data:image/svg+xml;${string}` {
-	return 0 === string.indexOf("data:image/svg+xml;");
+function isSVGData(string: string): string is `data:image/svg+xml,${string}` {
+	return 0 === string.indexOf("data:image/svg+xml,");
 }
 function isSRCLink(
 	string: string,
@@ -647,7 +647,7 @@ export function WPMenuIcon({
 		| null
 		| "none"
 		| "div"
-		| `data:image/svg+xml;${string}`
+		| `data:image/svg+xml,${string}`
 		| `https://${string}`
 		| `http://${string}`
 		| `dashicons-${ComponentPropsWithoutRef<typeof DashIcon>["icon"]}`
@@ -667,7 +667,7 @@ export function WPMenuIcon({
 		return (
 			<div
 				className="menu-icon svg"
-				style={{ backgroundImage: `url('${iconString}')` }}
+				style={{ backgroundImage: `url("${iconString}")` }}
 				aria-hidden="true"
 			>
 				<br />

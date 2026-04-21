@@ -1,5 +1,16 @@
 # @atomicsmash/launchpad-blocks
 
+## 8.2.0
+
+### Minor Changes
+
+- a5fd07e: Add type library files on release of packages
+
+### Patch Changes
+
+- 8b79af2: add error handling for when a post gets deleted that's used in manual post select
+- 511c56c: Add missing class on frontend for when carousel nav arrows are showing text visually
+
 ## 8.1.1
 
 ### Patch Changes
