@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 9.0.0
+
+### Major Changes
+
+- f1b2be9: Fix accessibility issues with the nav list block, prevent all lists defaulting to "Primary navigation" label
+
 ## 8.2.2
 
 ### Patch Changes

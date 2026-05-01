@@ -15,7 +15,7 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.9bb3fa6fea99e4577597.js"
+    "file:./index.a7cca7952d7ba234a0a0.js"
   ],
   "style": [
     "file:./style.b1634d87d5a403979357.css"
@@ -31,7 +31,7 @@
     },
     "ariaLabel": {
       "type": "string",
-      "default": "Primary navigation"
+      "default": ""
     },
     "linkOrientation": {
       "type": "string",
@@ -99,6 +99,8 @@
   },
   "providesContext": {},
   "usesContext": [
-    "launchpad-blocks/isInSubMenu"
+    "launchpad-blocks/isInSubMenu",
+    "launchpad-blocks/navListContext",
+    "launchpad-blocks/navListContextLabelledBy"
   ]
 }

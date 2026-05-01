@@ -18,7 +18,7 @@ export declare const blockJson: {
         };
         readonly ariaLabel: {
             readonly type: "string";
-            readonly default: "Primary navigation";
+            readonly default: "";
         };
         readonly linkOrientation: {
             readonly type: "string";
@@ -54,7 +54,7 @@ export declare const blockJson: {
         })[];
     };
     providesContext: {};
-    usesContext: ["launchpad-blocks/isInSubMenu"];
+    usesContext: ["launchpad-blocks/isInSubMenu", "launchpad-blocks/navListContext", "launchpad-blocks/navListContextLabelledBy"];
 };
 export default blockJson;
 //# sourceMappingURL=block.json.d.ts.map

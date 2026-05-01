@@ -118,20 +118,23 @@ export function Edit({
 					</ToolbarGroup>
 				) : null}
 			</BlockControls>
-			<InspectorAdvancedControls>
-				<TextControl
-					label="Screen reader label"
-					help={
-						"Define how this navigation block will be described for users who can't see."
-					}
-					value={ariaLabel}
-					onChange={(newAriaLabel) => {
-						setAttributes({
-							ariaLabel: newAriaLabel,
-						});
-					}}
-				/>
-			</InspectorAdvancedControls>
+			{!isNestedInAnotherNavLink ? (
+				<InspectorAdvancedControls>
+					<TextControl
+						label="Screen reader label"
+						help={
+							"Define how this navigation block will be described for users who can't see. If not set, we'll attempt to use surrounding blocks to provide this information."
+						}
+						value={ariaLabel}
+						onChange={(newAriaLabel) => {
+							setAttributes({
+								ariaLabel: newAriaLabel,
+							});
+						}}
+					/>
+				</InspectorAdvancedControls>
+			) : null}
+
 			<NavListElement {...blockProps}>
 				<ul {...innerBlocksProps} />
 			</NavListElement>

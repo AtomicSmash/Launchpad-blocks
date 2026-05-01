@@ -2044,7 +2044,7 @@
 		),
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.49847c61d48d433a6f1a.js'
+			'file:./index.77ced799b5fd9425806c.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2095,10 +2095,14 @@
 					'_blank'
 				),
 				'default' => '_self'
+			),
+			'navListContextLabelledBy' => array(
+				'type' => 'string',
+				'default' => ''
 			)
 		),
 		'providesContext' => array(
-			
+			'launchpad-blocks/navListContextLabelledBy' => 'navListContextLabelledBy'
 		),
 		'usesContext' => array(
 			
@@ -2127,7 +2131,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.9bb3fa6fea99e4577597.js'
+			'file:./index.a7cca7952d7ba234a0a0.js'
 		),
 		'style' => array(
 			'file:./style.b1634d87d5a403979357.css'
@@ -2143,7 +2147,7 @@
 			),
 			'ariaLabel' => array(
 				'type' => 'string',
-				'default' => 'Primary navigation'
+				'default' => ''
 			),
 			'linkOrientation' => array(
 				'type' => 'string',
@@ -2219,7 +2223,9 @@
 			
 		),
 		'usesContext' => array(
-			'launchpad-blocks/isInSubMenu'
+			'launchpad-blocks/isInSubMenu',
+			'launchpad-blocks/navListContext',
+			'launchpad-blocks/navListContextLabelledBy'
 		)
 	),
 	'blocks/nav-menu-item' => array(
@@ -2404,7 +2410,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.c386114895679b14a0cb.js'
+			'file:./index.8d54aca4dc1ade3f4f96.js'
 		),
 		'viewScript' => array(
 			'file:./view.a8452537f5e4e073bc0d.js'
@@ -2419,6 +2425,10 @@
 		'attributes' => array(
 			'navId' => array(
 				'type' => 'string'
+			),
+			'navListContext' => array(
+				'type' => 'string',
+				'default' => 'Primary navigation'
 			)
 		),
 		'supports' => array(
@@ -2499,7 +2509,7 @@
 			)
 		),
 		'providesContext' => array(
-			
+			'launchpad-blocks/navListContext' => 'navListContext'
 		),
 		'usesContext' => array(
 			

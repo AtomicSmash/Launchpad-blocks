@@ -3,6 +3,7 @@ import type { InterpretedUsedContext } from "./context";
 import type { CreateBlockEditProps } from "@atomicsmash/blocks-helpers";
 import {
 	BlockControls,
+	InspectorAdvancedControls,
 	LinkControl,
 	RichText,
 	useBlockProps,
@@ -11,7 +12,10 @@ import {
 import { Popover, ToolbarButton, ToolbarGroup } from "@wordpress/components";
 import { link } from "@wordpress/icons";
 import { useMemo, useState } from "react";
-import { HeadingLevelSelect } from "@launchpadBlocks/helpers.editor";
+import {
+	HeadingLevelSelect,
+	useUniqueBlockId,
+} from "@launchpadBlocks/helpers.editor";
 import { attributes as definedAttributeOptions } from "./attributes";
 
 export type BlockEditProps = CreateBlockEditProps<
@@ -20,7 +24,13 @@ export type BlockEditProps = CreateBlockEditProps<
 >;
 
 export function Edit({ attributes, setAttributes, clientId }: BlockEditProps) {
-	const { linkHref, linkTarget, headerElement, headerContent } = attributes;
+	const {
+		linkHref,
+		linkTarget,
+		headerElement,
+		headerContent,
+		navListContextLabelledBy,
+	} = attributes;
 	const [shouldShowLinkPopover, setShouldShowLinkPopover] = useState(false);
 	const blockProps = useBlockProps();
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(blockProps, {
@@ -41,6 +51,14 @@ export function Edit({ attributes, setAttributes, clientId }: BlockEditProps) {
 			title: headerContent,
 		}),
 		[linkHref, linkTarget, headerContent],
+	);
+
+	const NavListContextLabelledByEditControl = useUniqueBlockId(
+		attributes,
+		"navListContextLabelledBy",
+		clientId,
+		setAttributes,
+		"launchpad-blocks/nav-links-group",
 	);
 
 	return (
@@ -96,6 +114,34 @@ export function Edit({ attributes, setAttributes, clientId }: BlockEditProps) {
 					) : null}
 				</ToolbarGroup>
 			</BlockControls>
+			<InspectorAdvancedControls>
+				<NavListContextLabelledByEditControl
+					label="Unique Nav list identifier"
+					help={(isValid) => (
+						<>
+							<span>
+								This is used to differentiate the nav link groups from each
+								other for accessibility. Must be unique on a page.
+							</span>
+							{!isValid ? (
+								<>
+									<br />
+									<span style={{ fontWeight: "bold", color: "red" }}>
+										This value is used by another nav links group on the page.
+										Using this value: {navListContextLabelledBy}{" "}
+									</span>
+								</>
+							) : null}
+						</>
+					)}
+					onValidChange={(newIdAttribute) => {
+						setAttributes({
+							navListContextLabelledBy: newIdAttribute,
+						});
+					}}
+					idAttribute={navListContextLabelledBy}
+				/>
+			</InspectorAdvancedControls>
 			<div {...innerBlocksProps}>
 				<RichText
 					tagName={headerElement}

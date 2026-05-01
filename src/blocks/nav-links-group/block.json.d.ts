@@ -38,8 +38,14 @@ export declare const blockJson: {
             readonly enum: readonly ["_self", "_blank"];
             readonly default: "_self";
         };
+        readonly navListContextLabelledBy: {
+            readonly type: "string";
+            readonly default: "";
+        };
     };
-    providesContext: {};
+    providesContext: {
+        readonly "launchpad-blocks/navListContextLabelledBy": "navListContextLabelledBy";
+    };
     usesContext: [];
     supports: {};
     example: {};

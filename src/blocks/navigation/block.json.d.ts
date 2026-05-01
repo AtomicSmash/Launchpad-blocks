@@ -16,6 +16,10 @@ export declare const blockJson: {
         readonly navId: {
             readonly type: "string";
         };
+        readonly navListContext: {
+            readonly type: "string";
+            readonly default: "Primary navigation";
+        };
     };
     supports: {};
     example: {
@@ -55,7 +59,9 @@ export declare const blockJson: {
             }[];
         })[];
     };
-    providesContext: {};
+    providesContext: {
+        readonly "launchpad-blocks/navListContext": "navListContext";
+    };
     usesContext: [];
 };
 export default blockJson;

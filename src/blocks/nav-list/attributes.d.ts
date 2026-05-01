@@ -7,7 +7,7 @@ export declare const attributes: {
     };
     readonly ariaLabel: {
         readonly type: "string";
-        readonly default: "Primary navigation";
+        readonly default: "";
     };
     readonly linkOrientation: {
         readonly type: "string";

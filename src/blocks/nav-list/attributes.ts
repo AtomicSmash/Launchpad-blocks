@@ -11,7 +11,7 @@ export const attributes = {
 	},
 	ariaLabel: {
 		type: "string",
-		default: "Primary navigation",
+		default: "",
 	},
 	linkOrientation: {
 		type: "string",

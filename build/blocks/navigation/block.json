@@ -18,7 +18,7 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.c386114895679b14a0cb.js"
+    "file:./index.8d54aca4dc1ade3f4f96.js"
   ],
   "viewScript": [
     "file:./view.a8452537f5e4e073bc0d.js"
@@ -33,6 +33,10 @@
   "attributes": {
     "navId": {
       "type": "string"
+    },
+    "navListContext": {
+      "type": "string",
+      "default": "Primary navigation"
     }
   },
   "supports": {},
@@ -106,6 +110,8 @@
       }
     ]
   },
-  "providesContext": {},
+  "providesContext": {
+    "launchpad-blocks/navListContext": "navListContext"
+  },
   "usesContext": []
 }

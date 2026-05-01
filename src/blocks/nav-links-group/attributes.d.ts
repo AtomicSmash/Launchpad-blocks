@@ -26,6 +26,10 @@ export declare const attributes: {
         readonly enum: readonly ["_self", "_blank"];
         readonly default: "_self";
     };
+    readonly navListContextLabelledBy: {
+        readonly type: "string";
+        readonly default: "";
+    };
 };
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

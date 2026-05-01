@@ -28,13 +28,24 @@ if ( ! \LaunchpadBlocks\Blocks\Custom\NavigationList\is_shown( $block ) ) {
 	return;
 }
 
+$aria_attributes = array();
+if ( ! $attributes['isNestedInAnotherNavLink'] ) {
+	if ( isset( $attributes['ariaLabel'] ) && ! empty( $attributes['ariaLabel'] ) ) {
+		$aria_attributes['aria-label'] = $attributes['ariaLabel'];
+	} elseif ( isset( $block->context['launchpad-blocks/navListContext'] ) && ! empty( $block->context['launchpad-blocks/navListContext'] ) ) {
+		$aria_attributes['aria-label'] = $block->context['launchpad-blocks/navListContext'];
+	} elseif ( isset( $block->context['launchpad-blocks/navListContextLabelledBy'] ) && ! empty( $block->context['launchpad-blocks/navListContextLabelledBy'] ) ) {
+		$aria_attributes['aria-labelledby'] = $block->context['launchpad-blocks/navListContextLabelledBy'];
+	}
+}
+
 $block_wrapper_attributes = (
 	get_block_wrapper_attributes(
 		array_merge(
 			\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
 			array(
 				'data-navigation-nav-list' => true,
-				...( ! $attributes['isNestedInAnotherNavLink'] ? array( 'aria-label' => $attributes['ariaLabel'] ) : array() ),
+				...$aria_attributes,
 				'class' => 'horizontal' === $attributes['linkOrientation'] ? 'is-horizontal' : 'is-vertical',
 			),
 		)

@@ -6,8 +6,9 @@ import type {
 	InterpretUsedContext,
 } from "@atomicsmash/blocks-helpers";
 
-export const providesContext =
-	{} as const satisfies BlockProvidesContext<InterpretedAttributes>;
+export const providesContext = {
+	"launchpad-blocks/navListContextLabelledBy": "navListContextLabelledBy",
+} as const satisfies BlockProvidesContext<InterpretedAttributes>;
 export type ProvidesContext = typeof providesContext;
 export type InterpretedProvidesContext = InterpretProvidesContext<
 	InterpretedAttributes,

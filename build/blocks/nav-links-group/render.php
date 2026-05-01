@@ -49,7 +49,7 @@ if ( $has_linked_title ) {
 	endif;
 	if ( ( $attributes['headerContent'] ?? '' ) !== '' ) :
 		?>
-		<<?php echo esc_html( $attributes['headerElement'] ); ?> class="nav-links-group-heading is-style-reset">
+		<<?php echo esc_html( $attributes['headerElement'] ); ?><?php echo isset( $attributes['navListContextLabelledBy'] ) ? ' id="' . esc_attr( $attributes['navListContextLabelledBy'] ) . '"' : ''; ?> class="nav-links-group-heading is-style-reset">
 			<?php
 			echo wp_kses_post( $attributes['headerContent'] );
 			if ( $has_linked_title && '_blank' === $attributes['linkTarget'] ) :

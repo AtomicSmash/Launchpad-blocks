@@ -9,7 +9,7 @@
   ],
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.49847c61d48d433a6f1a.js"
+    "file:./index.77ced799b5fd9425806c.js"
   ],
   "viewScript": [
     "file:./view.535e66f2928c2639ca1b.js"
@@ -60,9 +60,15 @@
         "_blank"
       ],
       "default": "_self"
+    },
+    "navListContextLabelledBy": {
+      "type": "string",
+      "default": ""
     }
   },
-  "providesContext": {},
+  "providesContext": {
+    "launchpad-blocks/navListContextLabelledBy": "navListContextLabelledBy"
+  },
   "usesContext": [],
   "supports": {},
   "example": {}

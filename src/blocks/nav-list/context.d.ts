@@ -4,8 +4,11 @@ import type { InterpretProvidesContext, InterpretUsedContext } from "@atomicsmas
 export declare const providesContext: {};
 export type ProvidesContext = typeof providesContext;
 export type InterpretedProvidesContext = InterpretProvidesContext<InterpretedAttributes, ProvidesContext>;
-type OtherBlocksInterpretedProvidesContext = SubMenuInterpretedProvidesContext;
-export declare const usesContext: ["launchpad-blocks/isInSubMenu"];
+type OtherBlocksInterpretedProvidesContext = SubMenuInterpretedProvidesContext & {
+    "launchpad-blocks/navListContextLabelledBy": string;
+    "launchpad-blocks/navListContext": string;
+};
+export declare const usesContext: ["launchpad-blocks/isInSubMenu", "launchpad-blocks/navListContext", "launchpad-blocks/navListContextLabelledBy"];
 export type UsesContext = typeof usesContext;
 export type InterpretedUsedContext = InterpretUsedContext<UsesContext, OtherBlocksInterpretedProvidesContext>;
 export {};
