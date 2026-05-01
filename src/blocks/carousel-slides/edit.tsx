@@ -272,7 +272,11 @@ export function Edit({
 						allowedTypes={["image"]}
 						accept="image/*"
 						onSelect={updateImages}
-						name={__("Add", "launchpad-blocks")}
+						name={
+							innerBlockImages.length === 0
+								? __("Add", "launchpad-blocks")
+								: __("Replace", "launchpad-blocks")
+						}
 						multiple
 						mediaIds={convertImageBlocksToImagesAttribute(innerBlockImages)
 							.filter((image) => image.id)

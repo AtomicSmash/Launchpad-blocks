@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 8.2.2
+
+### Patch Changes
+
+- 2f5792a: Change text for carousel slides block when it has images to Replace instead of Add.
+
 ## 8.2.1
 
 ### Patch Changes

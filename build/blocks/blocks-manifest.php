@@ -836,7 +836,7 @@
 			'core/image'
 		),
 		'editorScript' => array(
-			'file:./index.64e005c3524bb46c8d58.js'
+			'file:./index.a803e6c3f5a3077abf4b.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
