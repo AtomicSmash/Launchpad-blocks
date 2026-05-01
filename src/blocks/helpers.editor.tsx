@@ -345,8 +345,8 @@ export const usePostTypes = () => {
 		[],
 	);
 	// This object must be created outside of the useSelect to avoid re-render issues.
-	const taxonomyTerms = useMemo(
-		() => ({}) as Record<string, TaxonomyTerm[] | null>,
+	const taxonomyTerms = useMemo<Record<string, TaxonomyTerm[] | null>>(
+		() => ({}),
 		[],
 	);
 	const { postTypes, taxonomies } = useSelect(
@@ -1066,6 +1066,7 @@ const isBlockIdReservedFactory = (
 	blockName: string,
 ) => {
 	const { getBlocksByName, getBlockAttributes, getBlockParentsByBlockName } =
+		// @ts-expect-error -- Block editor store is fine, type is just not being pulled through correctly somewhere in the chain.
 		select(blockEditorStore) as {
 			getBlocksByName: (blockNames: string | string[]) => string[];
 			getBlockAttributes: (clientId: string) => BlockInstance["attributes"];
@@ -1296,6 +1297,7 @@ export function VariationSelect<
 	allowSkip?: boolean;
 }) {
 	const { replaceInnerBlocks, updateBlockAttributes } = useDispatch(
+		// @ts-expect-error -- Block editor store is fine, type is just not being pulled through correctly somewhere in the chain.
 		blockEditorStore,
 	) as unknown as {
 		replaceInnerBlocks: (

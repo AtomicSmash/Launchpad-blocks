@@ -85,12 +85,12 @@ export function Edit({
 							showInitialSuggestions
 							onChange={(nextValue) => {
 								setAttributes({
-									linkId: nextValue.id,
-									linkKind: nextValue.kind,
-									linkType: nextValue.type,
-									linkHref: nextValue.url,
-									linkText: nextValue.title,
-									linkTarget: nextValue.opensInNewTab ? "_blank" : "_self",
+									linkId: nextValue?.id as number | undefined,
+									linkKind: nextValue?.kind as string | undefined,
+									linkType: nextValue?.type as string | undefined,
+									linkHref: nextValue?.url,
+									linkText: nextValue?.title,
+									linkTarget: nextValue?.opensInNewTab ? "_blank" : "_self",
 								});
 								setShouldShowLinkPopover(false);
 							}}

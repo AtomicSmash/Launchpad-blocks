@@ -10,16 +10,18 @@
 	cursor: pointer;
 }
 
-.wp-block-launchpad-blocks-gallery-carousel-lightbox[open] {
-	display: grid;
-	place-items: center;
-	max-width: none;
-	max-height: none;
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	border: 0;
-	z-index: var(--wp--custom--z-index--lightbox, 100);
+.wp-block-launchpad-blocks-gallery-carousel-lightbox {
+	&[open] {
+		display: grid;
+		place-items: center;
+		max-width: none;
+		max-height: none;
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		border: 0;
+		z-index: var(--wp--custom--z-index--lightbox, 100);
+	}
 
 	.lightbox-close-button {
 		position: absolute;

@@ -129,6 +129,7 @@ export function Edit({
 	);
 
 	const { replaceInnerBlocks, selectBlock, updateBlockAttributes } =
+		// @ts-expect-error -- Block editor store is fine, type is just not being pulled through correctly somewhere in the chain.
 		useDispatch(blockEditorStore) as unknown as {
 			replaceInnerBlocks: (
 				rootClientId: string,

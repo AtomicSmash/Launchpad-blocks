@@ -55,7 +55,10 @@ export function Edit({ attributes, setAttributes }: BlockEditProps) {
 	 *
 	 * @see https://github.com/WordPress/gutenberg/issues/11681
 	 */
-	const { setTemplateValidity } = useDispatch(blockEditorStore);
+	// @ts-expect-error -- Block editor store is fine, type is just not being pulled through correctly somewhere in the chain.
+	const { setTemplateValidity } = useDispatch(blockEditorStore) as unknown as {
+		setTemplateValidity: (validity: boolean) => Promise<void>;
+	};
 	if (setTemplateValidity) {
 		setTemplateValidity(true).catch(() => {
 			/* do nothing */

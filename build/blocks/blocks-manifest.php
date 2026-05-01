@@ -15,7 +15,7 @@
 			'accordion'
 		),
 		'editorScript' => array(
-			'file:./index.a26e0565ea656921fb6a.js'
+			'file:./index.f58621fe2665c25d8b7c.js'
 		),
 		'style' => array(
 			'file:./style.95c9d1fcd1af6b61f16c.css'
@@ -96,10 +96,10 @@
 			'accordion'
 		),
 		'editorScript' => array(
-			'file:./index.31ea4e093d1e38bd6e1b.js'
+			'file:./index.0bee86100e596f88e17c.js'
 		),
 		'viewScript' => array(
-			'file:./view.f666f5da98d0501d5f3f.js'
+			'file:./view.361e6ab1cee635220ec9.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.09ce301a320437c54e81.css'
@@ -223,7 +223,7 @@
 			'icon'
 		),
 		'editorScript' => array(
-			'file:./index.346d3195726d3ff64e5b.js'
+			'file:./index.05f6eec06bf6bec713c6.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -334,10 +334,10 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.97a8ad47191cc6210d40.js'
+			'file:./index.a1aff9c10f6b45dd1ee4.js'
 		),
 		'viewScript' => array(
-			'file:./view.cc3a8c4f21e271cb51e2.js'
+			'file:./view.43d707002d3e8a8601e6.js'
 		),
 		'style' => array(
 			'file:./style.6a7215f459d869705e87.css'
@@ -401,7 +401,7 @@
 			'launchpad-blocks/carousel-content-slides'
 		),
 		'editorScript' => array(
-			'file:./index.7aa8ca5c25e908897a1a.js'
+			'file:./index.fe8c7f4182b557efe27b.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -466,7 +466,7 @@
 			'launchpad-blocks/carousel-content-slide'
 		),
 		'editorScript' => array(
-			'file:./index.c9b8842fc05ef8d93762.js'
+			'file:./index.ed9e1d3de6d7b27f0d0e.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -520,7 +520,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.d96c8e93912afbcc1544.js'
+			'file:./index.49dc8eac62e78ff69ec8.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -617,7 +617,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.6ccf3cad03b23dce1d77.js'
+			'file:./index.05137441c3b30d4dbe06.js'
 		),
 		'viewScript' => array(
 			'file:./view.0ceae2bf5e352e7724b9.js'
@@ -666,7 +666,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.c3381e921dea6048768d.js'
+			'file:./index.461d18d696b9c7db121d.js'
 		),
 		'viewScript' => array(
 			'file:./view.d0200a7733dc820c05b0.js'
@@ -768,7 +768,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.49e06bfab9a644ce0cfd.js'
+			'file:./index.72e0a0cf1fd3ae50bacd.js'
 		),
 		'viewScript' => array(
 			'file:./view.89e503eb9913de9e1a8e.js'
@@ -836,7 +836,7 @@
 			'core/image'
 		),
 		'editorScript' => array(
-			'file:./index.19f17272f499007e612e.js'
+			'file:./index.64e005c3524bb46c8d58.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -900,7 +900,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.357229c35d0ab86d9adb.js'
+			'file:./index.e9a430d8dec90457c542.js'
 		),
 		'viewScript' => array(
 			'file:./view.891c029eb827a372b837.js'
@@ -963,7 +963,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.b51334dc537c0bbff51f.js'
+			'file:./index.4c66b2314f7fbc4feae8.js'
 		),
 		'viewScript' => array(
 			'file:./view.139c705a34fbf4502c08.js'
@@ -1054,7 +1054,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.dc7fda883b5dcb0bb118.js'
+			'file:./index.80f2f5eca373ef5813b5.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -1165,7 +1165,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.17f5c6c8262e974192bf.js'
+			'file:./index.dfbb2cc8aed4a9c073d9.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -1214,10 +1214,10 @@
 			'lightbox'
 		),
 		'editorScript' => array(
-			'file:./index.7e5121c4248daa23162f.js'
+			'file:./index.722bc47437bf71f030e1.js'
 		),
 		'viewScript' => array(
-			'file:./view.eb99610d0ebdead28006.js'
+			'file:./view.b3d2acb7800493437846.js'
 		),
 		'style' => array(
 			'file:./style.f01f216d67532d72c114.css'
@@ -1401,13 +1401,13 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.25e71c207930b90d8c83.js'
+			'file:./index.d5b2df95f26e6326dfc6.js'
 		),
 		'viewScript' => array(
-			'file:./view.8cbcff49d5f062f796a8.js'
+			'file:./view.619031cedaa0c80f0d0d.js'
 		),
 		'style' => array(
-			'file:./style.8c6ad91f9ad9a0f3b034.css'
+			'file:./style.da4378f09572abb622a7.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.6d12dae4699a963e1ebb.css'
@@ -1439,7 +1439,7 @@
 		'category' => 'theme',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.11234e41ad824491e475.js'
+			'file:./index.2a9b6e8f7783476c4699.js'
 		),
 		'viewScript' => array(
 			'file:./view.d8b08951ee51c7294e8d.js'
@@ -1498,7 +1498,7 @@
 		'description' => 'An output block for the selected global banners.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.8fff148b55b33aafc945.js'
+			'file:./index.f9ce2bcc318460c91c24.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.c5d19c91d23f7911fa45.css'
@@ -1525,7 +1525,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.379c1190cd30f8103341.js'
+			'file:./index.0ad76025b0048e6cf7a8.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -1630,7 +1630,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.6c92d2ec7f3d073bb826.js'
+			'file:./index.0085b0cfa775fcf87fa5.js'
 		),
 		'style' => array(
 			'file:./style.882d6e08e1cd7fcaee37.css'
@@ -1676,7 +1676,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.dbc5958a8e516a42cd76.js'
+			'file:./index.d4b9a45dd5db76bcf2b6.js'
 		),
 		'style' => array(
 			'file:./style.953b0bc83baeeb4969da.css'
@@ -1729,7 +1729,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.7d93aefe1a9ba76334df.js'
+			'file:./index.7ebd1a49278ca3d6cccc.js'
 		),
 		'viewScript' => array(
 			'file:./view.9dcacc883e6416067d79.js'
@@ -1782,7 +1782,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.2e5734c15802faeb6133.js'
+			'file:./index.2774abc399ad3154ed41.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.7366b8d6169ef631eab0.css'
@@ -1949,7 +1949,7 @@
 			'breakout'
 		),
 		'editorScript' => array(
-			'file:./index.0d2e29c83f0a7801839a.js'
+			'file:./index.f708c1ce2e73538e5820.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2044,7 +2044,7 @@
 		),
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.20fcee708a2c5052940a.js'
+			'file:./index.49847c61d48d433a6f1a.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2127,7 +2127,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.fc80381a459f1e376213.js'
+			'file:./index.9bb3fa6fea99e4577597.js'
 		),
 		'style' => array(
 			'file:./style.b1634d87d5a403979357.css'
@@ -2238,7 +2238,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.047d5a3dd33ffb63c1af.js'
+			'file:./index.f492163896173c5aa1e8.js'
 		),
 		'style' => array(
 			'file:./style.72a02fd4e3d760daa3d1.css'
@@ -2306,13 +2306,13 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.878460013d89b9c43c27.js'
+			'file:./index.d0e86e289d9db05c9391.js'
 		),
 		'style' => array(
 			'file:./style.56104d9460ccbad83033.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-style.c49b31f7b8f66b8052b4.css'
+			'file:./editor-style.717129f1c5a1cf59cd6a.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2404,10 +2404,10 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.9d7996847c588b8957a3.js'
+			'file:./index.c386114895679b14a0cb.js'
 		),
 		'viewScript' => array(
-			'file:./view.623aa06284054eea81f9.js'
+			'file:./view.a8452537f5e4e073bc0d.js'
 		),
 		'style' => array(
 			'file:./style.9deffd965f24960b83d9.css'
@@ -2516,7 +2516,7 @@
 			'list'
 		),
 		'editorScript' => array(
-			'file:./index.39f50201bcefe54dc677.js'
+			'file:./index.01f14a1d5bc3b6f2b1c1.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2595,7 +2595,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.6530c98fe35478e8c2af.js'
+			'file:./index.41caeba7d8ce78fa5850.js'
 		),
 		'viewScript' => array(
 			'file:./view.535e66f2928c2639ca1b.js'
@@ -2657,7 +2657,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.87ef4500130e2d0a6738.js'
+			'file:./index.81c78169bb00bd85edf9.js'
 		),
 		'style' => array(
 			'file:./style.a7d60064631b1da5e27a.css'
@@ -2762,7 +2762,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.7eee734c20cbbeee0ba3.js'
+			'file:./index.afaeb1a60a1b4c7f2a9d.js'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2804,7 +2804,7 @@
 		'description' => 'The panel of content associated with a tab in a Tabs block.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.aaf9206f7982840fd5cb.js'
+			'file:./index.6d99ba5d63253db7a1dd.js'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2855,7 +2855,7 @@
 		'description' => 'A container block for individual tab panels.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.2ecbb895aebf758f645d.js'
+			'file:./index.31d3eb4cfc6c438b2c7b.js'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2879,7 +2879,7 @@
 		'description' => 'Multiple sections of content collated together where only one is shown at a time.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.a91258915ca7ff998a4a.js'
+			'file:./index.399dce2b70d516f66b10.js'
 		),
 		'viewScript' => array(
 			'file:./view.cbc752db1dfed12b9a5b.js'

@@ -8,6 +8,6 @@
 		}
 	},
 	"require": {
-		"atomicsmash/compiler-helpers": "^0.1.2"
+		"atomicsmash/compiler-helpers": "^1.0.0"
 	}
 }

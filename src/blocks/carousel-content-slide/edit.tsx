@@ -79,6 +79,7 @@ export function Edit({
 	);
 
 	const { updateBlockAttributes } = useDispatch(
+		// @ts-expect-error -- Block editor store is fine, type is just not being pulled through correctly somewhere in the chain.
 		blockEditorStore,
 	) as unknown as {
 		updateBlockAttributes: <

@@ -33,6 +33,20 @@
 	width: 100%;
 	height: 100%;
 	z-index: 10;
+
+	.lightbox-close-button {
+		width: 2.5rem;
+		height: 2.5rem;
+		display: block;
+		margin-block-start: 1rem;
+		margin-inline: auto 1rem !important;
+
+		svg {
+			width: 2.5rem;
+			height: 2.5rem;
+			padding: 0.25rem;
+		}
+	}
 }
 
 .is-root-container:has(.submenu-lightbox-editor) {
@@ -44,4 +58,21 @@
 	.wp-block-launchpad-blocks-nav-submenu[data-state="open"]
 	> .menu-group-list-item-submenu {
 	height: auto;
+}
+
+// Only apply styles to non-iframed editor
+html.interface-interface-skeleton__html-container {
+	.is-root-container,
+	.navigation-nav-list,
+	.wp-block-launchpad-blocks-nav-list,
+	.navigation-content,
+	.wp-block-launchpad-blocks-navigation,
+	.wp-block-launchpad-blocks-nav-submenu {
+		position: static;
+	}
+
+	.wp-block-launchpad-blocks-nav-submenu .submenu-lightbox-editor {
+		position: absolute !important;
+		max-height: calc(100vh - 60px - 25px);
+	}
 }

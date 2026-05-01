@@ -4,7 +4,6 @@ import type { CSSProperties } from "react";
 import {
 	InspectorControls,
 	useBlockProps,
-	// @ts-expect-error -- Outdated types
 	useBlockEditingMode,
 	BlockControls,
 } from "@wordpress/block-editor";

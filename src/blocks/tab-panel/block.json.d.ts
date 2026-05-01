@@ -16,8 +16,8 @@ export declare const blockJson: {
         readonly tab: {
             readonly type: "object";
             readonly default: {
-                id: string;
-                label: string;
+                readonly id: string;
+                readonly label: string;
             };
         };
     };

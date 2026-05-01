@@ -1,5 +1,13 @@
 # @atomicsmash/launchpad-blocks
 
+## 8.2.1
+
+### Patch Changes
+
+- edc3fe3: Change initial accordion closes to instant to improve CLS
+- 29afb8b: Deps updates and linting fixes
+- 62f0446: Fix broken lightboxes and lightbox close icons
+
 ## 8.2.0
 
 ### Minor Changes

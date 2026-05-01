@@ -7,13 +7,13 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.25e71c207930b90d8c83.js"
+    "file:./index.d5b2df95f26e6326dfc6.js"
   ],
   "viewScript": [
-    "file:./view.8cbcff49d5f062f796a8.js"
+    "file:./view.619031cedaa0c80f0d0d.js"
   ],
   "style": [
-    "file:./style.8c6ad91f9ad9a0f3b034.css"
+    "file:./style.da4378f09572abb622a7.css"
   ],
   "editorStyle": [
     "file:./editor-style.6d12dae4699a963e1ebb.css"

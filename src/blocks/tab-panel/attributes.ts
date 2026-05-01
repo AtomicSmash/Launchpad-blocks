@@ -12,11 +12,8 @@ export const attributes = {
 	tab: {
 		type: "object",
 		default: {
-			id: "",
-			label: "",
-		} as {
-			id: string;
-			label: string;
+			id: "" as string,
+			label: "" as string,
 		},
 	},
 } as const satisfies BlockAttributes;

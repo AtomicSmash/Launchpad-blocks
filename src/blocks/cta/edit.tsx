@@ -6,7 +6,7 @@ import {
 	useBlockProps,
 	BlockControls,
 	RichText,
-	__experimentalLinkControl as LinkControl,
+	LinkControl,
 	InspectorControls,
 	MediaPlaceholder,
 	MediaReplaceFlow,
@@ -400,9 +400,9 @@ function CTAButtonEdit({
 									if (button.id === id) {
 										return {
 											...button,
-											href: nextValue.url,
-											label: nextValue.title ?? button.label,
-											target: nextValue.opensInNewTab ? "_blank" : "_self",
+											href: nextValue?.url ?? "",
+											label: nextValue?.title ?? button.label,
+											target: nextValue?.opensInNewTab ? "_blank" : "_self",
 										};
 									}
 									return button;

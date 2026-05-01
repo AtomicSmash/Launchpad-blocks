@@ -94,6 +94,7 @@ export function Edit({
 		metadata,
 	} = attributes;
 	const { createNotice, removeNotice } = useDispatch(
+		// @ts-expect-error -- Notices store is fine, type is just not being pulled through correctly somewhere in the chain.
 		noticesStore,
 	) as NoticesStoreType;
 	const postsWithError = useSuspenseSelect(
@@ -503,8 +504,8 @@ function useInefficientlyGetPostsByQuery({
 		],
 	);
 
-	const queriedPostsData = useMemo(() => {
-		return {} as Record<
+	const queriedPostsData = useMemo<
+		Record<
 			string,
 			({
 				authorName: string;
@@ -522,7 +523,9 @@ function useInefficientlyGetPostsByQuery({
 				| "status"
 				| "type"
 			>)[]
-		>;
+		>
+	>(() => {
+		return {};
 	}, []);
 
 	const queriedPostsDataByPostType = useSuspenseSelect(

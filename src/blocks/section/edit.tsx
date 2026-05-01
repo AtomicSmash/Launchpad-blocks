@@ -12,7 +12,6 @@ import {
 	RichText,
 	store as blockEditorStore,
 	InnerBlocks,
-	// @ts-expect-error -- missing type in package
 	AlignmentControl,
 } from "@wordpress/block-editor";
 import { ToolbarGroup } from "@wordpress/components";

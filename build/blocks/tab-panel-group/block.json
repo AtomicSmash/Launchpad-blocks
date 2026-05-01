@@ -12,7 +12,7 @@
   "description": "A container block for individual tab panels.",
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.2ecbb895aebf758f645d.js"
+    "file:./index.31d3eb4cfc6c438b2c7b.js"
   ],
   "render": "file:./render.php",
   "attributes": {},

@@ -74,12 +74,12 @@ export function Edit({ attributes, setAttributes, clientId }: BlockEditProps) {
 								showInitialSuggestions
 								onChange={(nextValue) => {
 									setAttributes({
-										linkId: nextValue.id,
-										linkKind: nextValue.kind,
-										linkType: nextValue.type,
-										linkHref: nextValue.url,
-										linkTarget: nextValue.opensInNewTab ? "_blank" : "_self",
-										headerContent: nextValue.title,
+										linkId: nextValue?.id as number | undefined,
+										linkKind: nextValue?.kind as string | undefined,
+										linkType: nextValue?.type as string | undefined,
+										linkHref: nextValue?.url,
+										linkTarget: nextValue?.opensInNewTab ? "_blank" : "_self",
+										headerContent: nextValue?.title,
 									});
 									setShouldShowLinkPopover(false);
 								}}

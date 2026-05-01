@@ -58,7 +58,7 @@ class AccordionGroup {
 			}
 			const accordion = new Accordion(accordionElement, this);
 			if (!isInitiallyOpen) {
-				accordion.close();
+				accordion.close({ instant: true });
 			}
 			this.childAccordions.push(accordion);
 		}

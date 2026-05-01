@@ -66,9 +66,11 @@ export function Edit({ clientId, attributes, setAttributes }: BlockEditProps) {
 		unlockPostAutosaving: (lockName: string) => void;
 	};
 	const { createNotice, removeNotice } = useDispatch(
+		// @ts-expect-error -- Notices store is fine, type is just not being pulled through correctly somewhere in the chain.
 		noticesStore,
 	) as NoticesStoreType;
 	const { replaceInnerBlocks, updateBlockAttributes } = useDispatch(
+		// @ts-expect-error -- Block editor store is fine, type is just not being pulled through correctly somewhere in the chain.
 		blockEditorStore,
 	) as unknown as {
 		replaceInnerBlocks: (
