@@ -36,16 +36,19 @@ if ( $parsed_content->get_attribute( 'data-accordion-group' ) !== null ) {
 	$content = $new_content;
 }
 
+$default_attributes = \LaunchpadBlocks\Fix\default_attributes( $block, $attributes );
+
 ?>
-<div 
+<div
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			...$default_attributes,
 			'id' => $attributes['accordionGroupId'],
 			'data-launchpad-accordion-group' => '',
 			'data-is-multiple' => $attributes['isMultiple'] ? 'true' : 'false',
+			'class' => $default_attributes['class'] . ' load-prioritise-' . $attributes['loadPrioritisation'] ?? 'cls',
 		)
 	)
 );

@@ -10,7 +10,6 @@ export declare const blockJson: {
     editorScript: string;
     viewScript: string;
     style: string;
-    editorStyle: string;
     render: "file:./render.php";
     attributes: {
         readonly images: {

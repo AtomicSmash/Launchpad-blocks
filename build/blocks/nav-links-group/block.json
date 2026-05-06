@@ -9,16 +9,10 @@
   ],
   "textdomain": "launchpad",
   "editorScript": [
-    "file:./index.77ced799b5fd9425806c.js"
-  ],
-  "viewScript": [
-    "file:./view.535e66f2928c2639ca1b.js"
+    "file:./index.8f629ba155db6db7bc82.js"
   ],
   "style": [
     "file:./style.694c8b8912aa4f397e59.css"
-  ],
-  "editorStyle": [
-    "file:./editor-style.31d6cfe0d16ae931b73c.css"
   ],
   "render": "file:./render.php",
   "keywords": [

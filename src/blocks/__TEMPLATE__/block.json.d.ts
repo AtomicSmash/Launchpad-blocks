@@ -7,9 +7,6 @@ export declare const blockJson: {
     textdomain: string;
     keywords: never[];
     editorScript: string;
-    viewScript: string;
-    style: string;
-    editorStyle: string;
     render: "file:./render.php";
     attributes: {
         readonly someAttribute: {

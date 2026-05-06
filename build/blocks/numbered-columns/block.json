@@ -9,16 +9,10 @@
     "list"
   ],
   "editorScript": [
-    "file:./index.01f14a1d5bc3b6f2b1c1.js"
-  ],
-  "viewScript": [
-    "file:./view.535e66f2928c2639ca1b.js"
+    "file:./index.7ac2525a97976c547e02.js"
   ],
   "style": [
     "file:./style.5d20cbdb40a3fd27086e.css"
-  ],
-  "editorStyle": [
-    "file:./editor-style.31d6cfe0d16ae931b73c.css"
   ],
   "render": "file:./render.php",
   "attributes": {

@@ -9,7 +9,6 @@ export declare const blockJson: {
     keywords: string[];
     editorScript: string;
     style: string;
-    editorStyle: string;
     render: "file:./render.php";
     attributes: {
         readonly linkId: {

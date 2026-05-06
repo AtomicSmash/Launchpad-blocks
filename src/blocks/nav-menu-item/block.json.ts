@@ -16,7 +16,7 @@ export const blockJson = {
 	keywords: ["menu", "nav", "links"],
 	editorScript: "file:./index.tsx",
 	style: "file:./style.scss",
-	editorStyle: "file:./editor-style.scss",
+	// editorStyle: "file:./editor-style.scss",
 	render: "file:./render.php",
 	attributes,
 	supports,

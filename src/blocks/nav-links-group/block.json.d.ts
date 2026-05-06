@@ -7,9 +7,7 @@ export declare const blockJson: {
     allowedBlocks: string[];
     textdomain: string;
     editorScript: string;
-    viewScript: string;
     style: string;
-    editorStyle: string;
     render: "file:./render.php";
     keywords: string[];
     attributes: {

@@ -7,6 +7,7 @@ import {
 	Inserter,
 	store as blockEditorStore,
 	useInnerBlocksProps,
+	InspectorAdvancedControls,
 } from "@wordpress/block-editor";
 import {
 	CheckboxControl,
@@ -15,6 +16,8 @@ import {
 	ButtonGroup,
 	Button,
 	ToolbarGroup,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
 import { blockDefault } from "@wordpress/icons";
@@ -29,8 +32,10 @@ export function Edit({
 	setAttributes,
 	isSelected,
 }: BlockEditProps) {
-	const { isMultiple, headerElement } = attributes;
-	const blockProps = useBlockProps();
+	const { isMultiple, headerElement, loadPrioritisation } = attributes;
+	const blockProps = useBlockProps({
+		className: `load-prioritise-${loadPrioritisation ?? "cls"}`,
+	});
 	const innerBlockProps = useInnerBlocksProps(blockProps, {
 		template: [
 			[
@@ -105,6 +110,25 @@ export function Edit({
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
+			<InspectorAdvancedControls>
+				<ToggleGroupControl
+					__next40pxDefaultSize
+					help="Accordions on initial load can either optimise for CLS or Bot traffic, if you're not sure, you should talk to a developer."
+					isBlock
+					label="Initial load prioritisation"
+					onChange={(newValue) => {
+						if (["cls", "bot-traffic"].includes(`${newValue ?? ""}`)) {
+							setAttributes({
+								loadPrioritisation: newValue as "cls" | "bot-traffic",
+							});
+						}
+					}}
+					value={loadPrioritisation}
+				>
+					<ToggleGroupControlOption label="CLS" value="cls" />
+					<ToggleGroupControlOption label="Bots" value="bot-traffic" />
+				</ToggleGroupControl>
+			</InspectorAdvancedControls>
 			<BlockControls>
 				<ToolbarGroup>
 					<HeadingLevelSelect

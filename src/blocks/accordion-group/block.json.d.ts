@@ -24,6 +24,11 @@ export declare const blockJson: {
             readonly enum: readonly ["h2", "h3", "h4", "h5", "h6", "p"];
             readonly default: "h2";
         };
+        readonly loadPrioritisation: {
+            readonly type: "string";
+            readonly enum: readonly ["cls", "bot-traffic"];
+            readonly default: "cls";
+        };
     };
     example: {
         attributes: {

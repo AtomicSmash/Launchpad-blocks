@@ -9,10 +9,10 @@
     "accordion"
   ],
   "editorScript": [
-    "file:./index.0bee86100e596f88e17c.js"
+    "file:./index.721459b09b337d4049b6.js"
   ],
   "viewScript": [
-    "file:./view.361e6ab1cee635220ec9.js"
+    "file:./view.3d3e157a3612fb31c354.js"
   ],
   "editorStyle": [
     "file:./editor-style.09ce301a320437c54e81.css"
@@ -38,6 +38,14 @@
         "p"
       ],
       "default": "h2"
+    },
+    "loadPrioritisation": {
+      "type": "string",
+      "enum": [
+        "cls",
+        "bot-traffic"
+      ],
+      "default": "cls"
     }
   },
   "example": {

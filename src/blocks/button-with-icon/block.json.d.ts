@@ -8,7 +8,6 @@ export declare const blockJson: {
     textdomain: string;
     keywords: string[];
     editorScript: string;
-    viewScript: string;
     style: string;
     editorStyle: string;
     render: "file:./render.php";

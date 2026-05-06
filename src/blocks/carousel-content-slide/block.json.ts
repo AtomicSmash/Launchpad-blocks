@@ -15,7 +15,7 @@ export const blockJson = {
 	keywords: [],
 	parent: ["launchpad-blocks/carousel-content-slides"],
 	editorScript: "file:./index.tsx",
-	viewScript: "file:./view.ts",
+	// viewScript: "file:./view.ts",
 	style: "file:./style.scss",
 	editorStyle: "file:./editor-style.scss",
 	render: "file:./render.php",

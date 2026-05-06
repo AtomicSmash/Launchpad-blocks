@@ -1,5 +1,12 @@
 # @atomicsmash/launchpad-blocks
 
+## 9.0.1
+
+### Patch Changes
+
+- ca3bf79: Fix CLS issues in accordions while still providing option for bot friendly loading depending on client preference
+- 0308da9: Don't compile/enqueue empty css and js files
+
 ## 9.0.0
 
 ### Major Changes

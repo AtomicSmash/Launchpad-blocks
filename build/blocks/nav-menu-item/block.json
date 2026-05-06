@@ -14,13 +14,10 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.f492163896173c5aa1e8.js"
+    "file:./index.641b2de6f262a334d140.js"
   ],
   "style": [
     "file:./style.72a02fd4e3d760daa3d1.css"
-  ],
-  "editorStyle": [
-    "file:./editor-style.31d6cfe0d16ae931b73c.css"
   ],
   "render": "file:./render.php",
   "attributes": {

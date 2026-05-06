@@ -45,7 +45,7 @@ if ( $parsed_content->get_attribute( 'data-accordion' ) !== null ) {
 
 $heading_level = isset( $block->context['launchpad-blocks/accordion-heading-level'] ) ? $block->context['launchpad-blocks/accordion-heading-level'] : ( isset( $block->parsed_block['attrs']['headerElement'] ) ? $block->parsed_block['attrs']['headerElement'] : 'h2' );
 ?>
-<div 
+<div
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(

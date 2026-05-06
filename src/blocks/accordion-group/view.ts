@@ -62,6 +62,7 @@ class AccordionGroup {
 			}
 			this.childAccordions.push(accordion);
 		}
+		this.accordionGroup.classList.add("loaded");
 	}
 }
 
@@ -99,9 +100,7 @@ class Accordion {
 			this.toggle();
 		});
 
-		this.panel.style.height = getComputedStyle(this.panel).getPropertyValue(
-			"height",
-		);
+		this.panel.style.height = `${this.panel.scrollHeight}px`;
 	}
 	public getId() {
 		return this.id;

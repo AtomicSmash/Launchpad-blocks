@@ -78,3 +78,17 @@ The double selector is a editor specific specificity hack, which when using our 
 .accordion-panel[data-state="collapsed"] {
 	height: 0 !important;
 }
+
+// Initial load state styling
+.wp-block-launchpad-blocks-accordion-group.load-prioritise-cls:not(.loaded) {
+	&[data-is-multiple="false"]
+		.wp-block-launchpad-blocks-accordion:nth-child(
+			n + 2 of [data-is-initially-open="true"]
+		),
+	.wp-block-launchpad-blocks-accordion[data-is-initially-open="false"] {
+		.accordion-panel {
+			visibility: hidden;
+			height: 0 !important;
+		}
+	}
+}

@@ -16,7 +16,7 @@ export const blockJson = {
 	parent: ["launchpad-blocks/carousel", "launchpad-blocks/gallery-carousel"],
 	allowedBlocks: ["core/image"],
 	editorScript: "file:./index.tsx",
-	viewScript: "file:./view.ts",
+	// viewScript: "file:./view.ts",
 	style: "file:./style.scss",
 	editorStyle: "file:./editor-style.scss",
 	render: "file:./render.php",

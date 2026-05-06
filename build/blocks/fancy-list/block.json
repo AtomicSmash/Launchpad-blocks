@@ -10,16 +10,7 @@
   "textdomain": "launchpad-blocks",
   "keywords": [],
   "editorScript": [
-    "file:./index.80f2f5eca373ef5813b5.js"
-  ],
-  "viewScript": [
-    "file:./view.535e66f2928c2639ca1b.js"
-  ],
-  "style": [
-    "file:./style.31d6cfe0d16ae931b73c.css"
-  ],
-  "editorStyle": [
-    "file:./editor-style.31d6cfe0d16ae931b73c.css"
+    "file:./index.58e6319824d041af7cbd.js"
   ],
   "render": "file:./render.php",
   "attributes": {

@@ -13,6 +13,11 @@ declare const v1Attributes: {
         readonly enum: readonly ["h2", "h3", "h4", "h5", "h6", "p"];
         readonly default: "h2";
     };
+    readonly loadPrioritisation: {
+        readonly type: "string";
+        readonly enum: readonly ["cls", "bot-traffic"];
+        readonly default: "cls";
+    };
 };
 type V1Attributes = typeof v1Attributes;
 declare const v1Supports: {
@@ -44,6 +49,11 @@ export declare const deprecated: [{
             readonly type: "string";
             readonly enum: readonly ["h2", "h3", "h4", "h5", "h6", "p"];
             readonly default: "h2";
+        };
+        readonly loadPrioritisation: {
+            readonly type: "string";
+            readonly enum: readonly ["cls", "bot-traffic"];
+            readonly default: "cls";
         };
     };
     readonly supports: {
@@ -86,6 +96,11 @@ export declare const deprecated: [{
             readonly enum: readonly ["h2", "h3", "h4", "h5", "h6", "p"];
             readonly default: "h2";
         };
+        readonly loadPrioritisation: {
+            readonly type: "string";
+            readonly enum: readonly ["cls", "bot-traffic"];
+            readonly default: "cls";
+        };
     }>, oldInnerBlocks: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
         name: string;
         attributes?: Record<string, unknown> | undefined;
@@ -94,6 +109,7 @@ export declare const deprecated: [{
         headerElement: "h3" | "h2" | "h4" | "h5" | "h6" | "p";
         isMultiple: boolean;
         accordionGroupId: string;
+        loadPrioritisation: "cls" | "bot-traffic";
         align?: undefined;
         className?: string | undefined;
         layout?: import("@atomicsmash/blocks-helpers/dist/layout").AllPossibleLayouts | undefined;

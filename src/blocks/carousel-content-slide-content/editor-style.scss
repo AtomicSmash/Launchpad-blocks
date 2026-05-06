@@ -1,6 +1,4 @@
 /**
  * The following styles get applied inside the editor only.
  */
-.wp-block-launchpad-blocks-carousel-content-slide:not(.show-slide-in-editor) {
-	display: none;
-}
+// IMPORTANT: To load this file, you must uncomment the editorStyle line in the block.json.ts

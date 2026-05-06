@@ -8,9 +8,7 @@ export declare const blockJson: {
     keywords: never[];
     parent: string[];
     editorScript: string;
-    viewScript: string;
     style: string;
-    editorStyle: string;
     render: "file:./render.php";
     attributes: {
         readonly template: {
