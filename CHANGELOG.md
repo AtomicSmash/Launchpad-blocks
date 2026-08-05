@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 9.0.2
+
+### Patch Changes
+
+- 72dbe51: Added window resize support for accordion groups
+
 ## 9.0.1
 
 ### Patch Changes

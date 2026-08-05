@@ -14,6 +14,8 @@ class AccordionGroup {
 	public allowMultipleOpenAccordions: boolean;
 	public childAccordions: Accordion[] = [];
 	public scrollParent: HTMLElement;
+	private debounceResizeTimeout: undefined | ReturnType<typeof setTimeout> =
+		undefined;
 
 	constructor(accordionGroup: HTMLDivElement) {
 		this.accordionGroup = accordionGroup;
@@ -30,7 +32,20 @@ class AccordionGroup {
 				this.accordionGroup,
 				(node) => node.scrollHeight > node.clientHeight,
 			) ?? document.body;
+
+		window.addEventListener("resize", () => {
+			clearTimeout(this.debounceResizeTimeout);
+			this.debounceResizeTimeout = setTimeout(() => {
+				this.recalculatePanelHeights();
+			}, 100);
+		});
 	}
+	private recalculatePanelHeights() {
+		for (const accordion of this.childAccordions) {
+			accordion.recalculateHeight();
+		}
+	}
+
 	public getId() {
 		return this.id;
 	}
@@ -185,6 +200,18 @@ class Accordion {
 			this.close();
 		} else {
 			this.open();
+		}
+	}
+	public recalculateHeight() {
+		
+		if (this.state === "collapsed") {
+			this.panel.style.display = "";
+			this.panel.style.height = "";
+			this.panel.style.height = `${this.panel.scrollHeight}px`;
+			this.panel.style.display = "none";
+		} else {
+			this.panel.style.height = "";
+			this.panel.style.height = `${this.panel.scrollHeight}px`;
 		}
 	}
 	public debug() {

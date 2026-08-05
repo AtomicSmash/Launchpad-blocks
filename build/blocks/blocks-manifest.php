@@ -99,7 +99,7 @@
 			'file:./index.721459b09b337d4049b6.js'
 		),
 		'viewScript' => array(
-			'file:./view.3d3e157a3612fb31c354.js'
+			'file:./view.7993028b8cedbaa512c9.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.09ce301a320437c54e81.css'
