@@ -16,8 +16,9 @@ export declare const blockJson: {
         readonly images: {
             readonly type: "array";
             readonly default: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
         };
         readonly shouldLoop: {

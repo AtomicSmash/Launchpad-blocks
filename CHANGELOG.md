@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 9.0.3
+
+### Patch Changes
+
+- 5e5297c: Allow the carousel to load images when only urls are provided
+
 ## 9.0.2
 
 ### Patch Changes

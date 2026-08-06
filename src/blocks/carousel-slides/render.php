@@ -59,7 +59,7 @@ if ( $attributes['shouldPullImagesFromContext'] ) {
 	$carousel_images = array();
 	foreach ( $context_images as $context_image ) {
 		// There's no PHP function to recreate the figure structure of the image block, so we have to manually recreate it.
-		$carousel_images[] = '<figure class=\"wp-block-image size-full\">' . wp_get_attachment_image( $context_image['id'], 'full' ) . '</figure>';
+		$carousel_images[] = '<figure class=\"wp-block-image size-full\">' . ( $context_image['id'] ? wp_get_attachment_image( $context_image['id'], 'full' ) : '<img src="' . $context_image['url'] . '"' . ( is_string( $context_image['alt'] ) ? ' alt="' . $context_image['alt'] . '"' : '' ) . ( $context_image['id'] ? ' class="wp-image-' . $context_image['id'] . '"' : '' ) . '/>' ) . '</figure>';
 	}
 } else {
 	$carousel_slide_inner_blocks = $block->inner_blocks;

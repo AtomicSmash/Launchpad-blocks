@@ -334,13 +334,19 @@ export function Edit({
 					children
 				) : shouldPullImagesFromContext ? (
 					context["launchpad-blocks/carouselImages"].length ? (
-						context["launchpad-blocks/carouselImages"].map(({ id, url }) => {
-							return (
-								<figure key={id} className="wp-block-image">
-									<img src={url} alt="" />
-								</figure>
-							);
-						})
+						context["launchpad-blocks/carouselImages"].map(
+							({ id, url, alt }) => {
+								return (
+									<figure key={id ?? url} className="wp-block-image">
+										<img
+											src={url}
+											alt={alt}
+											className={id ? `wp-image-${id}` : ""}
+										/>
+									</figure>
+								);
+							},
+						)
 					) : (
 						<figure className="wp-block-image">
 							<img src={`https://picsum.photos/id/237/2000/1600`} alt="" />

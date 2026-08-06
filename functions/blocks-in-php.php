@@ -177,10 +177,10 @@ function handle_default_block_comment_generation( array $output, string $name, a
 			$markup_attributes['class'] = 'wp-block-image size-' . $attributes['sizeSlug'];
 			$attributes['sizeSlug'] = $attributes['sizeSlug'] ?? 'large';
 			$block_comment = '<!-- wp:%1$s %2$s -->';
-			$block_comment .= '<figure ' . get_block_markup_attributes_as_string( $markup_attributes ) . '><img src="' . $attributes['url'] . '" alt="' . $attributes['alt'] . '" class="wp-image-' . $attributes['id'] . '"/></figure>';
+			$block_comment .= '<figure ' . get_block_markup_attributes_as_string( $markup_attributes ) . '><img src="' . $attributes['url'] . '"' . ( is_string( $attributes['alt'] ) ? ' alt="' . $attributes['alt'] . '"' : '' ) . ( $attributes['id'] ? ' class="wp-image-' . $attributes['id'] . '"' : '' ) . '/></figure>';
 			$block_comment .= '<!-- /wp:%1$s -->';
 			$attributes = array(
-				'id' => $attributes['id'],
+				'id' => $attributes['id'] ?? null,
 				'sizeSlug' => $attributes['sizeSlug'],
 			);
 			break;

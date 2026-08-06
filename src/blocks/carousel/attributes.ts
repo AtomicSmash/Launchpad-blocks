@@ -8,7 +8,7 @@ import type {
 export const attributes = {
 	images: {
 		type: "array",
-		default: [] as { id: number; url: string }[],
+		default: [] as { id?: number; url: string; alt?: string }[],
 	},
 	shouldLoop: {
 		type: "boolean",

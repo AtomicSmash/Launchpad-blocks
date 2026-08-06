@@ -131,271 +131,352 @@ export declare const variations: ({
             (): string;
             (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
         } | (() => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         } | undefined) | ((...items: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => number) | {
             (...items: ConcatArray<{
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>[]): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
             (...items: ({
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             } | ConcatArray<{
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>)[]): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
         } | ((separator?: string) => string) | (() => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | (() => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         } | undefined) | ((start?: number, end?: number) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | ((compareFn?: ((a: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, b: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }) => number) | undefined) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | {
             (start: number, deleteCount?: number): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
             (start: number, deleteCount: number, ...items: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
         } | ((...items: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => number) | ((searchElement: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, fromIndex?: number) => number) | ((searchElement: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, fromIndex?: number) => number) | {
             <S extends {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>(predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => value is S, thisArg?: any): this is S[];
             (predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => unknown, thisArg?: any): boolean;
         } | ((predicate: (value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, array: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => unknown, thisArg?: any) => boolean) | ((callbackfn: (value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, array: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => void, thisArg?: any) => void) | (<U>(callbackfn: (value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, array: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => U, thisArg?: any) => U[]) | {
             <S extends {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>(predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => value is S, thisArg?: any): S[];
             (predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => unknown, thisArg?: any): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
         } | {
             (callbackfn: (previousValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             };
             (callbackfn: (previousValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, initialValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             };
             <U>(callbackfn: (previousValue: U, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => U, initialValue: U): U;
         } | {
             (callbackfn: (previousValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             };
             (callbackfn: (previousValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, initialValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             };
             <U>(callbackfn: (previousValue: U, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => U, initialValue: U): U;
         } | {
             <S extends {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>(predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, obj: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => value is S, thisArg?: any): S | undefined;
             (predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, obj: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => unknown, thisArg?: any): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             } | undefined;
         } | ((predicate: (value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, obj: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => unknown, thisArg?: any) => number) | ((value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, start?: number, end?: number) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | ((target: number, start: number, end?: number) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | (() => ArrayIterator<[number, {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }]>) | (() => ArrayIterator<number>) | (() => ArrayIterator<{
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }>) | ((searchElement: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, fromIndex?: number) => boolean) | (<U, This = undefined>(callback: (this: This, value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, array: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | ((index: number) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         } | undefined) | (() => ArrayIterator<{
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }>) | {
             id?: number | undefined;
             url?: string | undefined;
+            alt?: string | undefined;
         } | {
             [x: number]: boolean | undefined;
             length?: boolean | undefined;
@@ -1741,271 +1822,352 @@ export declare const variations: ({
             (): string;
             (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
         } | (() => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         } | undefined) | ((...items: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => number) | {
             (...items: ConcatArray<{
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>[]): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
             (...items: ({
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             } | ConcatArray<{
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>)[]): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
         } | ((separator?: string) => string) | (() => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | (() => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         } | undefined) | ((start?: number, end?: number) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | ((compareFn?: ((a: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, b: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }) => number) | undefined) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | {
             (start: number, deleteCount?: number): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
             (start: number, deleteCount: number, ...items: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
         } | ((...items: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => number) | ((searchElement: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, fromIndex?: number) => number) | ((searchElement: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, fromIndex?: number) => number) | {
             <S extends {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>(predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => value is S, thisArg?: any): this is S[];
             (predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => unknown, thisArg?: any): boolean;
         } | ((predicate: (value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, array: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => unknown, thisArg?: any) => boolean) | ((callbackfn: (value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, array: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => void, thisArg?: any) => void) | (<U>(callbackfn: (value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, array: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => U, thisArg?: any) => U[]) | {
             <S extends {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>(predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => value is S, thisArg?: any): S[];
             (predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => unknown, thisArg?: any): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[];
         } | {
             (callbackfn: (previousValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             };
             (callbackfn: (previousValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, initialValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             };
             <U>(callbackfn: (previousValue: U, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => U, initialValue: U): U;
         } | {
             (callbackfn: (previousValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             };
             (callbackfn: (previousValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, initialValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             };
             <U>(callbackfn: (previousValue: U, currentValue: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, currentIndex: number, array: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => U, initialValue: U): U;
         } | {
             <S extends {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }>(predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, obj: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => value is S, thisArg?: any): S | undefined;
             (predicate: (value: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }, index: number, obj: {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             }[]) => unknown, thisArg?: any): {
-                id: number;
+                id?: number;
                 url: string;
+                alt?: string;
             } | undefined;
         } | ((predicate: (value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, obj: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => unknown, thisArg?: any) => number) | ((value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, start?: number, end?: number) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | ((target: number, start: number, end?: number) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) | (() => ArrayIterator<[number, {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }]>) | (() => ArrayIterator<number>) | (() => ArrayIterator<{
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }>) | ((searchElement: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, fromIndex?: number) => boolean) | (<U, This = undefined>(callback: (this: This, value: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }, index: number, array: {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | ((index: number) => {
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         } | undefined) | (() => ArrayIterator<{
-            id: number;
+            id?: number;
             url: string;
+            alt?: string;
         }>) | {
             id?: number | undefined;
             url?: string | undefined;
+            alt?: string | undefined;
         } | {
             [x: number]: boolean | undefined;
             length?: boolean | undefined;
