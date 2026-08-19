@@ -24,6 +24,8 @@ $content = $content;
  */
 $block = $block;
 
+$is_externally_controlled_carousel = ( $block->context['launchpad-blocks/externallyControlledCarousel'] ?? false ) || ( $attributes['externallyControlledCarousel'] ?? false );
+
 ?>
 <div
 <?php
@@ -34,6 +36,7 @@ echo wp_kses_data(
 			'data-launchpad-carousel' => '',
 			'data-loop' => $attributes['shouldLoop'] ? 'true' : 'false',
 			'data-has-lightbox' => $attributes['shouldLinkSlidesToLightbox'] ? 'true' : 'false',
+			'data-externally-controlled-carousel' => $is_externally_controlled_carousel ? 'true' : 'false',
 		)
 	)
 );

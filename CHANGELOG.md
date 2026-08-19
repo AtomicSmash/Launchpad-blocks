@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 9.1.0
+
+### Minor Changes
+
+- ac7a55d: Add support for externally controlling carousels
+
 ## 9.0.3
 
 ### Patch Changes

@@ -16,10 +16,10 @@
   ],
   "keywords": [],
   "editorScript": [
-    "file:./index.a1aff9c10f6b45dd1ee4.js"
+    "file:./index.422311b1eb6ce95fdef7.js"
   ],
   "viewScript": [
-    "file:./view.43d707002d3e8a8601e6.js"
+    "file:./view.3c82a63924a6db0bfba2.js"
   ],
   "style": [
     "file:./style.6a7215f459d869705e87.css"
@@ -49,6 +49,10 @@
       "type": "number",
       "default": 0,
       "role": "local"
+    },
+    "externallyControlledCarousel": {
+      "type": "boolean",
+      "default": false
     }
   },
   "providesContext": {
@@ -59,7 +63,8 @@
   },
   "usesContext": [
     "launchpad-blocks/carouselImages",
-    "launchpad-blocks/carouselSlides"
+    "launchpad-blocks/carouselSlides",
+    "launchpad-blocks/externallyControlledCarousel"
   ],
   "supports": {
     "align": true

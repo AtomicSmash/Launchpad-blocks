@@ -38,6 +38,10 @@ export declare const blockJson: {
             readonly default: 0;
             readonly role: "local";
         };
+        readonly externallyControlledCarousel: {
+            readonly type: "boolean";
+            readonly default: false;
+        };
     };
     providesContext: {
         readonly "launchpad-blocks/carouselImages": "images";
@@ -45,7 +49,7 @@ export declare const blockJson: {
         readonly "launchpad-blocks/shouldLinkSlidesToLightbox": "shouldLinkSlidesToLightbox";
         readonly "launchpad-blocks/currentlySelectedSlide": "currentlySelectedSlide";
     };
-    usesContext: ["launchpad-blocks/carouselImages", "launchpad-blocks/carouselSlides"];
+    usesContext: ["launchpad-blocks/carouselImages", "launchpad-blocks/carouselSlides", "launchpad-blocks/externallyControlledCarousel"];
     supports: {
         readonly align: true;
     };

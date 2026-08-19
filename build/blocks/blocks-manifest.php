@@ -1,90 +1,6 @@
 <?php
 	// This file is generated. Do not modify it manually.
 	return array(
-	'blocks/accordion' => array(
-		'apiVersion' => 3,
-		'name' => 'launchpad-blocks/accordion',
-		'parent' => array(
-			'launchpad-blocks/accordion-group'
-		),
-		'title' => 'Accordion',
-		'category' => 'theme',
-		'description' => 'A block which has a header and collapsible content.',
-		'textdomain' => 'launchpad-blocks',
-		'keywords' => array(
-			'accordion'
-		),
-		'editorScript' => array(
-			'file:./index.f58621fe2665c25d8b7c.js'
-		),
-		'style' => array(
-			'file:./style.77aceeefabeb13d71de1.css'
-		),
-		'editorStyle' => array(
-			'file:./editor-style.9b580502a3c7372715c7.css'
-		),
-		'render' => 'file:./render.php',
-		'attributes' => array(
-			'isInitiallyOpen' => array(
-				'type' => 'boolean',
-				'default' => false
-			),
-			'accordionId' => array(
-				'type' => 'string',
-				'default' => ''
-			),
-			'headerContent' => array(
-				'type' => 'string'
-			),
-			'headerElement' => array(
-				'type' => 'string',
-				'enum' => array(
-					'h2',
-					'h3',
-					'h4',
-					'h5',
-					'h6',
-					'p'
-				),
-				'default' => 'h2'
-			)
-		),
-		'supports' => array(
-			'color' => true,
-			'typography' => array(
-				'fontSize' => true,
-				'lineHeight' => true,
-				'textAlign' => true
-			),
-			'shadow' => true,
-			'spacing' => array(
-				'padding' => true,
-				'margin' => true
-			)
-		),
-		'providesContext' => array(
-			
-		),
-		'usesContext' => array(
-			'launchpad-blocks/accordion-heading-level'
-		),
-		'example' => array(
-			'attributes' => array(
-				'isInitiallyOpen' => false,
-				'accordionId' => '123',
-				'headerElement' => 'h2',
-				'headerContent' => 'Joke 1'
-			),
-			'innerBlocks' => array(
-				array(
-					'name' => 'core/paragraph',
-					'attributes' => array(
-						'content' => 'I was going to sail around the globe in the world’s smallest ship but I bottled it.'
-					)
-				)
-			)
-		)
-	),
 	'blocks/accordion-group' => array(
 		'apiVersion' => 3,
 		'name' => 'launchpad-blocks/accordion-group',
@@ -215,6 +131,90 @@
 			'launchpad-blocks/accordion'
 		)
 	),
+	'blocks/accordion' => array(
+		'apiVersion' => 3,
+		'name' => 'launchpad-blocks/accordion',
+		'parent' => array(
+			'launchpad-blocks/accordion-group'
+		),
+		'title' => 'Accordion',
+		'category' => 'theme',
+		'description' => 'A block which has a header and collapsible content.',
+		'textdomain' => 'launchpad-blocks',
+		'keywords' => array(
+			'accordion'
+		),
+		'editorScript' => array(
+			'file:./index.f58621fe2665c25d8b7c.js'
+		),
+		'style' => array(
+			'file:./style.77aceeefabeb13d71de1.css'
+		),
+		'editorStyle' => array(
+			'file:./editor-style.9b580502a3c7372715c7.css'
+		),
+		'render' => 'file:./render.php',
+		'attributes' => array(
+			'isInitiallyOpen' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'accordionId' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'headerContent' => array(
+				'type' => 'string'
+			),
+			'headerElement' => array(
+				'type' => 'string',
+				'enum' => array(
+					'h2',
+					'h3',
+					'h4',
+					'h5',
+					'h6',
+					'p'
+				),
+				'default' => 'h2'
+			)
+		),
+		'supports' => array(
+			'color' => true,
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'textAlign' => true
+			),
+			'shadow' => true,
+			'spacing' => array(
+				'padding' => true,
+				'margin' => true
+			)
+		),
+		'providesContext' => array(
+			
+		),
+		'usesContext' => array(
+			'launchpad-blocks/accordion-heading-level'
+		),
+		'example' => array(
+			'attributes' => array(
+				'isInitiallyOpen' => false,
+				'accordionId' => '123',
+				'headerElement' => 'h2',
+				'headerContent' => 'Joke 1'
+			),
+			'innerBlocks' => array(
+				array(
+					'name' => 'core/paragraph',
+					'attributes' => array(
+						'content' => 'I was going to sail around the globe in the world’s smallest ship but I bottled it.'
+					)
+				)
+			)
+		)
+	),
 	'blocks/button-with-icon' => array(
 		'apiVersion' => 3,
 		'name' => 'launchpad-blocks/button-with-icon',
@@ -339,10 +339,10 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.a1aff9c10f6b45dd1ee4.js'
+			'file:./index.422311b1eb6ce95fdef7.js'
 		),
 		'viewScript' => array(
-			'file:./view.43d707002d3e8a8601e6.js'
+			'file:./view.3c82a63924a6db0bfba2.js'
 		),
 		'style' => array(
 			'file:./style.6a7215f459d869705e87.css'
@@ -376,6 +376,10 @@
 				'type' => 'number',
 				'default' => 0,
 				'role' => 'local'
+			),
+			'externallyControlledCarousel' => array(
+				'type' => 'boolean',
+				'default' => false
 			)
 		),
 		'providesContext' => array(
@@ -386,7 +390,8 @@
 		),
 		'usesContext' => array(
 			'launchpad-blocks/carouselImages',
-			'launchpad-blocks/carouselSlides'
+			'launchpad-blocks/carouselSlides',
+			'launchpad-blocks/externallyControlledCarousel'
 		),
 		'supports' => array(
 			'align' => true
@@ -1183,7 +1188,7 @@
 			'file:./index.2b5c30260d58bde96644.js'
 		),
 		'viewScript' => array(
-			'file:./view.b3d2acb7800493437846.js'
+			'file:./view.2aef1a29b48e3a0a6e96.js'
 		),
 		'style' => array(
 			'file:./style.f01f216d67532d72c114.css'
@@ -1367,7 +1372,7 @@
 			'file:./index.d5b2df95f26e6326dfc6.js'
 		),
 		'viewScript' => array(
-			'file:./view.619031cedaa0c80f0d0d.js'
+			'file:./view.e506dda6bad13d73c6fb.js'
 		),
 		'style' => array(
 			'file:./style.da4378f09572abb622a7.css'

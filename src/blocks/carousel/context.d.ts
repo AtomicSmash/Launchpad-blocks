@@ -9,8 +9,10 @@ export declare const providesContext: {
 };
 export type ProvidesContext = typeof providesContext;
 export type InterpretedProvidesContext = InterpretProvidesContext<InterpretedAttributes, ProvidesContext>;
-type OtherBlocksInterpretedProvidesContext = InterpretedProvidesContext | GalleryCarouselInterpretedProvidesContext;
-export declare const usesContext: ["launchpad-blocks/carouselImages", "launchpad-blocks/carouselSlides"];
+type OtherBlocksInterpretedProvidesContext = InterpretedProvidesContext & GalleryCarouselInterpretedProvidesContext & {
+    "launchpad-blocks/externallyControlledCarousel": boolean;
+};
+export declare const usesContext: ["launchpad-blocks/carouselImages", "launchpad-blocks/carouselSlides", "launchpad-blocks/externallyControlledCarousel"];
 export type UsesContext = typeof usesContext;
 export type InterpretedUsedContext = InterpretUsedContext<UsesContext, OtherBlocksInterpretedProvidesContext>;
 export {};

@@ -26,6 +26,10 @@ export declare const attributes: {
         readonly default: 0;
         readonly role: "local";
     };
+    readonly externallyControlledCarousel: {
+        readonly type: "boolean";
+        readonly default: false;
+    };
 };
 export type Attributes = typeof attributes;
 export type InterpretedAttributes = InterpretAttributes<Supports, Attributes>;

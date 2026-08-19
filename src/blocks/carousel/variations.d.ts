@@ -1749,6 +1749,7 @@ export declare const variations: ({
             readonly [Symbol.unscopables]?: boolean | undefined;
         })[] | undefined;
         readonly currentlySelectedSlide?: number | undefined;
+        readonly externallyControlledCarousel?: boolean | undefined;
         align?: (("center" | "right" | "left") | ("full" | "wide")) | undefined;
         className?: string | undefined;
         layout?: {
@@ -3440,6 +3441,7 @@ export declare const variations: ({
             readonly [Symbol.unscopables]?: boolean | undefined;
         })[] | undefined;
         readonly currentlySelectedSlide?: number | undefined;
+        readonly externallyControlledCarousel?: boolean | undefined;
         align?: (("center" | "right" | "left") | ("full" | "wide")) | undefined;
         className?: string | undefined;
         layout?: {

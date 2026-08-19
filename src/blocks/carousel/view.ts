@@ -98,11 +98,13 @@ export class Carousel {
 		this.initLightbox();
 		window.addEventListener("resize", () => {
 			if (
-				carousel.parentElement?.dataset.launchpadLightbox === "" &&
-				carousel.parentElement instanceof HTMLDialogElement &&
-				!carousel.parentElement.open
+				(carousel.parentElement?.dataset.launchpadLightbox === "" &&
+					carousel.parentElement instanceof HTMLDialogElement &&
+					!carousel.parentElement.open) ||
+				carousel.dataset.externallyControlledCarousel
 			) {
 				// Don't try and resize carousels in closed lightboxes, they're hidden so it won't work.
+				// Don't resize externally controlled carousels
 				return;
 			}
 			clearTimeout(this.debounceResizeTimeout);
@@ -370,8 +372,12 @@ domReady(() => {
 		"[data-launchpad-carousel]",
 	);
 	for (const carousel of carousels) {
-		if (carousel.parentElement?.dataset.launchpadLightbox === "") {
+		if (
+			carousel.parentElement?.dataset.launchpadLightbox === "" ||
+			carousel.dataset.externallyControlledCarousel === "true"
+		) {
 			// Don't try and initialise carousels in lightboxes, they're hidden on load so it won't work.
+			// Don't initialise carousels for externally controlled carousels
 			continue;
 		}
 		new Carousel(carousel);
