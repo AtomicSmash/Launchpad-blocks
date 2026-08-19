@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 9.1.1
+
+### Patch Changes
+
+- a9bb3f5: Fix carousel resizing for not-externally controlled carousels
+
 ## 9.1.0
 
 ### Minor Changes

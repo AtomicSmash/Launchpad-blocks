@@ -101,7 +101,7 @@ export class Carousel {
 				(carousel.parentElement?.dataset.launchpadLightbox === "" &&
 					carousel.parentElement instanceof HTMLDialogElement &&
 					!carousel.parentElement.open) ||
-				carousel.dataset.externallyControlledCarousel
+				carousel.dataset.externallyControlledCarousel === "true"
 			) {
 				// Don't try and resize carousels in closed lightboxes, they're hidden so it won't work.
 				// Don't resize externally controlled carousels
