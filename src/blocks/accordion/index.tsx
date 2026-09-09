@@ -2,7 +2,6 @@ import type { Attributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
 import type { Supports } from "./supports";
 import { registerBlockType } from "@wordpress/blocks";
-import { registerLaunchpadBlocksCollection } from "@launchpadBlocks/helpers.editor";
 import { Icon } from "@launchpadBlocks/svgs";
 import blockMetaData from "./block.json";
 import { deprecated } from "./deprecation";
@@ -20,4 +19,3 @@ registerBlockType<Supports, Attributes, InterpretedUsedContext>(
 		deprecated,
 	},
 );
-registerLaunchpadBlocksCollection();

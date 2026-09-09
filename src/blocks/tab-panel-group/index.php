@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Custom\TabPanelGroup;
+namespace Launchpad\Blocks\Custom\TabPanelGroup;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

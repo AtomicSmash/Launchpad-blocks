@@ -3,7 +3,7 @@
  * Block helpers
  */
 
-namespace LaunchpadBlocks\Helpers;
+namespace Launchpad\Blocks\Helpers;
 
 /**
  * Icon function
@@ -14,7 +14,7 @@ namespace LaunchpadBlocks\Helpers;
  * @param array<string,string|bool> $attributes The HTML attributes to add to the SVG element.
  */
 function icon( string $icon_name, array $attributes = array() ): string {
-	$assets = new \LaunchpadBlocks\Assets();
+	$assets = new \Launchpad\Blocks\Assets();
 	$icon_sprite = $assets->get_cached_asset( 'icons/sprite.svg' );
 	$attrs = join(
 		' ',
@@ -108,7 +108,7 @@ function get_icon_renderers(): array {
 		'launchpad_blocks_icon_renderers',
 		array(
 			'launchpad-blocks' => function ( string $icon_name, array $attributes = array() ) {
-				return \LaunchpadBlocks\Helpers\icon( $icon_name, $attributes );
+				return \Launchpad\Blocks\Helpers\icon( $icon_name, $attributes );
 			},
 		)
 	);

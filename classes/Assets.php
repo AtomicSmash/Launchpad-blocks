@@ -3,7 +3,7 @@
  * Assets class
  */
 
-namespace LaunchpadBlocks;
+namespace Launchpad\Blocks;
 
 /**
  * Get assets from launchpad blocks plugin.

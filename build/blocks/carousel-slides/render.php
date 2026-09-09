@@ -44,9 +44,9 @@ if ( isset( $attributes['captionBackground'] ) ) {
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			'data-carousel-slides' => '',
-			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+			'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 			'class' => 'auto' !== $attributes['aspectRatio'] ? 'has-aspect-ratio' : '',
 		)
 	)

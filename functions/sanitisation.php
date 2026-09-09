@@ -3,7 +3,7 @@
  * Sanitisation
  */
 
-namespace LaunchpadBlocks\Sanitisation;
+namespace Launchpad\Blocks\Sanitisation;
 
 add_filter(
 	'wp_kses_allowed_html',

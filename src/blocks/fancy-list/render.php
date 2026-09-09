@@ -66,7 +66,7 @@ if ( $should_have_icon ) {
 $block_wrapper_attributes = get_block_wrapper_attributes(
 	array(
 		'class' => join( ' ', $wrapper_class ),
-		'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+		'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 	)
 );
 ?>

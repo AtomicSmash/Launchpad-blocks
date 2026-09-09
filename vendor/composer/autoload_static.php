@@ -9,7 +9,7 @@ class ComposerStaticInit0e1b152f21d1208e9ee73912e6217654
     public static $prefixLengthsPsr4 = array (
         'L' =>
         array (
-            'LaunchpadBlocks\\' => 16,
+            'Launchpad\\Blocks\\' => 17,
         ),
         'A' =>
         array (
@@ -18,7 +18,7 @@ class ComposerStaticInit0e1b152f21d1208e9ee73912e6217654
     );
 
     public static $prefixDirsPsr4 = array (
-        'LaunchpadBlocks\\' =>
+        'Launchpad\\Blocks\\' =>
         array (
             0 => __DIR__ . '/../..' . '/classes',
         ),
@@ -31,7 +31,7 @@ class ComposerStaticInit0e1b152f21d1208e9ee73912e6217654
     public static $classMap = array (
         'AtomicSmash\\CompilerHelpers\\Assets' => __DIR__ . '/..' . '/atomicsmash/compiler-helpers/classes/Assets.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'LaunchpadBlocks\\Assets' => __DIR__ . '/../..' . '/classes/Assets.php',
+        'Launchpad\\Blocks\\Assets' => __DIR__ . '/../..' . '/classes/Assets.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

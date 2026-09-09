@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\FancyList;
+namespace Launchpad\Blocks\Custom\FancyList;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

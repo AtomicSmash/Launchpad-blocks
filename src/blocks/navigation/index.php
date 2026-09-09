@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\Navigation;
+namespace Launchpad\Blocks\Custom\Navigation;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

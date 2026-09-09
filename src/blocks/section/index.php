@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\Section;
+namespace Launchpad\Blocks\Custom\Section;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

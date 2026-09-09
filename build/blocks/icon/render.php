@@ -28,15 +28,15 @@ $wrapper_style = array(
 	'--icon-size' => isset( $attributes['size'] ) ? $attributes['size'] : '2rem',
 );
 
-$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
+$icon_renderers = Launchpad\Blocks\Helpers\get_icon_renderers();
 ?>
-<div 
+<div
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
-			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
+			'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 		)
 	)
 );

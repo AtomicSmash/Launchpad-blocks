@@ -25,7 +25,7 @@ $content = $content;
 $block = $block;
 
 ?>
-<ol <?php echo wp_kses_data( get_block_wrapper_attributes( \LaunchpadBlocks\Fix\default_attributes( $block, $attributes ) ) ); ?>>
+<ol <?php echo wp_kses_data( get_block_wrapper_attributes( \Launchpad\Blocks\Fix\default_attributes( $block, $attributes ) ) ); ?>>
 	<?php foreach ( $attributes['columns'] as $column ) : ?>
 		<li class="numbered-columns-list-item">
 			<<?php echo esc_html( $attributes['headerElement'] ); ?> class="numbered-columns-list-item-heading is-style-t-5"><?php echo wp_kses_post( $column['heading'] ); ?></<?php echo esc_html( $attributes['headerElement'] ); ?>>

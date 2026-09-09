@@ -27,7 +27,7 @@ $block = $block;
 $accordion_icon_function = apply_filters(
 	'launchpad_blocks_accordion_icon',
 	function ( $attributes ) {
-		return \LaunchpadBlocks\Helpers\icon( 'accordion-arrow', $attributes );
+		return \Launchpad\Blocks\Helpers\icon( 'accordion-arrow', $attributes );
 	}
 );
 
@@ -50,7 +50,7 @@ $heading_level = isset( $block->context['launchpad-blocks/accordion-heading-leve
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			'data-launchpad-accordion' => '',
 			'data-is-initially-open' => $attributes['isInitiallyOpen'] ? 'true' : 'false',
 			'id' => $attributes['accordionId'],

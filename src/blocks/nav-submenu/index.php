@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\NavigationSubMenu;
+namespace Launchpad\Blocks\Custom\NavigationSubMenu;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
@@ -32,7 +32,7 @@ function has_current_menu_item_as_child( \WP_Block $block, string $current_url )
 		if ( array_search( $inner_block->parsed_block['blockName'], array( 'launchpad-blocks/nav-submenu', 'launchpad-blocks/nav-list' ), true ) !== false ) {
 			$result = has_current_menu_item_as_child( $inner_block, $current_url );
 		} elseif ( array_search( $inner_block->parsed_block['blockName'], array( 'launchpad-blocks/nav-menu-item' ), true ) !== false ) {
-			$result = \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_active( $inner_block->parsed_block['attrs'] );
+			$result = \Launchpad\Blocks\Custom\NavigationMenuItem\is_active( $inner_block->parsed_block['attrs'] );
 		}
 		if ( $result ) {
 			break;

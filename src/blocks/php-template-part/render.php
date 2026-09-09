@@ -24,7 +24,7 @@ $content = $content;
  */
 $block = $block;
 
-$args = \LaunchpadBlocks\Blocks\Custom\PHPTemplatePart\translate_object_with_field_types( $attributes['args'] );
+$args = \Launchpad\Blocks\Custom\PHPTemplatePart\translate_object_with_field_types( $attributes['args'] );
 
 $template_part_slug = $attributes['templatePartSlug'];
 $template_part_name = isset( $attributes['templatePartName'] ) && ! empty( $attributes['templatePartName'] ) ? $attributes['templatePartName'] : null;

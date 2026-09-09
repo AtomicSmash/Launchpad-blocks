@@ -8,5 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'AtomicSmash\\CompilerHelpers\\Assets' => $vendorDir . '/atomicsmash/compiler-helpers/classes/Assets.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'LaunchpadBlocks\\Assets' => $baseDir . '/classes/Assets.php',
+    'Launchpad\\Blocks\\Assets' => $baseDir . '/classes/Assets.php',
 );

@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\NavLinksGroup;
+namespace Launchpad\Blocks\Custom\NavLinksGroup;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
@@ -25,7 +25,7 @@ function register_block(): void {
 function is_shown( \WP_Block $block ): bool {
 	$inner_blocks = $block->inner_blocks;
 	foreach ( $inner_blocks as $inner_block ) {
-		if ( \LaunchpadBlocks\Blocks\Custom\NavigationList\is_shown( $inner_block ) ) {
+		if ( \Launchpad\Blocks\Custom\NavigationList\is_shown( $inner_block ) ) {
 			return true;
 		}
 	}

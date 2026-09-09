@@ -26,15 +26,15 @@ $block = $block;
 
 $is_link = isset( $attributes['linkHref'] );
 
-$is_active = $is_link ? \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_active( $attributes ) : false;
+$is_active = $is_link ? \Launchpad\Blocks\Custom\NavigationMenuItem\is_active( $attributes ) : false;
 
 $wrapper_style = array(
 	'--icon-size' => isset( $attributes['size'] ) ? $attributes['size'] : '1rem',
 );
 
-$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
+$icon_renderers = \Launchpad\Blocks\Helpers\get_icon_renderers();
 
-$default_attributes = \LaunchpadBlocks\Fix\default_attributes( $block, $attributes );
+$default_attributes = \Launchpad\Blocks\Fix\default_attributes( $block, $attributes );
 
 $icon_html = '';
 if ( isset( $attributes['library'], $attributes['iconName'] ) ) {
@@ -46,7 +46,7 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 	array(
 		...$default_attributes,
 		'class' => ( ! empty( $default_attributes['class'] ) ? $default_attributes['class'] : '' ) . ( $is_active ? ' is-active' : '' ),
-		'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+		'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 		'id' => $attributes['anchor'] ?? null,
 	)
 );

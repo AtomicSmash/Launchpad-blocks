@@ -25,6 +25,6 @@ $content = $content;
 $block = $block;
 
 ?>
-<div <?php echo wp_kses_data( get_block_wrapper_attributes( \LaunchpadBlocks\Fix\default_attributes( $block, $attributes ) ) ); ?>>
+<div <?php echo wp_kses_data( get_block_wrapper_attributes( \Launchpad\Blocks\Fix\default_attributes( $block, $attributes ) ) ); ?>>
 	<?php echo wp_kses_post( $content ); ?>
 </div>

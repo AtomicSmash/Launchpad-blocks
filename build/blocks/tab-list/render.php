@@ -30,7 +30,7 @@ $title_id = $block->context['launchpad/tabsGroupId'] . '_tabs_title';
 
 global $post;
 $blocks = parse_blocks( $post->post_content );
-$tab_group_block = \LaunchpadBlocks\Helpers\find_block_in_inner_blocks(
+$tab_group_block = \Launchpad\Blocks\Helpers\find_block_in_inner_blocks(
 	$blocks,
 	array(
 		'blockName' => 'launchpad-blocks/tabs',
@@ -44,7 +44,7 @@ if ( null === $tab_group_block ) :
 	$wp_error = new WP_Error( 'invalid', 'Tab list must only be used inside a Tabs block.' );
 	echo esc_html( $wp_error->get_error_message() );
 else :
-	$tab_panel_group_block = \LaunchpadBlocks\Helpers\find_block_in_inner_blocks( $tab_group_block['innerBlocks'], array( 'blockName' => 'launchpad-blocks/tab-panel-group' ) );
+	$tab_panel_group_block = \Launchpad\Blocks\Helpers\find_block_in_inner_blocks( $tab_group_block['innerBlocks'], array( 'blockName' => 'launchpad-blocks/tab-panel-group' ) );
 	if ( null === $tab_panel_group_block ) :
 		$wp_error = new WP_Error( 'invalid', 'Tab list must be accompanied by a Tab panel group block' );
 		echo esc_html( $wp_error->get_error_message() );

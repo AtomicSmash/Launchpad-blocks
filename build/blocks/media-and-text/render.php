@@ -30,7 +30,7 @@ $block = $block;
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array_merge(
-			\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			array(
 				'class' => 'alignfull' . ( $attributes['hasBackground'] ? ' has-background' : '' ) . ( $attributes['shouldBreakOutMedia'] ? ' is-breakout is-breakout-' . $attributes['mediaPosition'] : '' ),
 			)

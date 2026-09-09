@@ -3,7 +3,7 @@
  * Fix block defaults.
  */
 
-namespace LaunchpadBlocks\Blocks\ToPHP;
+namespace Launchpad\Blocks\ToPHP;
 
 use Error;
 

@@ -31,7 +31,7 @@ if ( isset( $attributes['iconColour'] ) ) {
 	$wrapper_style['--icon-colour'] = $attributes['iconColour'];
 }
 
-$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
+$icon_renderers = \Launchpad\Blocks\Helpers\get_icon_renderers();
 
 
 ?>
@@ -40,8 +40,8 @@ $icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
-			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
+			'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 		)
 	)
 );

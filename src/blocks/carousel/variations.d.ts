@@ -560,46 +560,10 @@ export declare const variations: ({
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }>) | ((value: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, start?: number, end?: number) => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) | {
-                <S extends {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }>(predicate: (value: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }, index: number, array: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]) => value is S, thisArg?: any): S[];
-                (predicate: (value: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }, index: number, array: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]) => unknown, thisArg?: any): {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[];
-            } | (() => ArrayIterator<{
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }>) | {
+            }>) | (() => string) | {
+                (): string;
+                (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
+            } | {
                 (...items: ConcatArray<{
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
@@ -622,15 +586,7 @@ export declare const variations: ({
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
                 }[];
-            } | ((searchElement: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, fromIndex?: number) => number) | ((searchElement: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, fromIndex?: number) => number) | ((start?: number, end?: number) => {
+            } | ((separator?: string) => string) | ((start?: number, end?: number) => {
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -638,61 +594,11 @@ export declare const variations: ({
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, fromIndex?: number) => boolean) | ((index: number) => {
+            }, fromIndex?: number) => number) | ((searchElement: {
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            } | undefined) | {
-                (): string;
-                (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
-            } | ((compareFn?: ((a: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, b: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }) => number) | undefined) => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) | (() => string) | (() => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            } | undefined) | ((...items: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) => number) | ((separator?: string) => string) | (() => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) | (() => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            } | undefined) | {
-                (start: number, deleteCount?: number): {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[];
-                (start: number, deleteCount: number, ...items: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]): {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[];
-            } | ((...items: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) => number) | {
+            }, fromIndex?: number) => number) | {
                 <S extends {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
@@ -732,6 +638,33 @@ export declare const variations: ({
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
             }[]) => void, thisArg?: any) => void) | {
+                <S extends {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }>(predicate: (value: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }, index: number, array: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]) => value is S, thisArg?: any): S[];
+                (predicate: (value: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }, index: number, array: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]) => unknown, thisArg?: any): {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[];
+            } | {
                 (callbackfn: (previousValue: {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
@@ -878,15 +811,19 @@ export declare const variations: ({
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) => unknown, thisArg?: any) => number) | ((target: number, start: number, end?: number) => {
+            }[]) => unknown, thisArg?: any) => number) | (() => ArrayIterator<[number, {
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) | (() => ArrayIterator<[number, {
+            }]>) | (() => ArrayIterator<number>) | (() => ArrayIterator<{
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }]>) | (() => ArrayIterator<number>) | (<U, This = undefined>(callback: (this: This, value: {
+            }>) | ((searchElement: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }, fromIndex?: number) => boolean) | (<U, This = undefined>(callback: (this: This, value: {
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -894,7 +831,70 @@ export declare const variations: ({
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | {
+            }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | ((index: number) => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            } | undefined) | (() => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            } | undefined) | ((...items: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) => number) | (() => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) | (() => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            } | undefined) | ((compareFn?: ((a: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }, b: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }) => number) | undefined) => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) | {
+                (start: number, deleteCount?: number): {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[];
+                (start: number, deleteCount: number, ...items: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]): {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[];
+            } | ((...items: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) => number) | ((value: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }, start?: number, end?: number) => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) | ((target: number, start: number, end?: number) => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) | {
                 name?: string | undefined;
                 attributes?: {
                     [x: string]: unknown;
@@ -907,46 +907,10 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>>) | ((value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, start?: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) | {
-                    <S extends import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>>(predicate: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[]) => value is S, thisArg?: any): S[];
-                    (predicate: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[]) => unknown, thisArg?: any): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[];
-                } | (() => ArrayIterator<import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>>) | {
+                }[]>>) | (() => string) | {
+                    (): string;
+                    (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
+                } | {
                     (...items: ConcatArray<import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
@@ -969,15 +933,7 @@ export declare const variations: ({
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
                     }[]>[];
-                } | ((searchElement: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, fromIndex?: number) => number) | ((searchElement: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, fromIndex?: number) => number) | ((start?: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                } | ((separator?: string) => string) | ((start?: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -985,65 +941,11 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, fromIndex?: number) => boolean) | {
-                    (): string;
-                    (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
-                } | (<U>(callbackfn: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                }[]>, fromIndex?: number) => number) | ((searchElement: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => U, thisArg?: any) => U[]) | ((compareFn?: ((a: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, b: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>) => number) | undefined) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) | (() => string) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]> | undefined) | ((...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => number) | ((separator?: string) => string) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]> | undefined) | {
-                    (start: number, deleteCount?: number): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[];
-                    (start: number, deleteCount: number, ...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[]): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[];
-                } | ((...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => number) | {
+                }[]>, fromIndex?: number) => number) | {
                     <S extends import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
@@ -1082,7 +984,42 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => void, thisArg?: any) => void) | {
+                }[]>[]) => void, thisArg?: any) => void) | (<U>(callbackfn: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) => U, thisArg?: any) => U[]) | {
+                    <S extends import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>>(predicate: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[]) => value is S, thisArg?: any): S[];
+                    (predicate: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[]) => unknown, thisArg?: any): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[];
+                } | {
                     (callbackfn: (previousValue: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
@@ -1229,15 +1166,19 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => unknown, thisArg?: any) => number) | ((target: number, start: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                }[]>[]) => unknown, thisArg?: any) => number) | (() => ArrayIterator<[number, import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) | (() => ArrayIterator<[number, import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                }[]>]>) | (() => ArrayIterator<number>) | (() => ArrayIterator<import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>]>) | (() => ArrayIterator<number>) | (<U, This = undefined>(callback: (this: This, value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                }[]>>) | ((searchElement: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>, fromIndex?: number) => boolean) | (<U, This = undefined>(callback: (this: This, value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -1245,7 +1186,66 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | {
+                }[]>[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]> | undefined) | ((...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) => number) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]> | undefined) | ((compareFn?: ((a: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>, b: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>) => number) | undefined) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) | {
+                    (start: number, deleteCount?: number): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[];
+                    (start: number, deleteCount: number, ...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[]): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[];
+                } | ((...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) => number) | ((value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>, start?: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) | ((target: number, start: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) | {
                     name?: string | undefined;
                     attributes?: {
                         [x: string]: unknown;
@@ -1262,46 +1262,10 @@ export declare const variations: ({
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }>) | ((value: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, start?: number, end?: number) => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) | {
-                        <S extends {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }>(predicate: (value: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }, index: number, array: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[]) => value is S, thisArg?: any): S[];
-                        (predicate: (value: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }, index: number, array: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[]) => unknown, thisArg?: any): {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[];
-                    } | (() => ArrayIterator<{
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }>) | {
+                    }>) | (() => string) | {
+                        (): string;
+                        (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
+                    } | {
                         (...items: ConcatArray<{
                             name: string;
                             attributes?: Record<string, unknown> | undefined;
@@ -1324,15 +1288,7 @@ export declare const variations: ({
                             attributes?: Record<string, unknown> | undefined;
                             innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
                         }[];
-                    } | ((searchElement: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, fromIndex?: number) => number) | ((searchElement: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, fromIndex?: number) => number) | ((start?: number, end?: number) => {
+                    } | ((separator?: string) => string) | ((start?: number, end?: number) => {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -1340,61 +1296,11 @@ export declare const variations: ({
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, fromIndex?: number) => boolean) | ((index: number) => {
+                    }, fromIndex?: number) => number) | ((searchElement: {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    } | undefined) | {
-                        (): string;
-                        (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
-                    } | ((compareFn?: ((a: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, b: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }) => number) | undefined) => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) | (() => string) | (() => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    } | undefined) | ((...items: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) => number) | ((separator?: string) => string) | (() => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) | (() => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    } | undefined) | {
-                        (start: number, deleteCount?: number): {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[];
-                        (start: number, deleteCount: number, ...items: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[]): {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[];
-                    } | ((...items: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) => number) | {
+                    }, fromIndex?: number) => number) | {
                         <S extends {
                             name: string;
                             attributes?: Record<string, unknown> | undefined;
@@ -1434,6 +1340,33 @@ export declare const variations: ({
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
                     }[]) => void, thisArg?: any) => void) | {
+                        <S extends {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }>(predicate: (value: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }, index: number, array: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[]) => value is S, thisArg?: any): S[];
+                        (predicate: (value: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }, index: number, array: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[]) => unknown, thisArg?: any): {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[];
+                    } | {
                         (callbackfn: (previousValue: {
                             name: string;
                             attributes?: Record<string, unknown> | undefined;
@@ -1580,15 +1513,19 @@ export declare const variations: ({
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) => unknown, thisArg?: any) => number) | ((target: number, start: number, end?: number) => {
+                    }[]) => unknown, thisArg?: any) => number) | (() => ArrayIterator<[number, {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) | (() => ArrayIterator<[number, {
+                    }]>) | (() => ArrayIterator<number>) | (() => ArrayIterator<{
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }]>) | (() => ArrayIterator<number>) | (<U, This = undefined>(callback: (this: This, value: {
+                    }>) | ((searchElement: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }, fromIndex?: number) => boolean) | (<U, This = undefined>(callback: (this: This, value: {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -1596,7 +1533,70 @@ export declare const variations: ({
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | /*elided*/ any | {
+                    }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | ((index: number) => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    } | undefined) | (() => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    } | undefined) | ((...items: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) => number) | (() => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) | (() => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    } | undefined) | ((compareFn?: ((a: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }, b: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }) => number) | undefined) => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) | {
+                        (start: number, deleteCount?: number): {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[];
+                        (start: number, deleteCount: number, ...items: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[]): {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[];
+                    } | ((...items: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) => number) | ((value: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }, start?: number, end?: number) => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) | ((target: number, start: number, end?: number) => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) | /*elided*/ any | {
                         [x: number]: boolean | undefined;
                         length?: boolean | undefined;
                         toString?: boolean | undefined;
@@ -1750,7 +1750,7 @@ export declare const variations: ({
         })[] | undefined;
         readonly currentlySelectedSlide?: number | undefined;
         readonly externallyControlledCarousel?: boolean | undefined;
-        align?: (("center" | "right" | "left") | ("full" | "wide")) | undefined;
+        align?: (("right" | "left" | "center") | ("full" | "wide")) | undefined;
         className?: string | undefined;
         layout?: {
             type?: "default" | undefined;
@@ -2252,46 +2252,10 @@ export declare const variations: ({
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }>) | ((value: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, start?: number, end?: number) => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) | {
-                <S extends {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }>(predicate: (value: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }, index: number, array: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]) => value is S, thisArg?: any): S[];
-                (predicate: (value: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }, index: number, array: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]) => unknown, thisArg?: any): {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[];
-            } | (() => ArrayIterator<{
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }>) | {
+            }>) | (() => string) | {
+                (): string;
+                (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
+            } | {
                 (...items: ConcatArray<{
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
@@ -2314,15 +2278,7 @@ export declare const variations: ({
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
                 }[];
-            } | ((searchElement: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, fromIndex?: number) => number) | ((searchElement: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, fromIndex?: number) => number) | ((start?: number, end?: number) => {
+            } | ((separator?: string) => string) | ((start?: number, end?: number) => {
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -2330,61 +2286,11 @@ export declare const variations: ({
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, fromIndex?: number) => boolean) | ((index: number) => {
+            }, fromIndex?: number) => number) | ((searchElement: {
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            } | undefined) | {
-                (): string;
-                (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
-            } | ((compareFn?: ((a: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }, b: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }) => number) | undefined) => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) | (() => string) | (() => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            } | undefined) | ((...items: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) => number) | ((separator?: string) => string) | (() => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) | (() => {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            } | undefined) | {
-                (start: number, deleteCount?: number): {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[];
-                (start: number, deleteCount: number, ...items: {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]): {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[];
-            } | ((...items: {
-                name: string;
-                attributes?: Record<string, unknown> | undefined;
-                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) => number) | {
+            }, fromIndex?: number) => number) | {
                 <S extends {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
@@ -2424,6 +2330,33 @@ export declare const variations: ({
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
             }[]) => void, thisArg?: any) => void) | {
+                <S extends {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }>(predicate: (value: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }, index: number, array: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]) => value is S, thisArg?: any): S[];
+                (predicate: (value: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }, index: number, array: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]) => unknown, thisArg?: any): {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[];
+            } | {
                 (callbackfn: (previousValue: {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
@@ -2570,15 +2503,19 @@ export declare const variations: ({
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) => unknown, thisArg?: any) => number) | ((target: number, start: number, end?: number) => {
+            }[]) => unknown, thisArg?: any) => number) | (() => ArrayIterator<[number, {
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) | (() => ArrayIterator<[number, {
+            }]>) | (() => ArrayIterator<number>) | (() => ArrayIterator<{
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }]>) | (() => ArrayIterator<number>) | (<U, This = undefined>(callback: (this: This, value: {
+            }>) | ((searchElement: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }, fromIndex?: number) => boolean) | (<U, This = undefined>(callback: (this: This, value: {
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -2586,7 +2523,70 @@ export declare const variations: ({
                 name: string;
                 attributes?: Record<string, unknown> | undefined;
                 innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-            }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | {
+            }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | ((index: number) => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            } | undefined) | (() => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            } | undefined) | ((...items: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) => number) | (() => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) | (() => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            } | undefined) | ((compareFn?: ((a: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }, b: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }) => number) | undefined) => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) | {
+                (start: number, deleteCount?: number): {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[];
+                (start: number, deleteCount: number, ...items: {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]): {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[];
+            } | ((...items: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) => number) | ((value: {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }, start?: number, end?: number) => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) | ((target: number, start: number, end?: number) => {
+                name: string;
+                attributes?: Record<string, unknown> | undefined;
+                innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+            }[]) | {
                 name?: string | undefined;
                 attributes?: {
                     [x: string]: unknown;
@@ -2599,46 +2599,10 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>>) | ((value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, start?: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) | {
-                    <S extends import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>>(predicate: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[]) => value is S, thisArg?: any): S[];
-                    (predicate: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[]) => unknown, thisArg?: any): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[];
-                } | (() => ArrayIterator<import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>>) | {
+                }[]>>) | (() => string) | {
+                    (): string;
+                    (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
+                } | {
                     (...items: ConcatArray<import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
@@ -2661,15 +2625,7 @@ export declare const variations: ({
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
                     }[]>[];
-                } | ((searchElement: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, fromIndex?: number) => number) | ((searchElement: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, fromIndex?: number) => number) | ((start?: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                } | ((separator?: string) => string) | ((start?: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -2677,65 +2633,11 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, fromIndex?: number) => boolean) | {
-                    (): string;
-                    (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
-                } | (<U>(callbackfn: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                }[]>, fromIndex?: number) => number) | ((searchElement: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => U, thisArg?: any) => U[]) | ((compareFn?: ((a: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>, b: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>) => number) | undefined) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) | (() => string) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]> | undefined) | ((...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => number) | ((separator?: string) => string) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]> | undefined) | {
-                    (start: number, deleteCount?: number): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[];
-                    (start: number, deleteCount: number, ...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[]): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]>[];
-                } | ((...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
-                    name: string;
-                    attributes?: Record<string, unknown> | undefined;
-                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => number) | {
+                }[]>, fromIndex?: number) => number) | {
                     <S extends import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
@@ -2774,7 +2676,42 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => void, thisArg?: any) => void) | {
+                }[]>[]) => void, thisArg?: any) => void) | (<U>(callbackfn: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) => U, thisArg?: any) => U[]) | {
+                    <S extends import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>>(predicate: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[]) => value is S, thisArg?: any): S[];
+                    (predicate: (value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>, index: number, array: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[]) => unknown, thisArg?: any): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[];
+                } | {
                     (callbackfn: (previousValue: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
@@ -2921,15 +2858,19 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => unknown, thisArg?: any) => number) | ((target: number, start: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                }[]>[]) => unknown, thisArg?: any) => number) | (() => ArrayIterator<[number, import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) | (() => ArrayIterator<[number, import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                }[]>]>) | (() => ArrayIterator<number>) | (() => ArrayIterator<import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>]>) | (() => ArrayIterator<number>) | (<U, This = undefined>(callback: (this: This, value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                }[]>>) | ((searchElement: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>, fromIndex?: number) => boolean) | (<U, This = undefined>(callback: (this: This, value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -2937,7 +2878,66 @@ export declare const variations: ({
                     name: string;
                     attributes?: Record<string, unknown> | undefined;
                     innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                }[]>[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | {
+                }[]>[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]> | undefined) | ((...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) => number) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) | (() => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]> | undefined) | ((compareFn?: ((a: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>, b: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>) => number) | undefined) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) | {
+                    (start: number, deleteCount?: number): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[];
+                    (start: number, deleteCount: number, ...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[]): import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]>[];
+                } | ((...items: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) => number) | ((value: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>, start?: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) | ((target: number, start: number, end?: number) => import("@atomicsmash/blocks-helpers").BlockInstanceAsObject<Record<string, unknown>, {
+                    name: string;
+                    attributes?: Record<string, unknown> | undefined;
+                    innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                }[]>[]) | {
                     name?: string | undefined;
                     attributes?: {
                         [x: string]: unknown;
@@ -2954,46 +2954,10 @@ export declare const variations: ({
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }>) | ((value: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, start?: number, end?: number) => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) | {
-                        <S extends {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }>(predicate: (value: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }, index: number, array: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[]) => value is S, thisArg?: any): S[];
-                        (predicate: (value: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }, index: number, array: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[]) => unknown, thisArg?: any): {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[];
-                    } | (() => ArrayIterator<{
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }>) | {
+                    }>) | (() => string) | {
+                        (): string;
+                        (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
+                    } | {
                         (...items: ConcatArray<{
                             name: string;
                             attributes?: Record<string, unknown> | undefined;
@@ -3016,15 +2980,7 @@ export declare const variations: ({
                             attributes?: Record<string, unknown> | undefined;
                             innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
                         }[];
-                    } | ((searchElement: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, fromIndex?: number) => number) | ((searchElement: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, fromIndex?: number) => number) | ((start?: number, end?: number) => {
+                    } | ((separator?: string) => string) | ((start?: number, end?: number) => {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -3032,61 +2988,11 @@ export declare const variations: ({
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, fromIndex?: number) => boolean) | ((index: number) => {
+                    }, fromIndex?: number) => number) | ((searchElement: {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    } | undefined) | {
-                        (): string;
-                        (locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
-                    } | ((compareFn?: ((a: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }, b: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }) => number) | undefined) => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) | (() => string) | (() => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    } | undefined) | ((...items: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) => number) | ((separator?: string) => string) | (() => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) | (() => {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    } | undefined) | {
-                        (start: number, deleteCount?: number): {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[];
-                        (start: number, deleteCount: number, ...items: {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[]): {
-                            name: string;
-                            attributes?: Record<string, unknown> | undefined;
-                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                        }[];
-                    } | ((...items: {
-                        name: string;
-                        attributes?: Record<string, unknown> | undefined;
-                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) => number) | {
+                    }, fromIndex?: number) => number) | {
                         <S extends {
                             name: string;
                             attributes?: Record<string, unknown> | undefined;
@@ -3126,6 +3032,33 @@ export declare const variations: ({
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
                     }[]) => void, thisArg?: any) => void) | {
+                        <S extends {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }>(predicate: (value: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }, index: number, array: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[]) => value is S, thisArg?: any): S[];
+                        (predicate: (value: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }, index: number, array: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[]) => unknown, thisArg?: any): {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[];
+                    } | {
                         (callbackfn: (previousValue: {
                             name: string;
                             attributes?: Record<string, unknown> | undefined;
@@ -3272,15 +3205,19 @@ export declare const variations: ({
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) => unknown, thisArg?: any) => number) | ((target: number, start: number, end?: number) => {
+                    }[]) => unknown, thisArg?: any) => number) | (() => ArrayIterator<[number, {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) | (() => ArrayIterator<[number, {
+                    }]>) | (() => ArrayIterator<number>) | (() => ArrayIterator<{
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }]>) | (() => ArrayIterator<number>) | (<U, This = undefined>(callback: (this: This, value: {
+                    }>) | ((searchElement: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }, fromIndex?: number) => boolean) | (<U, This = undefined>(callback: (this: This, value: {
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
@@ -3288,7 +3225,70 @@ export declare const variations: ({
                         name: string;
                         attributes?: Record<string, unknown> | undefined;
                         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
-                    }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | /*elided*/ any | {
+                    }[]) => U | readonly U[], thisArg?: This | undefined) => U[]) | (<A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]) | ((index: number) => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    } | undefined) | (() => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    } | undefined) | ((...items: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) => number) | (() => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) | (() => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    } | undefined) | ((compareFn?: ((a: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }, b: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }) => number) | undefined) => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) | {
+                        (start: number, deleteCount?: number): {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[];
+                        (start: number, deleteCount: number, ...items: {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[]): {
+                            name: string;
+                            attributes?: Record<string, unknown> | undefined;
+                            innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                        }[];
+                    } | ((...items: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) => number) | ((value: {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }, start?: number, end?: number) => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) | ((target: number, start: number, end?: number) => {
+                        name: string;
+                        attributes?: Record<string, unknown> | undefined;
+                        innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
+                    }[]) | /*elided*/ any | {
                         [x: number]: boolean | undefined;
                         length?: boolean | undefined;
                         toString?: boolean | undefined;
@@ -3442,7 +3442,7 @@ export declare const variations: ({
         })[] | undefined;
         readonly currentlySelectedSlide?: number | undefined;
         readonly externallyControlledCarousel?: boolean | undefined;
-        align?: (("center" | "right" | "left") | ("full" | "wide")) | undefined;
+        align?: (("right" | "left" | "center") | ("full" | "wide")) | undefined;
         className?: string | undefined;
         layout?: {
             type?: "default" | undefined;

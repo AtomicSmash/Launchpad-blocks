@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Custom\GlobalBanner;
+namespace Launchpad\Blocks\Custom\GlobalBanner;
 
 use WP_Block_Type_Registry;
 

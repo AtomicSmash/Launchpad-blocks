@@ -2,7 +2,6 @@ import type { Attributes } from "./attributes";
 import type { InterpretedUsedContext } from "./context";
 import type { Supports } from "./supports";
 import { registerBlockType, registerBlockVariation } from "@wordpress/blocks";
-import { registerLaunchpadBlocksCollection } from "@launchpadBlocks/helpers.editor";
 import { Icon } from "@launchpadBlocks/svgs";
 import blockMetaData from "./block.json";
 import { Edit } from "./edit";
@@ -19,8 +18,6 @@ registerBlockType<Supports, Attributes, InterpretedUsedContext>(
 		save: save({ hasInnerBlocks: true }),
 	},
 );
-
-registerLaunchpadBlocksCollection();
 
 /**
  * Register block variations

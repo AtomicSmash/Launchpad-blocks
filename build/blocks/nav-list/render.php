@@ -24,7 +24,7 @@ $content = $content;
  */
 $block = $block;
 
-if ( ! \LaunchpadBlocks\Blocks\Custom\NavigationList\is_shown( $block ) ) {
+if ( ! \Launchpad\Blocks\Custom\NavigationList\is_shown( $block ) ) {
 	return;
 }
 
@@ -42,7 +42,7 @@ if ( ! $attributes['isNestedInAnotherNavLink'] ) {
 $block_wrapper_attributes = (
 	get_block_wrapper_attributes(
 		array_merge(
-			\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			array(
 				'data-navigation-nav-list' => true,
 				...$aria_attributes,

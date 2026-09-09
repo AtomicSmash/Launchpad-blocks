@@ -24,7 +24,7 @@ $content = $content;
  */
 $block = $block;
 
-$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
+$icon_renderers = \Launchpad\Blocks\Helpers\get_icon_renderers();
 
 ?>
 <dialog
@@ -32,7 +32,7 @@ $icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			'data-launchpad-lightbox' => '',
 		)
 	)

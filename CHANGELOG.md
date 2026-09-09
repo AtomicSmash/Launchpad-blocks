@@ -1,5 +1,17 @@
 # @atomicsmash/launchpad-blocks
 
+## 10.0.0
+
+### Major Changes
+
+- 81da0a8: Rename blocks list constant from LAUNCHPAD_BLOCKS to LAUNCHPAD_BLOCKS_LIST to align with new naming scheme
+- 6afc3ca: Update namespace used from LaunchpadBlocks to Launchpad\Blocks to align with our new naming scheme
+- 61b7d17: Migrate styling of icon select to plugin (please remove styling within theme to avoid future conflicts).
+
+### Patch Changes
+
+- d451756: Refactor block collection so it's not called in every block.
+
 ## 9.1.1
 
 ### Patch Changes
@@ -512,6 +524,7 @@
 - 7097321: Fix logo banner
 - 4cd5cbb: Add checks on the render side for empty lists and list items
 - de4aa26: Minor Launchpad fixes
+
   1. Adds text based resets like inheriting font styles for elements
   2. Update's the accordion block to fix content font size when a different font size is selected for the header.
   3. Update's the accordion block to fix padding when a larger font size is selected

@@ -24,7 +24,7 @@ $content = $content;
  */
 $block = $block;
 
-$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
+$icon_renderers = \Launchpad\Blocks\Helpers\get_icon_renderers();
 
 $should_have_icon = 'ul' === $block->context['launchpad-blocks/fancyListType'] && 'icon' === $block->context['launchpad-blocks/fancyListMarkerType'];
 $has_icon = $should_have_icon && isset( $attributes['iconName'] ) && $attributes['iconName'] && isset( $attributes['library'] ) && $attributes['library'];
@@ -33,7 +33,7 @@ if ( ! isset( $attributes['textContent'] ) || empty( $attributes['textContent'] 
 	return;
 }
 ?>
-<li 
+<li
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(

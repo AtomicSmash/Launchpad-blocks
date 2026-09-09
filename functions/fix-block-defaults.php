@@ -3,7 +3,7 @@
  * Fix block defaults.
  */
 
-namespace LaunchpadBlocks\Fix;
+namespace Launchpad\Blocks\Fix;
 
 /**
  * Fix block supports with default attributes.

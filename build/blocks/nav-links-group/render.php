@@ -24,13 +24,13 @@ $content = $content;
  */
 $block = $block;
 
-if ( ! \LaunchpadBlocks\Blocks\Custom\NavLinksGroup\is_shown( $block ) ) {
+if ( ! \Launchpad\Blocks\Custom\NavLinksGroup\is_shown( $block ) ) {
 	return;
 }
 
 $has_linked_title = isset( $attributes['linkHref'] );
 if ( $has_linked_title ) {
-	$is_title_link_active = \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_active( $attributes );
+	$is_title_link_active = \Launchpad\Blocks\Custom\NavigationMenuItem\is_active( $attributes );
 }
 
 ?>

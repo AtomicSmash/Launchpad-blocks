@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Custom\AccordionGroup;
+namespace Launchpad\Blocks\Custom\AccordionGroup;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

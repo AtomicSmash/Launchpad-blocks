@@ -18,10 +18,7 @@ import {
 	useSettings,
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
-import {
-	registerBlockCollection,
-	createBlocksFromInnerBlocksTemplate,
-} from "@wordpress/blocks";
+import { createBlocksFromInnerBlocksTemplate } from "@wordpress/blocks";
 import {
 	ColorIndicator,
 	ColorPalette,
@@ -51,7 +48,6 @@ import {
 	paragraph,
 } from "@wordpress/icons";
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
-import { ASCircleLogo } from "@launchpadBlocks/svgs";
 
 export type CoreStoreType = {
 	getEntityRecord: <EntityRecord>(
@@ -85,13 +81,6 @@ export type NoticesStoreType = {
 	) => Promise<void>;
 	removeNotice: (id: string, context?: string) => Promise<void>;
 };
-
-export function registerLaunchpadBlocksCollection() {
-	registerBlockCollection("launchpad-blocks", {
-		title: "Launchpad blocks",
-		icon: ASCircleLogo,
-	});
-}
 
 function translateBlockGapProperty(
 	value: string | { left: string } | { top: string } | undefined,

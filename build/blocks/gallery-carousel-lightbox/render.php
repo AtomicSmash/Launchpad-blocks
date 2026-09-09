@@ -27,7 +27,7 @@ $block = $block;
 $lightbox_close_icon_function = apply_filters(
 	'launchpad_blocks_lightbox_close_icon',
 	function ( $attributes ) {
-		return \LaunchpadBlocks\Helpers\icon( 'menu-close-icon', $attributes );
+		return \Launchpad\Blocks\Helpers\icon( 'menu-close-icon', $attributes );
 	}
 );
 
@@ -37,7 +37,7 @@ $lightbox_close_icon_function = apply_filters(
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			'data-launchpad-lightbox' => '',
 		)
 	)

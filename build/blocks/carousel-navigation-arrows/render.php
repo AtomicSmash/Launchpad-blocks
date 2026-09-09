@@ -37,7 +37,7 @@ if ( isset( $attributes['iconColour'] ) ) {
 $has_prev_icon = isset( $attributes['prevIcon'] ) && $attributes['prevIcon']['iconName'] && $attributes['prevIcon']['library'];
 $has_next_icon = isset( $attributes['nextIcon'] ) && $attributes['nextIcon']['iconName'] && $attributes['nextIcon']['library'];
 
-$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
+$icon_renderers = \Launchpad\Blocks\Helpers\get_icon_renderers();
 
 ?>
 <div
@@ -45,9 +45,9 @@ $icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			'data-carousel-navigation-arrows' => '',
-			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+			'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 		)
 	)
 );

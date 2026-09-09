@@ -27,7 +27,7 @@ $block = $block;
 $banner_dismiss_icon_function = apply_filters(
 	'launchpad_blocks_global_banner_dismiss_icon',
 	function ( $attributes ) {
-		return \LaunchpadBlocks\Helpers\icon( 'menu-close-icon', $attributes );
+		return \Launchpad\Blocks\Helpers\icon( 'menu-close-icon', $attributes );
 	}
 );
 
@@ -37,7 +37,7 @@ $banner_dismiss_icon_function = apply_filters(
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array_merge(
-			\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			array(
 				'data-launchpad-global-banner' => 'true',
 				'data-is-dismissible' => $attributes['isDismissible'] ? 'true' : 'false',

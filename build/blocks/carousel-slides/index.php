@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\CarouselSlides;
+namespace Launchpad\Blocks\Custom\CarouselSlides;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

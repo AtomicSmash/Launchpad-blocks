@@ -3,7 +3,6 @@ import type { InterpretedUsedContext } from "./context";
 import type { Supports } from "./supports";
 import { registerBlockType, registerBlockVariation } from "@wordpress/blocks";
 import { mediaAndText as iconMediaAndText } from "@wordpress/icons";
-import { registerLaunchpadBlocksCollection } from "@launchpadBlocks/helpers.editor";
 import blockMetaData from "./block.json";
 import { deprecated } from "./deprecation";
 import { Edit } from "./edit";
@@ -23,7 +22,6 @@ registerBlockType<Supports, Attributes, InterpretedUsedContext>(
 		transforms,
 	},
 );
-registerLaunchpadBlocksCollection();
 
 /**
  * Register block variations

@@ -26,12 +26,12 @@ $block = $block;
 
 if ( ! empty( $content ) ) :
 	?>
-	<div 
+	<div
 	<?php
 	echo wp_kses_data(
 		get_block_wrapper_attributes(
 			array(
-				...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+				...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 				'data-launchpad-logo-banner' => '',
 				'data-is-scrolling' => $attributes['isScrolling'] ? 'true' : 'false',
 				'class' => $attributes['isScrolling'] ? 'is-scrolling' : '',

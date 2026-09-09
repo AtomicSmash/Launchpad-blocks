@@ -24,7 +24,6 @@ export type NoticesStoreType = {
     }) => Promise<void>;
     removeNotice: (id: string, context?: string) => Promise<void>;
 };
-export declare function registerLaunchpadBlocksCollection(): void;
 /**
  * Get layout className and style attributes
  *

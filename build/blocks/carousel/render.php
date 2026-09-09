@@ -32,7 +32,7 @@ $is_externally_controlled_carousel = ( $block->context['launchpad-blocks/externa
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			'data-launchpad-carousel' => '',
 			'data-loop' => $attributes['shouldLoop'] ? 'true' : 'false',
 			'data-has-lightbox' => $attributes['shouldLinkSlidesToLightbox'] ? 'true' : 'false',

@@ -24,11 +24,11 @@ $content = $content;
  */
 $block = $block;
 
-if ( ! \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_shown( $attributes ) ) {
+if ( ! \Launchpad\Blocks\Custom\NavigationMenuItem\is_shown( $attributes ) ) {
 	return;
 }
 
-$is_active = \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_active( $attributes );
+$is_active = \Launchpad\Blocks\Custom\NavigationMenuItem\is_active( $attributes );
 
 ?>
 <li <?php echo wp_kses_data( get_block_wrapper_attributes( array( 'class' => 'navigation-list-item' . ( $is_active ? ' current-menu-item' : '' ) ) ) ); ?>>

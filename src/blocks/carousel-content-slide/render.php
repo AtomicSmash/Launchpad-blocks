@@ -72,7 +72,7 @@ if ( isset( $attributes['backgroundOrOverlayColour'] ) ) {
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+			'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 			'class' => join( ' ', $wrapper_classes ),
 		)
 	)

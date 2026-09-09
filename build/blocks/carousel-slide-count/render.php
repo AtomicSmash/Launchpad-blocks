@@ -37,7 +37,7 @@ if ( isset( $block->context['launchpad-blocks/carouselSlides'] ) && count( $bloc
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array(
-			...\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			...\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			'data-carousel-slide-count' => '',
 		)
 	)

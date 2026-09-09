@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\NavigationList;
+namespace Launchpad\Blocks\Custom\NavigationList;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
@@ -27,17 +27,17 @@ function is_shown( \WP_Block $block ): bool {
 	foreach ( $inner_blocks as $inner_block ) {
 		switch ( $inner_block->parsed_block['blockName'] ) {
 			case 'launchpad-blocks/nav-menu-item':
-				if ( \LaunchpadBlocks\Blocks\Custom\NavigationMenuItem\is_shown( $inner_block->parsed_block['attrs'] ) ) {
+				if ( \Launchpad\Blocks\Custom\NavigationMenuItem\is_shown( $inner_block->parsed_block['attrs'] ) ) {
 					return true;
 				}
 				break;
 			case 'launchpad-blocks/nav-submenu':
-				if ( \LaunchpadBlocks\Blocks\Custom\NavigationSubMenu\is_shown( $inner_block->parsed_block['attrs'] ) ) {
+				if ( \Launchpad\Blocks\Custom\NavigationSubMenu\is_shown( $inner_block->parsed_block['attrs'] ) ) {
 					return true;
 				}
 				break;
 			case 'launchpad-blocks/nav-links-group':
-				if ( \LaunchpadBlocks\Blocks\Custom\NavLinksGroup\is_shown( $inner_block ) ) {
+				if ( \Launchpad\Blocks\Custom\NavLinksGroup\is_shown( $inner_block ) ) {
 					return true;
 				}
 				break;

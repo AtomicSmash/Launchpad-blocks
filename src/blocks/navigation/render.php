@@ -27,23 +27,23 @@ $block = $block;
 $navigation_open_icon_function = apply_filters(
 	'launchpad_blocks_navigation_open_icon',
 	function ( $attributes ) {
-		return \LaunchpadBlocks\Helpers\icon( 'menu-open-icon', $attributes );
+		return \Launchpad\Blocks\Helpers\icon( 'menu-open-icon', $attributes );
 	}
 );
 $navigation_close_icon_function = apply_filters(
 	'launchpad_blocks_navigation_close_icon',
 	function ( $attributes ) {
-		return \LaunchpadBlocks\Helpers\icon( 'menu-close-icon', $attributes );
+		return \Launchpad\Blocks\Helpers\icon( 'menu-close-icon', $attributes );
 	}
 );
 
 ?>
-<div 
+<div
 <?php
 echo wp_kses_data(
 	get_block_wrapper_attributes(
 		array_merge(
-			\LaunchpadBlocks\Fix\default_attributes( $block, $attributes ),
+			\Launchpad\Blocks\Fix\default_attributes( $block, $attributes ),
 			array(
 				'class' => 'menu-js-loading',
 				'data-launchpad-navigation' => true,

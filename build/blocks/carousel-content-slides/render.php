@@ -30,7 +30,7 @@ if ( isset( $attributes['aspectRatio'] ) ) {
 	$wrapper_style['--slide-aspect-ratio'] = $attributes['aspectRatio'];
 }
 
-$default_attributes = \LaunchpadBlocks\Fix\default_attributes( $block, $attributes );
+$default_attributes = \Launchpad\Blocks\Fix\default_attributes( $block, $attributes );
 
 ?>
 <ul
@@ -40,7 +40,7 @@ echo wp_kses_data(
 		array(
 			...$default_attributes,
 			'data-carousel-slides' => '',
-			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+			'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 			'class' => ( 'auto' !== $attributes['aspectRatio'] ? 'has-aspect-ratio ' : '' ) . $default_attributes['class'],
 		)
 	)

@@ -3,7 +3,7 @@
  * Media
  */
 
-namespace LaunchpadBlocks\Media;
+namespace Launchpad\Blocks\Media;
 
 /**
  * Add custom image sizes

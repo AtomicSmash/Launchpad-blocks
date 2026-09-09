@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\HeadingWithIcon;
+namespace Launchpad\Blocks\Custom\HeadingWithIcon;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

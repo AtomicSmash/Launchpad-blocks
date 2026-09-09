@@ -33,7 +33,7 @@ $selected_banners = get_field( 'selected_global_banners', 'option' );
 $selected_banners = is_array( $selected_banners ) ? $selected_banners : array();
 
 ?>
-<div <?php echo wp_kses_data( get_block_wrapper_attributes( \LaunchpadBlocks\Fix\default_attributes( $block, $attributes ) ) ); ?>>
+<div <?php echo wp_kses_data( get_block_wrapper_attributes( \Launchpad\Blocks\Fix\default_attributes( $block, $attributes ) ) ); ?>>
 	<?php
 	foreach ( $selected_banners as $selected_banner ) {
 		$banner_id = get_post_meta( $selected_banner->ID, '_banner_id', true ) ?? '';

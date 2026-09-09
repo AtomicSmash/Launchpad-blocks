@@ -106,7 +106,7 @@ export declare const deprecated: [{
         attributes?: Record<string, unknown> | undefined;
         innerBlocks?: import("@atomicsmash/blocks-helpers").BlockInstanceAsObject[];
     }[]>[]) => [{
-        headerElement: "h3" | "h2" | "h4" | "h5" | "h6" | "p";
+        headerElement: "h2" | "h3" | "h4" | "h5" | "h6" | "p";
         isMultiple: boolean;
         accordionGroupId: string;
         loadPrioritisation: "cls" | "bot-traffic";

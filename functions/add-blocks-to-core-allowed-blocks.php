@@ -3,7 +3,7 @@
  * Add custom blocks to core allowed blocks
  */
 
-namespace LaunchpadBlocks\Blocks\AddBlocksToCoreAllowedBlocks;
+namespace Launchpad\Blocks\AddBlocksToCoreAllowedBlocks;
 
 // Add button-with-icons to core buttons block
 add_filter(

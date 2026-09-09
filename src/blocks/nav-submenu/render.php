@@ -24,16 +24,16 @@ $content = $content;
  */
 $block = $block;
 
-if ( ! \LaunchpadBlocks\Blocks\Custom\NavigationSubMenu\is_shown( $attributes ) ) {
+if ( ! \Launchpad\Blocks\Custom\NavigationSubMenu\is_shown( $attributes ) ) {
 	return;
 }
 
 global $wp;
 $current_url = trailingslashit( home_url( $wp->request ) );
 
-$icon_renderers = LaunchpadBlocks\Helpers\get_icon_renderers();
+$icon_renderers = \Launchpad\Blocks\Helpers\get_icon_renderers();
 
-$has_current_menu_item_as_child = \LaunchpadBlocks\Blocks\Custom\NavigationSubMenu\has_current_menu_item_as_child( $block, $current_url );
+$has_current_menu_item_as_child = \Launchpad\Blocks\Custom\NavigationSubMenu\has_current_menu_item_as_child( $block, $current_url );
 
 $inner_blocks_count = count( $block->inner_blocks );
 
@@ -52,7 +52,7 @@ echo wp_kses_data(
 		array(
 			'class' => 'navigation-list-item' . ( $has_current_menu_item_as_child ? ' has-current-menu-item-as-child' : '' ),
 			'data-navigation-sub-menu' => '',
-			'style' => \LaunchpadBlocks\Helpers\convert_style_array_to_string( $wrapper_style ),
+			'style' => \Launchpad\Blocks\Helpers\convert_style_array_to_string( $wrapper_style ),
 		)
 	)
 );

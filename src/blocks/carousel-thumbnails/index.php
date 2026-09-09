@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\CarouselThumbnails;
+namespace Launchpad\Blocks\Custom\CarouselThumbnails;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

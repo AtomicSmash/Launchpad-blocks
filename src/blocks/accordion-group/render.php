@@ -36,7 +36,7 @@ if ( $parsed_content->get_attribute( 'data-accordion-group' ) !== null ) {
 	$content = $new_content;
 }
 
-$default_attributes = \LaunchpadBlocks\Fix\default_attributes( $block, $attributes );
+$default_attributes = \Launchpad\Blocks\Fix\default_attributes( $block, $attributes );
 
 ?>
 <div

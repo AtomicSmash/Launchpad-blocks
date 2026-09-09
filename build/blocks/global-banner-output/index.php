@@ -3,9 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Custom\GlobalBannerOutput;
-
-use WP_Block_Type_Registry;
+namespace Launchpad\Blocks\Custom\GlobalBannerOutput;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.

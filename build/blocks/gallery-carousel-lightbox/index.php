@@ -3,7 +3,7 @@
  * PHP related to this block.
  */
 
-namespace LaunchpadBlocks\Blocks\Custom\GalleryCarouselLightbox;
+namespace Launchpad\Blocks\Custom\GalleryCarouselLightbox;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
