@@ -30,7 +30,7 @@ addAction(
 					);
 				}
 				currentSlideSpans.forEach((span) => {
-					span.innerHTML = `${Carousel.currentSlide + 1}`;
+					span.innerHTML = (Carousel.currentSlide + 1).toString();
 				});
 			},
 		);

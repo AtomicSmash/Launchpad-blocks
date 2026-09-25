@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { slugify } from "@atomicsmash/test-utils";
 import { WordPressAdminInteraction } from "@atomicsmash/wordpress-tests-helper";
-import { test as setup, expect } from "@playwright/test";
+import { test as setup } from "@playwright/test";
 import { CURRENT_WORDPRESS_VERSION } from "@tests/playwright-utils";
 import {
 	accordionGroupV1,

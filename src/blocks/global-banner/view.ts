@@ -33,11 +33,11 @@ class GlobalBanner {
 	}
 
 	initialiseBanner() {
-		if (!localStorage.getItem(`as-banner-${this.bannerId}`)) {
+		if (!localStorage.getItem(`as-banner-${this.bannerId ?? ""}`)) {
 			this.globalBanner.style.display = "";
 			const scrollHeight = this.globalBanner.scrollHeight;
 			this.globalBanner.style.overflow = "hidden";
-			this.globalBanner.style.height = `${scrollHeight}px`;
+			this.globalBanner.style.height = `${scrollHeight.toString()}px`;
 		}
 	}
 
@@ -51,7 +51,7 @@ class GlobalBanner {
 		setTimeout(() => {
 			this.globalBanner.style.display = "none";
 		}, bannerShowHideTiming);
-		localStorage.setItem(`as-banner-${this.bannerId}`, "true");
+		localStorage.setItem(`as-banner-${this.bannerId ?? ""}`, "true");
 	}
 }
 

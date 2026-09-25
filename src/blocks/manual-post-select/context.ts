@@ -9,6 +9,7 @@ import type {
 export const providesContext =
 	{} as const satisfies BlockProvidesContext<InterpretedAttributes>;
 export type ProvidesContext = typeof providesContext;
+// eslint-disable-next-line @typescript-eslint/no-generated-empty-object-type -- This is okay if providesContext is {}
 export type InterpretedProvidesContext = InterpretProvidesContext<
 	InterpretedAttributes,
 	ProvidesContext

@@ -7,7 +7,7 @@ import type { BlockInstanceAsObject } from "@atomicsmash/blocks-helpers";
  */
 export function getPixelNumber(pixelValue: string | undefined) {
 	if (pixelValue === undefined) {
-		throw new Error(`Pixel value ${pixelValue} is undefined`);
+		throw new Error(`Pixel value is undefined`);
 	}
 	if (!pixelValue.endsWith("px")) {
 		throw new Error(`Pixel value ${pixelValue} is not a pixel value`);
@@ -118,7 +118,9 @@ export function objectArraysAreEqual(
 		return false;
 	}
 	for (let $i = 0; $i < array1.length; $i++) {
-		const isObjectEqual = Object.entries(array1[$i]!).every(([key, value]) => {
+		const isObjectEqual = Object.entries(
+			array1[$i] as Record<string, unknown>,
+		).every(([key, value]) => {
 			if (Array.isArray(value)) {
 				return objectArraysAreEqual(
 					value,

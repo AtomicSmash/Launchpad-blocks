@@ -31,7 +31,7 @@ class Tabs {
 		this.tabsList = tabsList;
 		const tabTriggers =
 			this.tabsList.querySelectorAll<HTMLAnchorElement>('a[role="tab"]');
-		if (!tabTriggers) {
+		if (!tabTriggers.length) {
 			throw new Error(
 				"Unable to find the tab trigger elements in a tabs group.",
 			);
@@ -40,7 +40,7 @@ class Tabs {
 		const tabPanels = this.tabsGroup.querySelectorAll<HTMLElement>(
 			'section[role="tabpanel"]',
 		);
-		if (!tabPanels) {
+		if (!tabPanels.length) {
 			throw new Error("Unable to find the tab panel elements in a tabs group.");
 		}
 		this.tabPanels = Array.from(tabPanels);

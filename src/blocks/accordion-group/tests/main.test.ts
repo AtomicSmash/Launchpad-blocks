@@ -135,6 +135,7 @@ lighthouseTest(
 		true,
 	),
 );
+
 test(`${blockName} visual comparison tests`, async ({ page }, testInfo) => {
 	// Go to accordion testing page
 	await page.goto(

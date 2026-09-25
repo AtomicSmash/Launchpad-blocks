@@ -20,12 +20,13 @@ addAction(
 		const thumbnails = thumbnailsContainer.querySelectorAll<HTMLButtonElement>(
 			"button[data-carousel-slide]",
 		);
-		if (thumbnails.length < 0) {
+		const firstThumbnail = [...thumbnails][0];
+		if (!firstThumbnail) {
 			throw new Error(
 				"Unable to find the thumbnails in your thumbnails container.",
 			);
 		}
-		const thumbnailWidth = thumbnails[0]!.offsetWidth;
+		const thumbnailWidth = firstThumbnail.offsetWidth;
 		const thumbnailInlineGap =
 			(thumbnailsContainer.scrollWidth - thumbnailWidth * thumbnails.length) /
 			(thumbnails.length - 1);

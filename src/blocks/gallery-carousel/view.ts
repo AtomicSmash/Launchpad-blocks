@@ -37,10 +37,9 @@ class GalleryCarousel {
 					if (!this.lightbox.carousel) {
 						this.lightbox.initCarousel();
 					}
-					this.lightbox.carousel!.goToSlide(
-						Number(button.dataset.jumpToSlide),
-						true,
-					);
+					(
+						this.lightbox.carousel as NonNullable<typeof this.lightbox.carousel>
+					).goToSlide(Number(button.dataset.jumpToSlide), true);
 				}
 			});
 		}

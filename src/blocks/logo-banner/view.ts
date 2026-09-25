@@ -4,8 +4,8 @@
 
 import domReady from "@wordpress/dom-ready";
 
-function scrollToPromise<T extends HTMLElement>(
-	element: T,
+function scrollToPromise(
+	element: HTMLElement,
 	options: ScrollToOptions & { timeout?: number },
 ) {
 	const { timeout, ...scrollByOptions } = { timeout: 10000, ...options };
@@ -42,12 +42,20 @@ class ScrollingLogoBanner {
 		this._setUserPrefersReducedMotion(this._getUserPrefersReducedMotion());
 		this._attachPrefersReducedMotionListener();
 		this.banner = banner;
-		this.scrollContainer = this.banner.querySelector<HTMLDivElement>(
+		const scrollContainer = this.banner.querySelector<HTMLDivElement>(
 			"div.scroll-container",
-		)!;
-		this.imagesContainer = this.scrollContainer.querySelector<HTMLDivElement>(
+		);
+		if (!scrollContainer) {
+			throw new Error("Unable to find the logo banner's scroll container.");
+		}
+		this.scrollContainer = scrollContainer;
+		const imagesContainer = this.scrollContainer.querySelector<HTMLDivElement>(
 			":scope > div.images",
-		)!;
+		);
+		if (!imagesContainer) {
+			throw new Error("Unable to find the logo banner's images container.");
+		}
+		this.imagesContainer = imagesContainer;
 		this.scrollbarWidth =
 			this.scrollContainer.offsetHeight - this.scrollContainer.clientHeight;
 
@@ -86,7 +94,7 @@ class ScrollingLogoBanner {
 	}
 
 	async initialiseBanner() {
-		this.scrollContainer.style.marginBlockEnd = `-${this.scrollbarWidth}px`;
+		this.scrollContainer.style.marginBlockEnd = `-${this.scrollbarWidth.toString()}px`;
 		await this.getInitiallyVisibleImages().then(() => {
 			this.imagesContainer.append(...this.initiallyVisibleItems);
 			this.scrollOffset = this.scrollContainer.offsetLeft;
@@ -109,9 +117,9 @@ class ScrollingLogoBanner {
 						if (
 							this.imagesContainer
 								.querySelectorAll<HTMLDivElement>(".wp-block-image")
-								[
-									this.currentScrollPosition
-								]!.classList.contains("overflow-item")
+								[this.currentScrollPosition]?.classList.contains(
+									"overflow-item",
+								)
 						) {
 							this.scrollContainer.scrollTo({ left: 0, behavior: "instant" });
 							this.currentScrollPosition = 0;
@@ -157,7 +165,7 @@ class ScrollingLogoBanner {
 						}
 					});
 					// Disconnect after getting the items.
-					this.initiallyVisibleImagesObserver!.disconnect();
+					this.initiallyVisibleImagesObserver?.disconnect();
 					resolve(initiallyVisibleItems);
 				},
 				{

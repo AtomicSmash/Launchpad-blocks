@@ -8,7 +8,7 @@ addAction(
 	"launchpadBlocks.carousel.defaultResizeActions",
 	(Carousel: CarouselInstance) => {
 		Carousel.carouselSlides.style.width = ""; // Reset width for next line
-		Carousel.carouselSlides.style.width = `${Carousel.carouselSlides.getBoundingClientRect().width}px`; // Fix subpixel rendering issue
+		Carousel.carouselSlides.style.width = `${Carousel.carouselSlides.getBoundingClientRect().width.toString()}px`; // Fix subpixel rendering issue
 		const { slideCount, slideWidth, slideGap, fullSlidesShownInViewport } =
 			Carousel.getSlideInfo();
 		Carousel.slideCount = slideCount;
@@ -68,7 +68,7 @@ export class Carousel {
 			throw new Error("Carousels must have a slides element.");
 		}
 		this.carouselSlides = slides;
-		this.carouselSlides.style.width = `${this.carouselSlides.getBoundingClientRect().width}px`; // Fix subpixel rendering issue
+		this.carouselSlides.style.width = `${this.carouselSlides.getBoundingClientRect().width.toString()}px`; // Fix subpixel rendering issue
 		const { slideCount, slideWidth, slideGap, fullSlidesShownInViewport } =
 			this.getSlideInfo();
 		this.slideCount = slideCount;
@@ -148,8 +148,9 @@ export class Carousel {
 
 	handleTouchStart(event: TouchEvent) {
 		// Only process if it's a single finger swipe
-		if (event.targetTouches.length === 1) {
-			this.touchPointCache.push(event.targetTouches[0]!);
+		const firstTouchPoint = [...event.targetTouches][0];
+		if (firstTouchPoint) {
+			this.touchPointCache.push(firstTouchPoint);
 		}
 	}
 
@@ -175,7 +176,7 @@ export class Carousel {
 				Array.from(this.carouselSlides.children).forEach((element) => {
 					if (element instanceof HTMLElement) {
 						// Transform all slides to account for multiple slides being shown at once.
-						element.style.transform = `translateX(${SWIPE_THRESHOLD}px)`;
+						element.style.transform = `translateX(${SWIPE_THRESHOLD.toString()}px)`;
 					}
 				});
 			} else if (difference > SWIPE_THRESHOLD) {
@@ -184,15 +185,15 @@ export class Carousel {
 				Array.from(this.carouselSlides.children).forEach((element, index) => {
 					if (element instanceof HTMLElement) {
 						// Transform all slides to account for multiple slides being shown at once.
-						element.style.transform = `translateX(-${SWIPE_THRESHOLD}px)`;
+						element.style.transform = `translateX(-${SWIPE_THRESHOLD.toString()}px)`;
 						if (
 							this.currentSlide === this.slideCount - 1 &&
 							index === this.carouselSlides.children.length - 1
 						) {
 							// The final item in a carousel acts differently, if you just translate it like the others,
 							// it shortens the container and doesn't show a space, so needs additional declarations.
-							element.style.flexBasis = `calc(${this.slideWidth}px + ${SWIPE_THRESHOLD}px)`;
-							element.style.paddingRight = `${SWIPE_THRESHOLD}px`;
+							element.style.flexBasis = `calc(${this.slideWidth.toString()}px + ${SWIPE_THRESHOLD.toString()}px)`;
+							element.style.paddingRight = `${SWIPE_THRESHOLD.toString()}px`;
 						}
 					}
 				});
@@ -295,7 +296,7 @@ export class Carousel {
 			left: newScrollPosition - currentScrollPosition,
 			behavior: instant ? "instant" : "auto",
 		});
-		this.carouselLiveRegion.textContent = `Slide ${this.currentSlide + 1} of ${this.slideCount}`;
+		this.carouselLiveRegion.textContent = `Slide ${(this.currentSlide + 1).toString()} of ${this.slideCount.toString()}`;
 		doAction("launchpadBlocks.carousel.updateActiveSlide");
 	}
 

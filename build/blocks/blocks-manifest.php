@@ -99,7 +99,7 @@
 			'file:./index.940dcf0d684a7f45b465.js'
 		),
 		'viewScript' => array(
-			'file:./view.7993028b8cedbaa512c9.js'
+			'file:./view.9491d1056dfafa4b22cf.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.09ce301a320437c54e81.css'
@@ -339,13 +339,13 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.0826fd17782f3925c502.js'
+			'file:./index.f38c6abf923d222d71f8.js'
 		),
 		'viewScript' => array(
-			'file:./view.070bb6e3b82cc934d2f3.js'
+			'file:./view.61fa523908f94696e770.js'
 		),
 		'style' => array(
-			'file:./style.6a7215f459d869705e87.css'
+			'file:./style.74eec47b3ed2d692699e.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.0a5bdf3918ad24a387e1.css'
@@ -521,7 +521,7 @@
 			'launchpad-blocks/carousel'
 		),
 		'editorScript' => array(
-			'file:./index.93ce3f11462e0018873a.js'
+			'file:./index.fe69c6d7bd2691d21af5.js'
 		),
 		'style' => array(
 			'file:./style.54f58453fd76483bee6d.css'
@@ -766,7 +766,7 @@
 			'file:./index.9ecee7a7a7b5f53629b7.js'
 		),
 		'viewScript' => array(
-			'file:./view.89e503eb9913de9e1a8e.js'
+			'file:./view.81cce855907df5c34264.js'
 		),
 		'style' => array(
 			'file:./style.6b35fbe73dc9532e181b.css'
@@ -831,7 +831,7 @@
 			'core/image'
 		),
 		'editorScript' => array(
-			'file:./index.5d444f99e0dacfdaa952.js'
+			'file:./index.8848f0959434d8791084.js'
 		),
 		'style' => array(
 			'file:./style.18ba581fb91e58f5b76d.css'
@@ -895,7 +895,7 @@
 			'file:./index.3504cdab558af76c2aaf.js'
 		),
 		'viewScript' => array(
-			'file:./view.891c029eb827a372b837.js'
+			'file:./view.099a66170cd11cf8bade.js'
 		),
 		'style' => array(
 			'file:./style.20a03090b555545fed11.css'
@@ -952,13 +952,13 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.585b7e8a25e22459429a.js'
+			'file:./index.715d2fda422d65b44338.js'
 		),
 		'viewScript' => array(
-			'file:./view.139c705a34fbf4502c08.js'
+			'file:./view.a24771dcab997d268769.js'
 		),
 		'style' => array(
-			'file:./style.09402a959979222359b0.css'
+			'file:./style.cafb83d39025e14668d7.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -1188,7 +1188,7 @@
 			'file:./index.79f2e08fd21d506b7259.js'
 		),
 		'viewScript' => array(
-			'file:./view.757471c98cc257800dda.js'
+			'file:./view.f83263c35f361f553f4f.js'
 		),
 		'style' => array(
 			'file:./style.f01f216d67532d72c114.css'
@@ -1372,13 +1372,13 @@
 			'file:./index.9be37054dd6bdada62fa.js'
 		),
 		'viewScript' => array(
-			'file:./view.b460a6817ba49c844b40.js'
+			'file:./view.4ee2fc98010d2e59145a.js'
 		),
 		'style' => array(
 			'file:./style.da4378f09572abb622a7.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-style.6d12dae4699a963e1ebb.css'
+			'file:./editor-style.7b9cd49b97a448e3a017.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -1410,7 +1410,7 @@
 			'file:./index.fd657a879f408ddfcf61.js'
 		),
 		'viewScript' => array(
-			'file:./view.d8b08951ee51c7294e8d.js'
+			'file:./view.3ba70945704cf98321e4.js'
 		),
 		'style' => array(
 			'file:./style.68dcf1afcca9bc5c8b8c.css'
@@ -1496,7 +1496,7 @@
 			'file:./index.86c5ef4681e3e40ab7c2.js'
 		),
 		'style' => array(
-			'file:./style.6cf3f921a9286ef80a62.css'
+			'file:./style.15ab80c49570890013d1.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -1694,10 +1694,10 @@
 			'file:./index.e244ed47007f36a7f33f.js'
 		),
 		'viewScript' => array(
-			'file:./view.9dcacc883e6416067d79.js'
+			'file:./view.922085a5a44a09941330.js'
 		),
 		'style' => array(
-			'file:./style.d2e5d0e4d5580e2419d1.css'
+			'file:./style.f705e3b148654762d634.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.a80025175149dfe06681.css'
@@ -1744,7 +1744,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.17991dd1a4789691df84.js'
+			'file:./index.b2e4eec90e8e8d10d2f8.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.7366b8d6169ef631eab0.css'
@@ -2003,7 +2003,7 @@
 			'file:./index.ec59dc5bb024de18869f.js'
 		),
 		'style' => array(
-			'file:./style.694c8b8912aa4f397e59.css'
+			'file:./style.6e063ee017da8fb19d7e.css'
 		),
 		'render' => 'file:./render.php',
 		'keywords' => array(
@@ -2259,13 +2259,13 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.03a35ccc018311f5ccc8.js'
+			'file:./index.14c29d4b509e66de1005.js'
 		),
 		'style' => array(
 			'file:./style.56104d9460ccbad83033.css'
 		),
 		'editorStyle' => array(
-			'file:./editor-style.717129f1c5a1cf59cd6a.css'
+			'file:./editor-style.d585d223be9c0e0daff5.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2360,10 +2360,10 @@
 			'file:./index.cae4c592b59bc4e67822.js'
 		),
 		'viewScript' => array(
-			'file:./view.0e06702e0959f3ff0ae3.js'
+			'file:./view.37c80a9be8aae62de638.js'
 		),
 		'style' => array(
-			'file:./style.9deffd965f24960b83d9.css'
+			'file:./style.2da1e58ee81714849e57.css'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.5a6b155834ec580c5eed.css'
@@ -2473,10 +2473,10 @@
 			'list'
 		),
 		'editorScript' => array(
-			'file:./index.743154244f292bf2c7fa.js'
+			'file:./index.57f7cd1ebabbd6a71c5f.js'
 		),
 		'style' => array(
-			'file:./style.5d20cbdb40a3fd27086e.css'
+			'file:./style.f41df73cc3de743a7f95.css'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2546,7 +2546,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.749e50a37190b55edad9.js'
+			'file:./index.a0ca8dc772807e2b9d66.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-styles.f3af54260428fee338a8.css'
@@ -2749,7 +2749,7 @@
 		'description' => 'The panel of content associated with a tab in a Tabs block.',
 		'textdomain' => 'launchpad',
 		'editorScript' => array(
-			'file:./index.0db741ad00906f3b70c3.js'
+			'file:./index.e81835b7073182ba0a10.js'
 		),
 		'render' => 'file:./render.php',
 		'attributes' => array(
@@ -2827,7 +2827,7 @@
 			'file:./index.143aa7d263039b56c120.js'
 		),
 		'viewScript' => array(
-			'file:./view.cbc752db1dfed12b9a5b.js'
+			'file:./view.ab63474f9373e3b80431.js'
 		),
 		'style' => array(
 			'file:./style.85987d2fb13ceed6aed6.css'

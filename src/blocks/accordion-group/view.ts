@@ -20,6 +20,7 @@ class AccordionGroup {
 	constructor(accordionGroup: HTMLDivElement) {
 		this.accordionGroup = accordionGroup;
 		const accordionGroupId = accordionGroup.id;
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- Actually needed, types are wrong.
 		if (accordionGroupId === undefined || accordionGroupId === "") {
 			throw new Error("Failed to get ID of accordion.");
 		}
@@ -91,6 +92,7 @@ class Accordion {
 
 	constructor(accordion: HTMLElement, accordionGroup: AccordionGroup) {
 		const accordionId = accordion.id;
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- this is actually needed, the types are wrong.
 		if (accordionId === undefined || accordionId === "") {
 			throw new Error("Failed to get ID of accordion.");
 		}
@@ -115,7 +117,7 @@ class Accordion {
 			this.toggle();
 		});
 
-		this.panel.style.height = `${this.panel.scrollHeight}px`;
+		this.panel.style.height = `${this.panel.scrollHeight.toString()}px`;
 	}
 	public getId() {
 		return this.id;
@@ -132,10 +134,12 @@ class Accordion {
 				this.accordionGroup.childAccordions.findIndex(
 					(accordion) => accordion.state === "open",
 				);
+			const childAccordionToClose =
+				this.accordionGroup.childAccordions[currentlyOpenAccordionIndex];
 			const isOpenAccordionAboveThisOne =
 				thisAccordionIndex > currentlyOpenAccordionIndex &&
 				currentlyOpenAccordionIndex !== -1;
-			if (isOpenAccordionAboveThisOne) {
+			if (isOpenAccordionAboveThisOne && childAccordionToClose) {
 				let heightValue: number;
 				try {
 					heightValue = getPixelNumber(
@@ -147,9 +151,7 @@ class Accordion {
 					heightValue = 0;
 				}
 				const scrollOffset = -1 * heightValue;
-				this.accordionGroup.childAccordions[currentlyOpenAccordionIndex]!.close(
-					{ instant: true },
-				);
+				childAccordionToClose.close({ instant: true });
 				this.accordionGroup.scrollParent.scrollBy({
 					top: scrollOffset,
 					behavior: "instant",
@@ -203,15 +205,14 @@ class Accordion {
 		}
 	}
 	public recalculateHeight() {
-		
 		if (this.state === "collapsed") {
 			this.panel.style.display = "";
 			this.panel.style.height = "";
-			this.panel.style.height = `${this.panel.scrollHeight}px`;
+			this.panel.style.height = `${this.panel.scrollHeight.toString()}px`;
 			this.panel.style.display = "none";
 		} else {
 			this.panel.style.height = "";
-			this.panel.style.height = `${this.panel.scrollHeight}px`;
+			this.panel.style.height = `${this.panel.scrollHeight.toString()}px`;
 		}
 	}
 	public debug() {

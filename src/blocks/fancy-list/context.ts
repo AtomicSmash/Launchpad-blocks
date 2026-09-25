@@ -26,6 +26,7 @@ type OtherBlocksInterpretedProvidesContext = Record<string, never>;
 export const usesContext =
 	[] as const satisfies BlockUsesContext<OtherBlocksInterpretedProvidesContext>;
 export type UsesContext = typeof usesContext;
+// eslint-disable-next-line @typescript-eslint/no-generated-empty-object-type -- This is okay if usesContext is {}
 export type InterpretedUsedContext = InterpretUsedContext<
 	UsesContext,
 	OtherBlocksInterpretedProvidesContext

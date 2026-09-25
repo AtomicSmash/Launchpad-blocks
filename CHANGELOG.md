@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 10.1.0
+
+### Minor Changes
+
+- d38f8b0: Add two handle range slider component
+
 ## 10.0.0
 
 ### Major Changes
