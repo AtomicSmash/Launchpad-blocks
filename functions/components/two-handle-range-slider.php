@@ -65,8 +65,10 @@ function get( array $options, array $wrapper_attributes = array() ): string {
 	<fieldset <?php echo wp_kses_data( $attrs ); ?>>
 		<legend class="two-handle-range-slider-legend"><?php echo esc_html( $options['label'] ); ?></legend>
 		<div class="aria-output <?php echo esc_html( $options['screen-reader-class'] ?? 'screen-reader-text' ); ?>" aria-live="polite"></div>
-		<input class="slider slider-1" type="range" name="<?php echo esc_attr( $options['minName'] ); ?>" value="<?php echo esc_attr( $options['minValue'] ?? $options['min'] ?? '0' ); ?>" min="<?php echo esc_attr( $options['min'] ?? '0' ); ?>" max="<?php echo esc_attr( $options['max'] ?? '100' ); ?>" step="<?php echo esc_attr( $options['step'] ?? '1' ); ?>" aria-label="<?php echo esc_attr( $options['minHandleLabel'] ?? 'Range handle 1' ); ?>">
-		<input class="slider slider-2" type="range" name="<?php echo esc_attr( $options['maxName'] ); ?>" value="<?php echo esc_attr( $options['maxValue'] ?? $options['max'] ?? '100' ); ?>" min="<?php echo esc_attr( $options['min'] ?? '0' ); ?>" max="<?php echo esc_attr( $options['max'] ?? '100' ); ?>" step="<?php echo esc_attr( $options['step'] ?? '1' ); ?>" aria-label="<?php echo esc_attr( $options['maxHandleLabel'] ?? 'Range handle 2' ); ?>">
+		<div class="inputs">
+			<input class="slider slider-1" type="range" name="<?php echo esc_attr( $options['minName'] ); ?>" value="<?php echo esc_attr( $options['minValue'] ?? $options['min'] ?? '0' ); ?>" min="<?php echo esc_attr( $options['min'] ?? '0' ); ?>" max="<?php echo esc_attr( $options['max'] ?? '100' ); ?>" step="<?php echo esc_attr( $options['step'] ?? '1' ); ?>" aria-label="<?php echo esc_attr( $options['minHandleLabel'] ?? 'Range handle 1' ); ?>">
+			<input class="slider slider-2" type="range" name="<?php echo esc_attr( $options['maxName'] ); ?>" value="<?php echo esc_attr( $options['maxValue'] ?? $options['max'] ?? '100' ); ?>" min="<?php echo esc_attr( $options['min'] ?? '0' ); ?>" max="<?php echo esc_attr( $options['max'] ?? '100' ); ?>" step="<?php echo esc_attr( $options['step'] ?? '1' ); ?>" aria-label="<?php echo esc_attr( $options['maxHandleLabel'] ?? 'Range handle 2' ); ?>">
+		</div>
 	</fieldset>
 	<?php
 	$component = ob_get_contents();

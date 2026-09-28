@@ -11,8 +11,6 @@
 }
 
 .two-handle-range-slider {
-	--padding-block: 1rem;
-	--padding-inline: 1rem;
 	--legend-bottom-margin: 0.25rem;
 	--track-base-colour: #eee;
 	--track-selected-colour: #0075ff;
@@ -31,16 +29,19 @@
 	box-sizing: border-box;
 	position: relative;
 	width: 100%;
-	pointer-events: none;
-	padding-inline: var(--padding-inline);
 	border: 0;
 	margin: 0;
 	min-width: 0;
-	padding-block: var(--padding-block)
-		calc(var(--thumb-size) + var(--padding-block) + var(--legend-bottom-margin));
 }
 
-.two-handle-range-slider::before {
+.inputs {
+	position: relative;
+	width: 100%;
+	pointer-events: none;
+	height: var(--thumb-size);
+}
+
+.inputs::before {
 	box-sizing: border-box;
 	background: linear-gradient(
 		to right,
@@ -52,12 +53,9 @@
 	border-radius: 999px;
 	height: var(--track-height);
 	position: absolute;
-	bottom: calc(
-		((var(--thumb-size) / 2) - (var(--track-height) / 2)) + var(--padding-block)
-	);
+	bottom: calc(((var(--thumb-size) / 2) - (var(--track-height) / 2)));
 	content: "";
-	width: calc(100% - (var(--padding-inline) * 2));
-	left: var(--padding-inline);
+	width: 100%;
 }
 
 .two-handle-range-slider-legend {
@@ -66,11 +64,8 @@
 
 .slider {
 	position: absolute;
-	bottom: calc(
-		((var(--thumb-size) / 2) - (var(--track-height) / 2)) + var(--padding-block)
-	);
-	left: var(--padding-inline);
-	width: calc(100% - (var(--padding-inline) * 2));
+	bottom: calc(((var(--thumb-size) / 2) - (var(--track-height) / 2)));
+	width: 100%;
 	pointer-events: none;
 	appearance: none;
 	accent-color: var(--thumb-colour);

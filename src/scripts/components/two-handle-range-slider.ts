@@ -1,4 +1,4 @@
-class CustomInputEvent extends Event {
+export class CustomInputEvent extends Event {
 	minValue;
 	maxValue;
 
@@ -24,6 +24,7 @@ const twoHandleRangeSliders = document.querySelectorAll<HTMLFieldSetElement>(
 	"fieldset.two-handle-range-slider",
 );
 for (const twoHandleRangeSlider of twoHandleRangeSliders) {
+	const inputs = twoHandleRangeSlider.querySelector<HTMLDivElement>(".inputs");
 	const slider1 = twoHandleRangeSlider.querySelector<HTMLInputElement>(
 		"input[type=range].slider-1",
 	);
@@ -35,7 +36,7 @@ for (const twoHandleRangeSlider of twoHandleRangeSliders) {
 	);
 	const ariaOutput =
 		twoHandleRangeSlider.querySelector<HTMLDivElement>(".aria-output");
-	if (!slider1 || !slider2 || !legend || !ariaOutput) {
+	if (!inputs || !slider1 || !slider2 || !legend || !ariaOutput) {
 		throw new Error("Failed to load slider.");
 	}
 	twoHandleRangeSlider.style.setProperty(
@@ -87,7 +88,7 @@ for (const twoHandleRangeSlider of twoHandleRangeSliders) {
 	twoHandleRangeSlider.addEventListener("slider-change", ((
 		event: CustomInputEvent,
 	) => {
-		const sliders = Array.from(twoHandleRangeSlider.children);
+		const sliders = Array.from(inputs.children);
 		ariaOutput.innerHTML = `${document.activeElement === slider1 ? slider1.value : slider2.value}. ${legend.innerHTML} between ${event.minValue.toString()} and ${event.maxValue.toString()}`;
 		if (
 			(sliders.indexOf(slider1) < sliders.indexOf(slider2) &&

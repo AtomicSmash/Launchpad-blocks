@@ -251,7 +251,7 @@
   "blocks/tabs/view.ts": "blocks/tabs/view.ab63474f9373e3b80431.js",
   "icons/sprite.svg": "icons/sprite.b7aba87d42420b845155.svg",
   "scripts/block-editor.tsx": "js/block-editor.707e17a710ace230f23c.js",
-  "scripts/components/two-handle-range-slider.ts": "js/components/two-handle-range-slider.df8db5b2c3e596e8b35b.js",
+  "scripts/components/two-handle-range-slider.ts": "js/components/two-handle-range-slider.52f80dd57ba131593068.js",
   "styles/editor-controls.scss": "css/editor-controls.d67a3a22b2031e9f75a2.css",
-  "styles/two-handle-range-slider.scss": "css/two-handle-range-slider.4397a791f29c51d3aeff.css"
+  "styles/two-handle-range-slider.scss": "css/two-handle-range-slider.37c97c3cf2f136541bf7.css"
 }
