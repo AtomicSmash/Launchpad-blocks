@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 11.0.1
+
+### Patch Changes
+
+- e8f7633: Load sanitisation at a higher priority and ensure to carry through other tags
+
 ## 11.0.0
 
 ### Major Changes

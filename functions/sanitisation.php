@@ -11,6 +11,7 @@ add_filter(
 		$tags['a']['aria-selected'] = array();
 		$tags['section']['tabindex'] = array();
 		$tags['svg'] = array(
+			...( isset( $tags['svg'] ) && is_array( $tags['svg'] ) ? $tags['svg'] : array() ),
 			'xmlns' => array(),
 			'fill' => array(),
 			'viewbox' => array(),
@@ -26,22 +27,27 @@ add_filter(
 			'stroke-linejoin' => array(),
 		);
 		$tags['path'] = array(
+			...( isset( $tags['path'] ) && is_array( $tags['path'] ) ? $tags['path'] : array() ),
 			'd' => array(),
 			'fill' => array(),
 		);
 		$tags['use'] = array(
+			...( isset( $tags['use'] ) && is_array( $tags['use'] ) ? $tags['use'] : array() ),
 			'href' => array(),
 			'xlink:href' => array(),
 		);
 		$tags['circle'] = array(
+			...( isset( $tags['circle'] ) && is_array( $tags['circle'] ) ? $tags['circle'] : array() ),
 			'cx' => array(),
 			'cy' => array(),
 			'r' => array(),
 		);
 		$tags['polygon'] = array(
+			...( isset( $tags['polygon'] ) && is_array( $tags['polygon'] ) ? $tags['polygon'] : array() ),
 			'points' => array(),
 		);
 		$tags['iframe'] = array(
+			...( isset( $tags['iframe'] ) && is_array( $tags['iframe'] ) ? $tags['iframe'] : array() ),
 			'title' => array(),
 			'allow' => array(),
 			'src' => array(),
@@ -52,6 +58,7 @@ add_filter(
 			'referrerpolicy' => array(),
 		);
 		$tags['img'] = array(
+			...( isset( $tags['img'] ) && is_array( $tags['img'] ) ? $tags['img'] : array() ),
 			'decoding' => true,
 			'loading' => true,
 			'width' => true,
@@ -64,6 +71,7 @@ add_filter(
 			'class' => true,
 		);
 		$tags['dialog'] = array(
+			...( isset( $tags['dialog'] ) && is_array( $tags['dialog'] ) ? $tags['dialog'] : array() ),
 			'open' => true,
 			'class' => true,
 			'style' => true,
@@ -72,6 +80,6 @@ add_filter(
 		);
 		return $tags;
 	},
-	10,
+	50,
 	2
 );
