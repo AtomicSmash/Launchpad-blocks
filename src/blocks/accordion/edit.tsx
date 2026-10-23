@@ -17,6 +17,7 @@ import {
 	Button,
 } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
+import { store as editorStore } from "@wordpress/editor";
 import { applyFilters } from "@wordpress/hooks";
 import { __ } from "@wordpress/i18n";
 import { plusCircle } from "@wordpress/icons";
@@ -80,11 +81,19 @@ export function Edit({
 		"launchpad-blocks/accordion",
 	);
 
+	const post = useSelect((select) => {
+		const editorSelect = select(editorStore) as {
+			getCurrentPost?: () => Record<string, unknown> | null;
+		};
+		return editorSelect.getCurrentPost?.() ?? null;
+	}, []);
+
 	const AccordionIcon = applyFilters(
 		"launchpadBlocks.accordionIcon",
 		(props: { className: string; isEditorMode: boolean }) => (
 			<Icon iconName="accordion-arrow" {...props} />
 		),
+		post,
 	) as (props: { className: string; isEditorMode: boolean }) => JSX.Element;
 
 	const isInnerBlockSelected = useSelect(

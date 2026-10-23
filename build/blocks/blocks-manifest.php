@@ -15,7 +15,7 @@
 			'accordion'
 		),
 		'editorScript' => array(
-			'file:./index.c808354be257a0936792.js'
+			'file:./index.2e2cd5b82ea45d7c4853.js'
 		),
 		'style' => array(
 			'file:./style.77aceeefabeb13d71de1.css'

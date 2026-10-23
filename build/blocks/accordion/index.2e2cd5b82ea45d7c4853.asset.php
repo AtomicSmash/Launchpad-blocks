@@ -7,9 +7,10 @@
 		'wp-components',
 		'wp-core-data',
 		'wp-data',
+		'wp-editor',
 		'wp-hooks',
 		'wp-i18n',
 		'wp-primitives'
 	),
-	'version' => 'c808354be257a0936792'
+	'version' => '2e2cd5b82ea45d7c4853'
 );

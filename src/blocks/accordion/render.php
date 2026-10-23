@@ -28,7 +28,8 @@ $accordion_icon_function = apply_filters(
 	'launchpad_blocks_accordion_icon',
 	function ( $attributes ) {
 		return \Launchpad\Blocks\Helpers\icon( 'accordion-arrow', $attributes );
-	}
+	},
+	get_post()
 );
 
 $parsed_content = new WP_HTML_Tag_Processor( $content );

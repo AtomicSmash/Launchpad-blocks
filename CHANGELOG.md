@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 11.1.0
+
+### Minor Changes
+
+- 341225a: Added post parameter to the icon filters for the accordion block to enable more conditional icons
+
 ## 11.0.1
 
 ### Patch Changes
