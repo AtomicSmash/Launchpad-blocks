@@ -72,7 +72,7 @@ function get( array $options, array $wrapper_attributes = array() ): string {
 	</fieldset>
 	<?php
 	$component = ob_get_contents();
-	ob_clean();
+	ob_end_clean();
 	return $component;
 }
 

@@ -1,5 +1,11 @@
 # @atomicsmash/launchpad-blocks
 
+## 11.1.1
+
+### Patch Changes
+
+- 38f84f4: Fix output buffer issue where buffer is not closed in range slider.
+
 ## 11.1.0
 
 ### Minor Changes
