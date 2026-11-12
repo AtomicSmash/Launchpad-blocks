@@ -6,8 +6,10 @@
 		'wp-block-editor',
 		'wp-blocks',
 		'wp-components',
-		'wp-primitives',
-		'wp-server-side-render'
+		'wp-core-data',
+		'wp-data',
+		'wp-i18n',
+		'wp-primitives'
 	),
-	'version' => 'a0ca8dc772807e2b9d66'
+	'version' => 'a795c2cfcc8436bbd47a'
 );

@@ -1,5 +1,13 @@
 # @atomicsmash/launchpad-blocks
 
+## 11.1.2-beta.0
+
+### Patch Changes
+
+- 5c3e01f: Rename navigation block to avoid confusion with core block
+- 3220e6c: Fix number input buttons for new input height
+- 3feecbd: Fix navigation not loading in newer versions of WP.
+
 ## 11.1.1
 
 ### Patch Changes

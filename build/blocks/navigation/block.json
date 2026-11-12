@@ -1,7 +1,7 @@
 {
   "apiVersion": 3,
   "name": "launchpad-blocks/navigation",
-  "title": "Navigation",
+  "title": "Launchpad Navigation",
   "category": "theme",
   "description": "A collection of blocks that allow visitors to get around your site.",
   "allowedBlocks": [
@@ -18,7 +18,7 @@
     "links"
   ],
   "editorScript": [
-    "file:./index.cae4c592b59bc4e67822.js"
+    "file:./index.44c217b6daabc9d3df0c.js"
   ],
   "viewScript": [
     "file:./view.37c80a9be8aae62de638.js"

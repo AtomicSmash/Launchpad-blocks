@@ -11,7 +11,6 @@
 }`}}),(0,p.jsxs)(_i,{open:n,defaultOpen:o,onOpenChange:r,children:[(0,p.jsx)(Ci,{asChild:!0,children:e}),(0,p.jsxs)(Pi,{align:"center",...i,className:"tooltip-content",children:[t,(0,p.jsx)(Si,{className:"tooltip-arrow"})]})]})]})}const Ei=(0,f.forwardRef)(function({allowShiftClick:t=!0,allowAltClick:n=!0,allowMetaOrCtrlClick:o=!0,defaultValue:r,value:i,onValidation:s,...l},c){const[a,u]=(0,f.useState)(r??i??0);(0,f.useEffect)(()=>{i!==void 0&&(u(i),g.current&&(g.current.value=i.toString()))},[i]);const d=(0,f.useId)(),m=l.id??d,h=l.step?Number(l.step):1,g=(0,f.useRef)(null);let x;return(0,p.jsxs)(p.Fragment,{children:[(0,p.jsx)("style",{dangerouslySetInnerHTML:{__html:`
 .number-wrapper {
 	position: relative;
-	height: 32px;
 }
 
 .custom-number-input {
@@ -27,21 +26,22 @@
 .number-buttons {
 	display: flex;
 	gap: 2px;
-	height: calc(100% - 8px);
-	padding-block: 1px;
-	padding-inline: 2px;
+	height: 100%;
+	padding-block: 3px;
+	padding-inline: 3px;
 	position: absolute;
-	right: 2px;
-	top: 3px;
+	right: 0px;
+	top: 0px;
 }
 
 .number-button {
 	border-radius: 2px;
 	border: none;
 	padding: 0;
-	height: 1.5rem;
-	width: 1.5rem;
-	flex-basis: 1.5rem;
+	height: 100%;
+	width: auto;
+	flex-basis: auto;
+	aspect-ratio: 1;
 	display: grid;
 	place-content: center;
 }
@@ -57,9 +57,11 @@
 }
 
 .number-button svg {
-	width: 1rem;
-	height: 1rem;
-}	
+	width: 70%;
+	height: auto;
+	aspect-ratio: 1;
+	margin: auto;
+}
 `}}),(0,p.jsxs)("div",{className:"number-wrapper",children:[(0,p.jsx)("input",{ref:g,id:m,type:"number",inputMode:"numeric",defaultValue:a,onInput:v=>{const w=v.currentTarget.value;isNaN(Number(w))||u(Number(w))},onChange:v=>{s&&(clearTimeout(x),x=setTimeout(()=>{s(Number(v.target.value))},100))},onBlur:v=>{s&&(clearTimeout(x),x=setTimeout(()=>{s(Number(v.target.value))},100))},onWheel:v=>v.currentTarget.blur(),...l,className:"custom-number-input"}),(0,p.jsxs)("div",{className:"number-buttons",children:[(0,p.jsx)(Tn,{content:(0,p.jsxs)(p.Fragment,{children:["Click to increase by ",h,".",(0,p.jsx)("br",{}),t?(0,p.jsxs)(p.Fragment,{children:["Shift click to increase by 10.",(0,p.jsx)("br",{})]}):null,n?(0,p.jsxs)(p.Fragment,{children:["Alt click to increase by 0.1.",(0,p.jsx)("br",{})]}):null,o&&["Windows","MacOS"].includes(Ne())?(0,p.jsxs)(p.Fragment,{children:[Ne()==="Windows"?"Control":"Command"," ","click to increase by 100.",(0,p.jsx)("br",{})]}):null]}),children:(0,p.jsx)("button",{type:"button","aria-controls":m,disabled:a>=Number(l.max),onClick:v=>{const w=Number(a);if(!isNaN(Number(a))){let b=h;t&&v.shiftKey&&(b=10),n&&v.altKey&&(b=.1),o&&(v.ctrlKey||v.metaKey)&&(b=100);let y=w+1*b;l.min&&y<Number(l.min)&&(y=Number(l.min)),l.max&&y>Number(l.max)&&(y=Number(l.max)),u(y),g.current&&(g.current.value=y.toString()),s&&(clearTimeout(x),x=setTimeout(()=>{s(Number(y))},100))}},className:`number-button ${a>=Number(l.max)?"inactive":"active"}`,children:(0,p.jsx)(se,{iconName:"plus","aria-label":"Increase number"})})}),(0,p.jsx)(Tn,{content:(0,p.jsxs)(p.Fragment,{children:["Click to decrease by ",h,".",(0,p.jsx)("br",{}),t?(0,p.jsxs)(p.Fragment,{children:["Shift click to decrease by 10.",(0,p.jsx)("br",{})]}):null,n?(0,p.jsxs)(p.Fragment,{children:["Alt click to decrease by 0.1.",(0,p.jsx)("br",{})]}):null,o&&["Windows","MacOS"].includes(Ne())?(0,p.jsxs)(p.Fragment,{children:[Ne()==="Windows"?"Control":"Command"," ","click to decrease by 100.",(0,p.jsx)("br",{})]}):null]}),side:"bottom",children:(0,p.jsx)("button",{type:"button","aria-controls":m,disabled:a<=Number(l.min),className:`number-button ${a<=Number(l.min)?"inactive":"active"}`,onClick:v=>{const w=Number(a);if(!isNaN(Number(a))){let b=h;t&&v.shiftKey&&(b=10),n&&v.altKey&&(b=.1),o&&(v.ctrlKey||v.metaKey)&&(b=100);let y=w-1*b;l.min&&y<Number(l.min)&&(y=Number(l.min)),l.max&&y>Number(l.max)&&(y=Number(l.max)),u(y),g.current&&(g.current.value=y.toString()),s&&(clearTimeout(x),x=setTimeout(()=>{s(Number(y))},100))}},children:(0,p.jsx)(se,{iconName:"minus","aria-label":"Decrease number"})})})]})]})]})}),Ys=window.wp.coreData,qs=window.wp.data,ue=window.wp.i18n,W=window.wp.primitives,Ri=(0,p.jsx)(W.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24",children:(0,p.jsx)(W.Path,{d:"M9 11.1H5v-4H3v10h2v-4h4v4h2v-10H9v4zm8 4c.5-.4.6-.6 1.1-1.1.4-.4.8-.8 1.2-1.3.3-.4.6-.8.9-1.3.2-.4.3-.8.3-1.3 0-.4-.1-.9-.3-1.3-.2-.4-.4-.7-.8-1-.3-.3-.7-.5-1.2-.6-.5-.2-1-.2-1.5-.2-.4 0-.7 0-1.1.1-.3.1-.7.2-1 .3-.3.1-.6.3-.9.5-.3.2-.6.4-.8.7l1.2 1.2c.3-.3.6-.5 1-.7.4-.2.7-.3 1.2-.3s.9.1 1.3.4c.3.3.5.7.5 1.1 0 .4-.1.8-.4 1.1-.3.5-.6.9-1 1.2-.4.4-1 .9-1.6 1.4-.6.5-1.4 1.1-2.2 1.6v1.5h8v-2H17z"})}),Ai=(0,p.jsx)(W.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24",children:(0,p.jsx)(W.Path,{d:"M9 11H5V7H3v10h2v-4h4v4h2V7H9v4zm11.3 1.7c-.4-.4-1-.7-1.6-.8v-.1c.6-.2 1.1-.5 1.5-.9.3-.4.5-.8.5-1.3 0-.4-.1-.8-.3-1.1-.2-.3-.5-.6-.8-.8-.4-.2-.8-.4-1.2-.5-.6-.1-1.1-.2-1.6-.2-.6 0-1.3.1-1.8.3s-1.1.5-1.6.9l1.2 1.4c.4-.2.7-.4 1.1-.6.3-.2.7-.3 1.1-.3.4 0 .8.1 1.1.3.3.2.4.5.4.8 0 .4-.2.7-.6.9-.7.3-1.5.5-2.2.4v1.6c.5 0 1 0 1.5.1.3.1.7.2 1 .3.2.1.4.2.5.4s.1.4.1.6c0 .3-.2.7-.5.8-.4.2-.9.3-1.4.3s-1-.1-1.4-.3c-.4-.2-.8-.4-1.2-.7L13 15.6c.5.4 1 .8 1.6 1 .7.3 1.5.4 2.3.4.6 0 1.1-.1 1.6-.2.4-.1.9-.2 1.3-.5.4-.2.7-.5.9-.9.2-.4.3-.8.3-1.2 0-.6-.3-1.1-.7-1.5z"})}),Oi=(0,p.jsx)(W.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24",children:(0,p.jsx)(W.Path,{d:"M20 13V7h-3l-4 6v2h5v2h2v-2h1v-2h-1zm-2 0h-2.8L18 9v4zm-9-2H5V7H3v10h2v-4h4v4h2V7H9v4z"})}),Ti=(0,p.jsx)(W.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24",children:(0,p.jsx)(W.Path,{d:"M9 11H5V7H3v10h2v-4h4v4h2V7H9v4zm11.7 1.2c-.2-.3-.5-.7-.8-.9-.3-.3-.7-.5-1.1-.6-.5-.1-.9-.2-1.4-.2-.2 0-.5.1-.7.1-.2.1-.5.1-.7.2l.1-1.9h4.3V7H14l-.3 5 1 .6.5-.2.4-.1c.1-.1.3-.1.4-.1h.5c.5 0 1 .1 1.4.4.4.2.6.7.6 1.1 0 .4-.2.8-.6 1.1-.4.3-.9.4-1.4.4-.4 0-.9-.1-1.3-.3-.4-.2-.7-.4-1.1-.7 0 0-1.1 1.4-1 1.5.5.4 1 .8 1.6 1 .7.3 1.5.4 2.3.4.5 0 1-.1 1.5-.3s.9-.4 1.3-.7c.4-.3.7-.7.9-1.1s.3-.9.3-1.4-.1-1-.3-1.4z"})}),Ni=(0,p.jsx)(W.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24",children:(0,p.jsx)(W.Path,{d:"M20.7 12.4c-.2-.3-.4-.6-.7-.9s-.6-.5-1-.6c-.4-.2-.8-.2-1.2-.2-.5 0-.9.1-1.3.3s-.8.5-1.2.8c0-.5 0-.9.2-1.4l.6-.9c.2-.2.5-.4.8-.5.6-.2 1.3-.2 1.9 0 .3.1.6.3.8.5 0 0 1.3-1.3 1.3-1.4-.4-.3-.9-.6-1.4-.8-.6-.2-1.3-.3-2-.3-.6 0-1.1.1-1.7.4-.5.2-1 .5-1.4.9-.4.4-.8 1-1 1.6-.3.7-.4 1.5-.4 2.3s.1 1.5.3 2.1c.2.6.6 1.1 1 1.5.4.4.9.7 1.4.9 1 .3 2 .3 3 0 .4-.1.8-.3 1.2-.6.3-.3.6-.6.8-1 .2-.5.3-.9.3-1.4s-.1-.9-.3-1.3zm-2 2.1c-.1.2-.3.4-.4.5-.1.1-.3.2-.5.2-.2.1-.4.1-.6.1-.2.1-.5 0-.7-.1-.2 0-.3-.2-.5-.3-.1-.2-.3-.4-.4-.6-.2-.3-.3-.7-.3-1 .3-.3.6-.5 1-.7.3-.1.7-.2 1-.2.4 0 .8.1 1.1.3.3.3.4.7.4 1.1 0 .2 0 .5-.1.7zM9 11H5V7H3v10h2v-4h4v4h2V7H9v4z"})}),ki=(0,p.jsx)(W.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24",children:(0,p.jsx)(W.Path,{d:"m9.99609 14v-.2251l.00391.0001v6.225h1.5v-14.5h2.5v14.5h1.5v-14.5h3v-1.5h-8.50391c-2.76142 0-5 2.23858-5 5 0 2.7614 2.23858 5 5 5z"})});var we,Xe,A,wt,bt,ji,Di,Li,Mi,Ii,yt,Bi,Hi,$i,Fi,Nn,zi,kn,Wi,jn,_t,Vi,Ui,fe,Dn,Ye,Ln,Mn,Gi,Xi;function In(e,t){if(e===void 0)return e;let n;if(t==="both")n=e;else if(t==="horizontal")n=e.left;else if(t==="vertical")n=e.top;else return;return n.startsWith("var:")?`var(--wp--${n.replace("var:","").split("|").join("--")})`:n}function nc(e,t,n){const o=t.spacing?.blockGap;let r="none";if(o===!0)r="both";else if(Array.isArray(o)){const s=o.includes("horizontal"),l=o.includes("vertical");s&&l?r="both":s?r="horizontal":l&&(r="vertical")}const i={columnGap:r==="both"||r==="horizontal"?In(n?.spacing?.blockGap,r):void 0,rowGap:r==="both"||r==="vertical"?In(n?.spacing?.blockGap,r):void 0};if(e===void 0&&typeof t.layout=="object"&&t?.layout?.default&&(e=t.layout.default),!e)return{className:"",style:i};switch(e.type){case"grid":{let s="";return e.minimumColumnWidth?s=`repeat(auto-fill, minmax(min(${e.minimumColumnWidth}, 100%), 1fr))`:e.columnCount&&(s=`repeat(${e.columnCount}, minmax(0, 1fr))`),{className:`is-layout-${e.type}${e.columnCount?` columns-${e.columnCount}`:""}`,style:{gridTemplateColumns:s,...i}}}case"flex":return{className:`is-layout-${e.type} is-${e.orientation??"horizontal"}${e.justifyContent?` is-content-justification-${e.justifyContent}`:""}${e.flexWrap==="nowrap"?" is-nowrap":""}`,style:{flexDirection:e.orientation==="vertical"?"column":"row",alignItems:e.orientation==="vertical"?e.justifyContent==="left"||e.justifyContent===void 0?"flex-start":e.justifyContent==="right"?"flex-end":e.justifyContent:e.verticalAlignment==="top"?"flex-start":e.verticalAlignment==="bottom"?"flex-end":e.verticalAlignment,justifyContent:e.orientation==="vertical"?e.verticalAlignment==="top"?"flex-start":e.verticalAlignment==="bottom"?"flex-end":e.verticalAlignment??"center":e.justifyContent==="left"?"flex-start":e.justifyContent==="right"?"flex-end":e.justifyContent,flexWrap:e.flexWrap??"wrap",...i}};case"constrained":return{className:`is-layout-${e.type}${e.justifyContent?` is-content-justification-${e.justifyContent}`:""}`,style:{...i}};default:return{className:`is-layout-${e.type}`,style:{...i}}}}function Yi(e,t){return e.reduce((n,o)=>{if(o.name===t)n.push(o);else if(o.innerBlocks){const r=Yi(o.innerBlocks,t);r&&n.push(...r)}return n},[])}const oc=()=>{const e=Ye(()=>({per_page:-1}),[]),t=Ye(()=>({per_page:-1,orderby:"name",context:"edit"}),[]),n=Ye(()=>({}),[]),{postTypes:o,taxonomies:r}=_t(a=>{const{getEntityRecords:u}=a(jn),d=u("root","postType",e),m=u("root","taxonomy",t);if(!m)return{postTypes:d,taxonomies:m};for(const h of m)n[h.slug]=u("taxonomy",h.slug);return{postTypes:d,taxonomies:m}},[e,t,n]),i=["attachment"],s=[],l=o?.filter(({viewable:a,slug:u})=>a&&!i.includes(u));if(!l||l.length===0)return{postTypes:l,taxonomies:void 0};const c={};for(const a of l){const u=r?.filter(({types:d,slug:m})=>d.includes(a.slug)&&!s.includes(m));u&&(c[a.slug]=u.map(d=>{const m=n?.[d.slug]??null;return{...d,terms:m}}))}return{filteredPostTypes:l,mappedTaxonomies:c===void 0||Object.values(c).length===0?void 0:c}};function rc({list:e,containerClassName:t,renderItem:n}){return we(Xe,{children:[A("style",{dangerouslySetInnerHTML:{__html:`.draggable-list {
 	border-top: 1px solid #d7d7d7;
 	display: flex;

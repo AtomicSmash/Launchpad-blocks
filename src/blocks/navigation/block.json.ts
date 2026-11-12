@@ -9,7 +9,7 @@ import { supports } from "./supports";
 export const blockJson = {
 	apiVersion: 3,
 	name: "launchpad-blocks/navigation",
-	title: "Navigation",
+	title: "Launchpad Navigation",
 	category: "theme",
 	description:
 		"A collection of blocks that allow visitors to get around your site.",

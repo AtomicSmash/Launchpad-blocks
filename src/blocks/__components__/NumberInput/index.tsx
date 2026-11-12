@@ -50,7 +50,6 @@ export const NumberInput = forwardRef<
 					__html: `
 .number-wrapper {
 	position: relative;
-	height: 32px;
 }
 
 .custom-number-input {
@@ -66,21 +65,22 @@ export const NumberInput = forwardRef<
 .number-buttons {
 	display: flex;
 	gap: 2px;
-	height: calc(100% - 8px);
-	padding-block: 1px;
-	padding-inline: 2px;
+	height: 100%;
+	padding-block: 3px;
+	padding-inline: 3px;
 	position: absolute;
-	right: 2px;
-	top: 3px;
+	right: 0px;
+	top: 0px;
 }
 
 .number-button {
 	border-radius: 2px;
 	border: none;
 	padding: 0;
-	height: 1.5rem;
-	width: 1.5rem;
-	flex-basis: 1.5rem;
+	height: 100%;
+	width: auto;
+	flex-basis: auto;
+	aspect-ratio: 1;
 	display: grid;
 	place-content: center;
 }
@@ -96,9 +96,11 @@ export const NumberInput = forwardRef<
 }
 
 .number-button svg {
-	width: 1rem;
-	height: 1rem;
-}	
+	width: 70%;
+	height: auto;
+	aspect-ratio: 1;
+	margin: auto;
+}
 `,
 				}}
 			></style>

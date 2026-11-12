@@ -952,7 +952,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.715d2fda422d65b44338.js'
+			'file:./index.a795c2cfcc8436bbd47a.js'
 		),
 		'viewScript' => array(
 			'file:./view.a24771dcab997d268769.js'
@@ -1744,7 +1744,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.b2e4eec90e8e8d10d2f8.js'
+			'file:./index.bc2c34cb364e39c12a47.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-style.7366b8d6169ef631eab0.css'
@@ -2259,7 +2259,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.14c29d4b509e66de1005.js'
+			'file:./index.c4a2935e85d56f680269.js'
 		),
 		'style' => array(
 			'file:./style.56104d9460ccbad83033.css'
@@ -2340,7 +2340,7 @@
 	'blocks/navigation' => array(
 		'apiVersion' => 3,
 		'name' => 'launchpad-blocks/navigation',
-		'title' => 'Navigation',
+		'title' => 'Launchpad Navigation',
 		'category' => 'theme',
 		'description' => 'A collection of blocks that allow visitors to get around your site.',
 		'allowedBlocks' => array(
@@ -2357,7 +2357,7 @@
 			'links'
 		),
 		'editorScript' => array(
-			'file:./index.cae4c592b59bc4e67822.js'
+			'file:./index.44c217b6daabc9d3df0c.js'
 		),
 		'viewScript' => array(
 			'file:./view.37c80a9be8aae62de638.js'
@@ -2473,7 +2473,7 @@
 			'list'
 		),
 		'editorScript' => array(
-			'file:./index.57f7cd1ebabbd6a71c5f.js'
+			'file:./index.e5f6223f6726ec18bc8f.js'
 		),
 		'style' => array(
 			'file:./style.f41df73cc3de743a7f95.css'
@@ -2546,7 +2546,7 @@
 			
 		),
 		'editorScript' => array(
-			'file:./index.a0ca8dc772807e2b9d66.js'
+			'file:./index.a28a15afd385cc9db5a2.js'
 		),
 		'editorStyle' => array(
 			'file:./editor-styles.f3af54260428fee338a8.css'

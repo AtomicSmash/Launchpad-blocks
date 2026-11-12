@@ -11,7 +11,6 @@
 }`}}),(0,f.jsxs)(Si,{open:n,defaultOpen:o,onOpenChange:r,children:[(0,f.jsx)(Pi,{asChild:!0,children:e}),(0,f.jsxs)(Ri,{align:"center",...i,className:"tooltip-content",children:[t,(0,f.jsx)(Ei,{className:"tooltip-arrow"})]})]})]})}const Ti=(0,d.forwardRef)(function({allowShiftClick:t=!0,allowAltClick:n=!0,allowMetaOrCtrlClick:o=!0,defaultValue:r,value:i,onValidation:s,...l},a){const[c,u]=(0,d.useState)(r??i??0);(0,d.useEffect)(()=>{i!==void 0&&(u(i),g.current&&(g.current.value=i.toString()))},[i]);const m=(0,d.useId)(),p=l.id??m,h=l.step?Number(l.step):1,g=(0,d.useRef)(null);let v;return(0,f.jsxs)(f.Fragment,{children:[(0,f.jsx)("style",{dangerouslySetInnerHTML:{__html:`
 .number-wrapper {
 	position: relative;
-	height: 32px;
 }
 
 .custom-number-input {
@@ -27,21 +26,22 @@
 .number-buttons {
 	display: flex;
 	gap: 2px;
-	height: calc(100% - 8px);
-	padding-block: 1px;
-	padding-inline: 2px;
+	height: 100%;
+	padding-block: 3px;
+	padding-inline: 3px;
 	position: absolute;
-	right: 2px;
-	top: 3px;
+	right: 0px;
+	top: 0px;
 }
 
 .number-button {
 	border-radius: 2px;
 	border: none;
 	padding: 0;
-	height: 1.5rem;
-	width: 1.5rem;
-	flex-basis: 1.5rem;
+	height: 100%;
+	width: auto;
+	flex-basis: auto;
+	aspect-ratio: 1;
 	display: grid;
 	place-content: center;
 }
@@ -57,9 +57,11 @@
 }
 
 .number-button svg {
-	width: 1rem;
-	height: 1rem;
-}	
+	width: 70%;
+	height: auto;
+	aspect-ratio: 1;
+	margin: auto;
+}
 `}}),(0,f.jsxs)("div",{className:"number-wrapper",children:[(0,f.jsx)("input",{ref:g,id:p,type:"number",inputMode:"numeric",defaultValue:c,onInput:b=>{const x=b.currentTarget.value;isNaN(Number(x))||u(Number(x))},onChange:b=>{s&&(clearTimeout(v),v=setTimeout(()=>{s(Number(b.target.value))},100))},onBlur:b=>{s&&(clearTimeout(v),v=setTimeout(()=>{s(Number(b.target.value))},100))},onWheel:b=>b.currentTarget.blur(),...l,className:"custom-number-input"}),(0,f.jsxs)("div",{className:"number-buttons",children:[(0,f.jsx)(On,{content:(0,f.jsxs)(f.Fragment,{children:["Click to increase by ",h,".",(0,f.jsx)("br",{}),t?(0,f.jsxs)(f.Fragment,{children:["Shift click to increase by 10.",(0,f.jsx)("br",{})]}):null,n?(0,f.jsxs)(f.Fragment,{children:["Alt click to increase by 0.1.",(0,f.jsx)("br",{})]}):null,o&&["Windows","MacOS"].includes(Ne())?(0,f.jsxs)(f.Fragment,{children:[Ne()==="Windows"?"Control":"Command"," ","click to increase by 100.",(0,f.jsx)("br",{})]}):null]}),children:(0,f.jsx)("button",{type:"button","aria-controls":p,disabled:c>=Number(l.max),onClick:b=>{const x=Number(c);if(!isNaN(Number(c))){let w=h;t&&b.shiftKey&&(w=10),n&&b.altKey&&(w=.1),o&&(b.ctrlKey||b.metaKey)&&(w=100);let y=x+1*w;l.min&&y<Number(l.min)&&(y=Number(l.min)),l.max&&y>Number(l.max)&&(y=Number(l.max)),u(y),g.current&&(g.current.value=y.toString()),s&&(clearTimeout(v),v=setTimeout(()=>{s(Number(y))},100))}},className:`number-button ${c>=Number(l.max)?"inactive":"active"}`,children:(0,f.jsx)(Q,{iconName:"plus","aria-label":"Increase number"})})}),(0,f.jsx)(On,{content:(0,f.jsxs)(f.Fragment,{children:["Click to decrease by ",h,".",(0,f.jsx)("br",{}),t?(0,f.jsxs)(f.Fragment,{children:["Shift click to decrease by 10.",(0,f.jsx)("br",{})]}):null,n?(0,f.jsxs)(f.Fragment,{children:["Alt click to decrease by 0.1.",(0,f.jsx)("br",{})]}):null,o&&["Windows","MacOS"].includes(Ne())?(0,f.jsxs)(f.Fragment,{children:[Ne()==="Windows"?"Control":"Command"," ","click to decrease by 100.",(0,f.jsx)("br",{})]}):null]}),side:"bottom",children:(0,f.jsx)("button",{type:"button","aria-controls":p,disabled:c<=Number(l.min),className:`number-button ${c<=Number(l.min)?"inactive":"active"}`,onClick:b=>{const x=Number(c);if(!isNaN(Number(c))){let w=h;t&&b.shiftKey&&(w=10),n&&b.altKey&&(w=.1),o&&(b.ctrlKey||b.metaKey)&&(w=100);let y=x-1*w;l.min&&y<Number(l.min)&&(y=Number(l.min)),l.max&&y>Number(l.max)&&(y=Number(l.max)),u(y),g.current&&(g.current.value=y.toString()),s&&(clearTimeout(v),v=setTimeout(()=>{s(Number(y))},100))}},children:(0,f.jsx)(Q,{iconName:"minus","aria-label":"Decrease number"})})})]})]})]})}),ll=window.wp.coreData;var we,Xe,T,xt,kn,Ai,Oi,ki,Ni,ji,wt,Di,Mi,Li,Ii,Bi,$i,Nn,Hi,Fi,jn,yt,Wi,W,Dn,zi,Vi,Ui,Gi,Yi,Xi,_t,qi,Ki;function Mn(e,t){if(e===void 0)return e;let n;if(t==="both")n=e;else if(t==="horizontal")n=e.left;else if(t==="vertical")n=e.top;else return;return n.startsWith("var:")?`var(--wp--${n.replace("var:","").split("|").join("--")})`:n}function al(e,t,n){const o=t.spacing?.blockGap;let r="none";if(o===!0)r="both";else if(Array.isArray(o)){const s=o.includes("horizontal"),l=o.includes("vertical");s&&l?r="both":s?r="horizontal":l&&(r="vertical")}const i={columnGap:r==="both"||r==="horizontal"?Mn(n?.spacing?.blockGap,r):void 0,rowGap:r==="both"||r==="vertical"?Mn(n?.spacing?.blockGap,r):void 0};if(e===void 0&&typeof t.layout=="object"&&t?.layout?.default&&(e=t.layout.default),!e)return{className:"",style:i};switch(e.type){case"grid":{let s="";return e.minimumColumnWidth?s=`repeat(auto-fill, minmax(min(${e.minimumColumnWidth}, 100%), 1fr))`:e.columnCount&&(s=`repeat(${e.columnCount}, minmax(0, 1fr))`),{className:`is-layout-${e.type}${e.columnCount?` columns-${e.columnCount}`:""}`,style:{gridTemplateColumns:s,...i}}}case"flex":return{className:`is-layout-${e.type} is-${e.orientation??"horizontal"}${e.justifyContent?` is-content-justification-${e.justifyContent}`:""}${e.flexWrap==="nowrap"?" is-nowrap":""}`,style:{flexDirection:e.orientation==="vertical"?"column":"row",alignItems:e.orientation==="vertical"?e.justifyContent==="left"||e.justifyContent===void 0?"flex-start":e.justifyContent==="right"?"flex-end":e.justifyContent:e.verticalAlignment==="top"?"flex-start":e.verticalAlignment==="bottom"?"flex-end":e.verticalAlignment,justifyContent:e.orientation==="vertical"?e.verticalAlignment==="top"?"flex-start":e.verticalAlignment==="bottom"?"flex-end":e.verticalAlignment??"center":e.justifyContent==="left"?"flex-start":e.justifyContent==="right"?"flex-end":e.justifyContent,flexWrap:e.flexWrap??"wrap",...i}};case"constrained":return{className:`is-layout-${e.type}${e.justifyContent?` is-content-justification-${e.justifyContent}`:""}`,style:{...i}};default:return{className:`is-layout-${e.type}`,style:{...i}}}}function Ji(e,t){return e.reduce((n,o)=>{if(o.name===t)n.push(o);else if(o.innerBlocks){const r=Ji(o.innerBlocks,t);r&&n.push(...r)}return n},[])}const cl=()=>{const e=_t(()=>({per_page:-1}),[]),t=_t(()=>({per_page:-1,orderby:"name",context:"edit"}),[]),n=_t(()=>({}),[]),{postTypes:o,taxonomies:r}=yt(c=>{const{getEntityRecords:u}=c(jn),m=u("root","postType",e),p=u("root","taxonomy",t);if(!p)return{postTypes:m,taxonomies:p};for(const h of p)n[h.slug]=u("taxonomy",h.slug);return{postTypes:m,taxonomies:p}},[e,t,n]),i=["attachment"],s=[],l=o?.filter(({viewable:c,slug:u})=>c&&!i.includes(u));if(!l||l.length===0)return{postTypes:l,taxonomies:void 0};const a={};for(const c of l){const u=r?.filter(({types:m,slug:p})=>m.includes(c.slug)&&!s.includes(p));u&&(a[c.slug]=u.map(m=>{const p=n?.[m.slug]??null;return{...m,terms:p}}))}return{filteredPostTypes:l,mappedTaxonomies:a===void 0||Object.values(a).length===0?void 0:a}};function ul({list:e,containerClassName:t,renderItem:n}){return we(Xe,{children:[T("style",{dangerouslySetInnerHTML:{__html:`.draggable-list {
 	border-top: 1px solid #d7d7d7;
 	display: flex;
