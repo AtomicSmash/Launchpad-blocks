@@ -2360,7 +2360,7 @@
 			'file:./index.44c217b6daabc9d3df0c.js'
 		),
 		'viewScript' => array(
-			'file:./view.37c80a9be8aae62de638.js'
+			'file:./view.a4370e8cc4579a6edee4.js'
 		),
 		'style' => array(
 			'file:./style.2da1e58ee81714849e57.css'

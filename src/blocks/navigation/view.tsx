@@ -341,24 +341,37 @@ class NavigationSubMenu {
 	}
 	private maybeAddBackButton() {
 		if (this.parentNavigation.isMenuCollapsed()) {
-			const backButton = document.createElement("button");
-			backButton.type = "button";
-			backButton.classList.add("reset", "back-button");
-			backButton.addEventListener("click", () => {
+			const backButtonTemplate = document.querySelector<HTMLTemplateElement>(
+				"template#collapsed-menu-back-button-in-submenu",
+			);
+			if (!backButtonTemplate) {
+				throw new Error(
+					"Failed to find collapsed menu submenu back button template.",
+				);
+			}
+			const backButtonFragment = document.importNode(
+				backButtonTemplate.content,
+				true,
+			);
+			const backButtonElement =
+				backButtonFragment.querySelector<HTMLButtonElement>(
+					"button.back-button",
+				);
+			if (!backButtonElement) {
+				throw new Error(
+					"Collapsed menu submenu back button template was not in the expected format.",
+				);
+			}
+
+			backButtonElement.addEventListener("click", () => {
 				this.closeSubMenu(true);
 			});
-			const div = document.createElement("div");
-			const root = createRoot(div);
-			flushSync(() => {
-				root.render(<Icon iconName="back-arrow" />);
-			});
-			const iconAsHTML = div.innerHTML;
-			backButton.innerHTML = `${iconAsHTML} Back`;
+
 			this.subMenuContent.insertBefore(
-				backButton,
+				backButtonElement,
 				this.subMenuContent.firstChild,
 			);
-			this.backButton = backButton;
+			this.backButton = backButtonElement;
 		}
 	}
 	public reset() {
@@ -514,10 +527,7 @@ class NavigationSubMenu {
 				this.subMenuContent.style.left = `${x}px`;
 				this.subMenuContent.style.top = `${y}px`;
 				const side = placement.split("-")[0] as
-					| "top"
-					| "bottom"
-					| "left"
-					| "right";
+					"top" | "bottom" | "left" | "right";
 
 				const staticSide = {
 					top: "bottom",

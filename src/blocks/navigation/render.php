@@ -36,6 +36,12 @@ $navigation_close_icon_function = apply_filters(
 		return \Launchpad\Blocks\Helpers\icon( 'menu-close-icon', $attributes );
 	}
 );
+$back_arrow_icon_function = apply_filters(
+	'launchpad_blocks_navigation_collapsed_menu_submenu_back_icon',
+	function ( $attributes ) {
+		return \Launchpad\Blocks\Helpers\icon( 'back-arrow', $attributes );
+	}
+);
 
 ?>
 <div
@@ -55,6 +61,9 @@ echo wp_kses_data(
 );
 ?>
 >
+	<template id="collapsed-menu-back-button-in-submenu">
+		<button class="reset back-button"><?php echo wp_kses_post( $back_arrow_icon_function( array( 'class' => 'back-button-icon' ) ) ); ?> <span class="back-button-icon">Back</span></button>
+	</template>
 	<button
 		class="reset navigation-content-toggle"
 		data-navigation-content-toggle

@@ -1,5 +1,15 @@
 # @atomicsmash/launchpad-blocks
 
+## 11.2.0
+
+### Minor Changes
+
+- a1ac0ca: Add filter for navigation's collapsed menu sub-menu back button
+
+### Patch Changes
+
+- a1ac0ca: Improve reliability of back button icon rendering
+
 ## 11.1.2
 
 ### Patch Changes
